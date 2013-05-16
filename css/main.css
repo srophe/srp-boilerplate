@@ -13,11 +13,20 @@
 
 }
 
+/* styles for a pull-out */
+
+.s-pullout {
+	padding: 20px;
+	padding-top: 0px;
+	border-radius: 1em;
+	border: 1px solid grey;
+}
 /* styles for the related widget */
 
 .s-related {
 	background-color: grey;
 	padding: 20px;
+	padding-top: 0px;
 	border-radius: 1em;
 }
 
