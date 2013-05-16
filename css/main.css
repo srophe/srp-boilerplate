@@ -4,9 +4,30 @@
    Author's custom styles
    ========================================================================== */
 
+/* override default brand class behavior in navbar to keep the name bright */
+
+.navbar-inverse .brand {
+	color: #ffffff;
+	line-height: 20px;
+	margin: 0px;
+
+}
 
 
 
+/* styles for chicklet and social icons */
+
+.s-chicklet-btn {
+	max-width: 15px;
+	max-height: 15px;
+	padding-right: 12px;
+}
+
+/* row styles */
+
+.s-asearch {
+	padding-right: 12px;
+}
 
 
 
