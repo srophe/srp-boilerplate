@@ -13,6 +13,14 @@
 
 }
 
+/* styles for the related widget */
+
+.s-related {
+	background-color: grey;
+	padding: 20px;
+	border-radius: 1em;
+}
+
 
 
 /* styles for chicklet and social icons */
