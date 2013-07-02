@@ -16,6 +16,7 @@
  <xsl:import href="boilerplate-bottom.xsl"/>
  <xsl:import href="boilerplate-badbrowser.xsl"/>
  <xsl:import href="boilerplate-nav.xsl"/>
+ <xsl:import href="boilerplate-footer.xsl"/>
 
 
  <!-- =================================================================== -->
@@ -118,17 +119,15 @@
        </ul>
       </div>
      </div>
-
-     <hr/>
-
-     <footer>
-      <p><a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img
-         alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png"
-        /></a><br/>This work is licensed under a <a rel="license"
-        href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported
-        License</a>. <br/>Copyright <xsl:value-of select="$copyright-holders"/>
-       <xsl:value-of select="$copyright-year"/>.</p>. </footer>
+     
+     <!-- write the standard page footer -->
+     <xsl:call-template name="boilerplate-footer">
+      <xsl:with-param name="copyright-year" select="$copyright-year"/>
+      <xsl:with-param name="copyright-holders" select="$copyright-holders"/>
+     </xsl:call-template>
+     
     </div>
+
     <!-- write scripts etc. that belong at the bottom of the body -->
     <xsl:call-template name="boilerplate-bottom"/> 
    </body>
