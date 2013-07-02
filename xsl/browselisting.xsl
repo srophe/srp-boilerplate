@@ -134,9 +134,19 @@
   </html>
  </xsl:template>
 
+
+ <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+ <!-- |||| match=t:title: normalize and output a place title -->
+ <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+  
  <xsl:template match="t:title">
    <xsl:value-of select="normalize-space(normalize-unicode(., 'NFC'))"/>
  </xsl:template>
+ 
+ 
+ <!-- =================================================================== -->
+ <!-- define custom collation for sorting the list of names -->
+ <!-- =================================================================== -->
  
  <saxon:collation name="mixed" rules="&lt; a,A &lt; b,B &lt; c,C &lt; d,D &lt; e,E &lt; f,F &lt; g,G &lt; h,H &lt; i,I &lt; j,J &lt; k,K &lt; l,L &lt; m,M &lt; n,N &lt; o,O &lt; p,P &lt; q,Q &lt; r,R &lt; s,S &lt; t,T &lt; u,U &lt; v,V &lt; w,W &lt; x,X &lt; y,Y &lt; z,Z &amp; OE = Œ &amp; A = Ẵ &amp; E = Ễ &amp; A = Ằ &amp; D = Đ &amp; A = Ā &amp; S = Š &amp; U = Ū &amp; H = Ḥ &amp; S = Ṣ &amp; T = Ṭ &amp; I = Ī" ignore-case="yes" ignore-modifiers="yes" ignore-symbols="yes"/>
 </xsl:stylesheet>
