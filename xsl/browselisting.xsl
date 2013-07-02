@@ -44,6 +44,8 @@
  <xsl:param name="name-page-long">Browseable List of Places</xsl:param>
  <xsl:param name="copyright-holders">CHANGE THE COPYRIGHT HOLDERS PARAMETER</xsl:param>
  <xsl:param name="copyright-year">2013</xsl:param>
+ <xsl:param name="xmlbase">https://github.com/srophe/places/blob/master/xml/</xsl:param>
+ <xsl:param name="uribase">http://syriaca.org/place/</xsl:param>
  <xsl:variable name="colquery"><xsl:value-of select="$sourcedir"/>?select=*.xml</xsl:variable>
 
 
@@ -99,9 +101,19 @@
      <xsl:for-each select="collection($colquery)">
       <xsl:sort collation="mixed"
        select="replace(replace(normalize-unicode(./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1], 'NFC'), '‘', ''), 'ʿ', '')"/>
+      <xsl:variable name="xmlurl">
+       <xsl:for-each select="./descendant::t:place[1]/t:idno[@type='URI' and starts-with(., $uribase)][1]">
+        <xsl:value-of select="$xmlbase"/>
+        <xsl:value-of select="substring-after(., $uribase)"/>
+        <xsl:text>.xml</xsl:text>
+       </xsl:for-each>
+      </xsl:variable>
+      <li>
       <xsl:apply-templates
        select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"
-      />
+      /><xsl:text>: </xsl:text>
+      <a href="{$xmlurl}">tei xml</a>
+      </li>
      </xsl:for-each>
     </ul>
       </div>
@@ -122,9 +134,9 @@
  </xsl:template>
 
  <xsl:template match="t:title">
-  <li>
+  
    <xsl:value-of select="normalize-space(normalize-unicode(., 'NFC'))"/>
-  </li>
+  
  </xsl:template>
  
  <saxon:collation name="mixed" rules="&lt; a,A &lt; b,B &lt; c,C &lt; d,D &lt; e,E &lt; f,F &lt; g,G &lt; h,H &lt; i,I &lt; j,J &lt; k,K &lt; l,L &lt; m,M &lt; n,N &lt; o,O &lt; p,P &lt; q,Q &lt; r,R &lt; s,S &lt; t,T &lt; u,U &lt; v,V &lt; w,W &lt; x,X &lt; y,Y &lt; z,Z &amp; OE = Œ &amp; A = Ẵ &amp; E = Ễ &amp; A = Ằ &amp; D = Đ &amp; A = Ā &amp; S = Š &amp; U = Ū &amp; H = Ḥ &amp; S = Ṣ &amp; T = Ṭ &amp; I = Ī" ignore-case="yes" ignore-modifiers="yes" ignore-symbols="yes"/>
