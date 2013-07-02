@@ -12,6 +12,7 @@
  <xsl:template name="do-list">
   <ul>
    <xsl:for-each select="collection($colquery)">
+    <xsl:sort select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"/>
     <xsl:apply-templates select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"/>
    </xsl:for-each>
   </ul>
