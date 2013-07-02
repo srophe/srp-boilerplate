@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
- xmlns:t="http://www.tei-c.org/ns/1.0" xmlns:s="http://syriaca.org" xmlns="http://www.w3.org/1999/xhtml"
+<xsl:stylesheet 
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:t="http://www.tei-c.org/ns/1.0" 
+ xmlns:s="http://syriaca.org"
+ xmlns:saxon="http://saxon.sf.net/" 
+ xmlns="http://www.w3.org/1999/xhtml"
  exclude-result-prefixes="xs t s" version="2.0">
 
  <!-- =================================================================== -->
@@ -92,8 +97,8 @@
     <!-- write a sorted, linked list of all the place titles in the gazetteer -->
     <ul>
      <xsl:for-each select="collection($colquery)">
-      <xsl:sort
-       select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"/>
+      <xsl:sort collation="mixed"
+       select="replace(replace(normalize-unicode(./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1], 'NFC'), '‘', ''), 'ʿ', '')"/>
       <xsl:apply-templates
        select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"
       />
@@ -118,7 +123,9 @@
 
  <xsl:template match="t:title">
   <li>
-   <xsl:value-of select="normalize-space(normalize-unicode(.))"/>
+   <xsl:value-of select="normalize-space(normalize-unicode(., 'NFC'))"/>
   </li>
  </xsl:template>
+ 
+ <saxon:collation name="mixed" rules="&lt; a,A &lt; b,B &lt; c,C &lt; d,D &lt; e,E &lt; f,F &lt; g,G &lt; h,H &lt; i,I &lt; j,J &lt; k,K &lt; l,L &lt; m,M &lt; n,N &lt; o,O &lt; p,P &lt; q,Q &lt; r,R &lt; s,S &lt; t,T &lt; u,U &lt; v,V &lt; w,W &lt; x,X &lt; y,Y &lt; z,Z &amp; OE = Œ &amp; A = Ẵ &amp; E = Ễ &amp; A = Ằ &amp; D = Đ &amp; A = Ā &amp; S = Š &amp; U = Ū &amp; H = Ḥ &amp; S = Ṣ &amp; T = Ṭ &amp; I = Ī" ignore-case="yes" ignore-modifiers="yes" ignore-symbols="yes"/>
 </xsl:stylesheet>
