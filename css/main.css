@@ -6,6 +6,10 @@
 
 /* override default brand class behavior in navbar to keep the name bright */
 
+.navbar-inverse .navbar-inner {
+	background-color: #405d53;
+	background-image: none;
+}
 .navbar-inverse .brand {
 	color: #ffffff;
 	line-height: 20px;
