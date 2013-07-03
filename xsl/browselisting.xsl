@@ -5,8 +5,9 @@
  xmlns:t="http://www.tei-c.org/ns/1.0" 
  xmlns:s="http://syriaca.org"
  xmlns:saxon="http://saxon.sf.net/" 
+ xmlns:ipse="urn.ipsens"
  xmlns="http://www.w3.org/1999/xhtml"
- exclude-result-prefixes="xs t s" version="2.0">
+ exclude-result-prefixes="xs t s saxon ipse" version="2.0">
 
  <!-- =================================================================== -->
  <!-- import component stylesheets for HTML page portions -->
@@ -17,6 +18,8 @@
  <xsl:import href="boilerplate-badbrowser.xsl"/>
  <xsl:import href="boilerplate-nav.xsl"/>
  <xsl:import href="boilerplate-footer.xsl"/>
+ <xsl:import href="langattr.xsl"/>
+ <xsl:import href="normalization.xsl"/>
 
 
  <!-- =================================================================== -->
@@ -37,13 +40,11 @@
 
  <xsl:param name="sourcedir">../../places/xml/</xsl:param>
  <xsl:param name="destdir">./places/</xsl:param>
- <xsl:param name="description">A complete listing, by English name, of all places registered in the Syriac
-  Gazetteer.</xsl:param>
- <xsl:param name="description-page">A complete listing, by English name, of all places registered in the Syriac
-  Gazetteer.</xsl:param>
+ <xsl:param name="description">Listings of places registered in the Syriac Gazetteer.</xsl:param>
+ <xsl:param name="description-page">Listings of places registered in the Syriac Gazetteer.</xsl:param>
  <xsl:param name="name-app">The Syriac Gazetteer</xsl:param>
  <xsl:param name="name-page-short">Browse</xsl:param>
- <xsl:param name="name-page-long">Browseable List of Places</xsl:param>
+ <xsl:param name="name-page-long">Browse Lists</xsl:param>
  <xsl:param name="copyright-holders">CHANGE THE COPYRIGHT HOLDERS PARAMETER</xsl:param>
  <xsl:param name="copyright-year">2013</xsl:param>
  <xsl:param name="xmlbase">https://github.com/srophe/places/blob/master/xml/</xsl:param>
@@ -105,14 +106,18 @@
        <div class="tabbable">
         <ul class="nav nav-tabs" id="nametabs">
          <li class="active"><a href="#english" data-toggle="tab">english</a></li>
-         <li><a href="#syriac" data-toggle="tab">syriac</a></li>
+         <li><a href="#syriac" data-toggle="tab" xml:lang="syr" lang="syr" dir="ltr" title="syriac">ܠܫܢܐ ܣܘܪܝܝܐ</a></li>
+         <li><a href="#number" data-toggle="tab">syriac gazetter number</a></li>
         </ul>
         <div class="tab-content">
          <div class="tab-pane active" id="english">
           <xsl:call-template name="do-list-english"/>
          </div>
-         <div class="tab-pane" id="syriac">
-          <p>foo</p>
+         <div class="tab-pane" id="syriac" dir="rtl">
+          <xsl:call-template name="do-list-syriac"/>
+         </div>
+         <div class="tab-pane" id="number">
+          <xsl:call-template name="do-list-number"/>
          </div>
         </div>
        </div>
@@ -137,9 +142,8 @@
  <!-- write a sorted, linked list of all the place titles in the gazetteer -->
  <ul>
   <xsl:for-each select="collection($colquery)">
-   <xsl:sort collation="mixed" select="replace(replace(normalize-unicode(./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1], $normalization), '‘', ''), 'ʿ', '')"/>
+   <xsl:sort collation="mixed" select="ipse:ensort(./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1])"/>
    <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
-   
    <xsl:choose>
     <xsl:when test="matches($placenum, '^\d+$')">
      <xsl:variable name="htmlurl">
@@ -149,7 +153,16 @@
      </xsl:variable>
      <li>
       <a href="{$htmlurl}">
-       <xsl:apply-templates select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"/>
+       <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1]"/>
+       <bdi dir="ltr" xml:lang="en" lang="en">
+        <xsl:text> (</xsl:text>
+        <xsl:value-of select="./descendant-or-self::t:place[1]/@type"/>
+        <xsl:text>)</xsl:text>
+       </bdi>       
+       <xsl:if test="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]">
+       <bdi dir="ltr"><xsl:text> — </xsl:text></bdi>
+       <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]"/>
+       </xsl:if>
       </a>
      </li>
     </xsl:when>
@@ -160,16 +173,140 @@
   </xsl:for-each>
  </ul>
 </xsl:template>
+ 
+ <xsl:template name="do-list-syriac">
+  <!-- write a sorted, linked list of all the place titles in the gazetteer -->
+  <ul>
+   <xsl:for-each select="collection($colquery)">
+    <xsl:sort lang="syr" select="ipse:syrsort(./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1])"/>
+    <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
+    <xsl:choose>
+     <xsl:when test="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'] and matches($placenum, '^\d+$')">
+      <xsl:variable name="htmlurl">
+       <xsl:value-of select="$destdir"/>
+       <xsl:value-of select="$placenum"/>
+       <xsl:text>.html</xsl:text>
+      </xsl:variable>
+      <li>
+       <a href="{$htmlurl}">
+        <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]"/>
+        <xsl:if test="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1]">
+         <bdi dir="rtl"><xsl:text> — </xsl:text></bdi>
+         <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1]"/>
+        </xsl:if>
+       </a>
+      </li>
+     </xsl:when>
+     <xsl:otherwise>
+      
+     </xsl:otherwise>
+    </xsl:choose>
+   </xsl:for-each>
+  </ul>
+ </xsl:template>
 
- <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
- <!-- |||| match=t:title: normalize and output a place title -->
- <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-  
- <xsl:template match="t:title">
-   <xsl:value-of select="normalize-space(normalize-unicode(., $normalization))"/>
+ <xsl:template name="do-list-number">
+  <!-- write a sorted, linked list of all the place titles in the gazetteer -->
+  <ul>
+   <xsl:for-each select="collection($colquery)">
+    <xsl:sort select="xs:integer(ipse:numsort(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, '-')))"/>
+    <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
+    <xsl:choose>
+     <xsl:when test="matches($placenum, '^\d+$')">
+      <xsl:variable name="htmlurl">
+       <xsl:value-of select="$destdir"/>
+       <xsl:value-of select="$placenum"/>
+       <xsl:text>.html</xsl:text>
+      </xsl:variable>
+      <li>
+       <a href="{$htmlurl}"><xsl:value-of select="$placenum"/><xsl:text>: </xsl:text>
+        <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1]"/>
+        <bdi dir="ltr" xml:lang="en" lang="en">
+         <xsl:text> (</xsl:text>
+         <xsl:value-of select="./descendant-or-self::t:place[1]/@type"/>
+         <xsl:text>)</xsl:text>
+        </bdi>
+        <xsl:if test="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]">
+         <bdi dir="ltr"><xsl:text> — </xsl:text></bdi>
+         <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]"/>
+        </xsl:if>
+       </a>
+      </li>
+     </xsl:when>
+     <xsl:otherwise>
+      
+     </xsl:otherwise>
+    </xsl:choose>
+   </xsl:for-each>
+  </ul>
  </xsl:template>
  
+ <xsl:template match="t:placeName">
+  <span class="placeName">
+   <xsl:call-template name="langattr"/>
+   <xsl:apply-templates select="." mode="out-normal"/>
+  </span>
+ </xsl:template>
  
+ <xsl:function name="ipse:numsort">
+  <xsl:param name="instring"></xsl:param>
+  <xsl:variable name="norm" select="normalize-space($instring)"/>
+  <xsl:choose>
+   <xsl:when test="$norm = ''">
+    <xsl:text>0</xsl:text>
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:value-of select="$norm"/>
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:function>
+ 
+ <xsl:function name="ipse:syrsort">
+  <xsl:param name="instring"></xsl:param>
+  <xsl:variable name="norm">
+   <xsl:apply-templates select="$instring" mode="out-normal"/>
+  </xsl:variable>
+  <xsl:value-of select="$norm"/>
+ </xsl:function>
+ 
+ <xsl:function name="ipse:ensort">
+  <xsl:param name="instring"></xsl:param>
+  <xsl:variable name="norm">
+   <xsl:apply-templates select="$instring" mode="out-normal"/>
+  </xsl:variable>
+  <xsl:call-template name="syrtrip">
+   <xsl:with-param name="instring" select="$norm"/>
+  </xsl:call-template>
+ </xsl:function>
+ 
+ <xsl:template name="syrtrip">
+  <xsl:param name="instring"/>
+  <xsl:choose>
+   <xsl:when test="starts-with($instring, ' ')">
+    <xsl:call-template name="syrtrip">
+     <xsl:with-param name="instring" select="substring($instring, 2)"/>
+    </xsl:call-template>
+   </xsl:when>
+   <xsl:when test="starts-with($instring, 'al-')">
+    <xsl:call-template name="syrtrip">
+     <xsl:with-param name="instring" select="substring-after($instring, 'al-')"/>
+    </xsl:call-template>
+   </xsl:when>
+   <xsl:when test="starts-with($instring, '&#703;')">
+    <xsl:call-template name="syrtrip">
+     <xsl:with-param name="instring" select="substring-after($instring, '&#703;')"/>
+    </xsl:call-template>    
+   </xsl:when>
+   <xsl:when test="starts-with($instring, '‘') and ends-with($instring, '’')">
+    <xsl:call-template name="syrtrip">
+     <xsl:with-param name="instring" select="substring-before(substring-after($instring, '‘'), '’')"/>
+    </xsl:call-template>
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:value-of select="normalize-space($instring)"/>
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:template>
  <!-- =================================================================== -->
  <!-- define custom collation for sorting the list of names -->
  <!-- =================================================================== -->

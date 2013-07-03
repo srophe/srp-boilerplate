@@ -17,7 +17,9 @@
  <xsl:import href="boilerplate-badbrowser.xsl"/>
  <xsl:import href="boilerplate-nav.xsl"/>
  <xsl:import href="boilerplate-footer.xsl"/>
-
+ <xsl:import href="langattr.xsl"/>
+ <xsl:import href="normalization.xsl"/>
+ 
 
  <!-- =================================================================== -->
  <!-- set output so we get (mostly) indented HTML -->
@@ -328,31 +330,7 @@
   </xsl:choose>
  </xsl:template>
  
- <xsl:template match="t:*" mode="out-normal">
-  <xsl:variable name="thislang" select="ancestor-or-self::*[@xml:lang][1]/@xml:lang"/>
-  <xsl:choose>
-   <xsl:when test="starts-with($thislang, 'syr') or starts-with($thislang, 'syc') or starts-with($thislang, 'ar')">
-    <bdi dir="rtl">
-     <xsl:apply-templates select="." mode="text-normal"/>
-    </bdi>
-   </xsl:when>
-   <xsl:otherwise>
-    <xsl:apply-templates select="." mode="text-normal"/>
-   </xsl:otherwise>
-  </xsl:choose>
- </xsl:template>
- 
- <xsl:template match="t:*" mode="text-normal">
-  <xsl:value-of select="normalize-space(normalize-unicode(., $normalization))"/>
- </xsl:template>
- 
- <xsl:template name="langattr">
-  <xsl:if test="@xml:lang">
-   <xsl:copy-of select="@xml:lang"/>
-   <xsl:attribute name="lang"><xsl:value-of select="@xml:lang"/></xsl:attribute>
-  </xsl:if>
- </xsl:template>
- 
+
  <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
  <!-- |||| match=t:*: suppress all TEI elements not otherwise handled -->
  <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
