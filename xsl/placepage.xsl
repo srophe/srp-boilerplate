@@ -128,7 +128,7 @@
         <!-- create the main content portion of the page -->
         <div class="container-fluid">
          <div class="row-fluid">
-          <div class="span7">
+          <div class="span7" xml:id="place-content">
            <h2><xsl:value-of select="$name-page-long"/></h2>
            <p><xsl:value-of select="$description-page"/></p>
     
@@ -170,30 +170,26 @@
     <xsl:apply-templates select="t:placeName[not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword']"/>
    </ul>
   </div>
+  <div xml:id="sources">
+   <h3>Sources</h3>
+   <ul>
+    <xsl:apply-templates select="t:bibl" mode="footnote"/>
+   </ul>
+  </div>
  </xsl:template>
 
  <xsl:template match="t:placeName">
   <li dir="ltr">
    
    <!-- write out the placename itself, with appropriate language and directionality indicia -->
-   <bdi class="placeName">
-    <xsl:if test="@xml:lang">
-     <xsl:copy-of select="@xml:lang"/>
-     <xsl:attribute name="lang"><xsl:value-of select="@xml:lang"/></xsl:attribute>
-     <xsl:choose>
-      <xsl:when test="starts-with(@xml:lang, 'syr') or starts-with(@xml:lang, 'syc') or starts-with(@xml:lang, 'ar')">
-       <xsl:attribute name="dir">rtl</xsl:attribute>
-      </xsl:when>
-      <xsl:otherwise>
-       <xsl:attribute name="dir">ltr</xsl:attribute>
-      </xsl:otherwise>
-     </xsl:choose>
-    </xsl:if>
+   <span class="placeName">
+    <xsl:call-template name="langattr"/>
     <xsl:apply-templates select="." mode="out-normal"/>
-   </bdi>
+   </span>
    
    <!-- if there is language info, make it explicit for readers -->
    <xsl:if test="@xml:lang">
+    <xsl:text> </xsl:text>
     <xsl:for-each select="./ancestor::t:TEI/descendant::t:language[@ident=current()/@xml:lang][1]">
      <bdi dir="ltr">
       <xsl:text>(</xsl:text>
@@ -205,15 +201,12 @@
    
    <!-- credit sources for data -->
    <xsl:if test="@source">
-    <xsl:message>got source!</xsl:message>
     <xsl:variable name="root" select="ancestor::t:TEI" as="node()"/>
     <xsl:variable name="biblids" select="tokenize(@source, ' ')"/>
     <xsl:variable name="last" select="$biblids[last()]"/>
     <bdi class="footnote-refs" dir="ltr">
      <xsl:for-each select="$biblids">
-      <xsl:message>thissource = <xsl:value-of select="."/></xsl:message>
       <xsl:variable name="sought" select="substring-after(., '#')"/>
-      <xsl:message>sought=<xsl:value-of select="$sought"/></xsl:message>
       <xsl:apply-templates select="$root/descendant::t:bibl[@xml:id=$sought]" mode="footnote-ref">
        <xsl:with-param name="footnote-number" select="substring-after(., '-')"/>
       </xsl:apply-templates>
@@ -225,11 +218,55 @@
    </xsl:if>
   </li>
  </xsl:template>
+
+ <xsl:template match="t:bibl" mode="footnote">
+  <xsl:param name="footnote-number">-1</xsl:param>
+  <xsl:variable name="thisnum">
+   <xsl:choose>
+    <xsl:when test="$footnote-number='-1'">
+     <xsl:value-of select="substring-after(@xml:id, '-')"/>
+    </xsl:when>
+    <xsl:otherwise>
+     <xsl:value-of select="$footnote-number"/>
+    </xsl:otherwise>
+   </xsl:choose>
+  </xsl:variable>
+  <li xml:id="{@xml:id}">
+   <span class="footnote-tgt"><xsl:value-of select="$thisnum"/></span>
+   <span class="footnote-content">
+    <xsl:apply-templates mode="footnote"/>
+   </span>
+  </li>
+ </xsl:template>
  
+ <xsl:template match="t:author[ancestor::t:bibl]" mode="footnote">
+  <xsl:apply-templates select="." mode="out-normal"/>
+  <xsl:text>. </xsl:text>
+ </xsl:template>
+ 
+ <xsl:template match="t:title[ancestor::t:bibl]" mode="footnote">
+  <span class="title">
+   <xsl:call-template name="langattr"/>
+   <xsl:apply-templates select="." mode="out-normal"/>
+   <xsl:text>. </xsl:text>
+  </span>
+ </xsl:template>
+ 
+ <xsl:template match="t:citedRange[ancestor::t:bibl]" mode="footnote">
+  <xsl:choose>
+   <xsl:when test="@unit='pp' and contains(., '-')">
+    <xsl:text>pp. </xsl:text>
+   </xsl:when>
+   <xsl:when test="@unit='pp' and not(contains(., '-'))">
+    <xsl:text>p. </xsl:text>
+   </xsl:when>
+  </xsl:choose>
+  <xsl:apply-templates select="." mode="out-normal"/>
+  <xsl:text>.</xsl:text>
+ </xsl:template>
+
  <xsl:template match="t:bibl" mode="footnote-ref">
   <xsl:param name="footnote-number">1</xsl:param>
-  <xsl:message>footnoteref!</xsl:message>
-  
   <span class="footnote-ref">
    <a href="#{@xml:id}"><xsl:value-of select="$footnote-number"/></a>
   </span>
@@ -260,7 +297,28 @@
  </xsl:template>
  
  <xsl:template match="t:*" mode="out-normal">
+  <xsl:variable name="thislang" select="ancestor-or-self::*[@xml:lang][1]/@xml:lang"/>
+  <xsl:choose>
+   <xsl:when test="starts-with($thislang, 'syr') or starts-with($thislang, 'syc') or starts-with($thislang, 'ar')">
+    <bdi dir="rtl">
+     <xsl:apply-templates select="." mode="text-normal"/>
+    </bdi>
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:apply-templates select="." mode="text-normal"/>
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:template>
+ 
+ <xsl:template match="t:*" mode="text-normal">
   <xsl:value-of select="normalize-space(normalize-unicode(., $normalization))"/>
+ </xsl:template>
+ 
+ <xsl:template name="langattr">
+  <xsl:if test="@xml:lang">
+   <xsl:copy-of select="@xml:lang"/>
+   <xsl:attribute name="lang"><xsl:value-of select="@xml:lang"/></xsl:attribute>
+  </xsl:if>
  </xsl:template>
  
  <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
