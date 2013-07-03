@@ -89,8 +89,19 @@
  font-size:larger;
 }
 
+.tab-pane {
+	padding: 1em;
+	padding-top: 1.5em;
+	border-left: 1px solid rgb(221, 221, 221);
+	border-bottom: 1px solid rgb(221, 221, 221);
+	border-right: 1px solid rgb(221, 221, 221);
+	border-radius: 3px;
+}
 
 
+#nametabs {
+	margin-bottom: 0px;
+}
 
 
 
