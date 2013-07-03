@@ -110,7 +110,7 @@
        </xsl:call-template>
     
        <!-- write the body element and its contents -->
-       <body xml:lang="en">
+       <body xml:lang="en" lang="en">
         
         <!-- add an upgrade urging for users of old IE versions -->
         <xsl:call-template name="boilerplate-badbrowser"/>
@@ -173,17 +173,28 @@
  </xsl:template>
 
  <xsl:template match="t:placeName">
-  <li>
-   <span class="placeName">
-    <xsl:copy-of select="@xml:lang"/>
+  <li dir="ltr">
+   <bdi class="placeName">
+    <xsl:if test="@xml:lang">
+     <xsl:copy-of select="@xml:lang"/>
+     <xsl:attribute name="lang"><xsl:value-of select="@xml:lang"/></xsl:attribute>
+     <xsl:choose>
+      <xsl:when test="starts-with(@xml:lang, 'syr') or starts-with(@xml:lang, 'syc') or starts-with(@xml:lang, 'ar')">
+       <xsl:attribute name="dir">rtl</xsl:attribute>
+      </xsl:when>
+      <xsl:otherwise>
+       <xsl:attribute name="dir">ltr</xsl:attribute>
+      </xsl:otherwise>
+     </xsl:choose>
+    </xsl:if>
     <xsl:apply-templates select="." mode="out-normal"/>
-   </span>
+   </bdi>
    <xsl:if test="@source">
     <xsl:message>got source!</xsl:message>
     <xsl:variable name="root" select="ancestor::t:TEI" as="node()"/>
     <xsl:variable name="biblids" select="tokenize(@source, ' ')"/>
     <xsl:variable name="last" select="$biblids[last()]"/>
-    <span class="footnote-refs">
+    <bdi class="footnote-refs" dir="ltr">
      <xsl:for-each select="$biblids">
       <xsl:message>thissource = <xsl:value-of select="."/></xsl:message>
       <xsl:variable name="sought" select="substring-after(., '#')"/>
@@ -195,7 +206,7 @@
        <xsl:text>,</xsl:text>
       </xsl:if>
      </xsl:for-each>
-    </span>
+    </bdi>
    </xsl:if>
   </li>
  </xsl:template>

@@ -53,7 +53,33 @@
 
 
 
+/* styles for languages and scripts */
 
+:lang(en) {
+ direction: ltr;
+}
+:lang(syr),:lang(syc) {
+ font-family: "Estrangelo Edessa", Verdana, Arial, Helvetica, sans-serif;
+  font-size:larger;
+  color: red !important;
+}
+:lang(syr-Syrj), :lang(syc-Syrj) {
+ font-family: "Serto Batnan", Verdana, Arial, Helvetica, sans-serif;
+  font-size:larger;
+  color: red !important;
+}
+
+:lang(syr-Syre), :lang(syc-Syre) {
+ font-family: "East Syriac Adiabene", Verdana, Arial, Helvetica, sans-serif;
+  font-size:larger;
+  color: red !important;
+}
+
+:lang(ar) {
+ font-family: Amri, "Al Bayan", Baghdad, "DecoType Naskh", "Geeza Pro", Geezah, KufiStandardGK, Nadeem, DejaVu, Tahoma, Helvetica, sans-serif;
+ font-size:larger;
+ color: orange !important;
+}
 
 
 

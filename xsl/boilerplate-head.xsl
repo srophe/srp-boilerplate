@@ -26,6 +26,8 @@
      padding-bottom:40px;
     }</style>
    <link rel="stylesheet" href="{$basepath}/css/bootstrap-responsive.min.css"/>
+   <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/amiri.css" type="text/css"/>
+    
    <link rel="stylesheet" href="{$basepath}/css/main.css"/>
 
    <script src="{$basepath}/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"/>
