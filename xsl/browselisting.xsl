@@ -147,19 +147,10 @@
       <xsl:value-of select="$placenum"/>
       <xsl:text>.html</xsl:text>
      </xsl:variable>
-     <xsl:variable name="xmlurl">
-      <xsl:for-each select="./descendant::t:place[1]/t:idno[@type='URI' and starts-with(., $uribase)][1]">
-       <xsl:value-of select="$xmlbase"/>
-       <xsl:value-of select="substring-after(., $uribase)"/>
-       <xsl:text>.xml</xsl:text>
-      </xsl:for-each>
-     </xsl:variable>
      <li>
       <a href="{$htmlurl}">
        <xsl:apply-templates select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"/>
       </a>
-      <xsl:text>: </xsl:text>
-      <a href="{$xmlurl}">tei xml</a>
      </li>
     </xsl:when>
     <xsl:otherwise>
