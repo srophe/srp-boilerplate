@@ -94,6 +94,7 @@
         <xsl:with-param name="description" select="$description"/>
         <xsl:with-param name="name-app" select="$name-app"/>
         <xsl:with-param name="name-page-short" select="$name-page-short"/>
+        <xsl:with-param name="basepath">..</xsl:with-param>
        </xsl:call-template>
     
        <!-- write the body element and its contents -->
@@ -105,6 +106,7 @@
         <xsl:call-template name="boilerplate-nav">
          <xsl:with-param name="active">browse</xsl:with-param>
          <xsl:with-param name="app-name" select="$name-app"/>
+         <xsl:with-param name="basepath">..</xsl:with-param>
         </xsl:call-template>
         
         <!-- ADD: breadcrumbs -->
