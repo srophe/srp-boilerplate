@@ -129,12 +129,25 @@
         <div class="container-fluid">
          <div class="row-fluid">
           <div class="span7" xml:id="place-content">
+           
            <h2><xsl:value-of select="$name-page-long"/></h2>
            <p><xsl:value-of select="$description-page"/></p>
     
            <!-- ADD: page content here -->
-           <xsl:apply-templates select="./descendant-or-self::t:listPlace/t:place[1]"/>
-           
+           <div class="tabbable">
+            <ul class="nav nav-tabs" id="nametabs">
+             <li class="active"><a href="#summary" data-toggle="tab">summary</a></li>
+             <li><a href="#full" data-toggle="tab">full record</a></li>
+            </ul>
+            <div class="tab-content">
+             <div class="tab-pane active" id="summary">
+              <xsl:apply-templates select="./descendant-or-self::t:listPlace/t:place[1]" mode="summary"/>
+             </div>
+             <div class="tab-pane" id="full">
+              <xsl:apply-templates select="./descendant-or-self::t:listPlace/t:place[1]"/>
+             </div>
+            </div>
+           </div>
           </div>
          </div>
          
@@ -147,7 +160,9 @@
         </div>
     
         <!-- write scripts etc. that belong at the bottom of the body -->
-        <xsl:call-template name="boilerplate-bottom"/> 
+        <xsl:call-template name="boilerplate-bottom">
+         <xsl:with-param name="basepath">..</xsl:with-param>
+        </xsl:call-template>
        </body>
       </html>
      </xsl:result-document>
@@ -159,6 +174,16 @@
    </xsl:choose>
    
   </xsl:for-each>
+ </xsl:template>
+ 
+ <xsl:template match="t:place" mode="summary">
+  <p>Alternate names
+  <xsl:for-each-group select="t:placeName" group-by="@xml:lang">
+   <xsl:sort select="current-grouping-key()"/>
+   <xsl:apply-templates select="." mode="summary">
+    <xsl:sort select="."/>
+   </xsl:apply-templates>
+  </xsl:for-each-group></p>
  </xsl:template>
  
  <xsl:template match="t:place">
@@ -178,6 +203,13 @@
   </div>
  </xsl:template>
 
+ <xsl:template match="t:placeName" mode="summary">
+  <xsl:text> : </xsl:text>
+  <span class="placeName">
+   <xsl:call-template name="langattr"/>
+   <xsl:apply-templates select="." mode="out-normal"/>
+  </span>
+ </xsl:template>
  <xsl:template match="t:placeName">
   <li dir="ltr">
    
