@@ -48,6 +48,7 @@
  <xsl:param name="copyright-year">2013</xsl:param>
  <xsl:param name="xmlbase">https://github.com/srophe/places/blob/master/xml/</xsl:param>
  <xsl:param name="uribase">http://syriaca.org/place/</xsl:param>
+ <xsl:param name="normalization">NFKC</xsl:param>
  <xsl:variable name="colquery"><xsl:value-of select="$sourcedir"/>?select=*.xml</xsl:variable>
  
 
@@ -136,7 +137,7 @@
  <!-- write a sorted, linked list of all the place titles in the gazetteer -->
  <ul>
   <xsl:for-each select="collection($colquery)">
-   <xsl:sort collation="mixed" select="replace(replace(normalize-unicode(./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1], 'NFC'), '‘', ''), 'ʿ', '')"/>
+   <xsl:sort collation="mixed" select="replace(replace(normalize-unicode(./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1], $normalization), '‘', ''), 'ʿ', '')"/>
    <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
    
    <xsl:choose>
@@ -174,7 +175,7 @@
  <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
   
  <xsl:template match="t:title">
-   <xsl:value-of select="normalize-space(normalize-unicode(., 'NFC'))"/>
+   <xsl:value-of select="normalize-space(normalize-unicode(., $normalization))"/>
  </xsl:template>
  
  
