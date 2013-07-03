@@ -174,6 +174,8 @@
 
  <xsl:template match="t:placeName">
   <li dir="ltr">
+   
+   <!-- write out the placename itself, with appropriate language and directionality indicia -->
    <bdi class="placeName">
     <xsl:if test="@xml:lang">
      <xsl:copy-of select="@xml:lang"/>
@@ -189,6 +191,19 @@
     </xsl:if>
     <xsl:apply-templates select="." mode="out-normal"/>
    </bdi>
+   
+   <!-- if there is language info, make it explicit for readers -->
+   <xsl:if test="@xml:lang">
+    <xsl:for-each select="./ancestor::t:TEI/descendant::t:language[@ident=current()/@xml:lang][1]">
+     <bdi dir="ltr">
+      <xsl:text>(</xsl:text>
+      <xsl:apply-templates select="." mode="out-normal"/>
+      <xsl:text>)</xsl:text>
+     </bdi>
+    </xsl:for-each>
+   </xsl:if>
+   
+   <!-- credit sources for data -->
    <xsl:if test="@source">
     <xsl:message>got source!</xsl:message>
     <xsl:variable name="root" select="ancestor::t:TEI" as="node()"/>
