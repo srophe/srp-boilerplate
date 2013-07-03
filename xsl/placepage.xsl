@@ -110,7 +110,7 @@
        </xsl:call-template>
     
        <!-- write the body element and its contents -->
-       <body>
+       <body xml:lang="en">
         
         <!-- add an upgrade urging for users of old IE versions -->
         <xsl:call-template name="boilerplate-badbrowser"/>
@@ -129,15 +129,11 @@
         <div class="container-fluid">
          <div class="row-fluid">
           <div class="span7">
-           <h2>
-            <i><xsl:value-of select="$name-app"/>:</i>
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="$name-page-long"/>
-           </h2>
+           <h2><xsl:value-of select="$name-page-long"/></h2>
            <p><xsl:value-of select="$description-page"/></p>
     
            <!-- ADD: page content here -->
-           <p>PAGE CONTENT HERE</p>
+           <xsl:apply-templates select="./descendant-or-self::t:listPlace/t:place[1]"/>
            
           </div>
          </div>
@@ -164,12 +160,54 @@
    
   </xsl:for-each>
  </xsl:template>
-
- <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
- <!-- |||| match=t:*: suppress all TEI elements not otherwise handled -->
- <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
  
- <xsl:template match="t:*"/>
+ <xsl:template match="t:place">
+  <div xml:id="placenames">
+   <h3>Names</h3>
+   <ul>
+    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en']"/>
+    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en']"/>
+    <xsl:apply-templates select="t:placeName[not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword']"/>
+   </ul>
+  </div>
+ </xsl:template>
+
+ <xsl:template match="t:placeName">
+  <li>
+   <span class="placeName">
+    <xsl:copy-of select="@xml:lang"/>
+    <xsl:apply-templates select="." mode="out-normal"/>
+   </span>
+   <xsl:if test="@source">
+    <xsl:message>got source!</xsl:message>
+    <xsl:variable name="root" select="ancestor::t:TEI" as="node()"/>
+    <xsl:variable name="biblids" select="tokenize(@source, ' ')"/>
+    <xsl:variable name="last" select="$biblids[last()]"/>
+    <span class="footnote-refs">
+     <xsl:for-each select="$biblids">
+      <xsl:message>thissource = <xsl:value-of select="."/></xsl:message>
+      <xsl:variable name="sought" select="substring-after(., '#')"/>
+      <xsl:message>sought=<xsl:value-of select="$sought"/></xsl:message>
+      <xsl:apply-templates select="$root/descendant::t:bibl[@xml:id=$sought]" mode="footnote-ref">
+       <xsl:with-param name="footnote-number" select="substring-after(., '-')"/>
+      </xsl:apply-templates>
+      <xsl:if test="count($biblids) &gt; 1 and . != $last">
+       <xsl:text>,</xsl:text>
+      </xsl:if>
+     </xsl:for-each>
+    </span>
+   </xsl:if>
+  </li>
+ </xsl:template>
+ 
+ <xsl:template match="t:bibl" mode="footnote-ref">
+  <xsl:param name="footnote-number">1</xsl:param>
+  <xsl:message>footnoteref!</xsl:message>
+  
+  <span class="footnote-ref">
+   <a href="#{@xml:id}"><xsl:value-of select="$footnote-number"/></a>
+  </span>
+ </xsl:template>
  
  <xsl:template name="get-headword-ele" as="element()*">
   <xsl:choose>
@@ -198,5 +236,12 @@
  <xsl:template match="t:*" mode="out-normal">
   <xsl:value-of select="normalize-space(normalize-unicode(., $normalization))"/>
  </xsl:template>
+ 
+ <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+ <!-- |||| match=t:*: suppress all TEI elements not otherwise handled -->
+ <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+ 
+ <xsl:template match="t:*"/>
+ 
  
 </xsl:stylesheet>
