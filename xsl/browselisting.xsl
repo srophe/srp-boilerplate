@@ -36,6 +36,7 @@
  <!-- =================================================================== -->
 
  <xsl:param name="sourcedir">../../places/xml/</xsl:param>
+ <xsl:param name="destdir">./places/</xsl:param>
  <xsl:param name="description">A complete listing, by English name, of all places registered in the Syriac
   Gazetteer.</xsl:param>
  <xsl:param name="description-page">A complete listing, by English name, of all places registered in the Syriac
@@ -48,6 +49,7 @@
  <xsl:param name="xmlbase">https://github.com/srophe/places/blob/master/xml/</xsl:param>
  <xsl:param name="uribase">http://syriaca.org/place/</xsl:param>
  <xsl:variable name="colquery"><xsl:value-of select="$sourcedir"/>?select=*.xml</xsl:variable>
+ 
 
 
  <!-- =================================================================== -->
@@ -103,18 +105,34 @@
        <ul>
         <xsl:for-each select="collection($colquery)">
          <xsl:sort collation="mixed" select="replace(replace(normalize-unicode(./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1], 'NFC'), '‘', ''), 'ʿ', '')"/>
-         <xsl:variable name="xmlurl">
-          <xsl:for-each select="./descendant::t:place[1]/t:idno[@type='URI' and starts-with(., $uribase)][1]">
-           <xsl:value-of select="$xmlbase"/>
-           <xsl:value-of select="substring-after(., $uribase)"/>
-           <xsl:text>.xml</xsl:text>
-          </xsl:for-each>
-         </xsl:variable>
-         <li>
-          <xsl:apply-templates select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"/>
-          <xsl:text>: </xsl:text>
-          <a href="{$xmlurl}">tei xml</a>
-         </li>
+         <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
+         
+         <xsl:choose>
+          <xsl:when test="matches($placenum, '^\d+$')">
+           <xsl:variable name="htmlurl">
+            <xsl:value-of select="$destdir"/>
+            <xsl:value-of select="$placenum"/>
+            <xsl:text>.html</xsl:text>
+           </xsl:variable>
+           <xsl:variable name="xmlurl">
+            <xsl:for-each select="./descendant::t:place[1]/t:idno[@type='URI' and starts-with(., $uribase)][1]">
+             <xsl:value-of select="$xmlbase"/>
+             <xsl:value-of select="substring-after(., $uribase)"/>
+             <xsl:text>.xml</xsl:text>
+            </xsl:for-each>
+           </xsl:variable>
+           <li>
+            <a href="{$htmlurl}">
+             <xsl:apply-templates select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"/>
+            </a>
+            <xsl:text>: </xsl:text>
+            <a href="{$xmlurl}">tei xml</a>
+           </li>
+          </xsl:when>
+          <xsl:otherwise>
+           
+          </xsl:otherwise>
+         </xsl:choose>
         </xsl:for-each>
        </ul>
       </div>
