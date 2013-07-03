@@ -42,6 +42,7 @@
  <xsl:param name="copyright-year">2013</xsl:param>
  <xsl:param name="xmlbase">https://github.com/srophe/places/blob/master/xml/</xsl:param>
  <xsl:param name="uribase">http://syriaca.org/place/</xsl:param>
+ <xsl:param name="normalization">NFKC</xsl:param>
  <xsl:variable name="colquery"><xsl:value-of select="$sourcedir"/>?select=*.xml</xsl:variable>
 
 
@@ -60,10 +61,22 @@
   <xsl:for-each select="collection($colquery)">
    
    <!-- determine descriptions and page names -->
-   <xsl:variable name="description">SET DESCRIPTION VARIABLE</xsl:variable>
-   <xsl:variable name="name-page-short">SET NAME-PAGE-SHORT VARIABLE</xsl:variable>
-   <xsl:variable name="description-page">SET DESCRIPTION-PAGE VARIABLE</xsl:variable>
-   <xsl:variable name="name-page-long">SET NAME-PAGE-LONG VARIABLE</xsl:variable>
+   <xsl:variable name="headword-ele" as="element()*">
+    <xsl:call-template name="get-headword-ele"/>
+   </xsl:variable>
+   <xsl:variable name="headword">
+    <xsl:apply-templates select="$headword-ele[1]" mode="out-normal"/>
+   </xsl:variable>
+   <xsl:variable name="headword-lang" select="$headword-ele[1]/ancestor-or-self::*[@xml:lang][1]/@xml:lang"/>
+   <xsl:variable name="description-ele" as="element()*">
+    <xsl:call-template name="get-description-ele"/>
+   </xsl:variable>
+   <xsl:variable name="description">
+    <xsl:apply-templates select="$description-ele[1]" mode="out-normal"/>
+   </xsl:variable>
+   <xsl:variable name="name-page-short" select="$headword"/>
+   <xsl:variable name="description-page" select="$description"/>
+   <xsl:variable name="name-page-long" select="$headword"/>
    <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
    <xsl:choose>
     
@@ -77,7 +90,6 @@
      </xsl:variable>
      
      <!-- open a new output document for reading -->
-     <xsl:message>INFO: placepage.xsl is writing "<xsl:value-of select="$destdir"/><xsl:value-of select="$outfilename"/>"</xsl:message>
      <xsl:result-document format="html" href="{$destdir}{$outfilename}">
       
       <!-- write the opening of the HTML page -->
@@ -110,6 +122,7 @@
         </xsl:call-template>
         
         <!-- ADD: breadcrumbs -->
+        <xsl:message>WARNING: TEMPLATE NEEDS TO HAVE BREADCRUMBS CODE ADDED</xsl:message>
         <p>BREADCRUMBS HERE</p>
         
         <!-- create the main content portion of the page -->
@@ -157,5 +170,33 @@
  <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
  
  <xsl:template match="t:*"/>
+ 
+ <xsl:template name="get-headword-ele" as="element()*">
+  <xsl:choose>
+   <xsl:when test="./descendant-or-self::t:listPlace/t:place/t:placeName[@syriaca-tags='#syriaca-headword']">
+    <xsl:sequence select="./descendant-or-self::t:listPlace/t:place/t:placeName[@syriaca-tags='#syriaca-headword']"/>
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:message>WARNING: placepage.xsl unable to find placeName tagged with '#syriaca-headword' in <xsl:value-of select="document-uri(.)"/></xsl:message>
+    <xsl:sequence select="./descendant-or-self::t:listPlace/t:place/t:placeName[1]"/>
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:template>
+ 
+ <xsl:template name="get-description-ele" as="element()*">
+  <xsl:choose>
+   <xsl:when test="./descendant-or-self::t:listPlace/t:place/t:desc[starts-with(@xml:id, 'abstract-en')]">
+    <xsl:sequence select="./descendant-or-self::t:listPlace/t:place/t:desc[starts-with(@xml:id, 'abstract-en')]"/>
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:message>WARNING: placepage.xsl unable to find desc with id that starts with 'abstract-en' in <xsl:value-of select="document-uri(.)"/></xsl:message>
+    <xsl:sequence select="./descendant-or-self::t:listPlace/t:place/t:desc[1]"/>
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:template>
+ 
+ <xsl:template match="t:*" mode="out-normal">
+  <xsl:value-of select="normalize-space(normalize-unicode(., $normalization))"/>
+ </xsl:template>
  
 </xsl:stylesheet>
