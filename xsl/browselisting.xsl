@@ -101,40 +101,20 @@
        </h2>
        <p><xsl:value-of select="$description-page"/></p>
 
-       <!-- write a sorted, linked list of all the place titles in the gazetteer -->
-       <ul>
-        <xsl:for-each select="collection($colquery)">
-         <xsl:sort collation="mixed" select="replace(replace(normalize-unicode(./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1], 'NFC'), '‘', ''), 'ʿ', '')"/>
-         <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
-         
-         <xsl:choose>
-          <xsl:when test="matches($placenum, '^\d+$')">
-           <xsl:variable name="htmlurl">
-            <xsl:value-of select="$destdir"/>
-            <xsl:value-of select="$placenum"/>
-            <xsl:text>.html</xsl:text>
-           </xsl:variable>
-           <xsl:variable name="xmlurl">
-            <xsl:for-each select="./descendant::t:place[1]/t:idno[@type='URI' and starts-with(., $uribase)][1]">
-             <xsl:value-of select="$xmlbase"/>
-             <xsl:value-of select="substring-after(., $uribase)"/>
-             <xsl:text>.xml</xsl:text>
-            </xsl:for-each>
-           </xsl:variable>
-           <li>
-            <a href="{$htmlurl}">
-             <xsl:apply-templates select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"/>
-            </a>
-            <xsl:text>: </xsl:text>
-            <a href="{$xmlurl}">tei xml</a>
-           </li>
-          </xsl:when>
-          <xsl:otherwise>
-           
-          </xsl:otherwise>
-         </xsl:choose>
-        </xsl:for-each>
-       </ul>
+       <div class="tabbable">
+        <ul class="nav nav-tabs" id="nametabs">
+         <li class="active"><a href="#english" data-toggle="tab">english</a></li>
+         <li><a href="#syriac" data-toggle="tab">syriac</a></li>
+        </ul>
+        <div class="tab-content">
+         <div class="tab-pane active" id="english">
+          <xsl:call-template name="do-list-english"/>
+         </div>
+         <div class="tab-pane" id="syriac">
+          <p>foo</p>
+         </div>
+        </div>
+       </div>
       </div>
      </div>
      
@@ -147,11 +127,47 @@
     </div>
 
     <!-- write scripts etc. that belong at the bottom of the body -->
-    <xsl:call-template name="boilerplate-bottom"/> 
+    <xsl:call-template name="boilerplate-bottom"/>    
    </body>
   </html>
  </xsl:template>
 
+<xsl:template name="do-list-english">
+ <!-- write a sorted, linked list of all the place titles in the gazetteer -->
+ <ul>
+  <xsl:for-each select="collection($colquery)">
+   <xsl:sort collation="mixed" select="replace(replace(normalize-unicode(./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1], 'NFC'), '‘', ''), 'ʿ', '')"/>
+   <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
+   
+   <xsl:choose>
+    <xsl:when test="matches($placenum, '^\d+$')">
+     <xsl:variable name="htmlurl">
+      <xsl:value-of select="$destdir"/>
+      <xsl:value-of select="$placenum"/>
+      <xsl:text>.html</xsl:text>
+     </xsl:variable>
+     <xsl:variable name="xmlurl">
+      <xsl:for-each select="./descendant::t:place[1]/t:idno[@type='URI' and starts-with(., $uribase)][1]">
+       <xsl:value-of select="$xmlbase"/>
+       <xsl:value-of select="substring-after(., $uribase)"/>
+       <xsl:text>.xml</xsl:text>
+      </xsl:for-each>
+     </xsl:variable>
+     <li>
+      <a href="{$htmlurl}">
+       <xsl:apply-templates select="./descendant-or-self::t:TEI/t:teiHeader/descendant::t:titleStmt/t:title[ancestor-or-self::*[@xml:lang]/@xml:lang='en'][1]"/>
+      </a>
+      <xsl:text>: </xsl:text>
+      <a href="{$xmlurl}">tei xml</a>
+     </li>
+    </xsl:when>
+    <xsl:otherwise>
+     
+    </xsl:otherwise>
+   </xsl:choose>
+  </xsl:for-each>
+ </ul>
+</xsl:template>
 
  <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
  <!-- |||| match=t:title: normalize and output a place title -->
