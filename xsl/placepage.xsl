@@ -18,6 +18,7 @@
  <xsl:import href="boilerplate-nav.xsl"/>
  <xsl:import href="boilerplate-footer.xsl"/>
  <xsl:import href="langattr.xsl"/>
+ <xsl:import href="log.xsl"/>
  <xsl:import href="normalization.xsl"/>
  
 
