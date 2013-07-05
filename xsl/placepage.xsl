@@ -115,11 +115,18 @@
        <xsl:comment>&lt;![endif]</xsl:comment>
     
        <!-- write the page head element and its contents -->
+       <xsl:variable name="sourcedoc">
+        <xsl:value-of select="$sourcedir"/>
+        <xsl:value-of select="$placenum"/>
+        <xsl:text>.xml</xsl:text>
+       </xsl:variable>
+       
        <xsl:call-template name="boilerplate-head">
         <xsl:with-param name="description" select="$description"/>
         <xsl:with-param name="name-app" select="$name-app"/>
         <xsl:with-param name="name-page-short" select="$name-page-short"/>
         <xsl:with-param name="basepath">..</xsl:with-param>
+        <xsl:with-param name="titleStmt" select="document($sourcedoc)/descendant-or-self::t:TEI/descendant-or-self::t:titleStmt"/>
        </xsl:call-template>
     
        <!-- write the body element and its contents -->
@@ -180,11 +187,6 @@
              <li class="active"><a href="#summary" data-toggle="tab">summary</a></li>
              <li><a href="#full" data-toggle="tab">full record</a></li>
             </ul>
-            <xsl:variable name="sourcedoc">
-             <xsl:value-of select="$sourcedir"/>
-             <xsl:value-of select="$placenum"/>
-             <xsl:text>.xml</xsl:text>
-            </xsl:variable>
             <xsl:for-each select="document($sourcedoc)/descendant-or-self::t:place[1]">
              <div class="tab-content">
               <div class="tab-pane active" id="summary">
