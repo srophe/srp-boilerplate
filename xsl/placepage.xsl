@@ -62,8 +62,9 @@
 
  <xsl:template name="do-places">
   
+  <xsl:variable name="idx" select="document($idxquery)"/>
   <!-- loop through all page XML and write a corresponding HTML page -->
-  <xsl:for-each select="document($idxquery)/descendant-or-self::t:place">
+  <xsl:for-each select="$idx/descendant-or-self::t:place">
    
    <!-- determine descriptions and page names -->
    <xsl:variable name="description">FOOOOOOOO</xsl:variable>
@@ -174,7 +175,9 @@
                <xsl:apply-templates select="." mode="summary"/>
               </div>
               <div class="tab-pane" id="full">
-               <xsl:apply-templates select="."/>
+               <xsl:apply-templates select=".">
+                <xsl:with-param name="idx" select="$idx"/>
+               </xsl:apply-templates>
               </div>
              </div>
             </xsl:for-each>
@@ -215,10 +218,29 @@
     <xsl:sort select="."/>
    </xsl:apply-templates>
   </xsl:for-each-group></p>
+  <p>Place type: <xsl:value-of select="@type"/></p>
  </xsl:template>
  
  <xsl:template match="t:place">
-  <div xml:id="placenames">
+  <xsl:param name="idx"/>
+  <xsl:variable name="thistype" select="@type"/>
+  <xsl:variable name="thisid" select="@xml:id"/>
+  <div id="type">
+   <h3>Place Type</h3>
+   <div class="btn-group">
+    <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#">
+     <xsl:value-of select="$thistype"/>
+     <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+     <xsl:for-each select="$idx/descendant-or-self::t:place[@type=$thistype and not(@xml:id=$thisid)]">
+      <xsl:sort select="t:placeName[@xml:lang='en'][1]/@reg"/>
+      <li><a href="{t:idno[@type='placeID']}.html"><xsl:value-of select="t:placeName[@xml:lang='en'][1]"/></a></li>
+     </xsl:for-each>
+    </ul>
+   </div>
+  </div>
+  <div id="placenames">
    <h3>Names</h3>
    <ul>
     <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en']"/>
@@ -226,7 +248,7 @@
     <xsl:apply-templates select="t:placeName[not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword']"/>
    </ul>
   </div>
-  <div xml:id="sources">
+  <div id="sources">
    <h3>Sources</h3>
    <ul>
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
