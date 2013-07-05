@@ -63,6 +63,7 @@
        
        ================================================================== -->
   
+  <xsl:import href="log.xsl"/>
   <xsl:import href="normalization.xsl"/>
   
   <xsl:param name="forceBreaks">yes</xsl:param>
@@ -583,55 +584,6 @@
     </xsl:if>
   </xsl:template>
   
-  
-<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     named template: log
-     
-     write message passed in parameter, along with optional context info
-     (also controlled by parameters) to output file (as an xml comment)
-     and to the transform engine's log outpu (via xsl:message).
-     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
-  <xsl:template name="log">
-    <xsl:param name="withFilePathContext">no</xsl:param>
-    <xsl:param name="withFileContext">yes</xsl:param>
-    <xsl:param name="withElementContext">yes</xsl:param>
-    <xsl:param name="msg">NO MESSAGE PASSED BY CALLING TRAP</xsl:param>
-    
-    <xsl:variable name="fullpathname" select="base-uri(.)"/>
-    <xsl:variable name="filename" select="tokenize($fullpathname, '/')[last()]"/>
-    <xsl:variable name="pathname" select="substring-before($fullpathname, $filename)"/>
-    <xsl:variable name="outmsg">
-      <xsl:if test="$withFilePathContext='yes'">
-        <xsl:value-of select="$pathname"/>
-      </xsl:if>
-      <xsl:if test="$withFileContext='yes'">
-        <xsl:value-of select="$filename"/>
-      </xsl:if>
-      <xsl:if test="$withFilePathContext='yes' or $withFileContext='yes'">
-        <xsl:text>: </xsl:text>
-      </xsl:if>
-      <xsl:if test="$withElementContext='yes'">
-        <xsl:variable name="eleName" select="local-name(.)"/>
-        <xsl:value-of select="$eleName"/>
-        <xsl:choose>
-          <xsl:when test="@xml:id">
-            <xsl:text>@xml:id="</xsl:text>
-            <xsl:value-of select="@xml:id"/>
-            <xsl:text>"</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>[</xsl:text>
-            <xsl:value-of select="count(preceding::*[local-name()=$eleName])+1"/>
-            <xsl:text>]</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-        <xsl:text>: </xsl:text>
-      </xsl:if>
-      <xsl:value-of select="$msg"/>
-    </xsl:variable>
-    <xsl:message><xsl:value-of select="$outmsg"/></xsl:message>
-    <xsl:comment>WARNING: <xsl:value-of select="$outmsg"/></xsl:comment>
-  </xsl:template>
   
   <!-- end helper templates --> 
   
