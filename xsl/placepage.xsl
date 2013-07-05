@@ -228,26 +228,35 @@
   <xsl:variable name="thisid" select="@xml:id"/>
   <div id="type">
    <h3>Place Type</h3>
-   <div class="btn-group">
-    <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#">
+   <ul class="dropdown">
+    <li><a data-toggle="dropdown" href="#">
      <xsl:value-of select="$thistype"/>
-     <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
      <xsl:for-each select="$idx/descendant-or-self::t:place[@type=$thistype and not(@xml:id=$thisid)]">
       <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en'][1]/@reg"/>
       <li><a href="{t:idno[@type='placeID']}.html"><xsl:value-of select="t:placeName[@xml:lang='en'][1]"/></a></li>
      </xsl:for-each>
-    </ul>
-   </div>
+    </ul></li>
+   </ul>
   </div>
   <div id="placenames">
    <h3>Names</h3>
    <ul>
-    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en']"/>
-    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en']"/>
-    <xsl:apply-templates select="t:placeName[not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword']"/>
+    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en']">
+     <xsl:with-param name="idx" select="$idx"/>
+    </xsl:apply-templates>
+    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en']">
+     <xsl:with-param name="idx" select="$idx"/>
+    </xsl:apply-templates>
+    <xsl:apply-templates select="t:placeName[not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword']">
+     <xsl:with-param name="idx" select="$idx"/>
+    </xsl:apply-templates>
    </ul>
+  </div>
+  <div id="location">
+   <h3>Location</h3>
+   <ul><xsl:apply-templates select="t:location"/></ul>
   </div>
   <div id="sources">
    <h3>Sources</h3>
@@ -255,6 +264,21 @@
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
    </ul>
   </div>
+ </xsl:template>
+ 
+ <xsl:template match="t:location[@type='geopolitical']">
+  <li><xsl:apply-templates/></li>
+ </xsl:template>
+ 
+ <xsl:template match="t:region">
+  <xsl:choose>
+   <xsl:when test="@ref">
+    <a href="{@ref}"><xsl:apply-templates select="." mode="out-normal"/></a>
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:apply-templates select="." mode="out-normal"/>
+   </xsl:otherwise>
+  </xsl:choose>
  </xsl:template>
 
  <xsl:template match="t:placeName" mode="summary">
@@ -265,6 +289,7 @@
   </span>
  </xsl:template>
  <xsl:template match="t:placeName">
+  <xsl:param name="idx"/>
   <li dir="ltr">
    
    <!-- write out the placename itself, with appropriate language and directionality indicia -->
@@ -275,6 +300,7 @@
    
    <!-- if there is language info, make it explicit for readers -->
    <xsl:if test="@xml:lang">
+    <xsl:variable name="thislang" select="@xml:lang"/>
     <xsl:text> </xsl:text>
     <xsl:for-each select="./ancestor::t:TEI/descendant::t:language[@ident=current()/@xml:lang][1]">
      <bdi dir="ltr">
