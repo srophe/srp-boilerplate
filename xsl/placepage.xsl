@@ -118,8 +118,6 @@
         </xsl:call-template>
         
         <!-- ADD: breadcrumbs -->
-        <xsl:message>WARNING: TEMPLATE NEEDS TO HAVE BREADCRUMBS CODE ADDED</xsl:message>
-        <p>BREADCRUMBS HERE</p>
         
         <!-- create the main content portion of the page -->
         <div class="container-fluid">
@@ -268,6 +266,10 @@
  
  <xsl:template match="t:location[@type='geopolitical']">
   <li><xsl:apply-templates/></li>
+ </xsl:template>
+ 
+ <xsl:template match="t:location[@type='gps' and t:geo]">
+  <li>Coordinates: <xsl:value-of select="t:geo"/></li>
  </xsl:template>
  
  <xsl:template match="t:region">
@@ -426,7 +428,13 @@
  <!-- |||| match=t:*: suppress all TEI elements not otherwise handled -->
  <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
  
- <xsl:template match="t:*"/>
+ <xsl:template match="t:*">
+  <xsl:call-template name="log">
+   <xsl:with-param name="msg">
+    <xsl:text>untrapped element suppressed</xsl:text>
+   </xsl:with-param>
+  </xsl:call-template>
+ </xsl:template>
  
  
 </xsl:stylesheet>
