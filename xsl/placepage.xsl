@@ -181,6 +181,11 @@
              </div>
             </xsl:for-each>
            </div>
+           <div id="externals">
+           <p><span class="label">Other formats</span> 
+            <xsl:text> </xsl:text>
+           <a href="{$xmlbase}/{$placenum}.xml">tei xml (source)</a></p>
+           </div>
           </div>
          </div>
          
