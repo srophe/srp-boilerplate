@@ -38,6 +38,7 @@
  <!--  colquery: constructed variable with query for collection fn. -->
  <!-- =================================================================== -->
 
+ <xsl:param name="idxdir">../places/</xsl:param> 
  <xsl:param name="sourcedir">../../places/xml/</xsl:param>
  <xsl:param name="destdir">../places/</xsl:param>
  <xsl:param name="name-app">The Syriac Gazetteer</xsl:param>
@@ -46,8 +47,9 @@
  <xsl:param name="xmlbase">https://github.com/srophe/places/blob/master/xml/</xsl:param>
  <xsl:param name="uribase">http://syriaca.org/place/</xsl:param>
  <xsl:param name="normalization">NFKC</xsl:param>
- <xsl:variable name="colquery"><xsl:value-of select="$sourcedir"/>?select=*.xml</xsl:variable>
 
+ <xsl:variable name="idxquery"><xsl:value-of select="$idxdir"/>index.xml</xsl:variable>
+ 
 
  <!-- =================================================================== -->
  <!-- TEMPLATES -->
@@ -61,26 +63,15 @@
  <xsl:template name="do-places">
   
   <!-- loop through all page XML and write a corresponding HTML page -->
-  <xsl:for-each select="collection($colquery)">
+  <xsl:for-each select="document($idxquery)/descendant-or-self::t:place">
    
    <!-- determine descriptions and page names -->
-   <xsl:variable name="headword-ele" as="element()*">
-    <xsl:call-template name="get-headword-ele"/>
-   </xsl:variable>
-   <xsl:variable name="headword">
-    <xsl:apply-templates select="$headword-ele[1]" mode="out-normal"/>
-   </xsl:variable>
-   <xsl:variable name="headword-lang" select="$headword-ele[1]/ancestor-or-self::*[@xml:lang][1]/@xml:lang"/>
-   <xsl:variable name="description-ele" as="element()*">
-    <xsl:call-template name="get-description-ele"/>
-   </xsl:variable>
-   <xsl:variable name="description">
-    <xsl:apply-templates select="$description-ele[1]" mode="out-normal"/>
-   </xsl:variable>
-   <xsl:variable name="name-page-short" select="$headword"/>
-   <xsl:variable name="description-page" select="$description"/>
-   <xsl:variable name="name-page-long" select="$headword"/>
-   <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
+   <xsl:variable name="description">FOOOOOOOO</xsl:variable>
+   <xsl:variable name="description-page">FOOOOOOOO</xsl:variable>
+   <xsl:variable name="name-page-short">FOOOOOOOO</xsl:variable>
+   <xsl:variable name="name-page-long">FOOOOOOOO</xsl:variable>
+   
+   <xsl:variable name="placenum" select="t:idno[@type='placeID']"/>
    <xsl:choose>
     
     <!-- make sure we have a valid placeid -->
@@ -133,7 +124,23 @@
          <div class="row-fluid">
           <div class="span7" xml:id="place-content">
            
-           <h2><xsl:value-of select="$name-page-long"/></h2>
+           <h2>
+            <xsl:for-each select="t:placeName[@xml:lang='en'][1]">
+             <bdi dir="ltr" lang="{@xml:lang}">
+              <xsl:copy-of select="@xml:lang"/>
+              <xsl:value-of select="."/>
+             </bdi>
+            </xsl:for-each>
+            <xsl:if test="t:placeName[@xml:lang='en'] and t:placeName[@xml:lang='syr']">
+             <xsl:text> — </xsl:text>
+            </xsl:if>
+            <xsl:for-each select="t:placeName[@xml:lang='syr'][1]">
+             <bdi dir="rtl" lang="{@xml:lang}">
+              <xsl:copy-of select="@xml:lang"/>
+              <xsl:value-of select="."/>
+             </bdi>
+            </xsl:for-each>
+           </h2>
            <p><xsl:value-of select="$description-page"/></p>
     
            <!-- ADD: page content here -->
@@ -142,14 +149,21 @@
              <li class="active"><a href="#summary" data-toggle="tab">summary</a></li>
              <li><a href="#full" data-toggle="tab">full record</a></li>
             </ul>
-            <div class="tab-content">
-             <div class="tab-pane active" id="summary">
-              <xsl:apply-templates select="./descendant-or-self::t:listPlace/t:place[1]" mode="summary"/>
+            <xsl:variable name="sourcedoc">
+             <xsl:value-of select="$sourcedir"/>
+             <xsl:value-of select="$placenum"/>
+             <xsl:text>.xml</xsl:text>
+            </xsl:variable>
+            <xsl:for-each select="document($sourcedoc)/descendant-or-self::t:place[1]">
+             <div class="tab-content">
+              <div class="tab-pane active" id="summary">
+               <xsl:apply-templates select="." mode="summary"/>
+              </div>
+              <div class="tab-pane" id="full">
+               <xsl:apply-templates select="."/>
+              </div>
              </div>
-             <div class="tab-pane" id="full">
-              <xsl:apply-templates select="./descendant-or-self::t:listPlace/t:place[1]"/>
-             </div>
-            </div>
+            </xsl:for-each>
            </div>
           </div>
          </div>
