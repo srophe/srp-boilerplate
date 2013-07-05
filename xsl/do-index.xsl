@@ -112,6 +112,7 @@
                 <xsl:call-template name="copy-xml-id"/>
                 <xsl:call-template name="get-placeType"/>
                 <xsl:call-template name="get-canonicalNames"/>
+                <xsl:call-template name="get-abstract"/>
                 <xsl:call-template name="get-placeID"/>
                 <xsl:call-template name="get-placeURI"/>
               </place>
@@ -162,6 +163,32 @@
   </xsl:template>
 
 
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     named template: get-abstract
+     
+     if there is an english abstract, copy it to the index file
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
+  <xsl:template name="get-abstract">
+    <xsl:variable name="place" select="./descendant-or-self::t:place[1]"/>
+    <xsl:for-each select="$place/t:desc[starts-with(@xml:id, 'abstract-en')][1]">
+      <desc type="abstract">
+        <xsl:copy-of select="@xml:lang"/>
+        <xsl:apply-templates mode="cleancopy"/>
+      </desc>
+    </xsl:for-each>
+  </xsl:template>
+  
+  <xsl:template match="text()" mode="cleancopy">
+    <xsl:value-of select="normalize-space(.)"/>
+  </xsl:template>
+  
+  <xsl:template match="*" mode="cleancopy">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates mode="cleancopy"/>
+    </xsl:copy>
+  </xsl:template>
+  
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      named template: get-placeID
      

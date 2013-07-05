@@ -109,6 +109,11 @@
 }
 
 
+#link-icons {
+	float: right;
+}
 
-
+#link-icons > a {
+	padding-right: 0.5em;
+}
 

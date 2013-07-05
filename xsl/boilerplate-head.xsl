@@ -31,6 +31,9 @@
    <link rel="stylesheet" href="{$basepath}/css/main.css"/>
 
    <script src="{$basepath}/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"/>
+   
+   <script src='http://isawnyu.github.com/awld-js/lib/requirejs/require.min.js' type='text/javascript'></script>
+   <script src='http://isawnyu.github.com/awld-js/awld.js?autoinit' type='text/javascript'></script>
   </head>
    
  </xsl:template>

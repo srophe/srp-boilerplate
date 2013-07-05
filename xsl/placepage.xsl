@@ -141,7 +141,18 @@
              </bdi>
             </xsl:for-each>
            </h2>
-           <p><xsl:value-of select="$description-page"/></p>
+           <div id="link-icons">
+            <xsl:for-each select="t:idno[@type='Pleiades']">
+             <a href="{.}"><img src="../img/circle-pi-25.png" alt="Image of the Greek letter pi in blue; small icon of the Pleiades project" title="{../t:placeName[@xml:lang='en'][1]} in Pleiades"/></a>
+            </xsl:for-each>
+            <xsl:for-each select="t:idno[@type='Wikipedia']">
+             <a href="{.}"><img src="../img/Wikipedia-25.png" alt="The Wikipedia globe icon" title="{../t:placeName[@xml:lang='en'][1]} in Wikipedia"/></a>
+            </xsl:for-each>
+            
+           </div>
+           <xsl:for-each select="t:desc[@type='abstract'][1]">
+            <p><xsl:apply-templates mode="cleanout"/></p>
+           </xsl:for-each>
     
            <!-- ADD: page content here -->
            <div class="tabbable">
@@ -345,6 +356,19 @@
   </xsl:choose>
  </xsl:template>
  
+ 
+ <xsl:template match="text()" mode="cleanout">
+  <xsl:value-of select="normalize-space(.)"/>
+ </xsl:template>
+ 
+ <xsl:template match="t:*" mode="cleanout">
+  <xsl:apply-templates mode="cleanout"/>
+  <xsl:call-template name="log">
+   <xsl:with-param name="msg">
+    <xsl:text>untrapped element for mode="cleanout" passed through</xsl:text>
+   </xsl:with-param>
+  </xsl:call-template>
+ </xsl:template>
 
  <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
  <!-- |||| match=t:*: suppress all TEI elements not otherwise handled -->
