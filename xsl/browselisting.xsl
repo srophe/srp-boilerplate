@@ -19,6 +19,7 @@
  <xsl:import href="boilerplate-nav.xsl"/>
  <xsl:import href="boilerplate-footer.xsl"/>
  <xsl:import href="langattr.xsl"/>
+ <xsl:import href="log.xsl"/>
  <xsl:import href="normalization.xsl"/>
 
 
@@ -38,7 +39,7 @@
  <!--  colquery: constructed variable with query for collection fn. -->
  <!-- =================================================================== -->
 
- <xsl:param name="sourcedir">../../places/xml/</xsl:param>
+ <xsl:param name="sourcedir">../places/</xsl:param>
  <xsl:param name="destdir">./places/</xsl:param>
  <xsl:param name="description">Listings of places registered in the Syriac Gazetteer.</xsl:param>
  <xsl:param name="description-page">Listings of places registered in the Syriac Gazetteer.</xsl:param>
@@ -50,7 +51,7 @@
  <xsl:param name="xmlbase">https://github.com/srophe/places/blob/master/xml/</xsl:param>
  <xsl:param name="uribase">http://syriaca.org/place/</xsl:param>
  <xsl:param name="normalization">NFKC</xsl:param>
- <xsl:variable name="colquery"><xsl:value-of select="$sourcedir"/>?select=*.xml</xsl:variable>
+ <xsl:variable name="idxquery"><xsl:value-of select="$sourcedir"/>index.xml</xsl:variable>
  
 
 
@@ -141,9 +142,10 @@
 <xsl:template name="do-list-english">
  <!-- write a sorted, linked list of all the place titles in the gazetteer -->
  <ul>
-  <xsl:for-each select="collection($colquery)">
-   <xsl:sort collation="mixed" select="ipse:ensort(./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1])"/>
-   <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
+  <xsl:for-each select="document($idxquery)/descendant-or-self::t:place[t:placeName[@xml:lang='en']]">
+   <xsl:sort collation="mixed" select="./t:placeName[@xml:lang='en'][1]/@reg"/>
+   <xsl:message>foo</xsl:message>
+   <xsl:variable name="placenum" select="t:idno[@type='placeID']"/>
    <xsl:choose>
     <xsl:when test="matches($placenum, '^\d+$')">
      <xsl:variable name="htmlurl">
@@ -153,22 +155,19 @@
      </xsl:variable>
      <li>
       <a href="{$htmlurl}">
-       <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1]"/>
+       <xsl:apply-templates select="./t:placeName[@xml:lang='en'][1]"/>
        <bdi dir="ltr" xml:lang="en" lang="en">
         <xsl:text> (</xsl:text>
-        <xsl:value-of select="./descendant-or-self::t:place[1]/@type"/>
+        <xsl:value-of select="@type"/>
         <xsl:text>)</xsl:text>
        </bdi>       
-       <xsl:if test="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]">
+       <xsl:if test="./t:placeName[@xml:lang='syr']">
        <bdi dir="ltr"><xsl:text> — </xsl:text></bdi>
-       <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]"/>
+       <xsl:apply-templates select="t:placeName[@xml:lang='syr']"/>
        </xsl:if>
       </a>
      </li>
     </xsl:when>
-    <xsl:otherwise>
-     
-    </xsl:otherwise>
    </xsl:choose>
   </xsl:for-each>
  </ul>
@@ -177,11 +176,11 @@
  <xsl:template name="do-list-syriac">
   <!-- write a sorted, linked list of all the place titles in the gazetteer -->
   <ul>
-   <xsl:for-each select="collection($colquery)">
-    <xsl:sort lang="syr" select="ipse:syrsort(./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1])"/>
-    <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
+   <xsl:for-each select="document($idxquery)/descendant-or-self::t:place[t:placeName[@xml:lang='syr']]">
+    <xsl:sort lang="syr" select="./t:placeName[@xml:lang='syr'][1]/@reg"/>
+    <xsl:variable name="placenum" select="t:idno[@type='placeID']"/>
     <xsl:choose>
-     <xsl:when test="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'] and matches($placenum, '^\d+$')">
+     <xsl:when test="matches($placenum, '^\d+$')">
       <xsl:variable name="htmlurl">
        <xsl:value-of select="$destdir"/>
        <xsl:value-of select="$placenum"/>
@@ -189,17 +188,14 @@
       </xsl:variable>
       <li>
        <a href="{$htmlurl}">
-        <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]"/>
-        <xsl:if test="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1]">
+        <xsl:apply-templates select="t:placeName[@xml:lang='syr'][1]"/>
+        <xsl:if test="t:placeName[@xml:lang='en']">
          <bdi dir="rtl"><xsl:text> — </xsl:text></bdi>
-         <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1]"/>
+         <xsl:apply-templates select="t:placeName[@xml:lang='en'][1]"/>
         </xsl:if>
        </a>
       </li>
      </xsl:when>
-     <xsl:otherwise>
-      
-     </xsl:otherwise>
     </xsl:choose>
    </xsl:for-each>
   </ul>
@@ -208,9 +204,9 @@
  <xsl:template name="do-list-number">
   <!-- write a sorted, linked list of all the place titles in the gazetteer -->
   <ul>
-   <xsl:for-each select="collection($colquery)">
-    <xsl:sort select="xs:integer(ipse:numsort(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, '-')))"/>
-    <xsl:variable name="placenum" select="normalize-space(substring-after(./descendant-or-self::t:listPlace/t:place[1]/@xml:id, 'place-'))"/>
+   <xsl:for-each select="document($idxquery)/descendant-or-self::t:place">
+    <xsl:sort select="xs:integer(t:idno[@type='placeID'])"/>
+    <xsl:variable name="placenum" select="t:idno[@type='placeID']"/>
     <xsl:choose>
      <xsl:when test="matches($placenum, '^\d+$')">
       <xsl:variable name="htmlurl">
@@ -220,15 +216,15 @@
       </xsl:variable>
       <li>
        <a href="{$htmlurl}"><xsl:value-of select="$placenum"/><xsl:text>: </xsl:text>
-        <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en'][1]"/>
+        <xsl:apply-templates select="t:placeName[@xml:lang='en'][1]"/>
         <bdi dir="ltr" xml:lang="en" lang="en">
          <xsl:text> (</xsl:text>
-         <xsl:value-of select="./descendant-or-self::t:place[1]/@type"/>
+         <xsl:value-of select="@type"/>
          <xsl:text>)</xsl:text>
         </bdi>
-        <xsl:if test="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]">
+        <xsl:if test="t:placeName[@xml:lang='syr']">
          <bdi dir="ltr"><xsl:text> — </xsl:text></bdi>
-         <xsl:apply-templates select="./descendant-or-self::t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en'][1]"/>
+         <xsl:apply-templates select="t:placeName[@xml:lang='syr']"/>
         </xsl:if>
        </a>
       </li>
@@ -248,65 +244,7 @@
   </span>
  </xsl:template>
  
- <xsl:function name="ipse:numsort">
-  <xsl:param name="instring"></xsl:param>
-  <xsl:variable name="norm" select="normalize-space($instring)"/>
-  <xsl:choose>
-   <xsl:when test="$norm = ''">
-    <xsl:text>0</xsl:text>
-   </xsl:when>
-   <xsl:otherwise>
-    <xsl:value-of select="$norm"/>
-   </xsl:otherwise>
-  </xsl:choose>
- </xsl:function>
- 
- <xsl:function name="ipse:syrsort">
-  <xsl:param name="instring"></xsl:param>
-  <xsl:variable name="norm">
-   <xsl:apply-templates select="$instring" mode="out-normal"/>
-  </xsl:variable>
-  <xsl:value-of select="$norm"/>
- </xsl:function>
- 
- <xsl:function name="ipse:ensort">
-  <xsl:param name="instring"></xsl:param>
-  <xsl:variable name="norm">
-   <xsl:apply-templates select="$instring" mode="out-normal"/>
-  </xsl:variable>
-  <xsl:call-template name="syrtrip">
-   <xsl:with-param name="instring" select="$norm"/>
-  </xsl:call-template>
- </xsl:function>
- 
- <xsl:template name="syrtrip">
-  <xsl:param name="instring"/>
-  <xsl:choose>
-   <xsl:when test="starts-with($instring, ' ')">
-    <xsl:call-template name="syrtrip">
-     <xsl:with-param name="instring" select="substring($instring, 2)"/>
-    </xsl:call-template>
-   </xsl:when>
-   <xsl:when test="starts-with($instring, 'al-')">
-    <xsl:call-template name="syrtrip">
-     <xsl:with-param name="instring" select="substring-after($instring, 'al-')"/>
-    </xsl:call-template>
-   </xsl:when>
-   <xsl:when test="starts-with($instring, '&#703;')">
-    <xsl:call-template name="syrtrip">
-     <xsl:with-param name="instring" select="substring-after($instring, '&#703;')"/>
-    </xsl:call-template>    
-   </xsl:when>
-   <xsl:when test="starts-with($instring, '‘') and ends-with($instring, '’')">
-    <xsl:call-template name="syrtrip">
-     <xsl:with-param name="instring" select="substring-before(substring-after($instring, '‘'), '’')"/>
-    </xsl:call-template>
-   </xsl:when>
-   <xsl:otherwise>
-    <xsl:value-of select="normalize-space($instring)"/>
-   </xsl:otherwise>
-  </xsl:choose>
- </xsl:template>
+
  <!-- =================================================================== -->
  <!-- define custom collation for sorting the list of names -->
  <!-- =================================================================== -->
