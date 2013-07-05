@@ -17,6 +17,7 @@
  <xsl:import href="boilerplate-badbrowser.xsl"/>
  <xsl:import href="boilerplate-nav.xsl"/>
  <xsl:import href="boilerplate-footer.xsl"/>
+ <xsl:import href="collations.xsl"/>
  <xsl:import href="langattr.xsl"/>
  <xsl:import href="log.xsl"/>
  <xsl:import href="normalization.xsl"/>
@@ -234,7 +235,7 @@
     </a>
     <ul class="dropdown-menu">
      <xsl:for-each select="$idx/descendant-or-self::t:place[@type=$thistype and not(@xml:id=$thisid)]">
-      <xsl:sort select="t:placeName[@xml:lang='en'][1]/@reg"/>
+      <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en'][1]/@reg"/>
       <li><a href="{t:idno[@type='placeID']}.html"><xsl:value-of select="t:placeName[@xml:lang='en'][1]"/></a></li>
      </xsl:for-each>
     </ul>
