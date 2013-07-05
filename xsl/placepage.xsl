@@ -68,10 +68,27 @@
   <xsl:for-each select="$idx/descendant-or-self::t:place">
    
    <!-- determine descriptions and page names -->
-   <xsl:variable name="description">FOOOOOOOO</xsl:variable>
-   <xsl:variable name="description-page">FOOOOOOOO</xsl:variable>
-   <xsl:variable name="name-page-short">FOOOOOOOO</xsl:variable>
-   <xsl:variable name="name-page-long">FOOOOOOOO</xsl:variable>
+   <xsl:variable name="description">
+    <xsl:choose>
+     <xsl:when test="t:desc[@type='abstract'][1]">
+      <xsl:apply-templates select="t:desc[@type='abstract'][1]" mode="text-normal"/>
+     </xsl:when>
+     <xsl:otherwise>
+      <xsl:text>no description available</xsl:text>
+     </xsl:otherwise>
+    </xsl:choose>
+   </xsl:variable>
+   <xsl:variable name="name-page-short">
+    <xsl:choose>
+     <xsl:when test="t:placeName[@xml:lang='en']">
+      <xsl:value-of select="t:placeName[@xml:lang='en']"/>
+     </xsl:when>
+     <xsl:otherwise>
+      <xsl:text>Place no. </xsl:text>
+      <xsl:value-of select="t:idno[@type='placeId']"/>
+     </xsl:otherwise>
+    </xsl:choose>
+   </xsl:variable>
    
    <xsl:variable name="placenum" select="t:idno[@type='placeID']"/>
    <xsl:choose>
