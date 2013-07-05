@@ -265,11 +265,12 @@
  </xsl:template>
  
  <xsl:template match="t:location[@type='geopolitical']">
-  <li><xsl:apply-templates/></li>
+  <li><xsl:apply-templates/>
+  <xsl:call-template name="do-refs"/></li>
  </xsl:template>
  
  <xsl:template match="t:location[@type='gps' and t:geo]">
-  <li>Coordinates: <xsl:value-of select="t:geo"/></li>
+  <li>Coordinates: <xsl:value-of select="t:geo"/><xsl:call-template name="do-refs"/></li>
  </xsl:template>
  
  <xsl:template match="t:region">
@@ -313,24 +314,28 @@
     </xsl:for-each>
    </xsl:if>
    
-   <!-- credit sources for data -->
-   <xsl:if test="@source">
-    <xsl:variable name="root" select="ancestor::t:TEI" as="node()"/>
-    <xsl:variable name="biblids" select="tokenize(@source, ' ')"/>
-    <xsl:variable name="last" select="$biblids[last()]"/>
-    <bdi class="footnote-refs" dir="ltr">
-     <xsl:for-each select="$biblids">
-      <xsl:variable name="sought" select="substring-after(., '#')"/>
-      <xsl:apply-templates select="$root/descendant::t:bibl[@xml:id=$sought]" mode="footnote-ref">
-       <xsl:with-param name="footnote-number" select="substring-after(., '-')"/>
-      </xsl:apply-templates>
-      <xsl:if test="count($biblids) &gt; 1 and . != $last">
-       <xsl:text>,</xsl:text>
-      </xsl:if>
-     </xsl:for-each>
-    </bdi>
-   </xsl:if>
+   <xsl:call-template name="do-refs"/>
   </li>
+ </xsl:template>
+ 
+ <xsl:template name="do-refs">
+  <!-- credit sources for data -->
+  <xsl:if test="@source">
+   <xsl:variable name="root" select="ancestor::t:TEI" as="node()"/>
+   <xsl:variable name="biblids" select="tokenize(@source, ' ')"/>
+   <xsl:variable name="last" select="$biblids[last()]"/>
+   <bdi class="footnote-refs" dir="ltr">
+    <xsl:for-each select="$biblids">
+     <xsl:variable name="sought" select="substring-after(., '#')"/>
+     <xsl:apply-templates select="$root/descendant::t:bibl[@xml:id=$sought]" mode="footnote-ref">
+      <xsl:with-param name="footnote-number" select="substring-after(., '-')"/>
+     </xsl:apply-templates>
+     <xsl:if test="count($biblids) &gt; 1 and . != $last">
+      <xsl:text>,</xsl:text>
+     </xsl:if>
+    </xsl:for-each>
+   </bdi>
+  </xsl:if>
  </xsl:template>
 
  <xsl:template match="t:bibl" mode="footnote">

@@ -117,3 +117,8 @@
 	padding-right: 0.5em;
 }
 
+#sources ul {
+	list-style-type: none;
+	padding-left: -0.1em;
+	text-indent: -1em;
+}
