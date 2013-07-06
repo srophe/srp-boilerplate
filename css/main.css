@@ -59,6 +59,33 @@
     position: relative;
     top: -0.4em;
 }
+
+.helper.circle {
+	border: 1px solid rgb(0, 136, 204);
+	border-radius: 50%;
+	height: 1em;
+	width: 1em;
+	text-align: center;
+	vertical-align: center;
+    float: left;
+    margin-right: 0.5em;
+    box-shadow: 1px 1px 1px #888888;
+}
+
+.helper.circle:hover {
+	box-shadow: none;
+}
+.helper.circle > p {
+	color: rgb(0,136,204);
+	font-size: .83em;
+	position: relative;
+	vertical-align: middle;
+	top: -.2em;
+	font-family: serif;
+	font-weight: bold;
+}
+
+
 .title {
 	font-style: italic;
 }
@@ -133,6 +160,7 @@
 		box-shadow: none;
 }
 
+
 #sources ul {
 	list-style-type: none;
 	padding-left: -0.1em;
@@ -141,4 +169,11 @@
 
 #externals {
 	margin-top: 1em;
+}
+
+dt {
+	margin-top: 1.5em;
+}
+dd {
+	margin-top: 0.5em;
 }

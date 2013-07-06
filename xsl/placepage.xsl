@@ -175,7 +175,13 @@
             
            </div>
            <xsl:for-each select="t:idno[@type='SRP']">
-            <p><span class="label label-info">Permalink</span> (canonical <abbr title="Uniform Resource Identifier">URI</abbr>): <xsl:value-of select="."/></p>
+            <div>
+             <a href="../help/terms.html#place-uri" title="Click to read more about Place URIs"><div class="helper circle">
+              <p>i</p>
+             </div></a>
+            <p><span class="label label-info">Place URI</span>
+             <xsl:text>: </xsl:text><xsl:value-of select="."/></p>
+            </div>
            </xsl:for-each>
            <xsl:for-each select="t:desc[@type='abstract'][1]">
             <p><xsl:apply-templates mode="cleanout"/></p>
