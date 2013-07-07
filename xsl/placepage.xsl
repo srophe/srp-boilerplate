@@ -305,8 +305,8 @@
  
  <xsl:template match="t:region">
   <xsl:choose>
-   <xsl:when test="@ref">
-    <a href="{@ref}"><xsl:apply-templates select="." mode="out-normal"/></a>
+   <xsl:when test="@ref and starts-with(@ref, 'http://syriaca.org/place/')">
+    <a href="{tokenize(@ref, '/')[last()]}.html"><xsl:apply-templates select="." mode="out-normal"/></a>
    </xsl:when>
    <xsl:otherwise>
     <xsl:apply-templates select="." mode="out-normal"/>
