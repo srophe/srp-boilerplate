@@ -120,6 +120,7 @@
                 <xsl:call-template name="get-placeID"/>
                 <xsl:call-template name="get-placeURI"/>
                 <xsl:call-template name="get-locations"/>
+                <xsl:call-template name="do-selfBibl"/>
               </place>
               <xsl:if test="$forceBreaks='yes'">
                 <xsl:value-of select="$n"/>
@@ -414,6 +415,30 @@
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+  
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     named template: do-selfBibl
+     
+     create bibliographic information about each place record
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template name="do-selfBibl">
+    <xsl:variable name="place" select="./descendant-or-self::t:place[1]"/>
+    <bibl type="self">
+      <xsl:apply-templates select="descendant-or-self::t:publicationStmt/t:date" mode="selfBibl"/>  
+    </bibl>
+  </xsl:template>
+  
+  <xsl:template match="t:*" mode="selfBibl">
+    <xsl:element name="{local-name()}">
+      <xsl:apply-templates mode="selfBibl"/>
+    </xsl:element>
+  </xsl:template>
+  
+  <xsl:template match="text()" mode="selfBibl">
+    <xsl:apply-templates select="." mode="text-normal"/>
   </xsl:template>
   
   <!-- end first-level named templates --> 
