@@ -254,6 +254,7 @@
   <xsl:param name="idx"/>
   <xsl:variable name="thistype" select="@type"/>
   <xsl:variable name="thisid" select="@xml:id"/>
+  <xsl:variable name="thisuri" select="$idx/descendant::t:place[@xml:id=$thisid]/t:idno[@type='SRP']"/>
   <div id="type">
    <h3>Place Type</h3>
    <ul class="dropdown">
@@ -286,6 +287,17 @@
    <h3>Location</h3>
    <ul><xsl:apply-templates select="t:location"/></ul>
   </div>
+  <xsl:if test="$idx/descendant::t:region[@ref=$thisuri]">
+   <div id="contents">
+    <h3>Subordinant Places</h3>
+    <ul>
+     <xsl:for-each select="$idx/descendant::t:region[@ref=$thisuri]/ancestor::t:place">
+      <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en']"/>
+      <li><a href="{t:idno[@type='placeID']}.html"><xsl:apply-templates mode="out-normal" select="t:placeName[@xml:lang='en'][1]"/></a></li>
+     </xsl:for-each>
+    </ul>
+   </div>
+  </xsl:if>
   <div id="sources">
    <h3>Sources</h3>
    <ul>
@@ -305,7 +317,7 @@
  
  <xsl:template match="t:region">
   <xsl:choose>
-   <xsl:when test="@ref and starts-with(@ref, 'http://syriaca.org/place/')">
+   <xsl:when test="@ref and starts-with(@ref, $uribase)">
     <a href="{tokenize(@ref, '/')[last()]}.html"><xsl:apply-templates select="." mode="out-normal"/></a>
    </xsl:when>
    <xsl:otherwise>

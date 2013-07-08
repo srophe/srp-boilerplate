@@ -3,8 +3,12 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:t="http://www.tei-c.org/ns/1.0"
   xmlns:ipse="urn.ipsens"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML"
+  xmlns:syriaca="http://syriaca.org"
   xmlns="http://www.tei-c.org/ns/1.0"
-  exclude-result-prefixes="xs t ipse"
+  exclude-result-prefixes="xs t ipse xi svg math syriaca"
   version="2.0">
   
   <!-- ================================================================== 
@@ -77,7 +81,7 @@
 </xsl:text>
   </xsl:variable>
   
-  <xsl:output name="xml" encoding="UTF-8" exclude-result-prefixes="xs t ipse" method="xml" indent="no"/>
+  <xsl:output name="xml" encoding="UTF-8" exclude-result-prefixes="xs t ipse xi svg math syriaca" method="xml" indent="no"/>
   
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
@@ -115,6 +119,7 @@
                 <xsl:call-template name="get-abstract"/>
                 <xsl:call-template name="get-placeID"/>
                 <xsl:call-template name="get-placeURI"/>
+                <xsl:call-template name="get-locations"/>
               </place>
               <xsl:if test="$forceBreaks='yes'">
                 <xsl:value-of select="$n"/>
@@ -180,6 +185,13 @@
   
   <xsl:template match="text()" mode="cleancopy">
     <xsl:value-of select="normalize-space(.)"/>
+  </xsl:template>
+  
+  <xsl:template match="t:geo | t:region" mode="cleancopy">
+    <xsl:element name="{local-name()}">
+      <xsl:copy-of select="@ref"/>
+      <xsl:apply-templates mode="cleancopy"/>
+    </xsl:element>
   </xsl:template>
   
   <xsl:template match="*" mode="cleancopy">
@@ -377,6 +389,32 @@
     
   </xsl:template>
   
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     named template: get-locations
+     
+     copies location information into the index
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template name="get-locations">
+    <xsl:variable name="place" select="./descendant-or-self::t:place[1]"/>
+    <xsl:choose>
+      <xsl:when test="$place/t:location">
+        <xsl:for-each select="$place/t:location">
+          <location>
+            <xsl:copy-of select="@type"/>
+            <xsl:apply-templates mode="cleancopy"/>
+          </location>
+        </xsl:for-each>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="log">
+          <xsl:with-param name="withElementContext">no</xsl:with-param>
+          <xsl:with-param name="msg">No location element was found for this place.</xsl:with-param>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
   
   <!-- end first-level named templates --> 
   
