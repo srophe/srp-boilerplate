@@ -1,1 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>Bostra (settlement) — ܒܘܨܪ</title><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/40-atom.xml"/><id>tag:syriaca.org,2013:place-40</id><updated>2013-07-03-04:00</updated><entry><title>Bostra (settlement) — ܒܘܨܪ</title><link rel="alternate" type="text/html" href="http://srophe.github.io/srp-places-app/places/40.html"/><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/places/40-atom.xml"/><id>tag:syriaca.org,2013:place-40</id><updated>2013-07-03-04:00</updated><summary>A city east of the Jordan River in the Roman province of Arabia.</summary><author>Thomas A. Carlson</author><author>David A. Michelson</author><contributor>Robert Aydin</contributor></entry></feed>
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
+   <title>Bostra (settlement) — ܒܘܨܪ</title>
+   <link rel="self"
+         type="application/atom+xml"
+         href="http://srophe.github.io/srp-places-app/40-atom.xml"/>
+   <id>tag:syriaca.org,2013:place-40</id>
+   <updated>2013-07-03-04:00</updated>
+   <entry>
+      <title>Bostra (settlement) — ܒܘܨܪ</title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/40.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/40-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-40</id>
+      <updated>2013-07-03-04:00</updated>
+      <summary>A city east of the Jordan River in the Roman province of Arabia.</summary>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+      <contributor>Robert Aydin</contributor>
+      <georss:where>
+         <georss:point>32.516667 36.483333</georss:point>
+      </georss:where>
+   </entry>
+</feed>

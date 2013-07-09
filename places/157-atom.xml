@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>Petra (settlement)</title><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/157-atom.xml"/><id>tag:syriaca.org,2013:place-157</id><updated>2013-07-03-04:00</updated><entry><title>Petra (settlement)</title><link rel="alternate" type="text/html" href="http://srophe.github.io/srp-places-app/places/157.html"/><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/places/157-atom.xml"/><id>tag:syriaca.org,2013:place-157</id><updated>2013-07-03-04:00</updated><summary/><author>Thomas A. Carlson</author><author>David A. Michelson</author></entry></feed>
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
+   <title>Petra (settlement)</title>
+   <link rel="self"
+         type="application/atom+xml"
+         href="http://srophe.github.io/srp-places-app/157-atom.xml"/>
+   <id>tag:syriaca.org,2013:place-157</id>
+   <updated>2013-07-03-04:00</updated>
+   <entry>
+      <title>Petra (settlement)</title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/157.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/157-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-157</id>
+      <updated>2013-07-03-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+      <georss:where>
+         <georss:point>30.32861 35.44194</georss:point>
+      </georss:where>
+   </entry>
+</feed>

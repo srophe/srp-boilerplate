@@ -1,1 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>Mor ʿAzozoʾil (monastery) — ܕܝܪܐ ܕܡܪܝ ܥܙܙܐܝܠ</title><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/657-atom.xml"/><id>tag:syriaca.org,2013:place-657</id><updated>2013-07-03-04:00</updated><entry><title>Mor ʿAzozoʾil (monastery) — ܕܝܪܐ ܕܡܪܝ ܥܙܙܐܝܠ</title><link rel="alternate" type="text/html" href="http://srophe.github.io/srp-places-app/places/657.html"/><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/places/657-atom.xml"/><id>tag:syriaca.org,2013:place-657</id><updated>2013-07-03-04:00</updated><summary/><author>Thomas A. Carlson</author><author>David A. Michelson</author></entry></feed>
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
+   <title>Mor ʿAzozoʾil (monastery) — ܕܝܪܐ ܕܡܪܝ ܥܙܙܐܝܠ</title>
+   <link rel="self"
+         type="application/atom+xml"
+         href="http://srophe.github.io/srp-places-app/657-atom.xml"/>
+   <id>tag:syriaca.org,2013:place-657</id>
+   <updated>2013-07-03-04:00</updated>
+   <entry>
+      <title>Mor ʿAzozoʾil (monastery) — ܕܝܪܐ ܕܡܪܝ ܥܙܙܐܝܠ</title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/657.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/657-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-657</id>
+      <updated>2013-07-03-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+   </entry>
+</feed>

@@ -1,1 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>Duhok (settlement) — ܒܝܬ ܢܘܗܕܪܐ</title><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/76-atom.xml"/><id>tag:syriaca.org,2013:place-76</id><updated>2013-07-03-04:00</updated><entry><title>Duhok (settlement) — ܒܝܬ ܢܘܗܕܪܐ</title><link rel="alternate" type="text/html" href="http://srophe.github.io/srp-places-app/places/76.html"/><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/places/76-atom.xml"/><id>tag:syriaca.org,2013:place-76</id><updated>2013-07-03-04:00</updated><summary/><author>Thomas A. Carlson</author><author>David A. Michelson</author><contributor>Robert Aydin</contributor><contributor>Anthony Davis</contributor></entry></feed>
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
+   <title>Duhok (settlement) — ܒܝܬ ܢܘܗܕܪܐ</title>
+   <link rel="self"
+         type="application/atom+xml"
+         href="http://srophe.github.io/srp-places-app/76-atom.xml"/>
+   <id>tag:syriaca.org,2013:place-76</id>
+   <updated>2013-07-03-04:00</updated>
+   <entry>
+      <title>Duhok (settlement) — ܒܝܬ ܢܘܗܕܪܐ</title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/76.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/76-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-76</id>
+      <updated>2013-07-03-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+      <contributor>Robert Aydin</contributor>
+      <contributor>Anthony Davis</contributor>
+      <georss:where>
+         <georss:point>36.866667 43</georss:point>
+      </georss:where>
+   </entry>
+</feed>

@@ -3,6 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:t="http://www.tei-c.org/ns/1.0"
   xmlns:a="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss"
   xmlns="http://www.w3.org/2005/Atom"
   exclude-result-prefixes="xs t a"
   version="2.0">
@@ -19,8 +20,8 @@
   <xsl:param name="placeslevel">places/</xsl:param>
   <xsl:variable name="idxquery"><xsl:value-of select="$sourcedir"/>index.xml</xsl:variable>
   
-  <xsl:output name="atom" encoding="UTF-8" method="xml" indent="yes" exclude-result-prefixes="#all"/>
-  
+  <xsl:output name="atom" encoding="UTF-8" method="xml" indent="yes" exclude-result-prefixes="xs t a"/>
+  <xsl:output encoding="UTF-8" method="xml" indent="yes" exclude-result-prefixes="xs t a"/>
   <xsl:template name="do-atom">
     <xsl:for-each select="document($idxquery)/descendant-or-self::t:listPlace">
       <xsl:apply-templates select="."/>
@@ -49,7 +50,7 @@
           <xsl:apply-templates select="." mode="atom-out"/>
         </xsl:if>
         
-        <xsl:result-document href="{$destdir}{t:idno[@type='placeID']}-atom.xml">
+        <xsl:result-document format="atom" href="{$destdir}{t:idno[@type='placeID']}-atom.xml">
           <feed xmlns="http://www.w3.org/2005/Atom">
             <title>
               <xsl:call-template name="place-title-std">
@@ -85,6 +86,7 @@
       <xsl:apply-templates select="t:desc[@type='abstract'][1]" mode="atom-out"/> 
       <xsl:apply-templates select="t:bibl[@type='self'][1]/t:editor" mode="atom-out"/>
       <xsl:apply-templates select="t:bibl[@type='self'][1]/t:author" mode="atom-out"/>
+      <xsl:apply-templates select="t:location[@type='gps']" mode="atom-out"/>
     </entry>
     
   </xsl:template>
@@ -106,6 +108,12 @@
   <xsl:template match="t:desc" mode="atom-out">
     <xsl:message>desc: <xsl:value-of select="."/></xsl:message>
       <summary><xsl:apply-templates mode="atom-out"/></summary>    
+  </xsl:template>
+  
+  <xsl:template match="t:location[@type='gps' and t:geo]" mode="atom-out">
+    <georss:where>
+      <georss:point><xsl:value-of select="t:geo"/></georss:point>
+    </georss:where>
   </xsl:template>
   
   <xsl:template match="t:*" mode="atom-out">

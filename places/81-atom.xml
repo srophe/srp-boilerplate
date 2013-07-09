@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom"><title>Epiphanea (settlement)</title><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/81-atom.xml"/><id>tag:syriaca.org,2013:place-81</id><updated>2013-07-03-04:00</updated><entry><title>Epiphanea (settlement)</title><link rel="alternate" type="text/html" href="http://srophe.github.io/srp-places-app/places/81.html"/><link rel="self" type="application/atom+xml" href="http://srophe.github.io/srp-places-app/places/81-atom.xml"/><id>tag:syriaca.org,2013:place-81</id><updated>2013-07-03-04:00</updated><summary/><author>Thomas A. Carlson</author><author>David A. Michelson</author></entry></feed>
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
+   <title>Epiphanea (settlement)</title>
+   <link rel="self"
+         type="application/atom+xml"
+         href="http://srophe.github.io/srp-places-app/81-atom.xml"/>
+   <id>tag:syriaca.org,2013:place-81</id>
+   <updated>2013-07-03-04:00</updated>
+   <entry>
+      <title>Epiphanea (settlement)</title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/81.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/81-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-81</id>
+      <updated>2013-07-03-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+      <georss:where>
+         <georss:point>36.95506 36.19971</georss:point>
+      </georss:where>
+   </entry>
+</feed>
