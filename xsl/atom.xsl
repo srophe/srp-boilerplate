@@ -7,29 +7,66 @@
   exclude-result-prefixes="xs t a"
   version="2.0">
   
+  <xsl:import href="collations.xsl"/>
   <xsl:import href="place-title-std.xsl"/>
   
+  <xsl:param name="sourcedir">../places/</xsl:param>
+  
+  <xsl:param name="destdir">../places/</xsl:param>
+  
   <xsl:param name="normalization">NFKC</xsl:param>
+  <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
+  <xsl:param name="placeslevel">places/</xsl:param>
+  <xsl:variable name="idxquery"><xsl:value-of select="$sourcedir"/>index.xml</xsl:variable>
   
   <xsl:output name="atom" encoding="UTF-8" method="xml" indent="yes" exclude-result-prefixes="#all"/>
   
-  <xsl:template match="/">
-    <xsl:apply-templates/>
+  <xsl:template name="do-atom">
+    <xsl:for-each select="document($idxquery)/descendant-or-self::t:listPlace">
+      <xsl:apply-templates select="."/>
+    </xsl:for-each>
   </xsl:template>
   
   <xsl:template match="t:listPlace">
+    <xsl:message>whoop</xsl:message>
     <feed xmlns="http://www.w3.org/2005/Atom">
-      <title></title>
-      <link rel="alternate" type="text/html"></link>
-      <link rel="self" type="application/atom+xml"/>
+      <title>The Syriac Gazetteer: Latest Updates</title>
+      <link rel="self" type="application/atom+xml" href="{$base}latest-atom.xml"/>
+      <id>tag:syriaca.org,2013:gazetteer-latest</id>
+      <updated>
+        <xsl:for-each select="t:place">
+          <xsl:sort select="xs:date(t:bibl[@type='self'][1]/t:date)" order="descending"/>
+          <xsl:if test="position()=1">
+            <xsl:value-of select="xs:date(t:bibl[@type='self'][1]/t:date)"/>
+          </xsl:if>
+        </xsl:for-each>
+      </updated>
       <xsl:for-each select="t:place">
-        <xsl:sort select="xs:date(t:bibl[@type='self'][1]/t:date)"/>
+        <xsl:sort select="xs:date(t:bibl[@type='self'][1]/t:date)" order="descending"/>
+        <xsl:sort select="t:placeName[@xml:lang='en'][1]" collation="mixed"/>
         <xsl:if test="not(position() &gt; 10)">
           <xsl:message><xsl:value-of select="t:idno[@type='SRP']"/></xsl:message>
           <xsl:apply-templates select="." mode="atom-out"/>
         </xsl:if>
+        
+        <xsl:result-document href="{$destdir}{t:idno[@type='placeID']}-atom.xml">
+          <feed xmlns="http://www.w3.org/2005/Atom">
+            <title>
+              <xsl:call-template name="place-title-std">
+                <xsl:with-param name="withbdi">no</xsl:with-param>
+              </xsl:call-template>
+            </title>
+            <link rel="self" type="application/atom+xml" href="{$base}{t:idno[@type='placeID']}-atom.xml"/>
+            <id>tag:syriaca.org,2013:<xsl:value-of select="@xml:id"/></id>
+            <updated>
+              <xsl:value-of select="t:bibl[@type='self'][1]/t:date[1]"/>
+            </updated>
+            <xsl:apply-templates select="." mode="atom-out"/>
+          </feed>
+        </xsl:result-document>
       </xsl:for-each>
     </feed>
+    
   </xsl:template>
   
   <xsl:template match="t:place" mode="atom-out">
@@ -39,8 +76,8 @@
           <xsl:with-param name="withbdi">no</xsl:with-param>
         </xsl:call-template>
       </title>
-      <link rel="alternate" type="text/html"></link>
-      <link rel="self" type="application/atom+xml"></link>
+      <link rel="alternate" type="text/html" href="{$base}{$placeslevel}{t:idno[@type='placeID']}.html"></link>
+      <link rel="self" type="application/atom+xml" href="{$base}{$placeslevel}{t:idno[@type='placeID']}-atom.xml"></link>
       <id>tag:syriaca.org,2013:<xsl:value-of select="@xml:id"/></id>
       <updated>
         <xsl:value-of select="t:bibl[@type='self'][1]/t:date[1]"/>
@@ -67,10 +104,8 @@
   </xsl:template>
   
   <xsl:template match="t:desc" mode="atom-out">
-    <xsl:if test="normalize-space(xs:string(.)) != ''">
-      <summary><xsl:apply-templates select="atom-out"/></summary>
-    </xsl:if>
-    
+    <xsl:message>desc: <xsl:value-of select="."/></xsl:message>
+      <summary><xsl:apply-templates mode="atom-out"/></summary>    
   </xsl:template>
   
   <xsl:template match="t:*" mode="atom-out">

@@ -49,6 +49,9 @@
  <xsl:param name="xmlbase">https://github.com/srophe/places/blob/master/xml/</xsl:param>
  <xsl:param name="uribase">http://syriaca.org/place/</xsl:param>
  <xsl:param name="normalization">NFKC</xsl:param>
+ <xsl:param name="placeslevel">places/</xsl:param>
+ <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
+ 
 
  <xsl:variable name="idxquery"><xsl:value-of select="$idxdir"/>index.xml</xsl:variable>
  
@@ -194,9 +197,11 @@
             </xsl:for-each>
            </div>
            <div id="externals">
-           <p><span class="label">Other formats</span> 
-            <xsl:text> </xsl:text>
-           <a href="{$xmlbase}/{$placenum}.xml">tei xml (source)</a></p>
+           <p><span class="label">Other formats</span></p>
+            <ul>
+             <li><a href="{$xmlbase}{$placenum}.xml" rel="alternate" type="application/tei+xml">tei xml (source)</a></li>
+             <li><a href="{$base}places/{$placenum}-atom.xml" rel="alternate" type="application/atom+xml">atom xml</a></li>
+            </ul>
            </div>
           </div>
          </div>
