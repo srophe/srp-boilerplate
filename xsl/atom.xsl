@@ -41,7 +41,7 @@
       </title>
       <link rel="alternate" type="text/html"></link>
       <link rel="self" type="application/atom+xml"></link>
-      <id></id>
+      <id>tag:syriaca.org,2013:<xsl:value-of select="@xml:id"/></id>
       <updated>
         <xsl:value-of select="t:bibl[@type='self'][1]/t:date[1]"/>
       </updated>
