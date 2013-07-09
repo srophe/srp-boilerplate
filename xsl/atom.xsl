@@ -45,12 +45,31 @@
       <updated>
         <xsl:value-of select="t:bibl[@type='self'][1]/t:date[1]"/>
       </updated>
-      <summary>
-        <xsl:apply-templates select="t:desc[@type='abstract'][1]" mode="atom-out"/> 
-      </summary>
-      <author></author>
-      <contributor></contributor>
+      <xsl:apply-templates select="t:desc[@type='abstract'][1]" mode="atom-out"/> 
+      <xsl:apply-templates select="t:bibl[@type='self'][1]/t:editor" mode="atom-out"/>
+      <xsl:apply-templates select="t:bibl[@type='self'][1]/t:author" mode="atom-out"/>
     </entry>
+    
+  </xsl:template>
+  
+  <xsl:template match="t:editor" mode="atom-out">
+    <xsl:variable name="name" select="normalize-space(normalize-unicode(xs:string(.), $normalization))"/>
+    <xsl:if test="not(preceding-sibling::t:editor[normalize-space(normalize-unicode(xs:string(.), $normalization))=$name])">
+      <author><xsl:value-of select="$name"/></author>
+    </xsl:if>
+  </xsl:template>
+  
+  <xsl:template match="t:author" mode="atom-out">
+    <xsl:variable name="name" select="normalize-space(normalize-unicode(xs:string(.), $normalization))"/>
+    <xsl:if test="not(preceding-sibling::t:editor[normalize-space(normalize-unicode(xs:string(.), $normalization))=$name]) and not(preceding-sibling::t:author[normalize-space(normalize-unicode(xs:string(.), $normalization))=$name])">
+      <contributor><xsl:value-of select="$name"/></contributor>
+    </xsl:if>
+  </xsl:template>
+  
+  <xsl:template match="t:desc" mode="atom-out">
+    <xsl:if test="normalize-space(xs:string(.)) != ''">
+      <summary><xsl:apply-templates select="atom-out"/></summary>
+    </xsl:if>
     
   </xsl:template>
   
@@ -66,4 +85,10 @@
       </xsl:choose>
     </xsl:for-each>
   </xsl:template>
+  
+  <xsl:template match="text()" mode="atom-out">
+    <xsl:apply-templates select="." mode="text-normal"/>
+  </xsl:template>
+  
+  <xsl:template match="*"/>
 </xsl:stylesheet>

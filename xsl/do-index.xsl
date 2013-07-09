@@ -428,8 +428,24 @@
     <xsl:variable name="place" select="./descendant-or-self::t:place[1]"/>
     <bibl type="self">
       <xsl:apply-templates select="descendant-or-self::t:publicationStmt/t:date" mode="selfBibl"/>  
+      <xsl:apply-templates select="descendant-or-self::t:titleStmt/t:editor" mode="selfBibl"/>
+      <xsl:apply-templates select="descendant-or-self::t:titleStmt/t:respStmt" mode="selfBibl"/>
     </bibl>
   </xsl:template>
+  
+  <xsl:template match="t:editor" mode="selfBibl">
+    <xsl:variable name="name" select="normalize-space(normalize-unicode(xs:string(.), $normalization))"/>
+    <xsl:if test="not(preceding-sibling::t:editor[normalize-space(normalize-unicode(xs:string(.), $normalization))=$name])">
+      <editor><xsl:value-of select="$name"/></editor>
+    </xsl:if>
+  </xsl:template> 
+
+  <xsl:template match="t:respStmt" mode="selfBibl">
+    <xsl:variable name="name" select="normalize-space(normalize-unicode(xs:string(t:name), $normalization))"/>
+    <xsl:if test="not(../t:editor[normalize-space(normalize-unicode(xs:string(.), $normalization))=$name]) and not(preceding-sibling::t:respStmt[normalize-space(normalize-unicode(xs:string(t:name), $normalization))=$name])">
+      <author><xsl:value-of select="$name"/></author>
+    </xsl:if>
+  </xsl:template> 
   
   <xsl:template match="t:*" mode="selfBibl">
     <xsl:element name="{local-name()}">
