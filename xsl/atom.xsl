@@ -42,11 +42,28 @@
       <link rel="alternate" type="text/html"></link>
       <link rel="self" type="application/atom+xml"></link>
       <id></id>
-      <updated></updated>
-      <summary></summary>
+      <updated>
+        <xsl:value-of select="t:bibl[@type='self'][1]/t:date[1]"/>
+      </updated>
+      <summary>
+        <xsl:apply-templates select="t:desc[@type='abstract'][1]" mode="atom-out"/> 
+      </summary>
       <author></author>
       <contributor></contributor>
     </entry>
     
+  </xsl:template>
+  
+  <xsl:template match="t:*" mode="atom-out">
+    <xsl:for-each select="node()">
+      <xsl:choose>
+        <xsl:when test="text()">
+          <xsl:apply-templates select="." mode="text-normal"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="." mode="atom-out"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
   </xsl:template>
 </xsl:stylesheet>
