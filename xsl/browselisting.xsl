@@ -276,16 +276,7 @@
       </xsl:variable>
       <li>
        <a href="{$htmlurl}"><xsl:value-of select="$placenum"/><xsl:text>: </xsl:text>
-        <xsl:apply-templates select="t:placeName[@xml:lang='en'][1]"/>
-        <bdi dir="ltr" xml:lang="en" lang="en">
-         <xsl:text> (</xsl:text>
-         <xsl:value-of select="@type"/>
-         <xsl:text>)</xsl:text>
-        </bdi>
-        <xsl:if test="t:placeName[@xml:lang='syr']">
-         <bdi dir="ltr"><xsl:text> — </xsl:text></bdi>
-         <xsl:apply-templates select="t:placeName[@xml:lang='syr']"/>
-        </xsl:if>
+        <xsl:call-template name="place-title-std"/>
        </a>
       </li>
      </xsl:when>
