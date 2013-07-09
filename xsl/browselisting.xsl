@@ -82,6 +82,7 @@
  <xsl:import href="langattr.xsl"/>
  <xsl:import href="log.xsl"/>
  <xsl:import href="normalization.xsl"/>
+ <xsl:import href="place-title-std.xsl"/>
  
 
  <xsl:output encoding="UTF-8" method="html" indent="yes"/>
@@ -208,16 +209,7 @@
      </xsl:variable>
      <li>
       <a href="{$htmlurl}">
-       <xsl:apply-templates select="./t:placeName[@xml:lang='en'][1]"/>
-       <bdi dir="ltr" xml:lang="en" lang="en">
-        <xsl:text> (</xsl:text>
-        <xsl:value-of select="@type"/>
-        <xsl:text>)</xsl:text>
-       </bdi>       
-       <xsl:if test="./t:placeName[@xml:lang='syr']">
-       <bdi dir="ltr"><xsl:text> — </xsl:text></bdi>
-       <xsl:apply-templates select="t:placeName[@xml:lang='syr']"/>
-       </xsl:if>
+       <xsl:call-template name="place-title-std"/>
       </a>
      </li>
     </xsl:when>

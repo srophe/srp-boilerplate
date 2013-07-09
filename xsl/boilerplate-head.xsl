@@ -61,8 +61,10 @@
    <xsl:with-param name="name">DC.isPartOf</xsl:with-param>
    <xsl:with-param name="textcontent">The Syriac Gazetteer</xsl:with-param>
   </xsl:call-template>
-  <xsl:apply-templates select="$titleStmt/t:*" mode="b"/>
-  <xsl:apply-templates select="$titleStmt/../t:publicationStmt" mode="b"/>
+  <xsl:if test="xs:string($titleStmt)!=''">
+   <xsl:apply-templates select="$titleStmt/t:*" mode="b"/>
+   <xsl:apply-templates select="$titleStmt/../t:publicationStmt" mode="b"/>
+  </xsl:if>
  </xsl:template>
  
  <xsl:template match="t:publicationStmt" mode="b">

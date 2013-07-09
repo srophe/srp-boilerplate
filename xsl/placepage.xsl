@@ -6,7 +6,7 @@
  xmlns:s="http://syriaca.org"
  xmlns:saxon="http://saxon.sf.net/" 
  xmlns="http://www.w3.org/1999/xhtml"
- exclude-result-prefixes="xs t s" version="2.0">
+ exclude-result-prefixes="xs t s saxon" version="2.0">
 
  <!-- =================================================================== -->
  <!-- import component stylesheets for HTML page portions -->
@@ -21,6 +21,7 @@
  <xsl:import href="langattr.xsl"/>
  <xsl:import href="log.xsl"/>
  <xsl:import href="normalization.xsl"/>
+ <xsl:import href="place-title-std.xsl"/>
  
 
  <!-- =================================================================== -->
@@ -149,21 +150,7 @@
           <div class="span7" xml:id="place-content">
            
            <h2>
-            <xsl:for-each select="t:placeName[@xml:lang='en'][1]">
-             <bdi dir="ltr" lang="{@xml:lang}">
-              <xsl:copy-of select="@xml:lang"/>
-              <xsl:value-of select="."/>
-             </bdi>
-            </xsl:for-each>
-            <xsl:if test="t:placeName[@xml:lang='en'] and t:placeName[@xml:lang='syr']">
-             <xsl:text> — </xsl:text>
-            </xsl:if>
-            <xsl:for-each select="t:placeName[@xml:lang='syr'][1]">
-             <bdi dir="rtl" lang="{@xml:lang}">
-              <xsl:copy-of select="@xml:lang"/>
-              <xsl:value-of select="."/>
-             </bdi>
-            </xsl:for-each>
+            <xsl:call-template name="place-title-std"/>
            </h2>
            <div id="link-icons">
             <xsl:for-each select="t:idno[@type='Pleiades']">
