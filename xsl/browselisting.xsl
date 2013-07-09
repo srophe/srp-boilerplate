@@ -242,11 +242,11 @@
       </xsl:variable>
       <li>
        <a href="{$htmlurl}">
-        <xsl:apply-templates select="t:placeName[@xml:lang='syr'][1]"/>
-        <xsl:if test="t:placeName[@xml:lang='en']">
-         <bdi dir="rtl"><xsl:text> — </xsl:text></bdi>
-         <xsl:apply-templates select="t:placeName[@xml:lang='en'][1]"/>
-        </xsl:if>
+        <xsl:call-template name="place-title-std">
+         <xsl:with-param name="firstlang">syr</xsl:with-param>
+         <xsl:with-param name="secondlang">en</xsl:with-param>
+         <xsl:with-param name="withtype">no</xsl:with-param>
+        </xsl:call-template>
        </a>
       </li>
      </xsl:when>

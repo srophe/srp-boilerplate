@@ -16,16 +16,18 @@
     <xsl:param name="place" select="."/>
     <xsl:param name="withbdi" select="$withbdidefault"/>
     <xsl:param name="withtype" select="$withtypedefault"/>
+    <xsl:param name="firstlang">en</xsl:param>
+    <xsl:param name="secondlang">syr</xsl:param>
     
     
-    <xsl:apply-templates select="$place/t:placeName[@xml:lang='en'][1]" mode="std-title">
+    <xsl:apply-templates select="$place/t:placeName[@xml:lang=$firstlang][1]" mode="std-title">
       <xsl:with-param name="withbdi" select="$withbdi"/>
       <xsl:with-param name="withtype" select="$withtype"/>
     </xsl:apply-templates>
-    <xsl:if test="$place/t:placeName[@xml:lang='en'] and $place/t:placeName[@xml:lang='syr']">
+    <xsl:if test="$place/t:placeName[@xml:lang=$firstlang] and $place/t:placeName[@xml:lang=$secondlang]">
       <xsl:text> — </xsl:text>
     </xsl:if>
-    <xsl:apply-templates select="$place/t:placeName[@xml:lang='syr'][1]" mode="std-title">
+    <xsl:apply-templates select="$place/t:placeName[@xml:lang=$secondlang][1]" mode="std-title">
       <xsl:with-param name="withbdi" select="$withbdi"/>
       <xsl:with-param name="withtype">no</xsl:with-param>
     </xsl:apply-templates>
