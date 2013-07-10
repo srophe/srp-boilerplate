@@ -163,6 +163,12 @@
          </div>
         </div>
        </div>
+       <div id="externals">
+        <p><span class="label">Other formats</span></p>
+        <ul>
+         <li><a href="./full-atom.xml" rel="alternate" type="application/atom+xml" title="full set of records from the Syriac Gazetteer in Atom XML format">atom xml</a></li>
+        </ul>
+       </div>
       </div>
      </div>
      
