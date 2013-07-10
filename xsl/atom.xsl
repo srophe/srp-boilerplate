@@ -12,45 +12,66 @@
   <xsl:import href="place-title-std.xsl"/>
   
   <xsl:param name="sourcedir">../places/</xsl:param>
-  
-  <xsl:param name="destdir">../places/</xsl:param>
-  
+  <xsl:param name="destdir">../</xsl:param>
+  <xsl:param name="latestmax">10</xsl:param>
+  <xsl:param name="latestfilename">latest-atom.xml</xsl:param>  
+  <xsl:param name="fullmax">0</xsl:param>
+  <xsl:param name="fullfilename">full-atom.xml</xsl:param>
   <xsl:param name="normalization">NFKC</xsl:param>
   <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
   <xsl:param name="placeslevel">places/</xsl:param>
+  
   <xsl:variable name="idxquery"><xsl:value-of select="$sourcedir"/>index.xml</xsl:variable>
   
   <xsl:output name="atom" encoding="UTF-8" method="xml" indent="yes" exclude-result-prefixes="xs t a"/>
   <xsl:output encoding="UTF-8" method="xml" indent="yes" exclude-result-prefixes="xs t a"/>
+  
   <xsl:template name="do-atom">
     <xsl:for-each select="document($idxquery)/descendant-or-self::t:listPlace">
-      <xsl:apply-templates select="."/>
+      <!-- default: do latest -->
+      <xsl:apply-templates select="." mode="atom-out">
+        <xsl:with-param name="max" select="$latestmax"/>
+        <xsl:with-param name="filename" select="$latestfilename"/>
+      </xsl:apply-templates>
+      <!-- now do the full thing -->
+      <xsl:apply-templates select="." mode="atom-out">
+        <xsl:with-param name="max" select="$fullmax"/>
+        <xsl:with-param name="filename" select="$fullfilename"/>
+      </xsl:apply-templates>
+      <!-- now do each place as a separate feed -->
+      <xsl:apply-templates select="t:place" mode="atom-feed"/>
     </xsl:for-each>
   </xsl:template>
   
-  <xsl:template match="t:listPlace">
-    <xsl:message>whoop</xsl:message>
-    <feed xmlns="http://www.w3.org/2005/Atom">
-      <title>The Syriac Gazetteer: Latest Updates</title>
-      <link rel="self" type="application/atom+xml" href="{$base}latest-atom.xml"/>
-      <id>tag:syriaca.org,2013:gazetteer-latest</id>
-      <updated>
+  <xsl:template match="t:listPlace" mode="atom-out">
+    <xsl:param name="max" select="$latestmax"/>
+    <xsl:param name="filename" select="$latestfilename"/>
+    <xsl:result-document format="atom" href="{$destdir}{$filename}">
+      <feed xmlns="http://www.w3.org/2005/Atom">
+        <title>The Syriac Gazetteer: Latest Updates</title>
+        <link rel="self" type="application/atom+xml" href="{$base}latest-atom.xml"/>
+        <id>tag:syriaca.org,2013:gazetteer-latest</id>
+        <updated>
+          <xsl:for-each select="t:place">
+            <xsl:sort select="xs:date(t:bibl[@type='self'][1]/t:date)" order="descending"/>
+            <xsl:if test="position()=1">
+              <xsl:value-of select="xs:date(t:bibl[@type='self'][1]/t:date)"/>
+            </xsl:if>
+          </xsl:for-each>
+        </updated>
         <xsl:for-each select="t:place">
           <xsl:sort select="xs:date(t:bibl[@type='self'][1]/t:date)" order="descending"/>
-          <xsl:if test="position()=1">
-            <xsl:value-of select="xs:date(t:bibl[@type='self'][1]/t:date)"/>
+          <xsl:sort select="t:placeName[@xml:lang='en'][1]" collation="mixed"/>
+          <xsl:if test="$max=0 or ($max!=0 and not(position() &gt; $max))">
+            <xsl:apply-templates select="." mode="atom-entry"/>
           </xsl:if>
         </xsl:for-each>
-      </updated>
-      <xsl:for-each select="t:place">
-        <xsl:sort select="xs:date(t:bibl[@type='self'][1]/t:date)" order="descending"/>
-        <xsl:sort select="t:placeName[@xml:lang='en'][1]" collation="mixed"/>
-        <xsl:if test="not(position() &gt; 10)">
-          <xsl:message><xsl:value-of select="t:idno[@type='SRP']"/></xsl:message>
-          <xsl:apply-templates select="." mode="atom-out"/>
-        </xsl:if>
-        
-        <xsl:result-document format="atom" href="{$destdir}{t:idno[@type='placeID']}-atom.xml">
+      </feed>
+    </xsl:result-document>
+  </xsl:template>
+  
+  <xsl:template match="t:place" mode="atom-feed">
+        <xsl:result-document format="atom" href="{$destdir}{$placeslevel}{t:idno[@type='placeID']}-atom.xml">
           <feed xmlns="http://www.w3.org/2005/Atom">
             <title>
               <xsl:call-template name="place-title-std">
@@ -62,15 +83,12 @@
             <updated>
               <xsl:value-of select="t:bibl[@type='self'][1]/t:date[1]"/>
             </updated>
-            <xsl:apply-templates select="." mode="atom-out"/>
+            <xsl:apply-templates select="." mode="atom-entry"/>
           </feed>
         </xsl:result-document>
-      </xsl:for-each>
-    </feed>
-    
   </xsl:template>
   
-  <xsl:template match="t:place" mode="atom-out">
+  <xsl:template match="t:place" mode="atom-entry">
     <entry>
       <title>
         <xsl:call-template name="place-title-std">
@@ -88,7 +106,6 @@
       <xsl:apply-templates select="t:bibl[@type='self'][1]/t:author" mode="atom-out"/>
       <xsl:apply-templates select="t:location[@type='gps']" mode="atom-out"/>
     </entry>
-    
   </xsl:template>
   
   <xsl:template match="t:editor" mode="atom-out">
