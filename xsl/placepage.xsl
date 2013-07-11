@@ -94,7 +94,26 @@
     </xsl:choose>
    </xsl:variable>
    
-   <xsl:variable name="placenum" select="t:idno[@type='placeID']"/>
+   <xsl:variable name="placenum" select="t:idno[@type='placeID'][1]"/>
+   <xsl:variable name="thisid" select="./@xml:id"/>
+   <xsl:variable name="thisuri" select="t:idno[@type='SRP'][1]"/>
+   <xsl:if test="count($idx/descendant::t:place[@xml:id=$thisid])&gt; 1">
+    <xsl:call-template name="log">
+     <xsl:with-param name="msg">index file contains more than one place with an xml:id attribute value of <xsl:value-of select="$thisid"/>
+     </xsl:with-param>
+    </xsl:call-template>
+   </xsl:if>
+   <xsl:if test="count($idx/descendant::t:place[t:idno[@type='placeID']=$placenum])&gt; 1">
+    <xsl:call-template name="log">
+     <xsl:with-param name="msg">index file contains more than one place with an placeID value of <xsl:value-of select="$placenum"/></xsl:with-param>
+    </xsl:call-template>
+   </xsl:if>
+    <xsl:if test="count($idx/descendant::t:place[t:idno[@type='SRP']=$thisuri])&gt; 1">
+     <xsl:call-template name="log">
+      <xsl:with-param name="msg">index file contains more than one place with an SRP URI value of <xsl:value-of select="$thisuri"/></xsl:with-param>
+     </xsl:call-template>
+   </xsl:if>
+    
    <xsl:choose>
     
     <!-- make sure we have a valid placeid -->
