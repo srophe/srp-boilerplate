@@ -5,7 +5,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/641-atom.xml"/>
    <id>tag:syriaca.org,2013:place-641</id>
-   <updated>2013-07-03-04:00</updated>
+   <updated>2013-07-11-04:00</updated>
    <entry>
       <title>Rome (settlement)</title>
       <link rel="alternate"
@@ -15,9 +15,10 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/641-atom.xml"/>
       <id>tag:syriaca.org,2013:place-641</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
+      <contributor>Anthony Davis</contributor>
    </entry>
 </feed>

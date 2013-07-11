@@ -5,7 +5,22 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/latest-atom.xml"/>
    <id>tag:syriaca.org,2013:gazetteer-latest</id>
-   <updated>2013-07-03-04:00</updated>
+   <updated>2013-07-11-04:00</updated>
+   <entry>
+      <title>Ābājālūi (settlement)</title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/881.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/881-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-881</id>
+      <updated>2013-07-11-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+      <contributor>Anthony Davis</contributor>
+   </entry>
    <entry>
       <title>Abba Ṣliba (monastery)</title>
       <link rel="alternate"
@@ -15,10 +30,40 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/659-atom.xml"/>
       <id>tag:syriaca.org,2013:place-659</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
+   </entry>
+   <entry>
+      <title>Abnāye (settlement)</title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/882.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/882-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-882</id>
+      <updated>2013-07-11-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+      <contributor>Anthony Davis</contributor>
+   </entry>
+   <entry>
+      <title>Abrō (settlement)</title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/883.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/883-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-883</id>
+      <updated>2013-07-11-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+      <contributor>Anthony Davis</contributor>
    </entry>
    <entry>
       <title>Acre (settlement)</title>
@@ -29,7 +74,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/14-atom.xml"/>
       <id>tag:syriaca.org,2013:place-14</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary>An ancient port on the coast of Phoenice, and the last Crusader foothold in the Levant.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -47,7 +92,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/15-atom.xml"/>
       <id>tag:syriaca.org,2013:place-15</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary>A city on the Seyhan River in south-eastern Anatolia, near the Mediterranean coast.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -65,11 +110,26 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/5-atom.xml"/>
       <id>tag:syriaca.org,2013:place-5</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary>A region west of the Caspian Sea, encompassing the modern country of Azerbaijan and the provinces of northwest Iran.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Robert Aydin</contributor>
+   </entry>
+   <entry>
+      <title>Āḏeḥ (settlement)</title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/884.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/884-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-884</id>
+      <updated>2013-07-11-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+      <contributor>Anthony Davis</contributor>
    </entry>
    <entry>
       <title>Aegeae (settlement)</title>
@@ -80,7 +140,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/16-atom.xml"/>
       <id>tag:syriaca.org,2013:place-16</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary>An ancient and medieval port on the coast of Cilicia.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -97,75 +157,9 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/7-atom.xml"/>
       <id>tag:syriaca.org,2013:place-7</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary>The Roman province of Egypt</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
-   </entry>
-   <entry>
-      <title>Agel (settlement) — ܐܓܠ</title>
-      <link rel="alternate"
-            type="text/html"
-            href="http://srophe.github.io/srp-places-app/places/291.html"/>
-      <link rel="self"
-            type="application/atom+xml"
-            href="http://srophe.github.io/srp-places-app/places/291-atom.xml"/>
-      <id>tag:syriaca.org,2013:place-291</id>
-      <updated>2013-07-03-04:00</updated>
-      <summary/>
-      <author>Thomas A. Carlson</author>
-      <author>David A. Michelson</author>
-      <contributor>Robert Aydin</contributor>
-   </entry>
-   <entry>
-      <title>Akhlat (settlement) — ܟܠܐܛ</title>
-      <link rel="alternate"
-            type="text/html"
-            href="http://srophe.github.io/srp-places-app/places/17.html"/>
-      <link rel="self"
-            type="application/atom+xml"
-            href="http://srophe.github.io/srp-places-app/places/17-atom.xml"/>
-      <id>tag:syriaca.org,2013:place-17</id>
-      <updated>2013-07-03-04:00</updated>
-      <summary>A town on the northwestern coast of Lake Van in eastern Anatolia.</summary>
-      <author>Thomas A. Carlson</author>
-      <author>David A. Michelson</author>
-      <contributor>Anthony Davis</contributor>
-      <georss:where>
-         <georss:point>38.752778 42.494444</georss:point>
-      </georss:where>
-   </entry>
-   <entry>
-      <title>Albaq (region)</title>
-      <link rel="alternate"
-            type="text/html"
-            href="http://srophe.github.io/srp-places-app/places/730.html"/>
-      <link rel="self"
-            type="application/atom+xml"
-            href="http://srophe.github.io/srp-places-app/places/730-atom.xml"/>
-      <id>tag:syriaca.org,2013:place-730</id>
-      <updated>2013-07-03-04:00</updated>
-      <summary/>
-      <author>Thomas A. Carlson</author>
-      <author>David A. Michelson</author>
-      <contributor>Anthony Davis</contributor>
-   </entry>
-   <entry>
-      <title>Aleppo (settlement) — ܚܠܒ</title>
-      <link rel="alternate"
-            type="text/html"
-            href="http://srophe.github.io/srp-places-app/places/18.html"/>
-      <link rel="self"
-            type="application/atom+xml"
-            href="http://srophe.github.io/srp-places-app/places/18-atom.xml"/>
-      <id>tag:syriaca.org,2013:place-18</id>
-      <updated>2013-07-03-04:00</updated>
-      <summary>A major city in northern Syria.</summary>
-      <author>Thomas A. Carlson</author>
-      <author>David A. Michelson</author>
-      <contributor>Anthony Davis</contributor>
-      <georss:where>
-         <georss:point>36.21667 37.16667</georss:point>
-      </georss:where>
    </entry>
 </feed>

@@ -5,7 +5,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/78-atom.xml"/>
    <id>tag:syriaca.org,2013:place-78</id>
-   <updated>2013-07-03-04:00</updated>
+   <updated>2013-07-10-04:00</updated>
    <entry>
       <title>Edessa (settlement) — ܐܘܪܗܝ</title>
       <link rel="alternate"
@@ -15,12 +15,13 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/78-atom.xml"/>
       <id>tag:syriaca.org,2013:place-78</id>
-      <updated>2013-07-03-04:00</updated>
-      <summary>A city of Mesopotamia, the capital of the ancient kingdom of Osrhoene, modern Urfa.</summary>
+      <updated>2013-07-10-04:00</updated>
+      <summary>A city ofMesopotamia, the capital of the ancient kingdom ofOsrhoene, modern Urfa.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Robert Aydin</contributor>
       <contributor>Dayroyo Roger-Youssef Akhrass</contributor>
+      <contributor>Anthony Davis</contributor>
       <georss:where>
          <georss:point>37.15 38.8</georss:point>
       </georss:where>

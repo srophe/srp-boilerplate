@@ -5,7 +5,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/609-atom.xml"/>
    <id>tag:syriaca.org,2013:place-609</id>
-   <updated>2013-07-03-04:00</updated>
+   <updated>2013-07-11-04:00</updated>
    <entry>
       <title>Babai of Nisibis (monastery)</title>
       <link rel="alternate"
@@ -15,7 +15,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/609-atom.xml"/>
       <id>tag:syriaca.org,2013:place-609</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>

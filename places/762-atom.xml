@@ -5,7 +5,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/762-atom.xml"/>
    <id>tag:syriaca.org,2013:place-762</id>
-   <updated>2013-07-03-04:00</updated>
+   <updated>2013-07-11-04:00</updated>
    <entry>
       <title>Marde (region)</title>
       <link rel="alternate"
@@ -15,7 +15,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/762-atom.xml"/>
       <id>tag:syriaca.org,2013:place-762</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>

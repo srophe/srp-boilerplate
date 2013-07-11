@@ -5,7 +5,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/46-atom.xml"/>
    <id>tag:syriaca.org,2013:place-46</id>
-   <updated>2013-07-03-04:00</updated>
+   <updated>2013-07-11-04:00</updated>
    <entry>
       <title>Beirut (settlement)</title>
       <link rel="alternate"
@@ -15,7 +15,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/46-atom.xml"/>
       <id>tag:syriaca.org,2013:place-46</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary>A port city on the coast of Lebanon.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>

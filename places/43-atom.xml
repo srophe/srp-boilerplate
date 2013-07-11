@@ -5,7 +5,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/43-atom.xml"/>
    <id>tag:syriaca.org,2013:place-43</id>
-   <updated>2013-07-03-04:00</updated>
+   <updated>2013-07-11-04:00</updated>
    <entry>
       <title>Balikh (river) — ܢܗܪ ܒܐܠܚ</title>
       <link rel="alternate"
@@ -15,7 +15,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/43-atom.xml"/>
       <id>tag:syriaca.org,2013:place-43</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary>A tributary of the Euphrates that enters it at al-Raqqa.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>

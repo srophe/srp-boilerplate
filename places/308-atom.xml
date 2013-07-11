@@ -5,7 +5,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/308-atom.xml"/>
    <id>tag:syriaca.org,2013:place-308</id>
-   <updated>2013-07-03-04:00</updated>
+   <updated>2013-07-11-04:00</updated>
    <entry>
       <title>Tabriz (settlement) — ܬܒܪܝܙ</title>
       <link rel="alternate"
@@ -15,10 +15,11 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/308-atom.xml"/>
       <id>tag:syriaca.org,2013:place-308</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Robert Aydin</contributor>
+      <contributor>Anthony Davis</contributor>
    </entry>
 </feed>

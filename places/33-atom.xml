@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>Beth Garmai (province) — ܒܝܬ ܓܪ̈ܡܝ</title>
+   <title>Beth Garmai (diocese) — ܒܝܬ ܓܪ̈ܡܝ</title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/33-atom.xml"/>
    <id>tag:syriaca.org,2013:place-33</id>
-   <updated>2013-07-03-04:00</updated>
+   <updated>2013-07-11-04:00</updated>
    <entry>
-      <title>Beth Garmai (province) — ܒܝܬ ܓܪ̈ܡܝ</title>
+      <title>Beth Garmai (diocese) — ܒܝܬ ܓܪ̈ܡܝ</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/33.html"/>
@@ -15,7 +15,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/33-atom.xml"/>
       <id>tag:syriaca.org,2013:place-33</id>
-      <updated>2013-07-03-04:00</updated>
+      <updated>2013-07-11-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
