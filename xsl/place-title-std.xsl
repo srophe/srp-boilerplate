@@ -109,10 +109,10 @@
     <xsl:param name="withbdi" select="$withbdidefault"/>
     <xsl:choose>
       <xsl:when test="$withbdi='yes'">
-        <bdi dir="ltr">[ Not Available ]</bdi>
+        <bdi dir="ltr">[ Syriac Not Available ]</bdi>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:text>[ Not Available ]</xsl:text>
+        <xsl:text>[ Romanized Not Available ]</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
