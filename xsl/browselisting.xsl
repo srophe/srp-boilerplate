@@ -253,7 +253,6 @@
          <xsl:call-template name="place-title-std">
           <xsl:with-param name="firstlang">syr</xsl:with-param>
           <xsl:with-param name="secondlang">en</xsl:with-param>
-          <xsl:with-param name="withtype">no</xsl:with-param>
          </xsl:call-template>
         </a>
        </li>
