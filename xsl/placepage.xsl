@@ -286,14 +286,25 @@
   <div id="placenames">
    <h3>Names</h3>
    <ul>
+    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='syr']">
+     <xsl:with-param name="idx" select="$idx"/>
+     <xsl:sort lang="syr" select="."/>
+    </xsl:apply-templates>
     <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en']">
      <xsl:with-param name="idx" select="$idx"/>
+     <xsl:sort collation="mixed" select="."/>
     </xsl:apply-templates>
-    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang!='en']">
+    <xsl:apply-templates select="t:placeName[(not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword') and starts-with(@xml:lang, 'syr')]">
      <xsl:with-param name="idx" select="$idx"/>
+     <xsl:sort lang="syr" select="."/>
     </xsl:apply-templates>
-    <xsl:apply-templates select="t:placeName[not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword']">
+    <xsl:apply-templates select="t:placeName[starts-with(@xml:lang, 'ar')]">
      <xsl:with-param name="idx" select="$idx"/>
+     <xsl:sort lang="ar" select="."/>     
+    </xsl:apply-templates>
+    <xsl:apply-templates select="t:placeName[(not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword') and not(starts-with(@xml:lang, 'syr') or starts-with(@xml:lang, 'ar'))]">
+     <xsl:with-param name="idx" select="$idx"/>
+     <xsl:sort collation="mixed" select="."/>
     </xsl:apply-templates>
    </ul>
   </div>
