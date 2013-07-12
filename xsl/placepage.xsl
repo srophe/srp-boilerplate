@@ -285,23 +285,23 @@
   <div id="placenames">
    <h3>Names</h3>
    <ul>
-    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='syr']">
+    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='syr']" mode="list">
      <xsl:with-param name="idx" select="$idx"/>
      <xsl:sort lang="syr" select="."/>
     </xsl:apply-templates>
-    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en']">
+    <xsl:apply-templates select="t:placeName[@syriaca-tags='#syriaca-headword' and @xml:lang='en']" mode="list">
      <xsl:with-param name="idx" select="$idx"/>
      <xsl:sort collation="mixed" select="."/>
     </xsl:apply-templates>
-    <xsl:apply-templates select="t:placeName[(not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword') and starts-with(@xml:lang, 'syr')]">
+    <xsl:apply-templates select="t:placeName[(not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword') and starts-with(@xml:lang, 'syr')]" mode="list">
      <xsl:with-param name="idx" select="$idx"/>
      <xsl:sort lang="syr" select="."/>
     </xsl:apply-templates>
-    <xsl:apply-templates select="t:placeName[starts-with(@xml:lang, 'ar')]">
+    <xsl:apply-templates select="t:placeName[starts-with(@xml:lang, 'ar')]" mode="list">
      <xsl:with-param name="idx" select="$idx"/>
      <xsl:sort lang="ar" select="."/>     
     </xsl:apply-templates>
-    <xsl:apply-templates select="t:placeName[(not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword') and not(starts-with(@xml:lang, 'syr') or starts-with(@xml:lang, 'ar'))]">
+    <xsl:apply-templates select="t:placeName[(not(@syriaca-tags) or @syriaca-tags!='#syriaca-headword') and not(starts-with(@xml:lang, 'syr') or starts-with(@xml:lang, 'ar'))]" mode="list">
      <xsl:with-param name="idx" select="$idx"/>
      <xsl:sort collation="mixed" select="."/>
     </xsl:apply-templates>
@@ -330,7 +330,7 @@
   </div>
  </xsl:template>
  
- <xsl:template match="t:location[@type='geopolitical']">
+ <xsl:template match="t:location[@type='geopolitical' or @type='relative']">
   <li><xsl:apply-templates/>
   <xsl:call-template name="do-refs"/></li>
  </xsl:template>
@@ -339,25 +339,43 @@
   <li>Coordinates: <xsl:value-of select="t:geo"/><xsl:call-template name="do-refs"/></li>
  </xsl:template>
  
- <xsl:template match="t:region">
+ <xsl:template match="t:offset | t:measure">
+  <xsl:apply-templates select="." mode="out-normal"/>
+ </xsl:template>
+ 
+ <xsl:template match="t:placeName | t:region | t:settlement">
   <xsl:choose>
-   <xsl:when test="@ref and starts-with(@ref, $uribase)">
-    <a href="{tokenize(@ref, '/')[last()]}.html"><xsl:apply-templates select="." mode="out-normal"/></a>
+   <xsl:when test="@ref">
+    <xsl:choose>
+     <xsl:when test="starts-with(@ref, $uribase)">
+      <a class="placeName" href="{substring-after(@ref, $uribase)}.html">
+       <xsl:call-template name="langattr"/>
+       <xsl:apply-templates mode="cleanout"/></a>
+     </xsl:when>
+     <xsl:otherwise>
+      <a class="placeName" href="{@ref}">
+       <xsl:call-template name="langattr"/>
+       <xsl:apply-templates mode="cleanout"/></a>
+      <xsl:call-template name="log">
+       <xsl:with-param name="msg">ref attribute value (<xsl:value-of select="@ref"/>) on element didn't start with '<xsl:value-of select="$uribase"/>' so just linked to it as is</xsl:with-param>
+      </xsl:call-template>
+     </xsl:otherwise>
+    </xsl:choose>
    </xsl:when>
    <xsl:otherwise>
-    <xsl:apply-templates select="." mode="out-normal"/>
+    <span class="placeName">
+     <xsl:call-template name="langattr"/>
+     <xsl:apply-templates mode="cleanout"/>
+    </span>
    </xsl:otherwise>
   </xsl:choose>
  </xsl:template>
 
  <xsl:template match="t:placeName" mode="summary">
   <xsl:text> : </xsl:text>
-  <span class="placeName">
-   <xsl:call-template name="langattr"/>
-   <xsl:apply-templates select="." mode="out-normal"/>
-  </span>
+  <xsl:apply-templates select="."/>
  </xsl:template>
- <xsl:template match="t:placeName">
+ <xsl:template match="t:placeName"  mode="list">
   <xsl:param name="idx"/>
   <li dir="ltr">
    
@@ -470,27 +488,7 @@
  </xsl:template>
  
  <xsl:template match="t:placeName[local-name(..)='desc']" mode="cleanout">
-  <xsl:choose>
-   <xsl:when test="@ref">
-    <xsl:choose>
-     <xsl:when test="starts-with(@ref, 'http://syriaca.org/place/')">
-      <a href="{substring-after(@ref, 'http://syriaca.org/place/')}.html"><xsl:apply-templates mode="cleanout"/></a>
-     </xsl:when>
-     <xsl:otherwise>
-      <a href="{@ref}"><xsl:apply-templates mode="cleanout"/></a>
-      <xsl:call-template name="log">
-       <xsl:with-param name="msg">ref attribute value (<xsl:value-of select="@ref"/>) on placename element inside desc didn't start with 'http://syriaca.org/place/ so just linked to it as is</xsl:with-param>
-      </xsl:call-template>
-     </xsl:otherwise>
-    </xsl:choose>
-   </xsl:when>
-   <xsl:otherwise>
-    <xsl:call-template name="log">
-     <xsl:with-param name="msg">placeName element within a desc, but has no 'ref' attribute; passed through as plain text</xsl:with-param>
-    </xsl:call-template>
-    <xsl:apply-templates mode="cleanout"/>
-   </xsl:otherwise>
-  </xsl:choose>
+  <xsl:apply-templates select="."/>
  </xsl:template>
  
  <xsl:template match="text()" mode="cleanout">
