@@ -202,9 +202,8 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
  <xsl:template name="do-list-english">
  <ul>
-  <xsl:for-each select="document($idxquery)/descendant-or-self::t:place[t:placeName[@xml:lang='en']]">
+  <xsl:for-each select="document($idxquery)/descendant-or-self::t:place">
    <xsl:sort collation="mixed" select="./t:placeName[@xml:lang='en'][1]/@reg"/>
-   <xsl:message>foo</xsl:message>
    <xsl:variable name="placenum" select="t:idno[@type='placeID']"/>
    <xsl:choose>
     <xsl:when test="matches($placenum, '^\d+$')">
@@ -236,28 +235,33 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
  <xsl:template name="do-list-syriac">
   <ul>
-   <xsl:for-each select="document($idxquery)/descendant-or-self::t:place[t:placeName[@xml:lang='syr']]">
-    <xsl:sort lang="syr" select="./t:placeName[@xml:lang='syr'][1]/@reg"/>
-    <xsl:variable name="placenum" select="t:idno[@type='placeID']"/>
-    <xsl:choose>
-     <xsl:when test="matches($placenum, '^\d+$')">
-      <xsl:variable name="htmlurl">
-       <xsl:value-of select="$destdir"/>
-       <xsl:value-of select="$placenum"/>
-       <xsl:text>.html</xsl:text>
-      </xsl:variable>
-      <li>
-       <a href="{$htmlurl}">
-        <xsl:call-template name="place-title-std">
-         <xsl:with-param name="firstlang">syr</xsl:with-param>
-         <xsl:with-param name="secondlang">en</xsl:with-param>
-         <xsl:with-param name="withtype">no</xsl:with-param>
-        </xsl:call-template>
-       </a>
-      </li>
-     </xsl:when>
-    </xsl:choose>
-   </xsl:for-each>
+   <xsl:for-each-group select="document($idxquery)/descendant-or-self::t:place" group-by="count(t:placeName[@xml:lang='syr'])">
+    <xsl:sort order="descending" select="current-grouping-key()"/>
+    <xsl:for-each select="current-group()/descendant-or-self::t:place">
+     <xsl:sort lang="syr" select="./t:placeName[@xml:lang='syr'][1]/@reg"/>
+     <xsl:sort collation="mixed" select="./t:placeName[@xml:lang='en'][1]/@reg"/>
+     <xsl:variable name="placenum" select="t:idno[@type='placeID']"/>
+     <xsl:choose>
+      <xsl:when test="matches($placenum, '^\d+$')">
+       <xsl:variable name="htmlurl">
+        <xsl:value-of select="$destdir"/>
+        <xsl:value-of select="$placenum"/>
+        <xsl:text>.html</xsl:text>
+       </xsl:variable>
+       <li>
+        <a href="{$htmlurl}">
+         <xsl:call-template name="place-title-std">
+          <xsl:with-param name="firstlang">syr</xsl:with-param>
+          <xsl:with-param name="secondlang">en</xsl:with-param>
+          <xsl:with-param name="withtype">no</xsl:with-param>
+         </xsl:call-template>
+        </a>
+       </li>
+      </xsl:when>
+     </xsl:choose>
+    </xsl:for-each>
+   </xsl:for-each-group>
+   
   </ul>
  </xsl:template>
 

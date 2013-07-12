@@ -18,19 +18,41 @@
     <xsl:param name="withtype" select="$withtypedefault"/>
     <xsl:param name="firstlang">en</xsl:param>
     <xsl:param name="secondlang">syr</xsl:param>
+    <xsl:param name="withplaceholder">yes</xsl:param>
     
+    <!-- handle first lang -->
+    <xsl:choose>
+      <xsl:when test="$place/t:placeName[@xml:lang=$firstlang]">
+        <xsl:apply-templates select="$place/t:placeName[@xml:lang=$firstlang][1]" mode="std-title">
+          <xsl:with-param name="withbdi" select="$withbdi"/>
+          <xsl:with-param name="withtype" select="$withtype"/>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="not-avail">
+          <xsl:with-param name="withbdi" select="$withbdi"/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
     
-    <xsl:apply-templates select="$place/t:placeName[@xml:lang=$firstlang][1]" mode="std-title">
-      <xsl:with-param name="withbdi" select="$withbdi"/>
-      <xsl:with-param name="withtype" select="$withtype"/>
-    </xsl:apply-templates>
-    <xsl:if test="$place/t:placeName[@xml:lang=$firstlang] and $place/t:placeName[@xml:lang=$secondlang]">
-      <xsl:text> — </xsl:text>
-    </xsl:if>
-    <xsl:apply-templates select="$place/t:placeName[@xml:lang=$secondlang][1]" mode="std-title">
-      <xsl:with-param name="withbdi" select="$withbdi"/>
-      <xsl:with-param name="withtype">no</xsl:with-param>
-    </xsl:apply-templates>
+    <!-- separator -->
+    <xsl:text> — </xsl:text>
+    
+    <!-- handle second lang -->
+    <xsl:choose>
+      <xsl:when test="$place/t:placeName[@xml:lang=$secondlang]">
+        <xsl:apply-templates select="$place/t:placeName[@xml:lang=$secondlang][1]" mode="std-title">
+          <xsl:with-param name="withbdi" select="$withbdi"/>
+          <xsl:with-param name="withtype">no</xsl:with-param>
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="not-avail">
+          <xsl:with-param name="withbdi" select="$withbdi"/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+
   </xsl:template>
   
   <xsl:template match="t:placeName" mode="std-title">
@@ -81,5 +103,17 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:if>
+  </xsl:template>
+  
+  <xsl:template name="not-avail">
+    <xsl:param name="withbdi" select="$withbdidefault"/>
+    <xsl:choose>
+      <xsl:when test="$withbdi='yes'">
+        <bdi dir="ltr">[ Not Available ]</bdi>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>[ Not Available ]</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 </xsl:stylesheet>
