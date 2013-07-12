@@ -289,13 +289,13 @@
    <h3>Location</h3>
    <ul><xsl:apply-templates select="t:location"/></ul>
   </div>
-  <xsl:if test="$idx/descendant::t:region[@ref=$thisuri]">
+  <xsl:if test="$idx/descendant::t:location[@type='geopolitical']/t:*[@ref=$thisuri]">
    <div id="contents">
-    <h3>Subordinant Places</h3>
+    <h3>Contains</h3>
     <ul>
      <xsl:for-each select="$idx/descendant::t:region[@ref=$thisuri]/ancestor::t:place">
-      <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en']"/>
-      <li><a href="{t:idno[@type='placeID']}.html"><xsl:apply-templates mode="out-normal" select="t:placeName[@xml:lang='en'][1]"/></a></li>
+      <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en'][1]/@reg"/>
+      <li><a href="{t:idno[@type='placeID']}.html"><xsl:call-template name="place-title-std"/></a></li>
      </xsl:for-each>
     </ul>
    </div>
