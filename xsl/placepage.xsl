@@ -199,7 +199,7 @@
             <p><xsl:apply-templates mode="cleanout"/></p>
            </xsl:for-each>
     
-           <!-- ADD: page content here -->
+           <!-- core page content -->
            <div class="tabbable">
             <ul class="nav nav-tabs" id="nametabs">
              <li class="active"><a href="#summary" data-toggle="tab">summary</a></li>
@@ -356,20 +356,7 @@
     <xsl:call-template name="langattr"/>
     <xsl:apply-templates select="." mode="out-normal"/>
    </span>
-   
-   <!-- if there is language info, make it explicit for readers -->
-   <xsl:if test="@xml:lang">
-    <xsl:variable name="thislang" select="@xml:lang"/>
-    <xsl:text> </xsl:text>
-    <xsl:for-each select="./ancestor::t:TEI/descendant::t:language[@ident=current()/@xml:lang][1]">
-     <bdi dir="ltr">
-      <xsl:text>(</xsl:text>
-      <xsl:apply-templates select="." mode="out-normal"/>
-      <xsl:text>)</xsl:text>
-     </bdi>
-    </xsl:for-each>
-   </xsl:if>
-   
+      
    <xsl:call-template name="do-refs"/>
   </li>
  </xsl:template>
@@ -381,6 +368,7 @@
    <xsl:variable name="biblids" select="tokenize(@source, ' ')"/>
    <xsl:variable name="last" select="$biblids[last()]"/>
    <bdi class="footnote-refs" dir="ltr">
+    <xsl:text> </xsl:text>
     <xsl:for-each select="$biblids">
      <xsl:variable name="sought" select="substring-after(., '#')"/>
      <xsl:apply-templates select="$root/descendant::t:bibl[@xml:id=$sought]" mode="footnote-ref">
