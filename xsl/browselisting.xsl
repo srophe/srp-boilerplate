@@ -97,7 +97,8 @@
  <xsl:param name="name-page-long">Browse Lists</xsl:param>
  <xsl:param name="copyright-holders">CHANGE THE COPYRIGHT HOLDERS PARAMETER</xsl:param>
  <xsl:param name="copyright-year">2013</xsl:param>
-
+ <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
+ 
  <xsl:variable name="idxquery"><xsl:value-of select="$sourcedir"/>index.xml</xsl:variable>
  
  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
@@ -143,6 +144,9 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="$name-page-long"/>
        </h2>
+       <div id="link-icons">
+        <a href="https://maps.google.com/maps?f=q&amp;hl=en&amp;q={$base}full-atom.xml"><img src="./img/gmaps-25.png" alt="The Google Maps icon" title="click to view all known locations on Google Maps"/></a>
+       </div>
        <p><xsl:value-of select="$description-page"/></p>
 
        <div class="tabbable">
