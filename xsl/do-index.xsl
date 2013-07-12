@@ -185,7 +185,14 @@
   </xsl:template>
   
   <xsl:template match="text()" mode="cleancopy">
-    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:variable name="raw" select="."/>
+    <xsl:if test="substring($raw, 1, 1)=' '">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="normalize-space($raw)"/>
+    <xsl:if test="substring($raw, string-length($raw))=' '">
+      <xsl:text> </xsl:text>
+    </xsl:if>
   </xsl:template>
   
   <xsl:template match="t:geo | t:region" mode="cleancopy">
