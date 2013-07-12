@@ -177,3 +177,22 @@ dt {
 dd {
 	margin-top: 0.5em;
 }
+
+div[id|=place] h3 {
+	font-size: medium;
+}
+div[id|=place] > div:first-of-type {
+	width: 30%;
+	float: right;
+	padding: 1em;
+	padding-top: 0px;
+	background-color: #EEE;
+}
+div[id|=place] > div:first-of-type > h3, div[id|=place] > div:first-of-type + div > h3 {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+div[id|=place] > div:last-of-type {
+	margin-bottom: 3em;
+}

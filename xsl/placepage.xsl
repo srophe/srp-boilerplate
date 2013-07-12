@@ -199,24 +199,13 @@
            </xsl:for-each>
     
            <!-- core page content -->
-           <div class="tabbable">
-            <ul class="nav nav-tabs" id="nametabs">
-             <li class="active"><a href="#summary" data-toggle="tab">summary</a></li>
-             <li><a href="#full" data-toggle="tab">full record</a></li>
-            </ul>
             <xsl:for-each select="document($sourcedoc)/descendant-or-self::t:place[1]">
-             <div class="tab-content">
-              <div class="tab-pane active" id="summary">
-               <xsl:apply-templates select="." mode="summary"/>
-              </div>
-              <div class="tab-pane" id="full">
+              <div id="{@xml:id}">
                <xsl:apply-templates select=".">
                 <xsl:with-param name="idx" select="$idx"/>
                </xsl:apply-templates>
               </div>
-             </div>
             </xsl:for-each>
-           </div>
            <div id="externals">
            <p><span class="label">Other formats</span></p>
             <ul>
@@ -252,36 +241,11 @@
   </xsl:for-each>
  </xsl:template>
  
- <xsl:template match="t:place" mode="summary">
-  <p>Alternate names
-  <xsl:for-each-group select="t:placeName" group-by="@xml:lang">
-   <xsl:sort select="current-grouping-key()"/>
-   <xsl:apply-templates select="." mode="summary">
-    <xsl:sort select="."/>
-   </xsl:apply-templates>
-  </xsl:for-each-group></p>
-  <p>Place type: <xsl:value-of select="@type"/></p>
- </xsl:template>
- 
  <xsl:template match="t:place">
   <xsl:param name="idx"/>
   <xsl:variable name="thistype" select="@type"/>
   <xsl:variable name="thisid" select="@xml:id"/>
   <xsl:variable name="thisuri" select="$idx/descendant::t:place[@xml:id=$thisid]/t:idno[@type='SRP']"/>
-  <div id="type">
-   <h3>Place Type</h3>
-   <ul class="dropdown">
-    <li><a data-toggle="dropdown" href="#">
-     <xsl:value-of select="$thistype"/>
-    </a>
-    <ul class="dropdown-menu">
-     <xsl:for-each select="$idx/descendant-or-self::t:place[@type=$thistype and not(@xml:id=$thisid)]">
-      <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en'][1]/@reg"/>
-      <li><a href="{t:idno[@type='placeID']}.html"><xsl:value-of select="t:placeName[@xml:lang='en'][1]"/></a></li>
-     </xsl:for-each>
-    </ul></li>
-   </ul>
-  </div>
   <div id="placenames">
    <h3>Names</h3>
    <ul>
@@ -305,6 +269,20 @@
      <xsl:with-param name="idx" select="$idx"/>
      <xsl:sort collation="mixed" select="."/>
     </xsl:apply-templates>
+   </ul>
+  </div>
+  <div id="type">
+   <h3>Place Type</h3>
+   <ul class="dropdown">
+    <li><a data-toggle="dropdown" href="#">
+     <xsl:value-of select="$thistype"/>
+    </a>
+    <ul class="dropdown-menu">
+     <xsl:for-each select="$idx/descendant-or-self::t:place[@type=$thistype and not(@xml:id=$thisid)]">
+      <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en'][1]/@reg"/>
+      <li><a href="{t:idno[@type='placeID']}.html"><xsl:value-of select="t:placeName[@xml:lang='en'][1]"/></a></li>
+     </xsl:for-each>
+    </ul></li>
    </ul>
   </div>
   <div id="location">
@@ -371,10 +349,6 @@
   </xsl:choose>
  </xsl:template>
 
- <xsl:template match="t:placeName" mode="summary">
-  <xsl:text> : </xsl:text>
-  <xsl:apply-templates select="."/>
- </xsl:template>
  <xsl:template match="t:placeName"  mode="list">
   <xsl:param name="idx"/>
   <li dir="ltr">
