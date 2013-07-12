@@ -233,7 +233,7 @@
 <place xml:id="place-166" type="state"><!--WARNING: 166.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name166-1" xml:lang="en" reg="Roman Empire">Roman Empire</placeName>
 <desc type="abstract"/><idno type="placeID">166</idno>
 <idno type="SRP">http://syriaca.org/place/166</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Roman_Empire</idno><!--WARNING: 166.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-167" type="monastery"><!--WARNING: 167.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name167-1" xml:lang="en" reg="Rabban Bar ʿEdta">Rabban Bar ʿEdta</placeName>
+<place xml:id="place-167" type="monastery"><!--WARNING: 167.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name167-1" xml:lang="en" reg="Rabban Bar Edta">Rabban Bar ʿEdta</placeName>
 <desc type="abstract"/><idno type="placeID">167</idno>
 <idno type="SRP">http://syriaca.org/place/167</idno><!--WARNING: 167.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-168" type="monastery"><!--WARNING: 168.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name168-1" xml:lang="en" reg="Rabban Hormizd">Rabban Hormizd</placeName>
@@ -246,7 +246,7 @@
 <placeName xml:id="name17-3" xml:lang="syr" reg="ܟܠܐܛ">ܟܠܐܛ</placeName>
 <desc type="abstract">A town on the northwestern coast of Lake Van in eastern Anatolia.</desc><idno type="placeID">17</idno>
 <idno type="SRP">http://syriaca.org/place/17</idno><idno type="Pleiades">http://pleiades.stoa.org/places/874409</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Ahlat</idno><location type="gps"> <geo>38.752778 42.494444</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-172" type="settlement"><placeName xml:id="name172-1" xml:lang="en" reg="Reshʿayna">Reshʿayna</placeName>
+<place xml:id="place-172" type="settlement"><placeName xml:id="name172-1" xml:lang="en" reg="Reshayna">Reshʿayna</placeName>
 <placeName xml:id="name172-3" xml:lang="syr" reg="ܪܝܫ ܥܝܢܐ">ܪܝܫ ܥܝܢܐ</placeName>
 <desc type="abstract"/><idno type="placeID">172</idno>
 <idno type="SRP">http://syriaca.org/place/172</idno><idno type="Pleiades">http://pleiades.stoa.org/places/874662</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Ras_al-Ayn,_Syria</idno><location type="gps"> <geo>36.82584 40.04962</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -333,7 +333,7 @@
 <place xml:id="place-197" type="settlement"><!--WARNING: 197.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name197-1" xml:lang="en" reg="Telkepe">Telkepe</placeName>
 <desc type="abstract"/><idno type="placeID">197</idno>
 <idno type="SRP">http://syriaca.org/place/197</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Tel_Keppe</idno><location type="gps"> <geo>36.489444 43.119167</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-198" type="settlement"><placeName xml:id="name198-1" xml:lang="en" reg="Tell ʿAda">Tell ʿAda</placeName>
+<place xml:id="place-198" type="settlement"><placeName xml:id="name198-1" xml:lang="en" reg="Tell Ada">Tell ʿAda</placeName>
 <placeName xml:id="name198-2" xml:lang="syr" reg="ܬܠܥܕܐ">ܬܠܥܕܐ</placeName>
 <desc type="abstract"/><idno type="placeID">198</idno>
 <idno type="SRP">http://syriaca.org/place/198</idno><location type="gps"> <geo>35.13748 37.10318</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -417,14 +417,14 @@
 <place xml:id="place-220" type="settlement"><!--WARNING: 220.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name220-1" xml:lang="en" reg="Ḥulwān">Ḥulwān</placeName>
 <desc type="abstract"/><idno type="placeID">220</idno>
 <idno type="SRP">http://syriaca.org/place/220</idno><idno type="Pleiades">http://pleiades.stoa.org/places/903043</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Hulwan,_Iran</idno><location type="gps"> <geo>34.465 45.855</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-221" type="region"><placeName xml:id="name221-1" xml:lang="en" reg="Ṭur ʿAbdin">Ṭur ʿAbdin</placeName>
+<place xml:id="place-221" type="region"><placeName xml:id="name221-1" xml:lang="en" reg="Ṭur Abdin">Ṭur ʿAbdin</placeName>
 <placeName xml:id="name221-2" xml:lang="syr" reg="ܛܘܪܥܒܕܝܢ">ܛܘܪܥܒܕܝܢ</placeName>
 <desc type="abstract"/><idno type="placeID">221</idno>
 <idno type="SRP">http://syriaca.org/place/221</idno><idno type="Pleiades">http://pleiades.stoa.org/places/874477</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Tur_Abdin</idno><!--WARNING: 221.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-222" type="settlement"><!--WARNING: 222.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name222-1" xml:lang="en" reg="Aintab">ʿAintab</placeName>
 <desc type="abstract"/><idno type="placeID">222</idno>
 <idno type="SRP">http://syriaca.org/place/222</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Gaziantep</idno><location type="gps"> <geo>37.066667 37.383333</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-223" type="monastery"><!--WARNING: 223.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name223-1" xml:lang="en" reg="Beth ʿAbe">Beth ʿAbe</placeName>
+<place xml:id="place-223" type="monastery"><!--WARNING: 223.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name223-1" xml:lang="en" reg="Beth Abe">Beth ʿAbe</placeName>
 <desc type="abstract"/><idno type="placeID">223</idno>
 <idno type="SRP">http://syriaca.org/place/223</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Beth_Abe_Monastery</idno><!--WARNING: 223.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-224" type="monastery"><placeName xml:id="name224-1" xml:lang="en" reg="Mor Barṣawmo">Mor Barṣawmo</placeName>
@@ -443,7 +443,7 @@
 <placeName xml:id="name227-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܡܬܝ">ܕܝܪܐ ܕܡܪܝ ܡܬܝ</placeName>
 <desc type="abstract"/><idno type="placeID">227</idno>
 <idno type="SRP">http://syriaca.org/place/227</idno><idno type="Pleiades">http://pleiades.stoa.org/places/874581</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Mar_Mattai_monastery</idno><!--WARNING: 227.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-228" type="monastery"><placeName xml:id="name228-1" xml:lang="en" reg="Musa al-Ḥabashi">Musa al-Ḥabashi</placeName>
+<place xml:id="place-228" type="monastery"><placeName xml:id="name228-1" xml:lang="en" reg="Musa Ḥabashi">Musa al-Ḥabashi</placeName>
 <placeName xml:id="name228-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܡܘܫܐ ܟܘܫܝܐ">ܕܝܪܐ ܕܡܪܝ ܡܘܫܐ ܟܘܫܝܐ</placeName>
 <desc type="abstract"/><idno type="placeID">228</idno>
 <idno type="SRP">http://syriaca.org/place/228</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Monastery_of_Saint_Moses_the_Abyssinian</idno><location type="gps"> <geo>34.021667 36.842222</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -458,7 +458,7 @@
 <place xml:id="place-232" type="monastery"><!--WARNING: 232.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name232-1" xml:lang="en" reg="Sharfeh">Sharfeh</placeName>
 <desc type="abstract"/><idno type="placeID">232</idno>
 <idno type="SRP">http://syriaca.org/place/232</idno><!--WARNING: 232.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-233" type="monastery"><placeName xml:id="name233-1" xml:lang="en" reg="Tell ʿAda">Tell ʿAda</placeName>
+<place xml:id="place-233" type="monastery"><placeName xml:id="name233-1" xml:lang="en" reg="Tell Ada">Tell ʿAda</placeName>
 <placeName xml:id="name233-2" xml:lang="syr" reg="ܕܝܪܐ ܕܬܠܥܕܐ">ܕܝܪܐ ܕܬܠܥܕܐ</placeName>
 <desc type="abstract"/><idno type="placeID">233</idno>
 <idno type="SRP">http://syriaca.org/place/233</idno><location type="gps"> <geo>35.137477 37.103175</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -488,7 +488,7 @@
 <placeName xml:id="name242-3" xml:lang="syr" reg="ܥܪܢܐܣ">ܥܪܢܐܣ</placeName>
 <desc type="abstract"/><idno type="placeID">242</idno>
 <idno type="SRP">http://syriaca.org/place/242</idno><!--WARNING: 242.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-243" type="settlement"><placeName xml:id="name243-1" xml:lang="en" reg="Beth Manʿem">Beth Manʿem</placeName>
+<place xml:id="place-243" type="settlement"><placeName xml:id="name243-1" xml:lang="en" reg="Beth Manem">Beth Manʿem</placeName>
 <placeName xml:id="name243-2" xml:lang="syr" reg="ܒܝܬ ܡܢܥܡ">ܒܝܬ ܡܢܥܡ</placeName>
 <desc type="abstract"/><idno type="placeID">243</idno>
 <idno type="SRP">http://syriaca.org/place/243</idno><!--WARNING: 243.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -559,7 +559,7 @@
 <place xml:id="place-263" type="settlement"><!--WARNING: 263.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name263-1" xml:lang="en" reg="Bahdeidat">Bahdeidat</placeName>
 <desc type="abstract"/><idno type="placeID">263</idno>
 <idno type="SRP">http://syriaca.org/place/263</idno><!--WARNING: 263.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-264" type="settlement"><!--WARNING: 264.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name264-1" xml:lang="en" reg="Maʿad">Maʿad</placeName>
+<place xml:id="place-264" type="settlement"><!--WARNING: 264.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name264-1" xml:lang="en" reg="Maad">Maʿad</placeName>
 <desc type="abstract"/><idno type="placeID">264</idno>
 <idno type="SRP">http://syriaca.org/place/264</idno><!--WARNING: 264.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-265" type="settlement"><!--WARNING: 265.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name265-1" xml:lang="en" reg="Eddé">Eddé</placeName>
@@ -599,13 +599,13 @@
 <place xml:id="place-276" type="settlement"><!--WARNING: 276.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name276-1" xml:lang="en" reg="Ṣadad">Ṣadad</placeName>
 <desc type="abstract"/><idno type="placeID">276</idno>
 <idno type="SRP">http://syriaca.org/place/276</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Sadad,_Syria</idno><!--WARNING: 276.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-277" type="monastery"><!--WARNING: 277.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name277-1" xml:lang="en" reg="Mar Yaʿqub">Mar Yaʿqub</placeName>
+<place xml:id="place-277" type="monastery"><!--WARNING: 277.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name277-1" xml:lang="en" reg="Mar Yaqub">Mar Yaʿqub</placeName>
 <desc type="abstract"/><idno type="placeID">277</idno>
 <idno type="SRP">http://syriaca.org/place/277</idno><!--WARNING: 277.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-278" type="settlement"><!--WARNING: 278.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name278-1" xml:lang="en" reg="Dayr ʿAtiya">Dayr ʿAtiya</placeName>
+<place xml:id="place-278" type="settlement"><!--WARNING: 278.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name278-1" xml:lang="en" reg="Dayr Atiya">Dayr ʿAtiya</placeName>
 <desc type="abstract"/><idno type="placeID">278</idno>
 <idno type="SRP">http://syriaca.org/place/278</idno><!--WARNING: 278.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-279" type="settlement"><!--WARNING: 279.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name279-1" xml:lang="en" reg="Maʿlula">Maʿlula</placeName>
+<place xml:id="place-279" type="settlement"><!--WARNING: 279.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name279-1" xml:lang="en" reg="Malula">Maʿlula</placeName>
 <desc type="abstract"/><idno type="placeID">279</idno>
 <idno type="SRP">http://syriaca.org/place/279</idno><idno type="Pleiades">http://pleiades.stoa.org/places/678273</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Ma'loula</idno><!--WARNING: 279.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-28" type="river"><!--WARNING: 28.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name28-1" xml:lang="en" reg="Arsanias">Arsanias</placeName>
@@ -614,7 +614,7 @@
 <place xml:id="place-280" type="settlement"><!--WARNING: 280.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name280-1" xml:lang="en" reg="Ṣaydnāyā">Ṣaydnāyā</placeName>
 <desc type="abstract"/><idno type="placeID">280</idno>
 <idno type="SRP">http://syriaca.org/place/280</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Saidnaya</idno><!--WARNING: 280.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-281" type="settlement"><!--WARNING: 281.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name281-1" xml:lang="en" reg="Maʿarrat Ṣaydnāyā">Maʿarrat Ṣaydnāyā</placeName>
+<place xml:id="place-281" type="settlement"><!--WARNING: 281.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name281-1" xml:lang="en" reg="Maarrat Ṣaydnāyā">Maʿarrat Ṣaydnāyā</placeName>
 <desc type="abstract"/><idno type="placeID">281</idno>
 <idno type="SRP">http://syriaca.org/place/281</idno><!--WARNING: 281.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-282" type="river"><!--WARNING: 282.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name282-1" xml:lang="en" reg="Baradā">Baradā</placeName>
@@ -699,11 +699,11 @@
 <placeName xml:id="name302-2" xml:lang="syr" reg="ܒܝܬ ܫܐܪ̈ܝܐ">ܒܝܬ ܫܐܪ̈ܝܐ</placeName>
 <desc type="abstract"/><idno type="placeID">302</idno>
 <idno type="SRP">http://syriaca.org/place/302</idno><!--WARNING: 302.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-303" type="settlement"><placeName xml:id="name303-1" xml:lang="en" reg="Baʿshīqa">Baʿshīqa</placeName>
+<place xml:id="place-303" type="settlement"><placeName xml:id="name303-1" xml:lang="en" reg="Bashīqa">Baʿshīqa</placeName>
 <placeName xml:id="name303-2" xml:lang="syr" reg="ܒܥܫܝܩܐ">ܒܥܫܝܩܐ</placeName>
 <desc type="abstract"/><idno type="placeID">303</idno>
 <idno type="SRP">http://syriaca.org/place/303</idno><idno type="Pleiades">http://pleiades.stoa.org/places/874393</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Bashiqa</idno><!--WARNING: 303.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-304" type="settlement"><placeName xml:id="name304-1" xml:lang="en" reg="Bʿeltan">Bʿeltan</placeName>
+<place xml:id="place-304" type="settlement"><placeName xml:id="name304-1" xml:lang="en" reg="Beltan">Bʿeltan</placeName>
 <placeName xml:id="name304-2" xml:lang="syr" reg="ܒܥܠܬܐܢ">ܒܥܠܬܐܢ</placeName>
 <desc type="abstract"/><idno type="placeID">304</idno>
 <idno type="SRP">http://syriaca.org/place/304</idno><!--WARNING: 304.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -727,7 +727,7 @@
 <placeName xml:id="name309-2" xml:lang="syr" reg="ܬܚܠ">ܬܚܠ</placeName>
 <desc type="abstract"/><idno type="placeID">309</idno>
 <idno type="SRP">http://syriaca.org/place/309</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Beth_Garmaï_(East_Syrian_Ecclesiastical_Province)#The_diocese_of_Tahal</idno><!--WARNING: 309.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-31" type="diocese"><placeName xml:id="name31-1" xml:lang="en" reg="Beth ʿArbaye">Beth ʿArbaye</placeName>
+<place xml:id="place-31" type="diocese"><placeName xml:id="name31-1" xml:lang="en" reg="Beth Arbaye">Beth ʿArbaye</placeName>
 <placeName xml:id="name31-2" xml:lang="syr" reg="ܒܐܥܪ̈ܒܐܝܐ">ܒܐܥܪ̈ܒܐܝܐ</placeName>
 <desc type="abstract"/><idno type="placeID">31</idno>
 <idno type="SRP">http://syriaca.org/place/31</idno><idno type="Pleiades">http://pleiades.stoa.org/places/874340</idno><!--WARNING: 31.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -767,7 +767,7 @@
 <placeName xml:id="name318-2" xml:lang="syr" reg="ܛܘܪܐ ܒܪܝܟܐ">ܛܘܪܐ ܒܪܝܟܐ</placeName>
 <desc type="abstract"/><idno type="placeID">318</idno>
 <idno type="SRP">http://syriaca.org/place/318</idno><!--WARNING: 318.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-319" type="mountain"><!--WARNING: 319.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name319-1" xml:lang="en" reg="Jabal al-Muqaddas">al-Jabal al-Muqaddas</placeName>
+<place xml:id="place-319" type="mountain"><!--WARNING: 319.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name319-1" xml:lang="en" reg="Jabal Muqaddas">al-Jabal al-Muqaddas</placeName>
 <desc type="abstract"/><idno type="placeID">319</idno>
 <idno type="SRP">http://syriaca.org/place/319</idno><!--WARNING: 319.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-32" type="diocese"><!--WARNING: 32.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name32-1" xml:lang="en" reg="Beth Aramaye">Beth Aramaye</placeName>
@@ -777,7 +777,7 @@
 <placeName xml:id="name320-2" xml:lang="syr" reg="ܓܒܘܠܐ">ܓܒܘܠܐ</placeName>
 <desc type="abstract"/><idno type="placeID">320</idno>
 <idno type="SRP">http://syriaca.org/place/320</idno><!--WARNING: 320.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-321" type="region"><placeName xml:id="name321-1" xml:lang="en" reg="Diyār Rabīʿa">Diyār Rabīʿa</placeName>
+<place xml:id="place-321" type="region"><placeName xml:id="name321-1" xml:lang="en" reg="Diyār Rabīa">Diyār Rabīʿa</placeName>
 <placeName xml:id="name321-2" xml:lang="syr" reg="ܓܙܪܬܐ ܥܠܝܬܐ">ܓܙܪܬܐ ܥܠܝܬܐ</placeName>
 <desc type="abstract"/><idno type="placeID">321</idno>
 <idno type="SRP">http://syriaca.org/place/321</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Diyar_Rabi'a</idno><!--WARNING: 321.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -875,7 +875,7 @@
 <placeName xml:id="name343-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܒܣܘܣ">ܕܝܪܐ ܕܡܪܝ ܒܣܘܣ</placeName>
 <desc type="abstract"/><idno type="placeID">343</idno>
 <idno type="SRP">http://syriaca.org/place/343</idno><!--WARNING: 343.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-344" type="monastery"><placeName xml:id="name344-1" xml:lang="en" reg="Dayro d-Boʿut">Dayro d-Boʿut</placeName>
+<place xml:id="place-344" type="monastery"><placeName xml:id="name344-1" xml:lang="en" reg="Dayro d-Bout">Dayro d-Boʿut</placeName>
 <placeName xml:id="name344-2" xml:lang="syr" reg="ܕܝܪܐ ܕܒܥܘܬ">ܕܝܪܐ ܕܒܥܘܬ</placeName>
 <desc type="abstract"/><idno type="placeID">344</idno>
 <idno type="SRP">http://syriaca.org/place/344</idno><!--WARNING: 344.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -891,7 +891,7 @@
 <placeName xml:id="name347-2" xml:lang="syr" reg="ܕܝܪܐ ܕܒܝܬ ܒܬܝ̈ܢ">ܕܝܪܐ ܕܒܝܬ ܒܬܝ̈ܢ</placeName>
 <desc type="abstract"/><idno type="placeID">347</idno>
 <idno type="SRP">http://syriaca.org/place/347</idno><!--WARNING: 347.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-348" type="monastery"><placeName xml:id="name348-1" xml:lang="en" reg="Tarʿil">Tarʿil</placeName>
+<place xml:id="place-348" type="monastery"><placeName xml:id="name348-1" xml:lang="en" reg="Taril">Tarʿil</placeName>
 <placeName xml:id="name348-2" xml:lang="syr" reg="ܕܝܪܐ ܕܬܪܥܝܠܐ">ܕܝܪܐ ܕܬܪܥܝܠܐ</placeName>
 <desc type="abstract"/><idno type="placeID">348</idno>
 <idno type="SRP">http://syriaca.org/place/348</idno><!--WARNING: 348.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -917,7 +917,7 @@
 <placeName xml:id="name353-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܕܢܝܐܝܠ ܕܓܠܫ ܥܢܘܝܐ">ܕܝܪܐ ܕܡܪܝ ܕܢܝܐܝܠ ܕܓܠܫ ܥܢܘܝܐ</placeName>
 <desc type="abstract"/><idno type="placeID">353</idno>
 <idno type="SRP">http://syriaca.org/place/353</idno><!--WARNING: 353.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-354" type="monastery"><placeName xml:id="name354-1" xml:lang="en" reg="Dayr al-Dawāʾir">Dayr al-Dawāʾir</placeName>
+<place xml:id="place-354" type="monastery"><placeName xml:id="name354-1" xml:lang="en" reg="Dayr Dawāʾir">Dayr al-Dawāʾir</placeName>
 <placeName xml:id="name354-2" xml:lang="syr" reg="ܕܝܪܐ ܕܕܘܐܝܪ">ܕܝܪܐ ܕܕܘܐܝܪ</placeName>
 <desc type="abstract"/><idno type="placeID">354</idno>
 <idno type="SRP">http://syriaca.org/place/354</idno><!--WARNING: 354.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -944,7 +944,7 @@
 <place xml:id="place-36" type="diocese"><!--WARNING: 36.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name36-1" xml:lang="en" reg="Beth Nuhadra">Beth Nuhadra</placeName>
 <desc type="abstract"/><idno type="placeID">36</idno>
 <idno type="SRP">http://syriaca.org/place/36</idno><!--WARNING: 36.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-360" type="monastery"><placeName xml:id="name360-1" xml:lang="en" reg="Dayr al-Suryān">Dayr al-Suryān</placeName>
+<place xml:id="place-360" type="monastery"><placeName xml:id="name360-1" xml:lang="en" reg="Dayr Suryān">Dayr al-Suryān</placeName>
 <placeName xml:id="name360-2" xml:lang="syr" reg="ܕܝܪܐ ܕܣܘܪ̈ܝܝܐ">ܕܝܪܐ ܕܣܘܪ̈ܝܝܐ</placeName>
 <desc type="abstract"/><idno type="placeID">360</idno>
 <idno type="SRP">http://syriaca.org/place/360</idno><idno type="Pleiades">http://pleiades.stoa.org/places/727108</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Syrian_Monastery,_Egypt</idno><!--WARNING: 360.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -972,7 +972,7 @@
 <placeName xml:id="name366-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܫܝܢܐ">ܕܝܪܐ ܕܡܪܝ ܫܝܢܐ</placeName>
 <desc type="abstract"/><idno type="placeID">366</idno>
 <idno type="SRP">http://syriaca.org/place/366</idno><!--WARNING: 366.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-367" type="monastery"><placeName xml:id="name367-1" xml:lang="en" reg="Dayr al-Ṣalīb">Dayr al-Ṣalīb</placeName>
+<place xml:id="place-367" type="monastery"><placeName xml:id="name367-1" xml:lang="en" reg="Dayr Ṣalīb">Dayr al-Ṣalīb</placeName>
 <placeName xml:id="name367-2" xml:lang="syr" reg="ܕܝܪܐ ܕܨܠܝܒܐ">ܕܝܪܐ ܕܨܠܝܒܐ</placeName>
 <desc type="abstract"/><idno type="placeID">367</idno>
 <idno type="SRP">http://syriaca.org/place/367</idno><!--WARNING: 367.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -980,18 +980,18 @@
 <placeName xml:id="name368-3" xml:lang="syr" reg="ܕܝܪܐ ܕܛܘܪܐ ܕܣܝܢܝ">ܕܝܪܐ ܕܛܘܪܐ ܕܣܝܢܝ</placeName>
 <desc type="abstract"/><idno type="placeID">368</idno>
 <idno type="SRP">http://syriaca.org/place/368</idno><idno type="Pleiades">http://pleiades.stoa.org/places/746745</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Saint_Catherine's_Monastery</idno><!--WARNING: 368.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-369" type="monastery"><placeName xml:id="name369-1" xml:lang="en" reg="Dayro d-ʿAraboye">Dayro d-ʿAraboye</placeName>
+<place xml:id="place-369" type="monastery"><placeName xml:id="name369-1" xml:lang="en" reg="Dayro d-Araboye">Dayro d-ʿAraboye</placeName>
 <placeName xml:id="name369-2" xml:lang="syr" reg="ܕܝܪܐ ܕܥܪ̈ܒܝܐ">ܕܝܪܐ ܕܥܪ̈ܒܝܐ</placeName>
 <desc type="abstract"/><idno type="placeID">369</idno>
 <idno type="SRP">http://syriaca.org/place/369</idno><!--WARNING: 369.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
 <place xml:id="place-37" type="diocese"><!--WARNING: 37.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name37-1" xml:lang="en" reg="Beth Qaṭraye">Beth Qaṭraye</placeName>
 <desc type="abstract"/><idno type="placeID">37</idno>
 <idno type="SRP">http://syriaca.org/place/37</idno><!--WARNING: 37.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-370" type="monastery"><placeName xml:id="name370-1" xml:lang="en" reg="Dayr ʿArnīsh">Dayr ʿArnīsh</placeName>
+<place xml:id="place-370" type="monastery"><placeName xml:id="name370-1" xml:lang="en" reg="Dayr Arnīsh">Dayr ʿArnīsh</placeName>
 <placeName xml:id="name370-2" xml:lang="syr" reg="ܕܝܪܐ ܕܥܘܪܢܝܣ">ܕܝܪܐ ܕܥܘܪܢܝܣ</placeName>
 <desc type="abstract"/><idno type="placeID">370</idno>
 <idno type="SRP">http://syriaca.org/place/370</idno><!--WARNING: 370.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-371" type="monastery"><placeName xml:id="name371-1" xml:lang="en" reg="Dayro d-ʿAmudo">Dayro d-ʿAmudo</placeName>
+<place xml:id="place-371" type="monastery"><placeName xml:id="name371-1" xml:lang="en" reg="Dayro d-Amudo">Dayro d-ʿAmudo</placeName>
 <placeName xml:id="name371-2" xml:lang="syr" reg="ܕܝܪܐ ܕܥܡܘܕܐ">ܕܝܪܐ ܕܥܡܘܕܐ</placeName>
 <desc type="abstract"/><idno type="placeID">371</idno>
 <idno type="SRP">http://syriaca.org/place/371</idno><!--WARNING: 371.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -1007,7 +1007,7 @@
 <placeName xml:id="name374-2" xml:lang="syr" reg="ܕܝܪܐ ܕܦܣܝܠܬܐ">ܕܝܪܐ ܕܦܣܝܠܬܐ</placeName>
 <desc type="abstract"/><idno type="placeID">374</idno>
 <idno type="SRP">http://syriaca.org/place/374</idno><!--WARNING: 374.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-375" type="monastery"><placeName xml:id="name375-1" xml:lang="en" reg="Dayro d-Paʿnur">Dayro d-Paʿnur</placeName>
+<place xml:id="place-375" type="monastery"><placeName xml:id="name375-1" xml:lang="en" reg="Dayro d-Panur">Dayro d-Paʿnur</placeName>
 <placeName xml:id="name375-2" xml:lang="syr" reg="ܕܝܪܐ ܕܦܥܢܘܪ">ܕܝܪܐ ܕܦܥܢܘܪ</placeName>
 <desc type="abstract"/><idno type="placeID">375</idno>
 <idno type="SRP">http://syriaca.org/place/375</idno><!--WARNING: 375.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -1078,7 +1078,7 @@
 <placeName xml:id="name390-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܕܢܚܝ̈ܐ">ܕܝܪܐ ܕܡܕܢܚܝ̈ܐ</placeName>
 <desc type="abstract"/><idno type="placeID">390</idno>
 <idno type="SRP">http://syriaca.org/place/390</idno><idno type="Pleiades">http://pleiades.stoa.org/places/662181</idno><!--WARNING: 390.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-391" type="monastery"><placeName xml:id="name391-1" xml:lang="en" reg="Dayr al-Muʿallaq">Dayr al-Muʿallaq</placeName>
+<place xml:id="place-391" type="monastery"><placeName xml:id="name391-1" xml:lang="en" reg="Dayr Muallaq">Dayr al-Muʿallaq</placeName>
 <placeName xml:id="name391-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܥܠܩ">ܕܝܪܐ ܕܡܥܠܩ</placeName>
 <desc type="abstract"/><idno type="placeID">391</idno>
 <idno type="SRP">http://syriaca.org/place/391</idno><!--WARNING: 391.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -1102,11 +1102,11 @@
 <placeName xml:id="name396-2" xml:lang="syr" reg="ܕܝܪܐ ܕܝܠܕܬ ܐܠܗܐ">ܕܝܪܐ ܕܝܠܕܬ ܐܠܗܐ</placeName>
 <desc type="abstract"/><idno type="placeID">396</idno>
 <idno type="SRP">http://syriaca.org/place/396</idno><!--WARNING: 396.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-397" type="monastery"><placeName xml:id="name397-1" xml:lang="en" reg="Mor Yaʿqub"><!--WARNING: 397.xml: placeName@xml:id="name397-1": normalized string "Mor Yaʿqub" is different from raw string "Mor Yaʿqub "-->Mor Yaʿqub</placeName>
+<place xml:id="place-397" type="monastery"><placeName xml:id="name397-1" xml:lang="en" reg="Mor Yaqub"><!--WARNING: 397.xml: placeName@xml:id="name397-1": normalized string "Mor Yaʿqub" is different from raw string "Mor Yaʿqub "-->Mor Yaʿqub</placeName>
 <placeName xml:id="name397-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܝܥܩܘܒ">ܕܝܪܐ ܕܡܪܝ ܝܥܩܘܒ</placeName>
 <desc type="abstract"/><idno type="placeID">397</idno>
 <idno type="SRP">http://syriaca.org/place/397</idno><!--WARNING: 397.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-398" type="monastery"><placeName xml:id="name398-1" xml:lang="en" reg="Mor Yaʿqub Malpono"><!--WARNING: 398.xml: placeName@xml:id="name398-1": normalized string "Mor Yaʿqub Malpono" is different from raw string "Mor Yaʿqub Malpono "-->Mor Yaʿqub Malpono</placeName>
+<place xml:id="place-398" type="monastery"><placeName xml:id="name398-1" xml:lang="en" reg="Mor Yaqub Malpono"><!--WARNING: 398.xml: placeName@xml:id="name398-1": normalized string "Mor Yaʿqub Malpono" is different from raw string "Mor Yaʿqub Malpono "-->Mor Yaʿqub Malpono</placeName>
 <placeName xml:id="name398-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܝܥܩܘܒ ܡܠܦܢܐ">ܕܝܪܐ ܕܡܪܝ ܝܥܩܘܒ ܡܠܦܢܐ</placeName>
 <desc type="abstract"/><idno type="placeID">398</idno>
 <idno type="SRP">http://syriaca.org/place/398</idno><idno type="Pleiades">http://pleiades.stoa.org/places/658527</idno><!--WARNING: 398.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -1142,7 +1142,7 @@
 <placeName xml:id="name404-2" xml:lang="syr" reg="ܪܨܘܐܢ">ܪܨܘܐܢ</placeName>
 <desc type="abstract"/><idno type="placeID">404</idno>
 <idno type="SRP">http://syriaca.org/place/404</idno><!--WARNING: 404.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-405" type="settlement"><placeName xml:id="name405-1" xml:lang="en" reg="Raʿban">Raʿban</placeName>
+<place xml:id="place-405" type="settlement"><placeName xml:id="name405-1" xml:lang="en" reg="Raban">Raʿban</placeName>
 <placeName xml:id="name405-2" xml:lang="syr" reg="ܪܥܒܐܢ">ܪܥܒܐܢ</placeName>
 <desc type="abstract"/><idno type="placeID">405</idno>
 <idno type="SRP">http://syriaca.org/place/405</idno><idno type="Pleiades">http://pleiades.stoa.org/places/658582</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Araban</idno><!--WARNING: 405.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -1237,7 +1237,7 @@
 <placeName xml:id="name426-2" xml:lang="syr" reg="ܩܛܪܒܠ">ܩܛܪܒܠ</placeName>
 <desc type="abstract"/><idno type="placeID">426</idno>
 <idno type="SRP">http://syriaca.org/place/426</idno><!--WARNING: 426.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-427" type="settlement"><placeName xml:id="name427-1" xml:lang="en" reg="Qalʿat al-Imraʾa">Qalʿat al-Imraʾa</placeName>
+<place xml:id="place-427" type="settlement"><placeName xml:id="name427-1" xml:lang="en" reg="Qalat Imraʾa">Qalʿat al-Imraʾa</placeName>
 <placeName xml:id="name427-2" xml:lang="syr" reg="ܩܠܥܐ ܕܐܢܬܬܐ">ܩܠܥܐ ܕܐܢܬܬܐ</placeName>
 <desc type="abstract"/><idno type="placeID">427</idno>
 <idno type="SRP">http://syriaca.org/place/427</idno><!--WARNING: 427.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -1304,7 +1304,7 @@
 <placeName xml:id="name441-2" xml:lang="syr" reg="ܩܘܝܡ">ܩܘܝܡ</placeName>
 <desc type="abstract"/><idno type="placeID">441</idno>
 <idno type="SRP">http://syriaca.org/place/441</idno><!--WARNING: 441.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-442" type="settlement"><placeName xml:id="name442-1" xml:lang="en" reg="Kaʿbiya">Kaʿbiya</placeName>
+<place xml:id="place-442" type="settlement"><placeName xml:id="name442-1" xml:lang="en" reg="Kabiya">Kaʿbiya</placeName>
 <placeName xml:id="name442-2" xml:lang="syr" reg="ܟܥܒܝܗ">ܟܥܒܝܗ</placeName>
 <desc type="abstract"/><idno type="placeID">442</idno>
 <idno type="SRP">http://syriaca.org/place/442</idno><!--WARNING: 442.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -1376,14 +1376,14 @@
 <placeName xml:id="name458-2" xml:lang="syr" reg="ܡܫܗܕ ܟܘܚܝܠ">ܡܫܗܕ ܟܘܚܝܠ</placeName>
 <desc type="abstract"/><idno type="placeID">458</idno>
 <idno type="SRP">http://syriaca.org/place/458</idno><!--WARNING: 458.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-459" type="settlement"><placeName xml:id="name459-1" xml:lang="en" reg="Maʿdan">Maʿdan</placeName>
+<place xml:id="place-459" type="settlement"><placeName xml:id="name459-1" xml:lang="en" reg="Madan">Maʿdan</placeName>
 <placeName xml:id="name459-2" xml:lang="syr" reg="ܡܥܕܢ">ܡܥܕܢ</placeName>
 <desc type="abstract"/><idno type="placeID">459</idno>
 <idno type="SRP">http://syriaca.org/place/459</idno><!--WARNING: 459.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
 <place xml:id="place-46" type="settlement"><!--WARNING: 46.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name46-1" xml:lang="en" reg="Beirut">Beirut</placeName>
 <desc type="abstract">A port city on the coast of Lebanon.</desc><idno type="placeID">46</idno>
 <idno type="SRP">http://syriaca.org/place/46</idno><idno type="Pleiades">http://pleiades.stoa.org/places/678060</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Beirut</idno><location type="gps"> <geo>33.88694 35.51306</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-460" type="settlement"><placeName xml:id="name460-1" xml:lang="en" reg="Maʿsarteh">Maʿsarteh</placeName>
+<place xml:id="place-460" type="settlement"><placeName xml:id="name460-1" xml:lang="en" reg="Masarteh">Maʿsarteh</placeName>
 <placeName xml:id="name460-2" xml:lang="syr" reg="ܡܥܨܪܬܗ">ܡܥܨܪܬܗ</placeName>
 <desc type="abstract"/><idno type="placeID">460</idno>
 <idno type="SRP">http://syriaca.org/place/460</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Ömerli,_Mardin</idno><!--WARNING: 460.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -1426,7 +1426,7 @@
 <placeName xml:id="name47-2" xml:lang="syr" reg="ܒܓܕܐܫܝܗ">ܒܓܕܐܫܝܗ</placeName>
 <desc type="abstract">A village southwest of Mardin.</desc><idno type="placeID">47</idno>
 <idno type="SRP">http://syriaca.org/place/47</idno><location type="gps"> <geo>37.12 40.47</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-470" type="monastery"><placeName xml:id="name470-1" xml:lang="en" reg="Dayro d-Mor Yaʿqub">Dayro d-Mor Yaʿqub</placeName>
+<place xml:id="place-470" type="monastery"><placeName xml:id="name470-1" xml:lang="en" reg="Dayro d-Mor Yaqub">Dayro d-Mor Yaʿqub</placeName>
 <placeName xml:id="name470-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܝܥܩܘܒ ܡܠܦܢܐ">ܕܝܪܐ ܕܡܪܝ ܝܥܩܘܒ ܡܠܦܢܐ</placeName>
 <desc type="abstract"/><idno type="placeID">470</idno>
 <idno type="SRP">http://syriaca.org/place/470</idno><!--WARNING: 470.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1469,7 +1469,7 @@
 <placeName xml:id="name481-2" xml:lang="syr" reg="ܝܫܝܠ ܐܝܪܡܐܩ">ܝܫܝܠ ܐܝܪܡܐܩ</placeName>
 <desc type="abstract"/><idno type="placeID">481</idno>
 <idno type="SRP">http://syriaca.org/place/481</idno><idno type="Pleiades">http://pleiades.stoa.org/places/857171</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Yeşilırmak_River</idno><!--WARNING: 481.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-482" type="settlement"><placeName xml:id="name482-1" xml:lang="en" reg="Dayr al-Zor">Dayr al-Zor</placeName>
+<place xml:id="place-482" type="settlement"><placeName xml:id="name482-1" xml:lang="en" reg="Dayr Zor">Dayr al-Zor</placeName>
 <placeName xml:id="name482-2" xml:lang="syr" reg="ܕܝܪ ܐܠܙܘܪ">ܕܝܪ ܐܠܙܘܪ</placeName>
 <desc type="abstract"/><idno type="placeID">482</idno>
 <idno type="SRP">http://syriaca.org/place/482</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Deir_ez-Zor</idno><!--WARNING: 482.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
@@ -1481,7 +1481,7 @@
 <placeName xml:id="name484-2" xml:lang="syr" reg="ܐܪܙܪܘܡ">ܐܪܙܪܘܡ</placeName>
 <desc type="abstract"/><idno type="placeID">484</idno>
 <idno type="SRP">http://syriaca.org/place/484</idno><idno type="Pleiades">http://pleiades.stoa.org/places/874373</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Erzurum</idno><!--WARNING: 484.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-485" type="river"><placeName xml:id="name485-1" xml:lang="en" reg="Nuhayr al-Khawsir">Nuhayr al-Khawsir</placeName>
+<place xml:id="place-485" type="river"><placeName xml:id="name485-1" xml:lang="en" reg="Nuhayr Khawsir">Nuhayr al-Khawsir</placeName>
 <placeName xml:id="name485-2" xml:lang="syr" reg="ܢܗܪܘܣܐ ܕܟܘܣܪ">ܢܗܪܘܣܐ ܕܟܘܣܪ</placeName>
 <desc type="abstract"/><idno type="placeID">485</idno>
 <idno type="SRP">http://syriaca.org/place/485</idno><!--WARNING: 485.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1536,11 +1536,11 @@
 <placeName xml:id="name497-2" xml:lang="syr" reg="ܣܢܝܪ">ܣܢܝܪ</placeName>
 <desc type="abstract"/><idno type="placeID">497</idno>
 <idno type="SRP">http://syriaca.org/place/497</idno><!--WARNING: 497.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-498" type="region"><placeName xml:id="name498-1" xml:lang="en" reg="Muʿaṭṭasha desert">Muʿaṭṭasha desert</placeName>
+<place xml:id="place-498" type="region"><placeName xml:id="name498-1" xml:lang="en" reg="Muaṭṭasha desert">Muʿaṭṭasha desert</placeName>
 <placeName xml:id="name498-2" xml:lang="syr" reg="ܡܕܒܪܐ ܨܗܘܐ">ܡܕܒܪܐ ܨܗܘܐ</placeName>
 <desc type="abstract"/><idno type="placeID">498</idno>
 <idno type="SRP">http://syriaca.org/place/498</idno><!--WARNING: 498.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-499" type="settlement"><placeName xml:id="name499-1" xml:lang="en" reg="Maʿarrat al-Nuʿmān">Maʿarrat al-Nuʿmān</placeName>
+<place xml:id="place-499" type="settlement"><placeName xml:id="name499-1" xml:lang="en" reg="Maarrat Numān">Maʿarrat al-Nuʿmān</placeName>
 <placeName xml:id="name499-2" xml:lang="syr" reg="ܡܥܪܝܐ ܢܥܡܢ">ܡܥܪܝܐ ܢܥܡܢ</placeName>
 <desc type="abstract"/><idno type="placeID">499</idno>
 <idno type="SRP">http://syriaca.org/place/499</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Maarrat_al-Nu'man</idno><!--WARNING: 499.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1661,7 +1661,7 @@
 <placeName xml:id="name526-2" xml:lang="syr" reg="ܐܬܪ̈ܘܬܐ ܕܦܪܣ">ܐܬܪ̈ܘܬܐ ܕܦܪܣ</placeName>
 <desc type="abstract"/><idno type="placeID">526</idno>
 <idno type="SRP">http://syriaca.org/place/526</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Iran</idno><!--WARNING: 526.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-527" type="fortification"><placeName xml:id="name527-1" xml:lang="en" reg="Ḥiṣn Maslama Ibn ʿAbd al-Malik">Ḥiṣn Maslama Ibn ʿAbd al-Malik</placeName>
+<place xml:id="place-527" type="fortification"><placeName xml:id="name527-1" xml:lang="en" reg="Ḥiṣn Maslama Ibn Abd Malik">Ḥiṣn Maslama Ibn ʿAbd al-Malik</placeName>
 <placeName xml:id="name527-2" xml:lang="syr" reg="ܚܣܢ ܡܣܠܡܗ ܒܢ ܥܒܕ ܐܠܡܠܟ">ܚܣܢ ܡܣܠܡܗ ܒܢ ܥܒܕ ܐܠܡܠܟ</placeName>
 <desc type="abstract"/><idno type="placeID">527</idno>
 <idno type="SRP">http://syriaca.org/place/527</idno><!--WARNING: 527.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1676,7 +1676,7 @@
 <place xml:id="place-53" type="settlement"><!--WARNING: 53.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name53-1" xml:lang="en" reg="Caesarea">Caesarea</placeName>
 <desc type="abstract">A port city in Palaestina north of Gaza.</desc><idno type="placeID">53</idno>
 <idno type="SRP">http://syriaca.org/place/53</idno><idno type="Pleiades">http://pleiades.stoa.org/places/678401</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Caesarea_Maritima</idno><location type="gps"> <geo>32.5 34.89972</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-530" type="settlement"><placeName xml:id="name530-1" xml:lang="en" reg="Port Saʿīd">Port Saʿīd</placeName>
+<place xml:id="place-530" type="settlement"><placeName xml:id="name530-1" xml:lang="en" reg="Port Saīd">Port Saʿīd</placeName>
 <placeName xml:id="name530-2" xml:lang="syr" reg="ܒܘܪܣܥܝܕ">ܒܘܪܣܥܝܕ</placeName>
 <desc type="abstract"/><idno type="placeID">530</idno>
 <idno type="SRP">http://syriaca.org/place/530</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Port_Said</idno><!--WARNING: 530.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1692,7 +1692,7 @@
 <placeName xml:id="name533-2" xml:lang="syr" reg="ܟܦܪܣܠܛܐ">ܟܦܪܣܠܛܐ</placeName>
 <desc type="abstract"/><idno type="placeID">533</idno>
 <idno type="SRP">http://syriaca.org/place/533</idno><!--WARNING: 533.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-534" type="settlement"><placeName xml:id="name534-1" xml:lang="en" reg="Kfar Shomiʿ">Kfar Shomiʿ</placeName>
+<place xml:id="place-534" type="settlement"><placeName xml:id="name534-1" xml:lang="en" reg="Kfar Shomi">Kfar Shomiʿ</placeName>
 <placeName xml:id="name534-2" xml:lang="syr" reg="ܟܦܪܫܡܥ">ܟܦܪܫܡܥ</placeName>
 <desc type="abstract"/><idno type="placeID">534</idno>
 <idno type="SRP">http://syriaca.org/place/534</idno><!--WARNING: 534.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1789,7 +1789,7 @@
 <placeName xml:id="name556-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܝܘܚܢܢ ܛܝܝܐ">ܕܝܪܐ ܕܡܪܝ ܝܘܚܢܢ ܛܝܝܐ</placeName>
 <desc type="abstract"/><idno type="placeID">556</idno>
 <idno type="SRP">http://syriaca.org/place/556</idno><idno type="Pleiades">http://pleiades.stoa.org/places/874586</idno><!--WARNING: 556.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-557" type="quarter"><placeName xml:id="name557-1" xml:lang="en" reg="Bāb al-ʿĀmūd">Bāb al-ʿĀmūd</placeName>
+<place xml:id="place-557" type="quarter"><placeName xml:id="name557-1" xml:lang="en" reg="Bāb Āmūd">Bāb al-ʿĀmūd</placeName>
 <placeName xml:id="name557-2" xml:lang="syr" reg="ܬܪܥܐ ܕܥܡܘܕܐ">ܬܪܥܐ ܕܥܡܘܕܐ</placeName>
 <desc type="abstract"/><idno type="placeID">557</idno>
 <idno type="SRP">http://syriaca.org/place/557</idno><!--WARNING: 557.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1804,7 +1804,7 @@
 <place xml:id="place-56" type="province"><!--WARNING: 56.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name56-1" xml:lang="en" reg="Cilicia I">Cilicia I</placeName>
 <desc type="abstract">A Roman province of coastal Anatolia with its capital at Tarsos.</desc><idno type="placeID">56</idno>
 <idno type="SRP">http://syriaca.org/place/56</idno><idno type="Pleiades">http://pleiades.stoa.org/places/1001928</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Cilicia_(Roman_province)</idno><!--WARNING: 56.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-560" type="mountain"><placeName xml:id="name560-1" xml:lang="en" reg="Jabal al-Qāḥil">al-Jabal al-Qāḥil</placeName>
+<place xml:id="place-560" type="mountain"><placeName xml:id="name560-1" xml:lang="en" reg="Jabal Qāḥil">al-Jabal al-Qāḥil</placeName>
 <placeName xml:id="name560-2" xml:lang="syr" reg="ܛܘܪܐ ܨܗܝܐ">ܛܘܪܐ ܨܗܝܐ</placeName>
 <desc type="abstract"/><idno type="placeID">560</idno>
 <idno type="SRP">http://syriaca.org/place/560</idno><!--WARNING: 560.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1812,7 +1812,7 @@
 <placeName xml:id="name561-2" xml:lang="syr" reg="ܡܪܝܒܐ">ܡܪܝܒܐ</placeName>
 <desc type="abstract"/><idno type="placeID">561</idno>
 <idno type="SRP">http://syriaca.org/place/561</idno><!--WARNING: 561.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-562" type="mountain"><placeName xml:id="name562-1" xml:lang="en" reg="Jabal al-Mudkhin">al-Jabal al-Mudkhin</placeName>
+<place xml:id="place-562" type="mountain"><placeName xml:id="name562-1" xml:lang="en" reg="Jabal Mudkhin">al-Jabal al-Mudkhin</placeName>
 <placeName xml:id="name562-2" xml:lang="syr" reg="ܛܘܪܐ ܡܬܢܢܐ">ܛܘܪܐ ܡܬܢܢܐ</placeName>
 <desc type="abstract"/><idno type="placeID">562</idno>
 <idno type="SRP">http://syriaca.org/place/562</idno><!--WARNING: 562.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1831,11 +1831,11 @@
 <place xml:id="place-567" type="region"><!--WARNING: 567.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name567-1" xml:lang="en" reg="Thaghr">al-Thaghr</placeName>
 <desc type="abstract"/><idno type="placeID">567</idno>
 <idno type="SRP">http://syriaca.org/place/567</idno><!--WARNING: 567.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-568" type="settlement"><placeName xml:id="name568-1" xml:lang="en" reg="Marj al-ʿAyn">Marj al-ʿAyn</placeName>
+<place xml:id="place-568" type="settlement"><placeName xml:id="name568-1" xml:lang="en" reg="Marj Ayn">Marj al-ʿAyn</placeName>
 <placeName xml:id="name568-2" xml:lang="syr" reg="ܡܪܓܐ ܕܥܝܢܐ">ܡܪܓܐ ܕܥܝܢܐ</placeName>
 <desc type="abstract"/><idno type="placeID">568</idno>
 <idno type="SRP">http://syriaca.org/place/568</idno><!--WARNING: 568.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-569" type="mountain"><placeName xml:id="name569-1" xml:lang="en" reg="Jabal Simʿān">Jabal Simʿān</placeName>
+<place xml:id="place-569" type="mountain"><placeName xml:id="name569-1" xml:lang="en" reg="Jabal Simān">Jabal Simʿān</placeName>
 <placeName xml:id="name569-2" xml:lang="syr" reg="ܛܘܪܐ ܕܣܡܥܐܢ">ܛܘܪܐ ܕܣܡܥܐܢ</placeName>
 <desc type="abstract"/><idno type="placeID">569</idno>
 <idno type="SRP">http://syriaca.org/place/569</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Mount_Simeon</idno><!--WARNING: 569.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -1865,7 +1865,7 @@
 <place xml:id="place-576" type="region"><!--WARNING: 576.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name576-1" xml:lang="en" reg="Armenia">Armenia</placeName>
 <desc type="abstract"/><idno type="placeID">576</idno>
 <idno type="SRP">http://syriaca.org/place/576</idno><idno type="Pleiades">http://pleiades.stoa.org/places/874350</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Armenian_Highland</idno><!--WARNING: 576.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-577" type="settlement"><!--WARNING: 577.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name577-1" xml:lang="en" reg="Baʿalbak">Baʿalbak</placeName>
+<place xml:id="place-577" type="settlement"><!--WARNING: 577.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name577-1" xml:lang="en" reg="Baalbak">Baʿalbak</placeName>
 <desc type="abstract"/><idno type="placeID">577</idno>
 <idno type="SRP">http://syriaca.org/place/577</idno><idno type="Pleiades">http://pleiades.stoa.org/places/678179</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Baalbek</idno><!--WARNING: 577.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-578" type="region"><!--WARNING: 578.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name578-1" xml:lang="en" reg="Babylonia">Babylonia</placeName>
@@ -1896,7 +1896,7 @@
 <place xml:id="place-586" type="settlement"><!--WARNING: 586.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name586-1" xml:lang="en" reg="Constantinople">Constantinople</placeName>
 <desc type="abstract"/><idno type="placeID">586</idno>
 <idno type="SRP">http://syriaca.org/place/586</idno><idno type="Pleiades">http://pleiades.stoa.org/places/520998</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Constantinople</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Istanbul</idno><!--WARNING: 586.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-587" type="quarter"><!--WARNING: 587.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name587-1" xml:lang="en" reg="Dayr al-Rūm">Dayr al-Rūm</placeName>
+<place xml:id="place-587" type="quarter"><!--WARNING: 587.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name587-1" xml:lang="en" reg="Dayr Rūm">Dayr al-Rūm</placeName>
 <desc type="abstract"/><idno type="placeID">587</idno>
 <idno type="SRP">http://syriaca.org/place/587</idno><!--WARNING: 587.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-588" type="monastery"><!--WARNING: 588.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name588-1" xml:lang="en" reg="Dayr Dayḥīs">Dayr Dayḥīs</placeName>
@@ -1923,7 +1923,7 @@
 <place xml:id="place-594" type="mountain"><!--WARNING: 594.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name594-1" xml:lang="en" reg="Jabal Bārīshā">Jabal Bārīshā</placeName>
 <desc type="abstract"/><idno type="placeID">594</idno>
 <idno type="SRP">http://syriaca.org/place/594</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Harim_Mountains</idno><!--WARNING: 594.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-595" type="mountain"><!--WARNING: 595.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name595-1" xml:lang="en" reg="Jabal al-Durūz">Jabal al-Durūz</placeName>
+<place xml:id="place-595" type="mountain"><!--WARNING: 595.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name595-1" xml:lang="en" reg="Jabal Durūz">Jabal al-Durūz</placeName>
 <desc type="abstract"/><idno type="placeID">595</idno>
 <idno type="SRP">http://syriaca.org/place/595</idno><idno type="Pleiades">http://pleiades.stoa.org/places/678042</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Jabal_al-Druze</idno><!--WARNING: 595.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-596" type="mountain"><!--WARNING: 596.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name596-1" xml:lang="en" reg="Jabal Ḥalqa">Jabal Ḥalqa</placeName>
@@ -1991,7 +1991,7 @@
 <place xml:id="place-613" type="monastery"><!--WARNING: 613.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name613-1" xml:lang="en" reg="Mar Eliya">Mar Eliya</placeName>
 <desc type="abstract"/><idno type="placeID">613</idno>
 <idno type="SRP">http://syriaca.org/place/613</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Dair_Mar_Elia</idno><!--WARNING: 613.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-614" type="monastery"><!--WARNING: 614.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name614-1" xml:lang="en" reg="Mar Ishoʿyahb">Mar Ishoʿyahb</placeName>
+<place xml:id="place-614" type="monastery"><!--WARNING: 614.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name614-1" xml:lang="en" reg="Mar Ishoyahb">Mar Ishoʿyahb</placeName>
 <desc type="abstract"/><idno type="placeID">614</idno>
 <idno type="SRP">http://syriaca.org/place/614</idno><!--WARNING: 614.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-615" type="monastery"><!--WARNING: 615.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name615-1" xml:lang="en" reg="Mar Maron">Mar Maron</placeName>
@@ -2059,10 +2059,10 @@
 <place xml:id="place-633" type="region"><!--WARNING: 633.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name633-1" xml:lang="en" reg="Pontos">Pontos</placeName>
 <desc type="abstract"/><idno type="placeID">633</idno>
 <idno type="SRP">http://syriaca.org/place/633</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Pontus</idno><!--WARNING: 633.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-634" type="fortification"><!--WARNING: 634.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name634-1" xml:lang="en" reg="Qalʿat Najm">Qalʿat Najm</placeName>
+<place xml:id="place-634" type="fortification"><!--WARNING: 634.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name634-1" xml:lang="en" reg="Qalat Najm">Qalʿat Najm</placeName>
 <desc type="abstract"/><idno type="placeID">634</idno>
 <idno type="SRP">http://syriaca.org/place/634</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Qal'at_Najm</idno><!--WARNING: 634.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-635" type="monastery"><!--WARNING: 635.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name635-1" xml:lang="en" reg="Qalʿat Simʿān">Qalʿat Simʿān</placeName>
+<place xml:id="place-635" type="monastery"><!--WARNING: 635.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name635-1" xml:lang="en" reg="Qalat Simān">Qalʿat Simʿān</placeName>
 <desc type="abstract"/><idno type="placeID">635</idno>
 <idno type="SRP">http://syriaca.org/place/635</idno><idno type="Pleiades">http://pleiades.stoa.org/places/658606/</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Church_of_Saint_Simeon_Stylites</idno><!--WARNING: 635.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-636" type="settlement"><!--WARNING: 636.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name636-1" xml:lang="en" reg="Qara Quzaq">Qara Quzaq</placeName>
@@ -2134,7 +2134,7 @@
 <place xml:id="place-656" type="diocese"><!--WARNING: 656.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name656-1" xml:lang="en" reg="Karka d-Ledan">Karka d-Ledan</placeName>
 <desc type="abstract">A diocese of the Church of the East, whose bishop was a suffragan of the Metropolitan of Beth Huzaye.</desc><idno type="placeID">656</idno>
 <idno type="SRP">http://syriaca.org/place/656</idno><!--WARNING: 656.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-657" type="monastery"><placeName xml:id="name657-1" xml:lang="en" reg="Mor ʿAzozoʾil">Mor ʿAzozoʾil</placeName>
+<place xml:id="place-657" type="monastery"><placeName xml:id="name657-1" xml:lang="en" reg="Mor Azozoʾil">Mor ʿAzozoʾil</placeName>
 <placeName xml:id="name657-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܥܙܙܐܝܠ">ܕܝܪܐ ܕܡܪܝ ܥܙܙܐܝܠ</placeName>
 <desc type="abstract"/><idno type="placeID">657</idno>
 <idno type="SRP">http://syriaca.org/place/657</idno><!--WARNING: 657.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -2155,7 +2155,7 @@
 <place xml:id="place-661" type="monastery"><!--WARNING: 661.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name661-1" xml:lang="en" reg="Mar Abraham">Mar Abraham</placeName>
 <desc type="abstract"/><idno type="placeID">661</idno>
 <idno type="SRP">http://syriaca.org/place/661</idno><!--WARNING: 661.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-662" type="monastery"><!--WARNING: 662.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name662-1" xml:lang="en" reg="Dayr al-ʿAdas">Dayr al-ʿAdas</placeName>
+<place xml:id="place-662" type="monastery"><!--WARNING: 662.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name662-1" xml:lang="en" reg="Dayr Adas">Dayr al-ʿAdas</placeName>
 <desc type="abstract"/><idno type="placeID">662</idno>
 <idno type="SRP">http://syriaca.org/place/662</idno><!--WARNING: 662.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-663" type="settlement"><!--WARNING: 663.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name663-1" xml:lang="en" reg="Iskenderun">Iskenderun</placeName>
@@ -2201,7 +2201,7 @@
 <place xml:id="place-675" type="settlement"><!--WARNING: 675.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name675-1" xml:lang="en" reg="Ashqūt">ʿAshqūt</placeName>
 <desc type="abstract"/><idno type="placeID">675</idno>
 <idno type="SRP">http://syriaca.org/place/675</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Ashqout</idno><!--WARNING: 675.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-676" type="monastery"><!--WARNING: 676.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name676-1" xml:lang="en" reg="Dayr al-Askūl">Dayr al-Askūl</placeName>
+<place xml:id="place-676" type="monastery"><!--WARNING: 676.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name676-1" xml:lang="en" reg="Dayr Askūl">Dayr al-Askūl</placeName>
 <desc type="abstract"/><idno type="placeID">676</idno>
 <idno type="SRP">http://syriaca.org/place/676</idno><!--WARNING: 676.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-677" type="settlement"><!--WARNING: 677.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name677-1" xml:lang="en" reg="Athens">Athens</placeName>
@@ -2213,7 +2213,7 @@
 <place xml:id="place-679" type="settlement"><!--WARNING: 679.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name679-1" xml:lang="en" reg="Awāna">Awāna</placeName>
 <desc type="abstract"/><idno type="placeID">679</idno>
 <idno type="SRP">http://syriaca.org/place/679</idno><idno type="Pleiades">http://pleiades.stoa.org/places/894139</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/710">Beṯ ‘Arabāye region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-68" type="monastery"><placeName xml:id="name68-1" xml:lang="en" reg="Dayr al-Ṣalīb">Dayr al-Ṣalīb</placeName>
+<place xml:id="place-68" type="monastery"><placeName xml:id="name68-1" xml:lang="en" reg="Dayr Ṣalīb">Dayr al-Ṣalīb</placeName>
 <placeName xml:id="name68-2" xml:lang="syr" reg="ܕܝܪܐ ܕܨܠܝܒܐ">ܕܝܪܐ ܕܨܠܝܒܐ</placeName>
 <desc type="abstract"/><idno type="placeID">68</idno>
 <idno type="SRP">http://syriaca.org/place/68</idno><location type="gps"> <geo>33.90161 35.58388</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -2223,7 +2223,7 @@
 <place xml:id="place-681" type="settlement"><!--WARNING: 681.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name681-1" xml:lang="en" reg="Ayn Dulba">ʿAyn Dulba</placeName>
 <desc type="abstract"/><idno type="placeID">681</idno>
 <idno type="SRP">http://syriaca.org/place/681</idno><!--WARNING: 681.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-682" type="settlement"><!--WARNING: 682.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name682-1" xml:lang="en" reg="Ayn al-Tamr">ʿAyn al-Tamr</placeName>
+<place xml:id="place-682" type="settlement"><!--WARNING: 682.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name682-1" xml:lang="en" reg="Ayn Tamr">ʿAyn al-Tamr</placeName>
 <desc type="abstract"/><idno type="placeID">682</idno>
 <idno type="SRP">http://syriaca.org/place/682</idno><!--WARNING: 682.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-683" type="settlement"><!--WARNING: 683.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name683-1" xml:lang="en" reg="Ayn Tannūr">ʿAyn Tannūr</placeName>
@@ -2232,7 +2232,7 @@
 <place xml:id="place-684" type="settlement"><!--WARNING: 684.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name684-1" xml:lang="en" reg="Ayn Warqa">ʿAyn Warqa</placeName>
 <desc type="abstract"/><idno type="placeID">684</idno>
 <idno type="SRP">http://syriaca.org/place/684</idno><!--WARNING: 684.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-685" type="monastery"><!--WARNING: 685.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name685-1" xml:lang="en" reg="Dayro d-ʿAzrael">Dayro d-ʿAzrael</placeName>
+<place xml:id="place-685" type="monastery"><!--WARNING: 685.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name685-1" xml:lang="en" reg="Dayro d-Azrael">Dayro d-ʿAzrael</placeName>
 <desc type="abstract"/><idno type="placeID">685</idno>
 <idno type="SRP">http://syriaca.org/place/685</idno><!--WARNING: 685.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-686" type="building"><!--WARNING: 686.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name686-1" xml:lang="en" reg="Bāb Tūmā">Bāb Tūmā</placeName>
@@ -2248,7 +2248,7 @@
 <placeName xml:id="name689-2" xml:lang="syr" reg="ܫܒܟܬܐܢ">ܫܒܟܬܐܢ</placeName>
 <desc type="abstract">A medieval region east of Edessa and north of Harran, mentioned in Arabic chronicles from the Crusader period.</desc><idno type="placeID">689</idno>
 <idno type="SRP">http://syriaca.org/place/689</idno><!--WARNING: 689.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-69" type="monastery"><placeName xml:id="name69-1" xml:lang="en" reg="Dayr al-Zaʿfarān">Dayr al-Zaʿfarān</placeName>
+<place xml:id="place-69" type="monastery"><placeName xml:id="name69-1" xml:lang="en" reg="Dayr Zafarān">Dayr al-Zaʿfarān</placeName>
 <placeName xml:id="name69-2" xml:lang="syr" reg="ܕܝܪܐ ܕܙܥܦܪܐܢ">ܕܝܪܐ ܕܙܥܦܪܐܢ</placeName>
 <desc type="abstract">A monastery near Mardin, the seat of a Syrian Orthodox patriachate from 1293 into the 20th C.</desc><idno type="placeID">69</idno>
 <idno type="SRP">http://syriaca.org/place/69</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Mor_Hananyo_Monastery</idno><location type="gps"> <geo>37.966111 44.792778</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
@@ -2264,7 +2264,7 @@
 <placeName xml:id="name692-2" xml:lang="syr" reg="ܥܕܬܐ ܕܡܪܝ ܩܘܙܡܐ">ܥܕܬܐ ܕܡܪܝ ܩܘܙܡܐ</placeName>
 <desc type="abstract"/><idno type="placeID">692</idno>
 <idno type="SRP">http://syriaca.org/place/692</idno><!--WARNING: 692.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-693" type="settlement"><placeName xml:id="name693-1" xml:lang="en" reg="Shaʿb">Shaʿb</placeName>
+<place xml:id="place-693" type="settlement"><placeName xml:id="name693-1" xml:lang="en" reg="Shab">Shaʿb</placeName>
 <placeName xml:id="name693-2" xml:lang="syr" reg="ܫܥܒ">ܫܥܒ</placeName>
 <desc type="abstract"/><idno type="placeID">693</idno>
 <idno type="SRP">http://syriaca.org/place/693</idno><!--WARNING: 693.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -2276,10 +2276,10 @@
 <placeName xml:id="name695-2" xml:lang="syr" reg="ܟ̣ܠܦܬܝ">ܟ̣ܠܦܬܝ</placeName>
 <desc type="abstract"/><idno type="placeID">695</idno>
 <idno type="SRP">http://syriaca.org/place/695</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Halfeti</idno><!--WARNING: 695.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-696" type="province"><!--WARNING: 696.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name696-1" xml:lang="en" reg="Maʿmūrat al-ʿAzīz">Maʿmūrat al-ʿAzīz</placeName>
+<place xml:id="place-696" type="province"><!--WARNING: 696.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name696-1" xml:lang="en" reg="Mamūrat Azīz">Maʿmūrat al-ʿAzīz</placeName>
 <desc type="abstract">A vilayet of the Ottoman Empire created from a portion of Diyarbakir vilayet.</desc><idno type="placeID">696</idno>
 <idno type="SRP">http://syriaca.org/place/696</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Vilayet_of_Mamuret-ul-Aziz</idno><!--WARNING: 696.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-697" type="settlement"><placeName xml:id="name697-1" xml:lang="en" reg="Maʿmūrat al-ʿAzīz">Maʿmūrat al-ʿAzīz</placeName>
+<place xml:id="place-697" type="settlement"><placeName xml:id="name697-1" xml:lang="en" reg="Mamūrat Azīz">Maʿmūrat al-ʿAzīz</placeName>
 <placeName xml:id="name697-2" xml:lang="syr" reg="ܐܠܥܙܝܓ">ܐܠܥܙܝܓ</placeName>
 <desc type="abstract"/><idno type="placeID">697</idno>
 <idno type="SRP">http://syriaca.org/place/697</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Elâzığ</idno><!--WARNING: 697.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
@@ -2304,7 +2304,7 @@
 <place xml:id="place-702" type="building"><!--WARNING: 702.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name702-1" xml:lang="en" reg="British Library">British Library</placeName>
 <desc type="abstract"/><idno type="placeID">702</idno>
 <idno type="SRP">http://syriaca.org/place/702</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/British_Library</idno><!--WARNING: 702.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
-<place xml:id="place-703" type="region"><!--WARNING: 703.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name703-1" xml:lang="en" reg="‘Amādīyā">‘Amādīyā</placeName>
+<place xml:id="place-703" type="region"><!--WARNING: 703.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name703-1" xml:lang="en" reg="Amādīyā">‘Amādīyā</placeName>
 <desc type="abstract"/><idno type="placeID">703</idno>
 <idno type="SRP">http://syriaca.org/place/703</idno><!--WARNING: 703.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-704" type="region"><!--WARNING: 704.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name704-1" xml:lang="en" reg="Beṯ Moksāye">Beṯ Moksāye</placeName>
@@ -2313,13 +2313,13 @@
 <place xml:id="place-705" type="region"><!--WARNING: 705.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name705-1" xml:lang="en" reg="Beṯ Rahimaï">Beṯ Rahimaï</placeName>
 <desc type="abstract"/><idno type="placeID">705</idno>
 <idno type="SRP">http://syriaca.org/place/705</idno><!--WARNING: 705.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-706" type="region"><!--WARNING: 706.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name706-1" xml:lang="en" reg="‘Īlām">‘Īlām</placeName>
+<place xml:id="place-706" type="region"><!--WARNING: 706.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name706-1" xml:lang="en" reg="Īlām">‘Īlām</placeName>
 <desc type="abstract"/><idno type="placeID">706</idno>
 <idno type="SRP">http://syriaca.org/place/706</idno><!--WARNING: 706.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-707" type="region"><!--WARNING: 707.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name707-1" xml:lang="en" reg="Āmid">Āmid</placeName>
 <desc type="abstract"/><idno type="placeID">707</idno>
 <idno type="SRP">http://syriaca.org/place/707</idno><!--WARNING: 707.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-708" type="region"><!--WARNING: 708.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name708-1" xml:lang="en" reg="‘Aqrā">‘Aqrā</placeName>
+<place xml:id="place-708" type="region"><!--WARNING: 708.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name708-1" xml:lang="en" reg="Aqrā">‘Aqrā</placeName>
 <desc type="abstract"/><idno type="placeID">708</idno>
 <idno type="SRP">http://syriaca.org/place/708</idno><!--WARNING: 708.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-709" type="region"><!--WARNING: 709.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name709-1" xml:lang="en" reg="Baghdad">Baghdad</placeName>
@@ -2329,7 +2329,7 @@
 <placeName xml:id="name71-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܐܒܪܗܡ ܐܘ ܡܪܝ ܗܒܝܠ">ܕܝܪܐ ܕܡܪܝ ܐܒܪܗܡ ܐܘ ܡܪܝ ܗܒܝܠ</placeName>
 <desc type="abstract">A monastery near Midyat in Ṭur ʿAbdin.</desc><idno type="placeID">71</idno>
 <idno type="SRP">http://syriaca.org/place/71</idno><!--WARNING: 71.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-710" type="region"><!--WARNING: 710.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name710-1" xml:lang="en" reg="Beṯ ‘Arabāye">Beṯ ‘Arabāye</placeName>
+<place xml:id="place-710" type="region"><!--WARNING: 710.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name710-1" xml:lang="en" reg="Beṯ Arabāye">Beṯ ‘Arabāye</placeName>
 <desc type="abstract"/><idno type="placeID">710</idno>
 <idno type="SRP">http://syriaca.org/place/710</idno><!--WARNING: 710.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-711" type="region"><!--WARNING: 711.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name711-1" xml:lang="en" reg="Beṯ Lapaṭ">Beṯ Lapaṭ</placeName>
@@ -2359,7 +2359,7 @@
 <place xml:id="place-719" type="region"><!--WARNING: 719.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name719-1" xml:lang="en" reg="Mardīn">Mardīn</placeName>
 <desc type="abstract"/><idno type="placeID">719</idno>
 <idno type="SRP">http://syriaca.org/place/719</idno><!--WARNING: 719.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-72" type="monastery"><placeName xml:id="name72-1" xml:lang="en" reg="Dayro d-Mor Yaʿqub">Dayro d-Mor Yaʿqub</placeName>
+<place xml:id="place-72" type="monastery"><placeName xml:id="name72-1" xml:lang="en" reg="Dayro d-Mor Yaqub">Dayro d-Mor Yaʿqub</placeName>
 <placeName xml:id="name72-2" xml:lang="syr" reg="ܕܝܪܐ ܕܡܪܝ ܝܥܩܘܒ ܚܒܝܫܝܐ">ܕܝܪܐ ܕܡܪܝ ܝܥܩܘܒ ܚܒܝܫܝܐ</placeName>
 <desc type="abstract">A monastery near Ṣalaḥ in Ṭur ʿAbdin, seat of the Syrian Orthodox patriarchate of Ṭur ʿAbdin from 1365.</desc><idno type="placeID">72</idno>
 <idno type="SRP">http://syriaca.org/place/72</idno><!--WARNING: 72.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -2442,7 +2442,7 @@
 <place xml:id="place-743" type="region"><!--WARNING: 743.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name743-1" xml:lang="en" reg="Eshnūq">Eshnūq</placeName>
 <desc type="abstract"/><idno type="placeID">743</idno>
 <idno type="SRP">http://syriaca.org/place/743</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/729">Ūrmī region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-744" type="region"><!--WARNING: 744.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name744-1" xml:lang="en" reg="Farson">‘Farson’</placeName>
+<place xml:id="place-744" type="region"><!--WARNING: 744.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name744-1" xml:lang="en" reg="Farson’">‘Farson’</placeName>
 <desc type="abstract"/><idno type="placeID">744</idno>
 <idno type="SRP">http://syriaca.org/place/744</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-745" type="region"><!--WARNING: 745.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name745-1" xml:lang="en" reg="Gamlāwlōḥe">Gamlāwlōḥe</placeName>
@@ -2464,7 +2464,7 @@
 <placeName xml:id="name75-2" xml:lang="syr" reg="ܕܠܘܟ">ܕܠܘܟ</placeName>
 <desc type="abstract">A town west of the Euphrates, north of Aleppo, and northeast of Cyrrhus.</desc><idno type="placeID">75</idno>
 <idno type="SRP">http://syriaca.org/place/75</idno><idno type="Pleiades">http://pleiades.stoa.org/places/658455</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Dülük</idno><location type="gps"> <geo>37.06667 37.38333</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-750" type="region"><!--WARNING: 750.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name750-1" xml:lang="en" reg="Gulnca">‘Gulnca’</placeName>
+<place xml:id="place-750" type="region"><!--WARNING: 750.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name750-1" xml:lang="en" reg="Gulnca’">‘Gulnca’</placeName>
 <desc type="abstract"/><idno type="placeID">750</idno>
 <idno type="SRP">http://syriaca.org/place/750</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/"/> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-751" type="region"><!--WARNING: 751.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name751-1" xml:lang="en" reg="Gwerkel">Gwerkel</placeName>
@@ -2568,7 +2568,7 @@
 <place xml:id="place-780" type="region"><!--WARNING: 780.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name780-1" xml:lang="en" reg="Sīwīne">Sīwīne</placeName>
 <desc type="abstract"/><idno type="placeID">780</idno>
 <idno type="SRP">http://syriaca.org/place/780</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-781" type="region"><!--WARNING: 781.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name781-1" xml:lang="en" reg="Soch">‘Soch’</placeName>
+<place xml:id="place-781" type="region"><!--WARNING: 781.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name781-1" xml:lang="en" reg="Soch’">‘Soch’</placeName>
 <desc type="abstract"/><idno type="placeID">781</idno>
 <idno type="SRP">http://syriaca.org/place/781</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-782" type="region"><!--WARNING: 782.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name782-1" xml:lang="en" reg="Sulduz">Sulduz</placeName>
@@ -2632,7 +2632,7 @@
 <place xml:id="place-801" type="settlement"><!--WARNING: 801.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name801-1" xml:lang="en" reg="Ātel">Ātel</placeName>
 <desc type="abstract"/><idno type="placeID">801</idno>
 <idno type="SRP">http://syriaca.org/place/801</idno><!--WARNING: 801.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-803" type="settlement"><!--WARNING: 803.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name803-1" xml:lang="en" reg="Beit al-Shabab">Beit al-Shabab</placeName>
+<place xml:id="place-803" type="settlement"><!--WARNING: 803.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name803-1" xml:lang="en" reg="Beit Shabab">Beit al-Shabab</placeName>
 <desc type="abstract"/><idno type="placeID">803</idno>
 <idno type="SRP">http://syriaca.org/place/803</idno><!--WARNING: 803.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-804" type="settlement"><!--WARNING: 804.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name804-1" xml:lang="en" reg="Berlin">Berlin</placeName>
@@ -2702,7 +2702,7 @@
 <place xml:id="place-826" type="settlement"><!--WARNING: 826.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name826-1" xml:lang="en" reg="Ḥānījār">Ḥānījār</placeName>
 <desc type="abstract"/><idno type="placeID">826</idno>
 <idno type="SRP">http://syriaca.org/place/826</idno><!--WARNING: 826.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-827" type="settlement"><!--WARNING: 827.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name827-1" xml:lang="en" reg="Ḥesnā ‘Ebrāyā">Ḥesnā ‘Ebrāyā</placeName>
+<place xml:id="place-827" type="settlement"><!--WARNING: 827.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name827-1" xml:lang="en" reg="Ḥesnā Ebrāyā">Ḥesnā ‘Ebrāyā</placeName>
 <desc type="abstract"/><idno type="placeID">827</idno>
 <idno type="SRP">http://syriaca.org/place/827</idno><!--WARNING: 827.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-828" type="settlement"><!--WARNING: 828.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name828-1" xml:lang="en" reg="Ḥezzō">Ḥezzō</placeName>
@@ -2898,13 +2898,13 @@
 <place xml:id="place-887" type="settlement"><!--WARNING: 887.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name887-1" xml:lang="en" reg="Aḥwānīs">Aḥwānīs</placeName>
 <desc type="abstract"/><idno type="placeID">887</idno>
 <idno type="SRP">http://syriaca.org/place/887</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> <region ref="http://syriaca.org/place/780">Sīwīne district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-888" type="settlement"><!--WARNING: 888.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name888-1" xml:lang="en" reg="Aksni">‘Aksni’</placeName>
+<place xml:id="place-888" type="settlement"><!--WARNING: 888.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name888-1" xml:lang="en" reg="Aksni’">‘Aksni’</placeName>
 <desc type="abstract"/><idno type="placeID">888</idno>
 <idno type="SRP">http://syriaca.org/place/888</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/718">Kirkūk region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-889" type="settlement"><!--WARNING: 889.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name889-1" xml:lang="en" reg="Ājāpshīr">Ājāpshīr</placeName>
 <desc type="abstract"/><idno type="placeID">889</idno>
 <idno type="SRP">http://syriaca.org/place/889</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/729">Ūrmī region</region> <region ref="http://syriaca.org/place/782">Sulduz district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-89" type="settlement"><placeName xml:id="name89-1" xml:lang="en" reg="Marʿash">Marʿash</placeName>
+<place xml:id="place-89" type="settlement"><placeName xml:id="name89-1" xml:lang="en" reg="Marash">Marʿash</placeName>
 <placeName xml:id="name89-3" xml:lang="syr" reg="ܡܪܥܫ">ܡܪܥܫ</placeName>
 <desc type="abstract"/><idno type="placeID">89</idno>
 <idno type="SRP">http://syriaca.org/place/89</idno><idno type="Pleiades">http://pleiades.stoa.org/places/658474</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Kahramanmaraş</idno><location type="gps"> <geo>37.583333 36.933333</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -3058,62 +3058,62 @@
 <place xml:id="place-933" type="settlement"><!--WARNING: 933.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name933-1" xml:lang="en" reg="Azyānīsh">Azyānīsh</placeName>
 <desc type="abstract"/><idno type="placeID">933</idno>
 <idno type="SRP">http://syriaca.org/place/933</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> <region ref="http://syriaca.org/place/769">Pinyānīsh district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-934" type="settlement"><!--WARNING: 934.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name934-1" xml:lang="en" reg="‘Ābdūlākandi">‘Ābdūlākandi</placeName>
+<place xml:id="place-934" type="settlement"><!--WARNING: 934.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name934-1" xml:lang="en" reg="Ābdūlākandi">‘Ābdūlākandi</placeName>
 <desc type="abstract"/><idno type="placeID">934</idno>
 <idno type="SRP">http://syriaca.org/place/934</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/729">Ūrmī region</region> <region ref="http://syriaca.org/place/839">Anzel district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-935" type="settlement"><!--WARNING: 935.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name935-1" xml:lang="en" reg="‘Ādā">‘Ādā</placeName>
+<place xml:id="place-935" type="settlement"><!--WARNING: 935.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name935-1" xml:lang="en" reg="Ādā">‘Ādā</placeName>
 <desc type="abstract"/><idno type="placeID">935</idno>
 <idno type="SRP">http://syriaca.org/place/935</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/729">Ūrmī region</region> <region ref="http://syriaca.org/place/839">Anzel district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-936" type="settlement"><!--WARNING: 936.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name936-1" xml:lang="en" reg="‘Aïna d'Alīle">‘Aïna d'Alīle</placeName>
+<place xml:id="place-936" type="settlement"><!--WARNING: 936.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name936-1" xml:lang="en" reg="Aïna d'Alīle">‘Aïna d'Alīle</placeName>
 <desc type="abstract"/><idno type="placeID">936</idno>
 <idno type="SRP">http://syriaca.org/place/936</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> <region ref="http://syriaca.org/place/790">Upper Ṭiyārī district</region> <settlement xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:syriaca="http://syriaca.org" ref="http://syriaca.org/place/ district">Mār Sābā sub</settlement> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-937" type="settlement"><!--WARNING: 937.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name937-1" xml:lang="en" reg="‘Aïnā d'Nūne">‘Aïnā d'Nūne</placeName>
+<place xml:id="place-937" type="settlement"><!--WARNING: 937.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name937-1" xml:lang="en" reg="Aïnā d'Nūne">‘Aïnā d'Nūne</placeName>
 <desc type="abstract"/><idno type="placeID">937</idno>
 <idno type="SRP">http://syriaca.org/place/937</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/254">Berwārī region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-938" type="settlement"><!--WARNING: 938.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name938-1" xml:lang="en" reg="‘Aïnā Srīṯā">‘Aïnā Srīṯā</placeName>
+<place xml:id="place-938" type="settlement"><!--WARNING: 938.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name938-1" xml:lang="en" reg="Aïnā Srīṯā">‘Aïnā Srīṯā</placeName>
 <desc type="abstract"/><idno type="placeID">938</idno>
 <idno type="SRP">http://syriaca.org/place/938</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/993">Erbil region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-939" type="settlement"><!--WARNING: 939.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name939-1" xml:lang="en" reg="‘Aïn Barqe">‘Aïn Barqe</placeName>
+<place xml:id="place-939" type="settlement"><!--WARNING: 939.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name939-1" xml:lang="en" reg="Aïn Barqe">‘Aïn Barqe</placeName>
 <desc type="abstract"/><idno type="placeID">939</idno>
 <idno type="SRP">http://syriaca.org/place/939</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/708">‘Aqrā region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-94" type="settlement"><placeName xml:id="name94-1" xml:lang="en" reg="Ḥiṣn Manṣūr">Ḥiṣn Manṣūr</placeName>
 <placeName xml:id="name94-5" xml:lang="syr" reg="ܚܣܢ ܡܢܨܘܪ">ܚܣܢ ܡܢܨܘܪ</placeName>
 <desc type="abstract"/><idno type="placeID">94</idno>
 <idno type="SRP">http://syriaca.org/place/94</idno><idno type="Pleiades">http://pleiades.stoa.org/places/658568</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Adıyaman</idno><location type="gps"> <geo>37.75972 38.27875</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author></bibl></place>
-<place xml:id="place-940" type="settlement"><!--WARNING: 940.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name940-1" xml:lang="en" reg="‘Aïn Dāre">‘Aïn Dāre</placeName>
+<place xml:id="place-940" type="settlement"><!--WARNING: 940.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name940-1" xml:lang="en" reg="Aïn Dāre">‘Aïn Dāre</placeName>
 <desc type="abstract"/><idno type="placeID">940</idno>
 <idno type="SRP">http://syriaca.org/place/940</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/724">Seert region</region> <region ref="http://syriaca.org/place/583">Bohtān district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-941" type="settlement"><!--WARNING: 941.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name941-1" xml:lang="en" reg="‘Aïn Sifni">‘Aïn Sifni</placeName>
+<place xml:id="place-941" type="settlement"><!--WARNING: 941.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name941-1" xml:lang="en" reg="Aïn Sifni">‘Aïn Sifni</placeName>
 <desc type="abstract"/><idno type="placeID">941</idno>
 <idno type="SRP">http://syriaca.org/place/941</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/722">Mosul region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-942" type="settlement"><!--WARNING: 942.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name942-1" xml:lang="en" reg="‘Ālāmīyyān">‘Ālāmīyyān</placeName>
+<place xml:id="place-942" type="settlement"><!--WARNING: 942.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name942-1" xml:lang="en" reg="Ālāmīyyān">‘Ālāmīyyān</placeName>
 <desc type="abstract"/><idno type="placeID">942</idno>
 <idno type="SRP">http://syriaca.org/place/942</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> <region ref="http://syriaca.org/place/730">Albaq district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-943" type="settlement"><!--WARNING: 943.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name943-1" xml:lang="en" reg="‘Alih">‘Alih</placeName>
+<place xml:id="place-943" type="settlement"><!--WARNING: 943.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name943-1" xml:lang="en" reg="Alih">‘Alih</placeName>
 <desc type="abstract"/><idno type="placeID">943</idno>
 <idno type="SRP">http://syriaca.org/place/943</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> <region ref="http://syriaca.org/place/257">Nerwā district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-944" type="settlement"><!--WARNING: 944.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name944-1" xml:lang="en" reg="‘Ālyābād (i)">‘Ālyābād (i)</placeName>
+<place xml:id="place-944" type="settlement"><!--WARNING: 944.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name944-1" xml:lang="en" reg="Ālyābād (i)">‘Ālyābād (i)</placeName>
 <desc type="abstract"/><idno type="placeID">944</idno>
 <idno type="SRP">http://syriaca.org/place/944</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/729">Ūrmī region</region> <region ref="http://syriaca.org/place/742">Baranduz district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-945" type="settlement"><!--WARNING: 945.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name945-1" xml:lang="en" reg="‘Ālyābād (ii)">‘Ālyābād (ii)</placeName>
+<place xml:id="place-945" type="settlement"><!--WARNING: 945.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name945-1" xml:lang="en" reg="Ālyābād (ii)">‘Ālyābād (ii)</placeName>
 <desc type="abstract"/><idno type="placeID">945</idno>
 <idno type="SRP">http://syriaca.org/place/945</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/729">Ūrmī region</region> <region ref="http://syriaca.org/place/742">Baranduz district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-946" type="settlement"><!--WARNING: 946.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name946-1" xml:lang="en" reg="‘Amrīn">‘Amrīn</placeName>
+<place xml:id="place-946" type="settlement"><!--WARNING: 946.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name946-1" xml:lang="en" reg="Amrīn">‘Amrīn</placeName>
 <desc type="abstract"/><idno type="placeID">946</idno>
 <idno type="SRP">http://syriaca.org/place/946</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/712">Gāzartā region</region> <region ref="http://syriaca.org/place/786">Tigris Valley</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-947" type="settlement"><!--WARNING: 947.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name947-1" xml:lang="en" reg="‘Anbi">‘Anbi</placeName>
+<place xml:id="place-947" type="settlement"><!--WARNING: 947.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name947-1" xml:lang="en" reg="Anbi">‘Anbi</placeName>
 <desc type="abstract"/><idno type="placeID">947</idno>
 <idno type="SRP">http://syriaca.org/place/947</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> <region ref="http://syriaca.org/place/250">Tergāwār district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-948" type="settlement"><!--WARNING: 948.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name948-1" xml:lang="en" reg="‘Aqdesh">‘Aqdesh</placeName>
+<place xml:id="place-948" type="settlement"><!--WARNING: 948.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name948-1" xml:lang="en" reg="Aqdesh">‘Aqdesh</placeName>
 <desc type="abstract"/><idno type="placeID">948</idno>
 <idno type="SRP">http://syriaca.org/place/948</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/703">‘Amādīyā region</region> <region ref="http://syriaca.org/place/783">Ṣapnā district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-949" type="settlement"><!--WARNING: 949.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name949-1" xml:lang="en" reg="‘Aqrī">‘Aqrī</placeName>
+<place xml:id="place-949" type="settlement"><!--WARNING: 949.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name949-1" xml:lang="en" reg="Aqrī">‘Aqrī</placeName>
 <desc type="abstract"/><idno type="placeID">949</idno>
 <idno type="SRP">http://syriaca.org/place/949</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/254">Berwārī region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-950" type="settlement"><!--WARNING: 950.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name950-1" xml:lang="en" reg="‘Armūṭāghāj">‘Armūṭāghāj</placeName>
+<place xml:id="place-950" type="settlement"><!--WARNING: 950.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name950-1" xml:lang="en" reg="Armūṭāghāj">‘Armūṭāghāj</placeName>
 <desc type="abstract"/><idno type="placeID">950</idno>
 <idno type="SRP">http://syriaca.org/place/950</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/729">Ūrmī region</region> <region ref="http://syriaca.org/place/839">Anzel district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-951" type="settlement"><!--WARNING: 951.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name951-1" xml:lang="en" reg="‘Āṭūsh">‘Āṭūsh</placeName>
+<place xml:id="place-951" type="settlement"><!--WARNING: 951.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name951-1" xml:lang="en" reg="Āṭūsh">‘Āṭūsh</placeName>
 <desc type="abstract"/><idno type="placeID">951</idno>
 <idno type="SRP">http://syriaca.org/place/951</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/708">‘Aqrā region</region> <region ref="http://syriaca.org/place/788">Ṭalānā district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-952" type="settlement"><!--WARNING: 952.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name952-1" xml:lang="en" reg="Bābārūd">Bābārūd</placeName>
@@ -3137,7 +3137,7 @@
 <place xml:id="place-958" type="settlement"><!--WARNING: 958.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name958-1" xml:lang="en" reg="Bailekan">Bailekan</placeName>
 <desc type="abstract"/><idno type="placeID">958</idno>
 <idno type="SRP">http://syriaca.org/place/958</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> <region ref="http://syriaca.org/place/760">Lewūn district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-959" type="settlement"><!--WARNING: 959.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name959-1" xml:lang="en" reg="Bāim Qa‘lā">Bāim Qa‘lā</placeName>
+<place xml:id="place-959" type="settlement"><!--WARNING: 959.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name959-1" xml:lang="en" reg="Bāim Qalā">Bāim Qa‘lā</placeName>
 <desc type="abstract"/><idno type="placeID">959</idno>
 <idno type="SRP">http://syriaca.org/place/959</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/729">Ūrmī region</region> <region ref="http://syriaca.org/place/782">Sulduz district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-96" type="settlement"><!--WARNING: 96.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name96-1" xml:lang="en" reg="Hormizd Ardashir">Hormizd Ardashir</placeName>
@@ -3173,7 +3173,7 @@
 <place xml:id="place-969" type="settlement"><!--WARNING: 969.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name969-1" xml:lang="en" reg="Barmīn">Barmīn</placeName>
 <desc type="abstract"/><idno type="placeID">969</idno>
 <idno type="SRP">http://syriaca.org/place/969</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/703">‘Amādīyā region</region> <region ref="http://syriaca.org/place/777">Shemkān district</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-97" type="settlement"><placeName xml:id="name97-1" xml:lang="en" reg="Qalʿa Rumayta">Qalʿa Rumayta</placeName>
+<place xml:id="place-97" type="settlement"><placeName xml:id="name97-1" xml:lang="en" reg="Qala Rumayta">Qalʿa Rumayta</placeName>
 <placeName xml:id="name97-3" xml:lang="syr" reg="ܩܠܥܐ ܪܘܡܝܬܐ">ܩܠܥܐ ܪܘܡܝܬܐ</placeName>
 <desc type="abstract"/><idno type="placeID">97</idno>
 <idno type="SRP">http://syriaca.org/place/97</idno><idno type="Wikipedia">http://en.wikipedia.org/wiki/Rumkale</idno><location type="gps"> <geo>37.270778 37.837917</geo> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
@@ -3201,7 +3201,7 @@
 <place xml:id="place-977" type="settlement"><!--WARNING: 977.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name977-1" xml:lang="en" reg="Bāshbītā">Bāshbītā</placeName>
 <desc type="abstract"/><idno type="placeID">977</idno>
 <idno type="SRP">http://syriaca.org/place/977</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/722">Mosul region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-978" type="settlement"><!--WARNING: 978.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name978-1" xml:lang="en" reg="Bā‘shīqā">Bā‘shīqā</placeName>
+<place xml:id="place-978" type="settlement"><!--WARNING: 978.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name978-1" xml:lang="en" reg="Bāshīqā">Bā‘shīqā</placeName>
 <desc type="abstract"/><idno type="placeID">978</idno>
 <idno type="SRP">http://syriaca.org/place/978</idno><location type="geopolitical"> <region ref="http://syriaca.org/place/722">Mosul region</region> </location><bibl type="self"><date>2013-07-11-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-979" type="settlement"><!--WARNING: 979.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name979-1" xml:lang="en" reg="Bāshirgā">Bāshirgā</placeName>

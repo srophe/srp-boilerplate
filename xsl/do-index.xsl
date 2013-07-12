@@ -569,9 +569,19 @@
           <xsl:with-param name="instring" select="substring-after($instring, 'al-')"/>
         </xsl:call-template>
       </xsl:when>
-      <xsl:when test="starts-with($instring, '&#703;')">
+      <xsl:when test="contains($instring, ' al-')">
         <xsl:call-template name="enstrip">
-          <xsl:with-param name="instring" select="substring-after($instring, '&#703;')"/>
+          <xsl:with-param name="instring" select="replace($instring, ' al-', ' ')"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="contains($instring, '&#703;')">
+        <xsl:call-template name="enstrip">
+          <xsl:with-param name="instring" select="replace($instring, '&#703;', '')"/>
+        </xsl:call-template>    
+      </xsl:when>
+      <xsl:when test="contains($instring, '‘')">
+        <xsl:call-template name="enstrip">
+          <xsl:with-param name="instring" select="replace($instring, '‘', '')"/>
         </xsl:call-template>    
       </xsl:when>
       <xsl:when test="starts-with($instring, '‘') and ends-with($instring, '’')">
