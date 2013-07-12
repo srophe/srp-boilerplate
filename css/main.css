@@ -74,6 +74,7 @@
 
 .helper.circle:hover {
 	box-shadow: none;
+	cursor:help;
 }
 .helper.circle > p {
 	color: rgb(0,136,204);
