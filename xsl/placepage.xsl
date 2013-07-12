@@ -30,7 +30,6 @@
 
  <xsl:output name="html" encoding="UTF-8" method="html" indent="yes"/>
 
-
  <!-- =================================================================== -->
  <!-- initialize top-level variables and transform parameters -->
  <!--  sourcedir: where to look for XML files to summarize/link to -->
@@ -470,9 +469,32 @@
   </xsl:choose>
  </xsl:template>
  
+ <xsl:template match="t:placeName[local-name(..)='desc']" mode="cleanout">
+  <xsl:choose>
+   <xsl:when test="@ref">
+    <xsl:choose>
+     <xsl:when test="starts-with(@ref, 'http://syriaca.org/place/')">
+      <a href="{substring-after(@ref, 'http://syriaca.org/place/')}.html"><xsl:apply-templates mode="cleanout"/></a>
+     </xsl:when>
+     <xsl:otherwise>
+      <a href="{@ref}"><xsl:apply-templates mode="cleanout"/></a>
+      <xsl:call-template name="log">
+       <xsl:with-param name="msg">ref attribute value (<xsl:value-of select="@ref"/>) on placename element inside desc didn't start with 'http://syriaca.org/place/ so just linked to it as is</xsl:with-param>
+      </xsl:call-template>
+     </xsl:otherwise>
+    </xsl:choose>
+   </xsl:when>
+   <xsl:otherwise>
+    <xsl:call-template name="log">
+     <xsl:with-param name="msg">placeName element within a desc, but has no 'ref' attribute; passed through as plain text</xsl:with-param>
+    </xsl:call-template>
+    <xsl:apply-templates mode="cleanout"/>
+   </xsl:otherwise>
+  </xsl:choose>
+ </xsl:template>
  
  <xsl:template match="text()" mode="cleanout">
-  <xsl:value-of select="normalize-space(.)"/>
+  <xsl:value-of select="."/>
  </xsl:template>
  
  <xsl:template match="t:*" mode="cleanout">
