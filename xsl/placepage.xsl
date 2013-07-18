@@ -194,7 +194,7 @@
              <xsl:text>: </xsl:text><xsl:value-of select="."/></p>
             </div>
            </xsl:for-each>
-           <xsl:for-each select="t:desc[@type='abstract'][1]">
+           <xsl:for-each select="t:desc[@type='abstract' or starts-with(@xml:id, 'abstract-en')][1]">
             <p><xsl:apply-templates mode="cleanout"/></p>
            </xsl:for-each>
     
@@ -289,6 +289,19 @@
    <h3>Location</h3>
    <ul><xsl:apply-templates select="t:location"/></ul>
   </div>
+  <div id="description">
+   <h3>Description</h3>
+   <ul>
+    <xsl:for-each-group select="t:desc" group-by="if (contains(@xml:lang, '-')=true()) then substring-before(@xml:lang, '-') else @xml:lang">
+     <xsl:sort collation="languages" select="if (contains(@xml:lang, '-')=true()) then substring-before(@xml:lang, '-') else @xml:lang"/>
+     <xsl:for-each select="current-group()">
+      <xsl:sort lang="{current-grouping-key()}"/>
+      <xsl:message><xsl:text>key=</xsl:text><xsl:value-of select="current-grouping-key()"/><xsl:text>|||</xsl:text><xsl:value-of select="local-name()"/><xsl:text>@lang=</xsl:text><xsl:value-of select="@xml:lang"/></xsl:message>
+      <xsl:apply-templates select="."/>
+     </xsl:for-each>
+    </xsl:for-each-group>
+   </ul>
+  </div>
   <xsl:if test="$idx/descendant::t:location[@type='geopolitical']/t:*[@ref=$thisuri]">
    <div id="contents">
     <h3>Contains</h3>
@@ -319,6 +332,20 @@
  
  <xsl:template match="t:offset | t:measure">
   <xsl:apply-templates select="." mode="out-normal"/>
+ </xsl:template>
+ 
+ <xsl:template match="t:desc[not(starts-with(@xml:id, 'abstract-en'))]">
+  <li>
+   <xsl:call-template name="langattr"/>
+   <xsl:apply-templates/>
+  </li>
+ </xsl:template>
+ 
+ <xsl:template match="t:quote">
+  <xsl:text>“</xsl:text>
+  <xsl:apply-templates/>
+  <xsl:text>”</xsl:text>
+  <xsl:call-template name="do-refs"/>
  </xsl:template>
  
  <xsl:template match="t:placeName | t:region | t:settlement">
@@ -370,6 +397,10 @@
    <xsl:variable name="biblids" select="tokenize(@source, ' ')"/>
    <xsl:variable name="last" select="$biblids[last()]"/>
    <bdi class="footnote-refs" dir="ltr">
+    <xsl:if test="ancestor::t:*[@xml:lang][1][@xml:lang!='en']">
+     <xsl:attribute name="lang">en</xsl:attribute>
+     <xsl:attribute name="xml:lang">en</xsl:attribute>
+    </xsl:if>
     <xsl:text> </xsl:text>
     <xsl:for-each select="$biblids">
      <xsl:variable name="sought" select="substring-after(., '#')"/>
