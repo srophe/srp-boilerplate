@@ -41,6 +41,7 @@
 
  <xsl:param name="idxdir">../places/</xsl:param> 
  <xsl:param name="sourcedir">../../places/xml/</xsl:param>
+ <xsl:param name="biblsourcedir">../../bibl/xml/</xsl:param>
  <xsl:param name="destdir">../places/</xsl:param>
  <xsl:param name="name-app">The Syriac Gazetteer</xsl:param>
  <xsl:param name="copyright-holders">CHANGE THE COPYRIGHT HOLDERS PARAMETER</xsl:param>
