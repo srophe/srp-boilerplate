@@ -465,7 +465,9 @@
  </xsl:template>
  
  <xsl:template match="t:author[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
-  <xsl:apply-templates select="." mode="out-normal"/>
+  <span class="{local-name()}">
+   <xsl:apply-templates select="." mode="out-normal"/> 
+  </span>
   <xsl:text>. </xsl:text>
  </xsl:template>
  
@@ -488,6 +490,12 @@
   </xsl:choose>
   <xsl:apply-templates select="." mode="out-normal"/>
   <xsl:text>.</xsl:text>
+ </xsl:template>
+ 
+ <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
+  <xsl:call-template name="log">
+   <xsl:with-param name="msg">element suppressed in mode footnote</xsl:with-param>
+  </xsl:call-template>
  </xsl:template>
 
  <xsl:template match="t:bibl" mode="footnote-ref">
