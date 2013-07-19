@@ -436,7 +436,21 @@
      what you can with the contents of the present element -->
     <xsl:choose>
      <xsl:when test="t:ptr[@target and starts-with(@target, 'http://syriaca.org/bibl/')]">
-      <!-- TODO -->
+      <xsl:variable name="biblfilepath">
+       <xsl:value-of select="$biblsourcedir"/>
+       <xsl:value-of select="substring-after(t:ptr/@target, 'http://syriaca.org/bibl/')"/>
+       <xsl:text>.xml</xsl:text>
+      </xsl:variable>
+      <xsl:choose>
+       <xsl:when test="doc-available($biblfilepath)">
+        <xsl:apply-templates select="document($biblfilepath)/descendant::t:biblStruct[1]" mode="footnote"/>
+       </xsl:when>
+       <xsl:otherwise>
+        <xsl:call-template name="log">
+         <xsl:with-param name="msg">could not find referenced bibl document <xsl:value-of select="$biblfilepath"/></xsl:with-param>
+        </xsl:call-template>
+       </xsl:otherwise>
+      </xsl:choose>
      </xsl:when>
      <xsl:otherwise>
       <xsl:apply-templates mode="footnote"/>
