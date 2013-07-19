@@ -121,6 +121,8 @@
   <xsl:template match="t:biblStruct[t:monogr and not(t:analytic)]" mode="footnote">
     <!-- this is a monograph/book -->
     <xsl:message>book: <xsl:value-of select="ancestor::t:TEI/descendant::t:titleStmt/t:title[1]"/></xsl:message>
+    
+    <!-- handle editors/authors and abbreviate as necessary -->
     <xsl:variable name="edited" select="if (t:monogr/t:editor) then true() else false()"/>
     <xsl:message>edited: <xsl:value-of select="xs:string($edited)"/></xsl:message>
     <xsl:variable name="responsible">
@@ -173,6 +175,9 @@
       </xsl:choose>
     </xsl:if>
     <xsl:text>.</xsl:text>
+    
+    <!-- handle titles -->
+    <xsl:apply-templates select="t:monogr/t:title" mode="footnote"/>
   </xsl:template>
   
   <xsl:template match="t:persName | t:forename | t:addName | t:surname" mode="footnote">
@@ -189,7 +194,7 @@
     <xsl:text>. </xsl:text>
   </xsl:template>
   
-  <xsl:template match="t:title[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
+  <xsl:template match="t:title[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote" priority="1">
     <span class="title">
       <xsl:call-template name="langattr"/>
       <xsl:apply-templates select="." mode="out-normal"/>
