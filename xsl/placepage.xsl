@@ -460,14 +460,19 @@
   </li>
  </xsl:template>
  
- <xsl:template match="t:biblStruct" mode="footnote">
-  <xsl:apply-templates mode="footnote"/>
+ <xsl:template match="t:biblStruct[t:monogr and not(t:analytic)]" mode="footnote">
+  <!-- this is a monograph/book -->
+  <xsl:message>book</xsl:message>
  </xsl:template>
  
+ 
  <xsl:template match="t:author[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
-  <span class="{local-name()}">
-   <xsl:apply-templates select="." mode="out-normal"/> 
-  </span>
+  <span class="author"><xsl:apply-templates select="." mode="out-normal"/></span>
+  <xsl:text>. </xsl:text>
+ </xsl:template>
+ 
+ <xsl:template match="t:editor[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
+  <span class="editor"><xsl:apply-templates select="." mode="out-normal"/></span>
   <xsl:text>. </xsl:text>
  </xsl:template>
  
