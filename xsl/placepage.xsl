@@ -12,6 +12,7 @@
  <!-- import component stylesheets for HTML page portions -->
  <!-- =================================================================== -->
 
+ <xsl:import href="bibliography.xsl"/>
  <xsl:import href="boilerplate-head.xsl"/>
  <xsl:import href="boilerplate-bottom.xsl"/>
  <xsl:import href="boilerplate-badbrowser.xsl"/>
@@ -415,101 +416,6 @@
   </xsl:if>
  </xsl:template>
 
- <xsl:template match="t:bibl" mode="footnote">
-  <xsl:param name="footnote-number">-1</xsl:param>
-  <xsl:variable name="thisnum">
-   <xsl:choose>
-    <xsl:when test="$footnote-number='-1'">
-     <xsl:value-of select="substring-after(@xml:id, '-')"/>
-    </xsl:when>
-    <xsl:otherwise>
-     <xsl:value-of select="$footnote-number"/>
-    </xsl:otherwise>
-   </xsl:choose>
-  </xsl:variable>
-  
-  <li xml:id="{@xml:id}">
-   <span class="footnote-tgt"><xsl:value-of select="$thisnum"/></span>
-   <span class="footnote-content">
-    <!-- if the reference points at a master bibliographic record file, use it; otherwise, do 
-     what you can with the contents of the present element -->
-    <xsl:choose>
-     <xsl:when test="t:ptr[@target and starts-with(@target, 'http://syriaca.org/bibl/')]">
-      <xsl:variable name="biblfilepath">
-       <xsl:value-of select="$biblsourcedir"/>
-       <xsl:value-of select="substring-after(t:ptr/@target, 'http://syriaca.org/bibl/')"/>
-       <xsl:text>.xml</xsl:text>
-      </xsl:variable>
-      <xsl:choose>
-       <xsl:when test="doc-available($biblfilepath)">
-        <xsl:apply-templates select="document($biblfilepath)/descendant::t:biblStruct[1]" mode="footnote"/>
-       </xsl:when>
-       <xsl:otherwise>
-        <xsl:call-template name="log">
-         <xsl:with-param name="msg">could not find referenced bibl document <xsl:value-of select="$biblfilepath"/></xsl:with-param>
-        </xsl:call-template>
-       </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="t:citedRange" mode="footnote"/>
-     </xsl:when>
-     <xsl:otherwise>
-      <xsl:apply-templates mode="footnote"/>
-     </xsl:otherwise>
-    </xsl:choose>
-   </span>
-  </li>
- </xsl:template>
- 
- <xsl:template match="t:biblStruct[t:monogr and not(t:analytic)]" mode="footnote">
-  <!-- this is a monograph/book -->
-  <xsl:message>book</xsl:message>
- </xsl:template>
- 
- 
- <xsl:template match="t:author[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
-  <span class="author"><xsl:apply-templates select="." mode="out-normal"/></span>
-  <xsl:text>. </xsl:text>
- </xsl:template>
- 
- <xsl:template match="t:editor[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
-  <span class="editor"><xsl:apply-templates select="." mode="out-normal"/></span>
-  <xsl:text>. </xsl:text>
- </xsl:template>
- 
- <xsl:template match="t:title[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
-  <span class="title">
-   <xsl:call-template name="langattr"/>
-   <xsl:apply-templates select="." mode="out-normal"/>
-   <xsl:text>. </xsl:text>
-  </span>
- </xsl:template>
- 
- <xsl:template match="t:citedRange[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
-  <xsl:choose>
-   <xsl:when test="@unit='pp' and contains(., '-')">
-    <xsl:text>pp. </xsl:text>
-   </xsl:when>
-   <xsl:when test="@unit='pp' and not(contains(., '-'))">
-    <xsl:text>p. </xsl:text>
-   </xsl:when>
-  </xsl:choose>
-  <xsl:apply-templates select="." mode="out-normal"/>
-  <xsl:text>.</xsl:text>
- </xsl:template>
- 
- <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
-  <xsl:call-template name="log">
-   <xsl:with-param name="msg">element suppressed in mode footnote</xsl:with-param>
-  </xsl:call-template>
- </xsl:template>
-
- <xsl:template match="t:bibl" mode="footnote-ref">
-  <xsl:param name="footnote-number">1</xsl:param>
-  <span class="footnote-ref">
-   <a href="#{@xml:id}"><xsl:value-of select="$footnote-number"/></a>
-  </span>
- </xsl:template>
- 
  <xsl:template name="get-headword-ele" as="element()*">
   <xsl:choose>
    <xsl:when test="./descendant-or-self::t:listPlace/t:place/t:placeName[@syriaca-tags='#syriaca-headword']">
