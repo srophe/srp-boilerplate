@@ -459,6 +459,10 @@
   </li>
  </xsl:template>
  
+ <xsl:template match="t:biblStruct" mode="footnote">
+  <xsl:message>biblstruct</xsl:message>
+ </xsl:template>
+ 
  <xsl:template match="t:author[ancestor::t:bibl]" mode="footnote">
   <xsl:apply-templates select="." mode="out-normal"/>
   <xsl:text>. </xsl:text>
