@@ -55,6 +55,16 @@
        
        ================================================================== -->
   
+  <xsl:variable name="maxauthorsfootnote">2</xsl:variable>
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     template: match=t:bibl mode=footnote
+     
+     generate a footnote for the matched bibl entry; if it contains a 
+     pointer, try to look up the master bibliography file and use that
+     
+     assumption: you want the footnote in a list item (li) element
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:bibl" mode="footnote">
     <xsl:param name="footnote-number">-1</xsl:param>
@@ -101,11 +111,73 @@
     </li>
   </xsl:template>
   
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     template match=t:biblStruct that contains a t:monograph but not a
+     t:analytic (i.e., this is a book) mode=footnote
+     
+     handle a footnote for a book
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
   <xsl:template match="t:biblStruct[t:monogr and not(t:analytic)]" mode="footnote">
     <!-- this is a monograph/book -->
-    <xsl:message>book</xsl:message>
+    <xsl:message>book: <xsl:value-of select="ancestor::t:TEI/descendant::t:titleStmt/t:title[1]"/></xsl:message>
+    <xsl:variable name="edited" select="if (t:monogr/t:editor) then true() else false()"/>
+    <xsl:message>edited: <xsl:value-of select="xs:string($edited)"/></xsl:message>
+    <xsl:variable name="responsible">
+      <xsl:choose>
+        <xsl:when test="$edited">
+          <xsl:copy-of select="t:monogr/t:editor"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="t:monogr/t:author"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:message>responsible: <xsl:value-of select="count($responsible/t:*)"/></xsl:message>
+    <xsl:variable name="rcount" select="count($responsible/t:*)"/>
+    <xsl:choose>
+      <xsl:when test="$rcount &gt; $maxauthorsfootnote">
+        <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
+        <xsl:text> et al.</xsl:text>
+      </xsl:when>
+      <xsl:when test="$rcount = 1">
+        <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
+      </xsl:when>
+      <xsl:when test="$rcount = 2">
+        <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
+        <xsl:text> and </xsl:text>
+        <xsl:apply-templates select="$responsible/t:*[2]"  mode="footnote"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:for-each select="$responsible/t:*[position() &lt; $maxauthorsfootnote+1]">
+          <xsl:choose>
+            <xsl:when test="position() = $maxauthorsfootnote">
+              <xsl:text> and </xsl:text>
+            </xsl:when>
+            <xsl:when test="position() &gt; 1">
+              <xsl:text>, </xsl:text>
+            </xsl:when>
+          </xsl:choose>
+          <xsl:apply-templates mode="footnote"/>
+        </xsl:for-each>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:if test="$edited">
+      <xsl:choose>
+        <xsl:when test="$rcount = 1">
+          <xsl:text> (ed.)</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text> (eds.)</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+    <xsl:text>.</xsl:text>
   </xsl:template>
   
+  <xsl:template match="t:persName | t:forename | t:addName | t:surname" mode="footnote">
+    <xsl:apply-templates mode="footnote"/>
+  </xsl:template>
   
   <xsl:template match="t:author[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
     <span class="author"><xsl:apply-templates select="." mode="out-normal"/></span>
