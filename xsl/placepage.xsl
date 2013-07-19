@@ -297,7 +297,6 @@
      <xsl:sort collation="languages" select="if (contains(@xml:lang, '-')=true()) then substring-before(@xml:lang, '-') else @xml:lang"/>
      <xsl:for-each select="current-group()">
       <xsl:sort lang="{current-grouping-key()}" select="normalize-space(.)"/>
-      <xsl:message><xsl:text>key=</xsl:text><xsl:value-of select="current-grouping-key()"/><xsl:text>|||</xsl:text><xsl:value-of select="local-name()"/><xsl:text>@lang=</xsl:text><xsl:value-of select="@xml:lang"/></xsl:message>
       <xsl:apply-templates select="."/>
      </xsl:for-each>
     </xsl:for-each-group>
