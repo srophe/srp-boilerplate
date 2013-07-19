@@ -428,10 +428,20 @@
     </xsl:otherwise>
    </xsl:choose>
   </xsl:variable>
+  
   <li xml:id="{@xml:id}">
    <span class="footnote-tgt"><xsl:value-of select="$thisnum"/></span>
    <span class="footnote-content">
-    <xsl:apply-templates mode="footnote"/>
+    <!-- if the reference points at a master bibliographic record file, use it; otherwise, do 
+     what you can with the contents of the present element -->
+    <xsl:choose>
+     <xsl:when test="t:ptr[@target and starts-with(@target, 'http://syriaca.org/bibl/')]">
+      <!-- TODO -->
+     </xsl:when>
+     <xsl:otherwise>
+      <xsl:apply-templates mode="footnote"/>
+     </xsl:otherwise>
+    </xsl:choose>
    </span>
   </li>
  </xsl:template>
