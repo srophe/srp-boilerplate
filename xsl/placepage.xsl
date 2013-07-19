@@ -450,6 +450,7 @@
         </xsl:call-template>
        </xsl:otherwise>
       </xsl:choose>
+      <xsl:apply-templates select="t:citedRange" mode="footnote"/>
      </xsl:when>
      <xsl:otherwise>
       <xsl:apply-templates mode="footnote"/>
@@ -460,15 +461,15 @@
  </xsl:template>
  
  <xsl:template match="t:biblStruct" mode="footnote">
-  <xsl:message>biblstruct</xsl:message>
+  <xsl:apply-templates mode="footnote"/>
  </xsl:template>
  
- <xsl:template match="t:author[ancestor::t:bibl]" mode="footnote">
+ <xsl:template match="t:author[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
   <xsl:apply-templates select="." mode="out-normal"/>
   <xsl:text>. </xsl:text>
  </xsl:template>
  
- <xsl:template match="t:title[ancestor::t:bibl]" mode="footnote">
+ <xsl:template match="t:title[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
   <span class="title">
    <xsl:call-template name="langattr"/>
    <xsl:apply-templates select="." mode="out-normal"/>
@@ -476,7 +477,7 @@
   </span>
  </xsl:template>
  
- <xsl:template match="t:citedRange[ancestor::t:bibl]" mode="footnote">
+ <xsl:template match="t:citedRange[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
   <xsl:choose>
    <xsl:when test="@unit='pp' and contains(., '-')">
     <xsl:text>pp. </xsl:text>
