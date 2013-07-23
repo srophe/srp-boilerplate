@@ -190,7 +190,14 @@
     
   </xsl:template>
   
-  <xsl:template match="t:forename | t:addName | t:surname | t:date | t:publisher | t:pubPlace | t:placeName" mode="footnote" priority="1">
+  <xsl:template match="t:forename | t:addName | t:surname" mode="footnote" priority="1">
+    <xsl:if test="preceding-sibling::t:*">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+    <xsl:apply-templates mode="footnote"/>
+  </xsl:template>
+  
+  <xsl:template match="t:date | t:publisher | t:pubPlace | t:placeName" mode="footnote" priority="1">
     <xsl:apply-templates mode="footnote"/>
   </xsl:template>
   
@@ -199,7 +206,6 @@
   </xsl:template>
   
   <xsl:template match="t:author | t:editor" mode="footnote" priority="1">
-    <xsl:message>AUTHOR</xsl:message>
     <span class="author"><xsl:apply-templates select="t:persName[1]" mode="footnote"/></span>
   </xsl:template>
     
