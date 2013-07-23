@@ -74,6 +74,13 @@
     </xsl:call-template>
     <xsl:text>”</xsl:text>
     <xsl:text> in </xsl:text><span class="title">The Syriac Gazetteer</span><xsl:text>, eds. </xsl:text>
+    <xsl:call-template name="cite-foot-pers">
+      <xsl:with-param name="perss" select="t:editor[@role='general']"/>
+    </xsl:call-template>
+    <xsl:text>, entry published </xsl:text>
+    <xsl:for-each select="../t:publicationStmt/t:date[1]">
+      <xsl:value-of select="format-date(xs:date(.), '[MNn] [D], [Y]')"/>
+    </xsl:for-each>
   </xsl:template>
   
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
