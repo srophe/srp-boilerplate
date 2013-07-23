@@ -125,11 +125,9 @@
   
   <xsl:template match="t:biblStruct[t:monogr and not(t:analytic)]" mode="footnote">
     <!-- this is a monograph/book -->
-    <xsl:message>book: <xsl:value-of select="ancestor::t:TEI/descendant::t:titleStmt/t:title[1]"/></xsl:message>
     
     <!-- handle editors/authors and abbreviate as necessary -->
     <xsl:variable name="edited" select="if (t:monogr/t:editor) then true() else false()"/>
-    <xsl:message>edited: <xsl:value-of select="xs:string($edited)"/></xsl:message>
     <xsl:variable name="responsible">
       <xsl:choose>
         <xsl:when test="$edited">
@@ -140,7 +138,6 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:message>responsible: <xsl:value-of select="count($responsible/t:*)"/></xsl:message>
     <xsl:variable name="rcount" select="count($responsible/t:*)"/>
     <xsl:choose>
       <xsl:when test="$rcount &gt; $maxauthorsfootnote">
