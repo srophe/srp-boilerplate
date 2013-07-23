@@ -218,7 +218,16 @@
   </xsl:template>
   
   <xsl:template match="t:author | t:editor" mode="footnote" priority="1">
-    <span class="author"><xsl:apply-templates select="t:persName[1]" mode="footnote"/></span>
+    <span class="{local-name()}">
+      <xsl:choose>
+        <xsl:when test="t:persName">
+          <xsl:apply-templates select="t:persName[1]" mode="footnote"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates mode="footnote"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </span>
   </xsl:template>
     
   <xsl:template match="t:imprint" mode="footnote" priority="1">
