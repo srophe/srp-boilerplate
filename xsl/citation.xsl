@@ -67,7 +67,11 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:titleStmt" mode="cite-foot">
-    
+    <xsl:call-template name="cite-foot-creators"/>
+  </xsl:template>
+  
+  <xsl:template name="cite-foot-creators">
+    <xsl:variable name="ccount" select="count(t:editor[@role='creator'])"/>
   </xsl:template>
   
 
