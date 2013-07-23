@@ -195,11 +195,17 @@
   </xsl:template>
   
   <xsl:template match="t:date | t:publisher | t:pubPlace | t:placeName" mode="footnote" priority="1">
-    <xsl:apply-templates mode="footnote"/>
+    <span class="{local-name()}">
+      <xsl:call-template name="langattr"/>
+      <xsl:apply-templates mode="footnote"/>
+    </span>
   </xsl:template>
   
   <xsl:template match="t:persName" mode="footnote">
-    <xsl:apply-templates select="t:*" mode="footnote"/>
+    <span class="persName">
+      <xsl:call-template name="langattr"/>
+      <xsl:apply-templates select="t:*" mode="footnote"/>
+    </span>
   </xsl:template>
   
   <xsl:template match="t:author | t:editor" mode="footnote" priority="1">
@@ -219,7 +225,7 @@
     <xsl:text>: </xsl:text>
     <xsl:choose>
       <xsl:when test="t:publisher">
-        <xsl:apply-templates select="t:publisher" mode="footnote"/>
+        <xsl:apply-templates select="t:publisher[1]" mode="footnote"/>
       </xsl:when>
       <xsl:otherwise>
         <abbr title="no publisher">n.p.</abbr>
