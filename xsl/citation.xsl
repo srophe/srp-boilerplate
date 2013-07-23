@@ -60,18 +60,49 @@
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      template: match=t:titleStmt mode=cite-foot
      
-     generate a footnote for the matched bibl entry; if it contains a 
-     pointer, try to look up the master bibliography file and use that
-     
-     assumption: you want the footnote in a list item (li) element
+     generate a footnote for the matched titleStmt entry
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:titleStmt" mode="cite-foot">
     <xsl:call-template name="cite-foot-creators"/>
   </xsl:template>
   
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     template: cite-foot-creators
+     
+     handle creators for citation guidance of type footnote; exploit 
+     general bibliographic template logic where possible
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
   <xsl:template name="cite-foot-creators">
     <xsl:variable name="ccount" select="count(t:editor[@role='creator'])"/>
+    <xsl:choose>
+      <xsl:when test="$ccount &gt; $maxauthorsfootnote">
+        <xsl:apply-templates select="t:editor[@role='creator'][1]" mode="footnote"/>
+        <xsl:text> et al.</xsl:text>
+      </xsl:when>
+      <xsl:when test="$ccount = 1">
+        <xsl:apply-templates select="t:editor[@role='creator'][1]" mode="footnote"/>
+      </xsl:when>
+      <xsl:when test="$ccount = 2">
+        <xsl:apply-templates select="t:editor[@role='creator'][1]" mode="footnote"/>
+        <xsl:text> and </xsl:text>
+        <xsl:apply-templates select="t:editor[@role='creator'][2]" mode="footnote"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:for-each select="t:editor[@role='creator'][position() &lt; $maxauthorsfootnote+1]">
+          <xsl:choose>
+            <xsl:when test="position() = $maxauthorsfootnote">
+              <xsl:text> and </xsl:text>
+            </xsl:when>
+            <xsl:when test="position() &gt; 1">
+              <xsl:text>, </xsl:text>
+            </xsl:when>
+          </xsl:choose>
+          <xsl:apply-templates select="." mode="footnote"/>
+        </xsl:for-each>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   
 
