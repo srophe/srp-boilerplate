@@ -59,7 +59,6 @@
   
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      template: match=t:titleStmt mode=cite-foot
-     
      generate a footnote for the matched titleStmt entry
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
@@ -118,7 +117,4 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
-
-  
 </xsl:stylesheet>
