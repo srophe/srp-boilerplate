@@ -18,6 +18,7 @@
  <xsl:import href="boilerplate-badbrowser.xsl"/>
  <xsl:import href="boilerplate-nav.xsl"/>
  <xsl:import href="boilerplate-footer.xsl"/>
+ <xsl:import href="citation.xsl"/>
  <xsl:import href="collations.xsl"/>
  <xsl:import href="langattr.xsl"/>
  <xsl:import href="log.xsl"/>
@@ -322,6 +323,13 @@
   </div>
   <div id="citation">
    <h3>How to Cite This Entry</h3>
+   <div id="citation-note">
+    <h4>Note:</h4>
+    <xsl:apply-templates select="ancestor::t:TEI/descendant::t:titleStmt" mode="cite-foot"/>
+   </div>
+   <div id="citation-bibliography">
+    <h4>Bibliography:</h4>
+   </div>
   </div>
   <div id="about">
    <h3>About this Entry</h3>
