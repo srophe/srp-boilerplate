@@ -182,6 +182,7 @@
     
     <!-- handle titles -->
     <xsl:apply-templates select="t:monogr/t:title[1]" mode="footnote"/>
+    <xsl:text> </xsl:text>
     
     <xsl:apply-templates select="t:monogr/t:imprint" mode="footnote"/>
     
