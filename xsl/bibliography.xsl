@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:t="http://www.tei-c.org/ns/1.0"
-  xmlns="http://www.tei-c.org/ns/1.0"
+  xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="xs t"
   version="2.0">
   
@@ -101,7 +101,11 @@
                 </xsl:call-template>
               </xsl:otherwise>
             </xsl:choose>
-            <xsl:apply-templates select="t:citedRange" mode="footnote"/>
+            <xsl:if test="t:citedRange">
+                <xsl:text>, </xsl:text>
+                <xsl:apply-templates select="t:citedRange" mode="footnote"/>
+              </xsl:if>
+            <xsl:text>.</xsl:text>
           </xsl:when>
           <xsl:otherwise>
             <xsl:apply-templates mode="footnote"/>
@@ -143,6 +147,8 @@
         <xsl:text> et al.</xsl:text>
       </xsl:when>
       <xsl:when test="$rcount = 1">
+        <xsl:message>LOCAL: <xsl:value-of select="local-name($responsible/t:*[1])"/></xsl:message>
+        <xsl:message>NAMESPACE: <xsl:value-of select="namespace-uri($responsible/t:*[1])"/></xsl:message>
         <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
       </xsl:when>
       <xsl:when test="$rcount = 2">
@@ -174,35 +180,68 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:if>
-    <xsl:text>.</xsl:text>
+    <xsl:text>, </xsl:text>
     
     <!-- handle titles -->
-    <xsl:apply-templates select="t:monogr/t:title" mode="footnote"/>
+    <xsl:apply-templates select="t:monogr/t:title[1]" mode="footnote"/>
+    <xsl:text>, </xsl:text>
+    
+    <xsl:apply-templates select="t:monogr/t:imprint" mode="footnote"/>
+    
   </xsl:template>
   
-  <xsl:template match="t:persName | t:forename | t:addName | t:surname" mode="footnote">
+  <xsl:template match="t:forename | t:addName | t:surname | t:date | t:publisher | t:pubPlace | t:placeName" mode="footnote" priority="1">
     <xsl:apply-templates mode="footnote"/>
   </xsl:template>
   
-  <xsl:template match="t:author[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
-    <span class="author"><xsl:apply-templates select="." mode="out-normal"/></span>
-    <xsl:text>. </xsl:text>
+  <xsl:template match="t:persName" mode="footnote">
+    <xsl:apply-templates select="t:*" mode="footnote"/>
   </xsl:template>
   
-  <xsl:template match="t:editor[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
-    <span class="editor"><xsl:apply-templates select="." mode="out-normal"/></span>
-    <xsl:text>. </xsl:text>
+  <xsl:template match="t:author | t:editor" mode="footnote" priority="1">
+    <xsl:message>AUTHOR</xsl:message>
+    <span class="author"><xsl:apply-templates select="t:persName[1]" mode="footnote"/></span>
+  </xsl:template>
+    
+  <xsl:template match="t:imprint" mode="footnote" priority="1">
+    <xsl:text>(</xsl:text>
+    <xsl:choose>
+      <xsl:when test="t:pubPlace">
+        <xsl:apply-templates select="t:pubPlace" mode="footnote"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <abbr title="no place of publication">n.p.</abbr>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>: </xsl:text>
+    <xsl:choose>
+      <xsl:when test="t:publisher">
+        <xsl:apply-templates select="t:publisher" mode="footnote"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <abbr title="no publisher">n.p.</abbr>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>, </xsl:text>
+    <xsl:choose>
+      <xsl:when test="t:date">
+        <xsl:apply-templates select="t:date" mode="footnote"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <abbr title="no date of publication">n.d.</abbr>
+      </xsl:otherwise>
+    </xsl:choose>    
+    <xsl:text>)</xsl:text>
   </xsl:template>
   
   <xsl:template match="t:title[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote" priority="1">
     <span class="title">
       <xsl:call-template name="langattr"/>
       <xsl:apply-templates select="." mode="out-normal"/>
-      <xsl:text>. </xsl:text>
     </span>
   </xsl:template>
   
-  <xsl:template match="t:citedRange[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
+  <xsl:template match="t:citedRange[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote" priority="1">
     <xsl:choose>
       <xsl:when test="@unit='pp' and contains(., '-')">
         <xsl:text>pp. </xsl:text>
@@ -212,7 +251,6 @@
       </xsl:when>
     </xsl:choose>
     <xsl:apply-templates select="." mode="out-normal"/>
-    <xsl:text>.</xsl:text>
   </xsl:template>
   
   <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
