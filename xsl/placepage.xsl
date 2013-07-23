@@ -319,6 +319,12 @@
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
    </ul>
   </div>
+  <div id="citation">
+   <h3>How to Cite This Entry</h3>
+  </div>
+  <div id="about">
+   <h3>About this Entry</h3>
+  </div>
  </xsl:template>
  
  <xsl:template match="t:location[@type='geopolitical' or @type='relative']">
