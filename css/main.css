@@ -209,3 +209,7 @@ div[id|=place] > div:last-of-type {
 #description li:first-letter {
 	text-transform: capitalize;
 }
+
+.pubPlace > .placeName {
+	font-weight: normal;
+}
