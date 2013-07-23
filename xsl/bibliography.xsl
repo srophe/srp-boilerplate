@@ -81,6 +81,7 @@
     
     <li xml:id="{@xml:id}">
       <span class="footnote-tgt"><xsl:value-of select="$thisnum"/></span>
+      <xsl:text> </xsl:text>
       <span class="footnote-content">
         <!-- if the reference points at a master bibliographic record file, use it; otherwise, do 
      what you can with the contents of the present element -->
@@ -181,7 +182,17 @@
     <xsl:text>, </xsl:text>
     
     <!-- handle titles -->
-    <xsl:apply-templates select="t:monogr/t:title[1]" mode="footnote"/>
+    <xsl:for-each select="t:monogr[1]">
+      <xsl:choose>
+        <xsl:when test="t:title[@xml:lang='en']">
+          <xsl:apply-templates select="t:title[@xml:lang='en']" mode="footnote"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="t:monogr/t:title[1]" mode="footnote"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+    
     <xsl:text> </xsl:text>
     
     <xsl:apply-templates select="t:monogr/t:imprint" mode="footnote"/>
@@ -225,6 +236,9 @@
     </xsl:choose>
     <xsl:text>: </xsl:text>
     <xsl:choose>
+      <xsl:when test="t:publisher[@xml:lang='en']">
+        <xsl:apply-templates select="t:publisher[@xml:lang='en']" mode="footnote"/>
+      </xsl:when>
       <xsl:when test="t:publisher">
         <xsl:apply-templates select="t:publisher[1]" mode="footnote"/>
       </xsl:when>
