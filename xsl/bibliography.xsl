@@ -147,8 +147,6 @@
         <xsl:text> et al.</xsl:text>
       </xsl:when>
       <xsl:when test="$rcount = 1">
-        <xsl:message>LOCAL: <xsl:value-of select="local-name($responsible/t:*[1])"/></xsl:message>
-        <xsl:message>NAMESPACE: <xsl:value-of select="namespace-uri($responsible/t:*[1])"/></xsl:message>
         <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
       </xsl:when>
       <xsl:when test="$rcount = 2">
@@ -184,7 +182,6 @@
     
     <!-- handle titles -->
     <xsl:apply-templates select="t:monogr/t:title[1]" mode="footnote"/>
-    <xsl:text>, </xsl:text>
     
     <xsl:apply-templates select="t:monogr/t:imprint" mode="footnote"/>
     
