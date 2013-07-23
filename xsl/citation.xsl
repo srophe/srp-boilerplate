@@ -64,7 +64,16 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:titleStmt" mode="cite-foot">
-    <xsl:call-template name="cite-foot-creators"/>
+    <xsl:call-template name="cite-foot-pers">
+      <xsl:with-param name="perss" select="t:editor[@role='creator']"/>
+    </xsl:call-template>
+    <xsl:text>, </xsl:text>
+    <xsl:text>“</xsl:text>
+    <xsl:call-template name="place-title-std">
+      <xsl:with-param name="place" select="ancestor::t:TEI/descendant::t:place[1]"/>
+    </xsl:call-template>
+    <xsl:text>”</xsl:text>
+    <xsl:text> in </xsl:text><span class="title">The Syriac Gazetteer</span><xsl:text>, eds. </xsl:text>
   </xsl:template>
   
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
@@ -74,23 +83,21 @@
      general bibliographic template logic where possible
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template name="cite-foot-creators">
-    <xsl:variable name="ccount" select="count(t:editor[@role='creator'])"/>
+  <xsl:template name="cite-foot-pers">
+    <xsl:param name="perss"/>
+    <xsl:variable name="ccount" select="count($perss)"/>
     <xsl:choose>
-      <xsl:when test="$ccount &gt; $maxauthorsfootnote">
-        <xsl:apply-templates select="t:editor[@role='creator'][1]" mode="footnote"/>
+      <xsl:when test="$ccount=1 or $ccount &gt; $maxauthorsfootnote">
+        <xsl:apply-templates select="$perss[1]" mode="footnote"/>
         <xsl:text> et al.</xsl:text>
       </xsl:when>
-      <xsl:when test="$ccount = 1">
-        <xsl:apply-templates select="t:editor[@role='creator'][1]" mode="footnote"/>
-      </xsl:when>
       <xsl:when test="$ccount = 2">
-        <xsl:apply-templates select="t:editor[@role='creator'][1]" mode="footnote"/>
+        <xsl:apply-templates select="$perss[1]" mode="footnote"/>
         <xsl:text> and </xsl:text>
-        <xsl:apply-templates select="t:editor[@role='creator'][2]" mode="footnote"/>
+        <xsl:apply-templates select="$perss[2]" mode="footnote"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:for-each select="t:editor[@role='creator'][position() &lt; $maxauthorsfootnote+1]">
+        <xsl:for-each select="$perss[position() &lt; $maxauthorsfootnote+1]">
           <xsl:choose>
             <xsl:when test="position() = $maxauthorsfootnote">
               <xsl:text> and </xsl:text>
