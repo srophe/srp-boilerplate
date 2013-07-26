@@ -263,7 +263,7 @@
      handle bibliographic titles in the context of a footnote
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:title" mode="footnote" priority="1">
+  <xsl:template match="t:title" mode="footnote biblist allbib" priority="1">
     <span>
       <xsl:attribute name="class">
         <xsl:text>title</xsl:text>

@@ -125,12 +125,12 @@
     
     <!-- title of the entry -->
     <xsl:text>“</xsl:text>
-    <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
-    <xsl:text>”</xsl:text>
+    <xsl:apply-templates select="t:title[@level='a'][1]" mode="biblist"/>
+    <xsl:text>.”</xsl:text>
     
     <!-- monographic title -->
     <xsl:text> in </xsl:text>
-    <xsl:apply-templates select="t:title[@level='m'][1]" mode="footnote"/>
+    <xsl:apply-templates select="t:title[@level='m'][1]" mode="biblist"/>
     
     <!-- general editors -->
     <xsl:text>, eds. </xsl:text>
