@@ -110,7 +110,7 @@
     <xsl:text>.</xsl:text>
   </xsl:template>
   
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      generate a bibliographic entry for the matched titleStmt element
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
@@ -165,4 +165,41 @@
     <xsl:value-of select="$htmluri"/>
     <xsl:text>.</xsl:text>
   </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     generate an "about this entry" section for the matched titleStmt element
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:titleStmt" mode="about">
+    <xsl:param name="htmluri">SET THE HTMLURI PARAMETER IN MODE=ABOUT</xsl:param>
+    <p>
+      <span class="heading-inline">Entry Title:</span>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
+    </p>
+    <p>
+      <span class="heading-inline">Entry Contributor<xsl:if test="count(t:editor[@role='creator'])&gt;1">s</xsl:if>:</span>
+      <xsl:text> </xsl:text>
+      <xsl:call-template name="emit-responsible-persons">
+        <xsl:with-param name="perss">
+          <xsl:copy-of select="t:editor[@role='creator']"/>
+        </xsl:with-param> 
+        <xsl:with-param name="maxauthorsfootnote" select="count(t:editor[@role='creator'])+1"/>
+      </xsl:call-template>
+    </p>
+    <p>
+      <span class="heading-inline">Publication Date:</span>
+      <xsl:text> </xsl:text>      
+    </p>
+    <p>
+      <span class="heading-inline">URI:</span>
+      <xsl:text> </xsl:text>
+    </p>
+    <div>
+      <h4>Authorial and Editorial Responsibility:</h4>
+    </div>
+    <div>
+      <h4>Additional Credit:</h4>
+    </div>
+  </xsl:template>  
 </xsl:stylesheet>

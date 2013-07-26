@@ -55,8 +55,6 @@
        
        ================================================================== -->
   
-  <xsl:variable name="maxauthorsfootnote">2</xsl:variable>
-  <xsl:variable name="maxauthorsbiblist">2</xsl:variable>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      generate a footnote for the matched bibl entry; if it contains a 
@@ -361,6 +359,9 @@
   <xsl:template name="emit-responsible-persons">
     <xsl:param name="perss"/>
     <xsl:param name="moded">footnote</xsl:param>
+    <xsl:param name="maxauthorsfootnote">2</xsl:param>
+    <xsl:param name="maxauthorsbiblist">2</xsl:param>
+    
     <xsl:variable name="ccount" select="count($perss/t:*)"/>
     <xsl:choose>
       <xsl:when test="$ccount=1 and $moded='footnote'">
