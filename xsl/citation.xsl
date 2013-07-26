@@ -73,8 +73,10 @@
     
     <!-- title of the entry -->
     <xsl:text>“</xsl:text>
-    <xsl:apply-templates select="t:title[1]" mode="footnote"/>
+    <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
     <xsl:text>”</xsl:text>
+    
+    
     <xsl:text> in </xsl:text><span class="title">The Syriac Gazetteer</span><xsl:text>, eds. </xsl:text>
     <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss">
