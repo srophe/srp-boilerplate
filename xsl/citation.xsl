@@ -103,6 +103,7 @@
         <xsl:copy-of select="t:principal"/>
       </xsl:with-param>
     </xsl:call-template>
+    <xsl:text>, </xsl:text>
     
     <xsl:text> </xsl:text>
     <xsl:value-of select="$htmluri"/>
@@ -114,12 +115,13 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:titleStmt" mode="cite-biblist">
-    <xsl:param name="htmluri">SET THE HTMLURI PARAMETER IN MODE=CITE-BIBLIO</xsl:param>
+    <xsl:param name="htmluri">SET THE HTMLURI PARAMETER IN MODE=CITE-BIBLIST</xsl:param>
     <!-- creator(s) of the entry -->
     <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss">
         <xsl:copy-of select="t:editor[@role='creator']"/>
       </xsl:with-param> 
+      <xsl:with-param name="moded">biblist</xsl:with-param>
     </xsl:call-template>
     <xsl:text>, </xsl:text>
     
@@ -129,34 +131,35 @@
     <xsl:text>.”</xsl:text>
     
     <!-- monographic title -->
-    <xsl:text> in </xsl:text>
+    <xsl:text> In </xsl:text>
     <xsl:apply-templates select="t:title[@level='m'][1]" mode="biblist"/>
     
     <!-- general editors -->
-    <xsl:text>, eds. </xsl:text>
+    <xsl:text>, edited by </xsl:text>
     <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss">
         <xsl:copy-of select="t:editor[@role='general']"/>
-      </xsl:with-param> 
+      </xsl:with-param>
     </xsl:call-template>
-    <xsl:text>,</xsl:text>
+    <xsl:text>.</xsl:text>
     
     <!-- publication date statement -->
-    <xsl:text> entry published </xsl:text>
+    <xsl:text> Entry published </xsl:text>
     <xsl:for-each select="../t:publicationStmt/t:date[1]">
       <xsl:value-of select="format-date(xs:date(.), '[MNn] [D], [Y]')"/>
     </xsl:for-each>
-    <xsl:text>,</xsl:text>
+    <xsl:text>.</xsl:text>
     
     <!-- project -->
     <xsl:text> </xsl:text>
     <xsl:value-of select="t:sponsor[1]"/>
-    <xsl:text>, ed. </xsl:text>
+    <xsl:text>, edited by </xsl:text>
     <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss">
         <xsl:copy-of select="t:principal"/>
       </xsl:with-param>
     </xsl:call-template>
+    <xsl:text>.</xsl:text>
     
     <xsl:text> </xsl:text>
     <xsl:value-of select="$htmluri"/>

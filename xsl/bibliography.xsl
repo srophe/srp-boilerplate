@@ -56,6 +56,7 @@
        ================================================================== -->
   
   <xsl:variable name="maxauthorsfootnote">2</xsl:variable>
+  <xsl:variable name="maxauthorsbiblist">2</xsl:variable>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      generate a footnote for the matched bibl entry; if it contains a 
@@ -203,12 +204,35 @@
       <xsl:apply-templates select="t:*" mode="footnote"/>
     </span>
   </xsl:template>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle personal names last-name first
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:persName" mode="lastname-first">
+    <span class="persName">
+      <xsl:call-template name="langattr"/>
+      <xsl:choose>
+        <xsl:when test="t:surname and t:forename">
+          <xsl:apply-templates select="t:surname" mode="footnote"/>
+          <xsl:text>, </xsl:text>
+          <xsl:apply-templates select="t:*[local-name()!='surname']" mode="footnote"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="log">
+            <xsl:with-param name="msg">persName trapped in mode lastname-first, but does not contain surname and forename elements; therefore subcomponents have been output in document order</xsl:with-param>
+          </xsl:call-template>
+          <xsl:apply-templates select="t:*" mode="footnote"/>          
+        </xsl:otherwise>
+      </xsl:choose>
+    </span>
+  </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle authors and editors in the context of a footnote
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:author | t:editor" mode="footnote" priority="1">
+  <xsl:template match="t:author | t:editor | t:principal" mode="footnote biblist" priority="1">
     <span class="{local-name()}">
       <xsl:choose>
         <xsl:when test="t:persName">
@@ -220,8 +244,28 @@
       </xsl:choose>
     </span>
   </xsl:template>
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle authors and editors in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+  <xsl:template match="t:author | t:editor | t:principal" mode="lastname-first" priority="1">
+    <span class="{local-name()}">
+      <xsl:choose>
+        <xsl:when test="t:persName">
+          <xsl:apply-templates select="t:persName[1]" mode="lastname-first"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="log">
+            <xsl:with-param name="msg">no persName element found, but mode was 'lastname-first'; cannot reorder names reliably</xsl:with-param>
+          </xsl:call-template>
+          <xsl:apply-templates mode="footnote"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </span>
+  </xsl:template>
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle the imprint component of a biblStruct in the context of a footnote
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
@@ -312,19 +356,32 @@
   
   <xsl:template name="emit-responsible-persons">
     <xsl:param name="perss"/>
+    <xsl:param name="moded">footnote</xsl:param>
     <xsl:variable name="ccount" select="count($perss/t:*)"/>
     <xsl:choose>
-      <xsl:when test="$ccount=1">
+      <xsl:when test="$ccount=1 and $moded='footnote'">
         <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
       </xsl:when>
-      <xsl:when test="$ccount &gt; $maxauthorsfootnote">
+      <xsl:when test="$ccount=1 and $moded='biblist'">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="lastname-first"/>
+      </xsl:when>
+      <xsl:when test="$ccount &gt; $maxauthorsfootnote and $moded='footnote'">
         <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
         <xsl:text> et al.</xsl:text>
       </xsl:when>
-      <xsl:when test="$ccount = 2">
+      <xsl:when test="$ccount &gt; $maxauthorsbiblist and $moded='biblist'">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="lastname-first"/>
+        <xsl:text> et al.</xsl:text>
+      </xsl:when>
+      <xsl:when test="$ccount = 2 and $moded='footnote'">
         <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
         <xsl:text> and </xsl:text>
         <xsl:apply-templates select="$perss/t:*[2]" mode="footnote"/>
+      </xsl:when>
+      <xsl:when test="$ccount = 2 and $moded='biblist'">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="lastname-first"/>
+        <xsl:text> and </xsl:text>
+        <xsl:apply-templates select="$perss/t:*[2]" mode="biblist"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:for-each select="$perss/t:*[position() &lt; $maxauthorsfootnote+1]">
@@ -336,7 +393,14 @@
               <xsl:text>, </xsl:text>
             </xsl:when>
           </xsl:choose>
-          <xsl:apply-templates select="." mode="footnote"/>
+          <xsl:choose>
+            <xsl:when test="$moded='footnote'">
+              <xsl:apply-templates select="." mode="footnote"/>
+            </xsl:when>
+            <xsl:when test="$moded='biblist'">
+              <xsl:apply-templates select="." mode="biblist"/>
+            </xsl:when>
+          </xsl:choose>
         </xsl:for-each>
       </xsl:otherwise>
     </xsl:choose>
@@ -347,7 +411,7 @@
      in the context of a footnote (and log the fact that we've done so)
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
+  <xsl:template match="t:*" mode="footnote">
     <xsl:call-template name="log">
       <xsl:with-param name="msg">element suppressed in mode footnote</xsl:with-param>
     </xsl:call-template>
@@ -359,7 +423,7 @@
      done so)
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="biblist">
+  <xsl:template match="t:*" mode="biblist">
     <xsl:call-template name="log">
       <xsl:with-param name="msg">element suppressed in mode biblist</xsl:with-param>
     </xsl:call-template>
@@ -371,9 +435,21 @@
      so)
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="allbibl">
+  <xsl:template match="t:*" mode="allbibl">
     <xsl:call-template name="log">
       <xsl:with-param name="msg">element suppressed in mode allbibl</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     suppress otherwise unhandled descendent nodes of bibl or biblStruct
+     in universal bibliographic context (and log the fact that we've done 
+     so)
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:*" mode="lastname-first">
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">element suppressed in mode lastname-first</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
   
