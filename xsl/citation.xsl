@@ -239,8 +239,11 @@
         </li>
       </ul>
     </div>
-    <div>
-      <h4>Additional Credit:</h4>
-    </div>
+    <xsl:if test="t:respStmt">
+      <div>
+        <h4>Additional Credit:</h4>
+        
+      </div>
+    </xsl:if>
   </xsl:template>  
 </xsl:stylesheet>
