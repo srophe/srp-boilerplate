@@ -200,6 +200,44 @@
     </p>
     <div>
       <h4>Authorial and Editorial Responsibility:</h4>
+      <ul>
+        <li>
+          <xsl:call-template name="emit-responsible-persons">
+            <xsl:with-param name="perss">
+              <xsl:copy-of select="t:principal"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:text>, general editor</xsl:text>
+          <xsl:if test="count(t:principal) &gt; 1">s</xsl:if>
+          <xsl:text>, </xsl:text>
+          <xsl:value-of select="t:sponsor[1]"/>
+        </li>
+        <li>
+          <xsl:call-template name="emit-responsible-persons">
+            <xsl:with-param name="perss">
+              <xsl:copy-of select="t:editor[@role='general']"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:text>, editor</xsl:text>
+          <xsl:if test="count(t:editor[@role='general'])&gt; 1">s</xsl:if>
+          <xsl:text>, </xsl:text>
+          <xsl:apply-templates select="t:title[@level='m'][1]" mode="footnote"/>
+        </li>
+        <li>
+          <xsl:call-template name="emit-responsible-persons">
+            <xsl:with-param name="perss">
+              <xsl:copy-of select="t:editor[@role='creator']"/>
+            </xsl:with-param> 
+            <xsl:with-param name="moded">biblist</xsl:with-param>
+          </xsl:call-template>
+          <xsl:text>, entry contributor</xsl:text>
+          <xsl:if test="count(t:editor[@role='creator'])&gt; 1">s</xsl:if>
+          <xsl:text>, </xsl:text>
+          <xsl:text>“</xsl:text>
+          <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
+          <xsl:text>”</xsl:text>
+        </li>
+      </ul>
     </div>
     <div>
       <h4>Additional Credit:</h4>
