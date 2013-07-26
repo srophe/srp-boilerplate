@@ -229,6 +229,9 @@
           </div>
           <div id="about">
            <h3>About this Entry</h3>
+           <xsl:apply-templates select="$sourcedoc/descendant::t:titleStmt" mode="about">
+            <xsl:with-param name="htmluri" select="$htmluri"/>
+           </xsl:apply-templates>
           </div>          
          </footer>
          

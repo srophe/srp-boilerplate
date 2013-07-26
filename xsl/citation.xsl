@@ -190,6 +190,9 @@
     <p>
       <span class="heading-inline">Publication Date:</span>
       <xsl:text> </xsl:text>      
+      <xsl:for-each select="../t:publicationStmt/t:date[1]">
+        <xsl:value-of select="format-date(xs:date(.), '[MNn] [D], [Y]')"/>
+      </xsl:for-each>
     </p>
     <p>
       <span class="heading-inline">URI:</span>
