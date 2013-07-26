@@ -234,7 +234,11 @@
            </xsl:apply-templates>
           </div> 
           <div id="license">
-           
+           <h3>Copyright and License for Reuse</h3>
+           <p>
+            <xsl:text>Except otherwise noted, this page is © </xsl:text>
+            <xsl:value-of select="format-date(xs:date($sourcedoc/descendant::t:publicationStmt/t:date[1]), '[Y]')"/>.</p>
+           <xsl:apply-templates select="$sourcedoc/descendant::t:publicationStmt/t:availability/t:licence"/>
           </div>
          </footer>
          
@@ -396,6 +400,25 @@
    <xsl:call-template name="do-refs"/>
   </li>
  </xsl:template>
+ 
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of the licence element in the tei header
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ 
+ <xsl:template match="t:licence">
+  <xsl:if test="@target">
+   <xsl:variable name="licenserev" select="tokenize(@target, '/')[last()-1]"/>
+   <xsl:message><xsl:value-of select="$licenserev"/></xsl:message>
+   <xsl:variable name="licensetype" select="tokenize(substring-before(@target, $licenserev), '/')[last()-1]"/>
+   <xsl:message><xsl:value-of select="$licensetype"/></xsl:message>
+   <a rel="license" href="{@target}"><img
+    alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/{$licensetype}/{$licenserev}/80x15.png"
+   /></a>
+  </xsl:if>
+  <xsl:apply-templates />
+ </xsl:template>
+ 
+ 
  
  <xsl:template name="do-refs">
   <!-- credit sources for data -->
