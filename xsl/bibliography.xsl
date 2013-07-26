@@ -57,9 +57,7 @@
   
   <xsl:variable name="maxauthorsfootnote">2</xsl:variable>
   
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     template: match=t:bibl mode=footnote
-     
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      generate a footnote for the matched bibl entry; if it contains a 
      pointer, try to look up the master bibliography file and use that
      
@@ -116,10 +114,7 @@
     </li>
   </xsl:template>
   
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     template match=t:biblStruct that contains a t:monograph but not a
-     t:analytic (i.e., this is a book) mode=footnote
-     
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle a footnote for a book
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
@@ -196,12 +191,22 @@
     
   </xsl:template>
   
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle name components in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
   <xsl:template match="t:forename | t:addName | t:surname" mode="footnote" priority="1">
     <xsl:if test="preceding-sibling::t:*">
       <xsl:text> </xsl:text>
     </xsl:if>
     <xsl:apply-templates mode="footnote"/>
   </xsl:template>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle date, publisher, place of publication and placenames in 
+     footnote context
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:date | t:publisher | t:pubPlace | t:placeName" mode="footnote" priority="1">
     <span class="{local-name()}">
@@ -210,12 +215,20 @@
     </span>
   </xsl:template>
   
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle personal names in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
   <xsl:template match="t:persName" mode="footnote">
     <span class="persName">
       <xsl:call-template name="langattr"/>
       <xsl:apply-templates select="t:*" mode="footnote"/>
     </span>
   </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle authors and editors in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:author | t:editor" mode="footnote" priority="1">
     <span class="{local-name()}">
@@ -229,7 +242,11 @@
       </xsl:choose>
     </span>
   </xsl:template>
-    
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle the imprint component of a biblStruct in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
   <xsl:template match="t:imprint" mode="footnote" priority="1">
     <xsl:text>(</xsl:text>
     <xsl:choose>
@@ -264,12 +281,20 @@
     <xsl:text>)</xsl:text>
   </xsl:template>
   
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle bibliographic titles in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
   <xsl:template match="t:title[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote" priority="1">
     <span class="title">
       <xsl:call-template name="langattr"/>
       <xsl:apply-templates select="." mode="out-normal"/>
     </span>
   </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle cited ranges in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:citedRange[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote" priority="1">
     <xsl:choose>
@@ -283,11 +308,20 @@
     <xsl:apply-templates select="." mode="out-normal"/>
   </xsl:template>
   
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     suppress otherwise unhandled descendent nodes of bibl or biblStruct
+     in the context of a footnote (and log the fact that we've done so)
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
   <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
     <xsl:call-template name="log">
       <xsl:with-param name="msg">element suppressed in mode footnote</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     emit the footnote number for a bibl
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:bibl" mode="footnote-ref">
     <xsl:param name="footnote-number">1</xsl:param>
