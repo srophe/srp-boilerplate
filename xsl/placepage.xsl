@@ -193,7 +193,7 @@
            </xsl:for-each>
     
            <!-- core page content -->
-            <xsl:for-each select="$sourcedoc/descendant-or-self::t:place[1]">
+            <xsl:for-each select="$sourcedoc/descendant::t:place[1]">
               <div id="{@xml:id}">
                <xsl:apply-templates select=".">
                 <xsl:with-param name="idx" select="$idx"/>
@@ -210,7 +210,7 @@
            <h3>How to Cite This Entry</h3>
            <div id="citation-note">
             <h4>Note:</h4>
-            <xsl:apply-templates select="ancestor::t:TEI/descendant::t:titleStmt" mode="cite-foot"/>
+            <xsl:apply-templates select="$sourcedoc/descendant::t:titleStmt" mode="cite-foot"/>
            </div>
            <div id="citation-bibliography">
             <h4>Bibliography:</h4>
