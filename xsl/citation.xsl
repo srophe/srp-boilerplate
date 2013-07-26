@@ -65,7 +65,9 @@
   <xsl:template match="t:titleStmt" mode="cite-foot">
     <!-- creator(s) of the entry -->
     <xsl:call-template name="cite-foot-pers">
-      <xsl:with-param name="perss" select="t:editor[@role='creator']"/>
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:editor[@role='creator']"/>
+      </xsl:with-param> 
     </xsl:call-template>
     <xsl:text>, </xsl:text>
     
@@ -75,7 +77,9 @@
     <xsl:text>”</xsl:text>
     <xsl:text> in </xsl:text><span class="title">The Syriac Gazetteer</span><xsl:text>, eds. </xsl:text>
     <xsl:call-template name="cite-foot-pers">
-      <xsl:with-param name="perss" select="t:editor[@role='general']"/>
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:editor[@role='general']"/>
+      </xsl:with-param> 
     </xsl:call-template>
     <xsl:text>, entry published </xsl:text>
     <xsl:for-each select="../t:publicationStmt/t:date[1]">
@@ -95,27 +99,37 @@
     <xsl:call-template name="log">
       <xsl:with-param name="msg">
         <xsl:text>template cite-foot-pers called with $perss=[</xsl:text>
-        <xsl:for-each select="$perss/node()">
-          <xsl:text>"</xsl:text>
-          <xsl:value-of select="."/>
+        <xsl:for-each select="$perss/t:*">
+          <xsl:value-of select="local-name()"/>
+          <xsl:text>="</xsl:text>
+          <xsl:value-of select="normalize-space(.)"/>
           <xsl:text>", </xsl:text>
         </xsl:for-each>
         <xsl:text>]</xsl:text>
       </xsl:with-param>
     </xsl:call-template>
-    <xsl:variable name="ccount" select="count($perss)"/>
+    <xsl:variable name="ccount" select="count($perss/t:*)"/>
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">
+        <xsl:text>ccount=</xsl:text>
+        <xsl:value-of select="$ccount"/>
+      </xsl:with-param>
+    </xsl:call-template>
     <xsl:choose>
-      <xsl:when test="$ccount=1 or $ccount &gt; $maxauthorsfootnote">
-        <xsl:apply-templates select="$perss[1]" mode="footnote"/>
+      <xsl:when test="$ccount=1">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
+      </xsl:when>
+      <xsl:when test="$ccount &gt; $maxauthorsfootnote">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
         <xsl:text> et al.</xsl:text>
       </xsl:when>
       <xsl:when test="$ccount = 2">
-        <xsl:apply-templates select="$perss[1]" mode="footnote"/>
+        <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
         <xsl:text> and </xsl:text>
-        <xsl:apply-templates select="$perss[2]" mode="footnote"/>
+        <xsl:apply-templates select="$perss/t:*[2]" mode="footnote"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:for-each select="$perss[position() &lt; $maxauthorsfootnote+1]">
+        <xsl:for-each select="$perss/t:*[position() &lt; $maxauthorsfootnote+1]">
           <xsl:choose>
             <xsl:when test="position() = $maxauthorsfootnote">
               <xsl:text> and </xsl:text>

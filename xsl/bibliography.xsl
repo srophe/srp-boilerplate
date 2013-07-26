@@ -122,45 +122,21 @@
     <!-- this is a monograph/book -->
     
     <!-- handle editors/authors and abbreviate as necessary -->
-    <xsl:variable name="edited" select="if (t:monogr/t:editor) then true() else false()"/>
+    <xsl:variable name="edited" select="if (t:monogr/t:editor[not(@role) or @role!='translator']) then true() else false()"/>
     <xsl:variable name="responsible">
       <xsl:choose>
         <xsl:when test="$edited">
-          <xsl:copy-of select="t:monogr/t:editor"/>
+          <xsl:copy-of select="t:monogr/t:editor[not(@role) or @role!='translator']"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:copy-of select="t:monogr/t:author"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:variable name="rcount" select="count($responsible/t:*)"/>
-    <xsl:choose>
-      <xsl:when test="$rcount &gt; $maxauthorsfootnote">
-        <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
-        <xsl:text> et al.</xsl:text>
-      </xsl:when>
-      <xsl:when test="$rcount = 1">
-        <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
-      </xsl:when>
-      <xsl:when test="$rcount = 2">
-        <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
-        <xsl:text> and </xsl:text>
-        <xsl:apply-templates select="$responsible/t:*[2]"  mode="footnote"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:for-each select="$responsible/t:*[position() &lt; $maxauthorsfootnote+1]">
-          <xsl:choose>
-            <xsl:when test="position() = $maxauthorsfootnote">
-              <xsl:text> and </xsl:text>
-            </xsl:when>
-            <xsl:when test="position() &gt; 1">
-              <xsl:text>, </xsl:text>
-            </xsl:when>
-          </xsl:choose>
-          <xsl:apply-templates mode="footnote"/>
-        </xsl:for-each>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:variable name="rcount" select="count($responsible)"/>
+    <xsl:call-template name="cite-foot-pers">
+      <xsl:with-param name="perss" select="$responsible"/>
+    </xsl:call-template>
     <xsl:if test="$edited">
       <xsl:choose>
         <xsl:when test="$rcount = 1">
