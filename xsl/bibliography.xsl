@@ -287,6 +287,63 @@
   </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     template: cite-foot-creators
+     
+     handle creators for citation guidance of type footnote; exploit 
+     general bibliographic template logic where possible
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template name="cite-foot-pers">
+    <xsl:param name="perss"/>
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">
+        <xsl:text>template cite-foot-pers called with $perss=[</xsl:text>
+        <xsl:for-each select="$perss/t:*">
+          <xsl:value-of select="local-name()"/>
+          <xsl:text>="</xsl:text>
+          <xsl:value-of select="normalize-space(.)"/>
+          <xsl:text>", </xsl:text>
+        </xsl:for-each>
+        <xsl:text>]</xsl:text>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:variable name="ccount" select="count($perss/t:*)"/>
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">
+        <xsl:text>ccount=</xsl:text>
+        <xsl:value-of select="$ccount"/>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:choose>
+      <xsl:when test="$ccount=1">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
+      </xsl:when>
+      <xsl:when test="$ccount &gt; $maxauthorsfootnote">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
+        <xsl:text> et al.</xsl:text>
+      </xsl:when>
+      <xsl:when test="$ccount = 2">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
+        <xsl:text> and </xsl:text>
+        <xsl:apply-templates select="$perss/t:*[2]" mode="footnote"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:for-each select="$perss/t:*[position() &lt; $maxauthorsfootnote+1]">
+          <xsl:choose>
+            <xsl:when test="position() = $maxauthorsfootnote">
+              <xsl:text> and </xsl:text>
+            </xsl:when>
+            <xsl:when test="position() &gt; 1">
+              <xsl:text>, </xsl:text>
+            </xsl:when>
+          </xsl:choose>
+          <xsl:apply-templates select="." mode="footnote"/>
+        </xsl:for-each>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      suppress otherwise unhandled descendent nodes of bibl or biblStruct
      in the context of a footnote (and log the fact that we've done so)
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
