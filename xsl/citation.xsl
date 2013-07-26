@@ -242,7 +242,15 @@
     <xsl:if test="t:respStmt">
       <div>
         <h4>Additional Credit:</h4>
-        
+        <ul>
+          <xsl:for-each select="t:respStmt">
+            <li>
+              <xsl:value-of select="t:resp"/>
+              <xsl:text> </xsl:text>
+              <xsl:apply-templates select="t:name" mode="footnote"/>
+            </li>
+          </xsl:for-each>
+        </ul>
       </div>
     </xsl:if>
   </xsl:template>  
