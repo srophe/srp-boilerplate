@@ -97,12 +97,25 @@
     </xsl:choose>
    </xsl:variable>
    
+   <!-- load frequently needed info into convenient variables -->
    <xsl:variable name="placenum" select="t:idno[@type='placeID'][1]"/>
-   <xsl:variable name="thisid" select="./@xml:id"/>
-   <xsl:variable name="thisuri" select="t:idno[@type='SRP'][1]"/>
-   <xsl:if test="count($idx/descendant::t:place[@xml:id=$thisid])&gt; 1">
+   <xsl:variable name="placeid" select="./@xml:id"/>
+   <xsl:variable name="placeuri" select="t:idno[@type='SRP'][1]"/>
+   <xsl:variable name="sourcefilepath">
+    <xsl:value-of select="$sourcedir"/>
+    <xsl:value-of select="$placenum"/>
+    <xsl:text>.xml</xsl:text>
+   </xsl:variable>
+   <xsl:variable name="sourcedoc" select="document($sourcefilepath)/descendant-or-self::t:TEI"/>
+   <xsl:variable name="outfilename">
+    <xsl:value-of select="$placenum"/>
+    <xsl:text>.html</xsl:text>
+   </xsl:variable>   
+   
+   <!-- check for and warn on undesirable or unexpected conditions in data -->
+   <xsl:if test="count($idx/descendant::t:place[@xml:id=$placeid])&gt; 1">
     <xsl:call-template name="log">
-     <xsl:with-param name="msg">index file contains more than one place with an xml:id attribute value of <xsl:value-of select="$thisid"/>
+     <xsl:with-param name="msg">index file contains more than one place with an xml:id attribute value of <xsl:value-of select="$placeid"/>
      </xsl:with-param>
     </xsl:call-template>
    </xsl:if>
@@ -111,24 +124,17 @@
      <xsl:with-param name="msg">index file contains more than one place with an placeID value of <xsl:value-of select="$placenum"/></xsl:with-param>
     </xsl:call-template>
    </xsl:if>
-    <xsl:if test="count($idx/descendant::t:place[t:idno[@type='SRP']=$thisuri])&gt; 1">
+    <xsl:if test="count($idx/descendant::t:place[t:idno[@type='SRP']=$placeuri])&gt; 1">
      <xsl:call-template name="log">
-      <xsl:with-param name="msg">index file contains more than one place with an SRP URI value of <xsl:value-of select="$thisuri"/></xsl:with-param>
+      <xsl:with-param name="msg">index file contains more than one place with an SRP URI value of <xsl:value-of select="$placeuri"/></xsl:with-param>
      </xsl:call-template>
    </xsl:if>
     
+    <!-- if we have a proper placeid, then write the page; otherwise warn -->
    <xsl:choose>
-    
-    <!-- make sure we have a valid placeid -->
     <xsl:when test="matches($placenum, '^\d+$')">
      
-     <!-- determine what the output filename will be -->
-     <xsl:variable name="outfilename">
-      <xsl:value-of select="$placenum"/>
-      <xsl:text>.html</xsl:text>
-     </xsl:variable>
-     
-     <!-- open a new output document for reading -->
+     <!-- open a new output document for writing -->
      <xsl:result-document format="html" href="{$destdir}{$outfilename}">
       
       <!-- write the opening of the HTML page -->
@@ -141,18 +147,12 @@
        <xsl:comment>&lt;![endif]</xsl:comment>
     
        <!-- write the page head element and its contents -->
-       <xsl:variable name="sourcedoc">
-        <xsl:value-of select="$sourcedir"/>
-        <xsl:value-of select="$placenum"/>
-        <xsl:text>.xml</xsl:text>
-       </xsl:variable>
-       
        <xsl:call-template name="boilerplate-head">
         <xsl:with-param name="description" select="$description"/>
         <xsl:with-param name="name-app" select="$name-app"/>
         <xsl:with-param name="name-page-short" select="$name-page-short"/>
         <xsl:with-param name="basepath">..</xsl:with-param>
-        <xsl:with-param name="titleStmt" select="document($sourcedoc)/descendant-or-self::t:TEI/descendant-or-self::t:titleStmt"/>
+        <xsl:with-param name="titleStmt" select="$sourcedoc/descendant-or-self::t:titleStmt"/>
        </xsl:call-template>
     
        <!-- write the body element and its contents -->
@@ -166,8 +166,6 @@
          <xsl:with-param name="app-name" select="$name-app"/>
          <xsl:with-param name="basepath">..</xsl:with-param>
         </xsl:call-template>
-        
-        <!-- ADD: breadcrumbs -->
         
         <!-- create the main content portion of the page -->
         <div class="container-fluid">
@@ -195,7 +193,7 @@
            </xsl:for-each>
     
            <!-- core page content -->
-            <xsl:for-each select="document($sourcedoc)/descendant-or-self::t:place[1]">
+            <xsl:for-each select="$sourcedoc/descendant-or-self::t:place[1]">
               <div id="{@xml:id}">
                <xsl:apply-templates select=".">
                 <xsl:with-param name="idx" select="$idx"/>
