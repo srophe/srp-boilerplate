@@ -63,6 +63,7 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:titleStmt" mode="cite-foot">
+    <xsl:param name="htmluri">SET THE HTMLURI PARAMETER IN MODE=CITE-FOOT</xsl:param>
     <!-- creator(s) of the entry -->
     <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss">
@@ -96,7 +97,19 @@
     </xsl:for-each>
     <xsl:text>,</xsl:text>
     
+    <!-- project -->
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="t:sponsor[1]"/>
+    <xsl:text>, ed. </xsl:text>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:principal"/>
+      </xsl:with-param>
+    </xsl:call-template>
     
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="$htmluri"/>
+    <xsl:text>.</xsl:text>
   </xsl:template>
   
 

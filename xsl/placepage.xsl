@@ -54,6 +54,7 @@
  <xsl:param name="placeslevel">places/</xsl:param>
  <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
  <xsl:param name="teiuripostfix">tei</xsl:param>
+ <xsl:param name="htmluripostfix">html</xsl:param>
  
 
  <xsl:variable name="idxquery"><xsl:value-of select="$idxdir"/>index.xml</xsl:variable>
@@ -101,6 +102,11 @@
    <xsl:variable name="placenum" select="t:idno[@type='placeID'][1]"/>
    <xsl:variable name="placeid" select="./@xml:id"/>
    <xsl:variable name="placeuri" select="t:idno[@type='SRP'][1]"/>
+   <xsl:variable name="htmluri">
+    <xsl:value-of select="$placeuri"/>
+    <xsl:text>/</xsl:text>
+    <xsl:value-of select="$htmluripostfix"/>
+   </xsl:variable>
    <xsl:variable name="sourcefilepath">
     <xsl:value-of select="$sourcedir"/>
     <xsl:value-of select="$placenum"/>
@@ -210,7 +216,9 @@
            <h3>How to Cite This Entry</h3>
            <div id="citation-note">
             <h4>Note:</h4>
-            <xsl:apply-templates select="$sourcedoc/descendant::t:titleStmt" mode="cite-foot"/>
+            <xsl:apply-templates select="$sourcedoc/descendant::t:titleStmt" mode="cite-foot">
+             <xsl:with-param name="htmluri" select="$htmluri"/>
+            </xsl:apply-templates>
            </div>
            <div id="citation-bibliography">
             <h4>Bibliography:</h4>
