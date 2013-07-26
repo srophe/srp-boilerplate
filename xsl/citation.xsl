@@ -55,8 +55,6 @@
        
        ================================================================== -->
   
-  <xsl:variable name="maxauthorsfootnote">2</xsl:variable>
-  
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      template: match=t:titleStmt mode=cite-foot
      generate a footnote for the matched titleStmt entry
