@@ -74,6 +74,7 @@
   <xsl:param name="sourcedir">../../places/xml/</xsl:param>
   <xsl:param name="destdir">../places/</xsl:param>
   <xsl:param name="normalization">NFKC</xsl:param>
+  <xsl:param name="teiuripostfix">tei</xsl:param>
   
   <xsl:variable name="colquery"><xsl:value-of select="$sourcedir"/>?select=*.xml</xsl:variable>
   <xsl:variable name="n">
@@ -147,6 +148,17 @@
           <xsl:text>Found more than one place element in file; ignoring all but the first</xsl:text>
         </xsl:with-param>
         <xsl:with-param name="withElementContext">no</xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+    <xsl:if test="tokenize(./descendant-or-self::t:publicationStmt/t:idno[1], '/')[last()] != $teiuripostfix">
+      <xsl:call-template name="log">
+        <xsl:with-param name="msg">
+          <xsl:text>Found final substring "</xsl:text>
+          <xsl:value-of select="tokenize(./descendant-or-self::t:publicationStmt/t:idno[1], '/')[last()]"/>
+          <xsl:text>" in first idno element where "</xsl:text>
+          <xsl:value-of select="$teiuripostfix"/>
+          <xsl:text>" was expected.</xsl:text>
+        </xsl:with-param>
       </xsl:call-template>
     </xsl:if>
   </xsl:template>
