@@ -204,11 +204,13 @@
   </xsl:template>
 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     handle date, publisher, place of publication and placenames in 
-     footnote context
+     handle date, publisher, place of publication, placenames and foreign
+     tags (i.e., language+script changes) in footnote context (the main
+     reason for this is to capture language and script changes at these
+     levels)
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:date | t:publisher | t:pubPlace | t:placeName" mode="footnote" priority="1">
+  <xsl:template match="t:date | t:publisher | t:pubPlace | t:placeName | t:foreign" mode="footnote" priority="1">
     <span class="{local-name()}">
       <xsl:call-template name="langattr"/>
       <xsl:apply-templates mode="footnote"/>
@@ -285,10 +287,10 @@
      handle bibliographic titles in the context of a footnote
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:title[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote" priority="1">
+  <xsl:template match="t:title" mode="footnote" priority="1">
     <span class="title">
       <xsl:call-template name="langattr"/>
-      <xsl:apply-templates select="." mode="out-normal"/>
+      <xsl:apply-templates mode="footnote"/>
     </span>
   </xsl:template>
   

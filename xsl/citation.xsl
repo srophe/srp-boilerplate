@@ -63,14 +63,15 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:titleStmt" mode="cite-foot">
+    <!-- creator(s) of the entry -->
     <xsl:call-template name="cite-foot-pers">
       <xsl:with-param name="perss" select="t:editor[@role='creator']"/>
     </xsl:call-template>
     <xsl:text>, </xsl:text>
+    
+    <!-- title of the entry -->
     <xsl:text>“</xsl:text>
-    <xsl:call-template name="place-title-std">
-      <xsl:with-param name="place" select="ancestor::t:TEI/descendant::t:place[1]"/>
-    </xsl:call-template>
+    <xsl:apply-templates select="t:title[1]" mode="footnote"/>
     <xsl:text>”</xsl:text>
     <xsl:text> in </xsl:text><span class="title">The Syriac Gazetteer</span><xsl:text>, eds. </xsl:text>
     <xsl:call-template name="cite-foot-pers">
@@ -91,6 +92,17 @@
   
   <xsl:template name="cite-foot-pers">
     <xsl:param name="perss"/>
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">
+        <xsl:text>template cite-foot-pers called with $perss=[</xsl:text>
+        <xsl:for-each select="$perss/node()">
+          <xsl:text>"</xsl:text>
+          <xsl:value-of select="."/>
+          <xsl:text>", </xsl:text>
+        </xsl:for-each>
+        <xsl:text>]</xsl:text>
+      </xsl:with-param>
+    </xsl:call-template>
     <xsl:variable name="ccount" select="count($perss)"/>
     <xsl:choose>
       <xsl:when test="$ccount=1 or $ccount &gt; $maxauthorsfootnote">
