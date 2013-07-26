@@ -161,7 +161,10 @@ body {
 		border-radius: 12px;	
 }
 
-#link-icons > a > img[title~="Wikipedia"], #link-icons > a > img[title~="Maps"] {
+#link-icons > a > img[title~="Wikipedia"], 
+#link-icons > a > img[title~="Maps"], 
+#link-icons > a > img[title~="Atom"], 
+#link-icons > a > img[title~="TEI"] {
 		border-radius: 5px;	
 }
 
