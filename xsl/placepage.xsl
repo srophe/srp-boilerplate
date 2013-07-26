@@ -232,7 +232,10 @@
            <xsl:apply-templates select="$sourcedoc/descendant::t:titleStmt" mode="about">
             <xsl:with-param name="htmluri" select="$htmluri"/>
            </xsl:apply-templates>
-          </div>          
+          </div> 
+          <div id="license">
+           
+          </div>
          </footer>
          
         </div>
