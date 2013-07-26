@@ -8,6 +8,55 @@
  xmlns="http://www.w3.org/1999/xhtml"
  exclude-result-prefixes="xs t s saxon" version="2.0">
 
+ <!-- ================================================================== 
+       Copyright 2013 New York University
+       
+       This file is part of the Syriac Reference Portal Places Application.
+       
+       The Syriac Reference Portal Places Application is free software: 
+       you can redistribute it and/or modify it under the terms of the GNU 
+       General Public License as published by the Free Software Foundation, 
+       either version 3 of the License, or (at your option) any later 
+       version.
+       
+       The Syriac Reference Portal Places Application is distributed in 
+       the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+       even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+       PARTICULAR PURPOSE.  See the GNU General Public License for more 
+       details.
+       
+       You should have received a copy of the GNU General Public License
+       along with the Syriac Reference Portal Places Application.  If not,
+       see (http://www.gnu.org/licenses/).
+       
+       ================================================================== --> 
+ 
+ <!-- ================================================================== 
+       placepage.xsl
+       
+       This XSLT transforms places xml (TEI) files to HTML. It builds the
+       guts of the website, in effect.
+       
+       parameters:
+       
+       assumptions and dependencies:
+        + transform has been tested with Saxon PE 9.4.0.6 with initial
+          template (-it) option set to "do-index" (i.e., there is no 
+          single input file)
+        
+       code by: 
+        + Tom Elliott (http://www.paregorios.org) 
+          for the Institute for the Study of the Ancient World, New York
+          University, under contract to Vanderbilt University for the
+          NEH-funded Syriac Reference Portal project.
+          
+       funding provided by:
+        + National Endowment for the Humanities (http://www.neh.gov). Any 
+          views, findings, conclusions, or recommendations expressed in 
+          this code do not necessarily reflect those of the National 
+          Endowment for the Humanities.
+       
+       ================================================================== -->
  <!-- =================================================================== -->
  <!-- import component stylesheets for HTML page portions -->
  <!-- =================================================================== -->
@@ -17,7 +66,6 @@
  <xsl:import href="boilerplate-bottom.xsl"/>
  <xsl:import href="boilerplate-badbrowser.xsl"/>
  <xsl:import href="boilerplate-nav.xsl"/>
- <xsl:import href="boilerplate-footer.xsl"/>
  <xsl:import href="citation.xsl"/>
  <xsl:import href="collations.xsl"/>
  <xsl:import href="langattr.xsl"/>
@@ -55,6 +103,7 @@
  <xsl:param name="placeslevel">places/</xsl:param>
  <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
  <xsl:param name="teiuripostfix">tei</xsl:param>
+ <xsl:param name="htmluripostfix">html</xsl:param>
  
 
  <xsl:variable name="idxquery"><xsl:value-of select="$idxdir"/>index.xml</xsl:variable>
@@ -98,12 +147,30 @@
     </xsl:choose>
    </xsl:variable>
    
+   <!-- load frequently needed info into convenient variables -->
    <xsl:variable name="placenum" select="t:idno[@type='placeID'][1]"/>
-   <xsl:variable name="thisid" select="./@xml:id"/>
-   <xsl:variable name="thisuri" select="t:idno[@type='SRP'][1]"/>
-   <xsl:if test="count($idx/descendant::t:place[@xml:id=$thisid])&gt; 1">
+   <xsl:variable name="placeid" select="./@xml:id"/>
+   <xsl:variable name="placeuri" select="t:idno[@type='SRP'][1]"/>
+   <xsl:variable name="htmluri">
+    <xsl:value-of select="$placeuri"/>
+    <xsl:text>/</xsl:text>
+    <xsl:value-of select="$htmluripostfix"/>
+   </xsl:variable>
+   <xsl:variable name="sourcefilepath">
+    <xsl:value-of select="$sourcedir"/>
+    <xsl:value-of select="$placenum"/>
+    <xsl:text>.xml</xsl:text>
+   </xsl:variable>
+   <xsl:variable name="sourcedoc" select="document($sourcefilepath)/descendant-or-self::t:TEI"/>
+   <xsl:variable name="outfilename">
+    <xsl:value-of select="$placenum"/>
+    <xsl:text>.html</xsl:text>
+   </xsl:variable>   
+   
+   <!-- check for and warn on undesirable or unexpected conditions in data -->
+   <xsl:if test="count($idx/descendant::t:place[@xml:id=$placeid])&gt; 1">
     <xsl:call-template name="log">
-     <xsl:with-param name="msg">index file contains more than one place with an xml:id attribute value of <xsl:value-of select="$thisid"/>
+     <xsl:with-param name="msg">index file contains more than one place with an xml:id attribute value of <xsl:value-of select="$placeid"/>
      </xsl:with-param>
     </xsl:call-template>
    </xsl:if>
@@ -112,24 +179,17 @@
      <xsl:with-param name="msg">index file contains more than one place with an placeID value of <xsl:value-of select="$placenum"/></xsl:with-param>
     </xsl:call-template>
    </xsl:if>
-    <xsl:if test="count($idx/descendant::t:place[t:idno[@type='SRP']=$thisuri])&gt; 1">
+    <xsl:if test="count($idx/descendant::t:place[t:idno[@type='SRP']=$placeuri])&gt; 1">
      <xsl:call-template name="log">
-      <xsl:with-param name="msg">index file contains more than one place with an SRP URI value of <xsl:value-of select="$thisuri"/></xsl:with-param>
+      <xsl:with-param name="msg">index file contains more than one place with an SRP URI value of <xsl:value-of select="$placeuri"/></xsl:with-param>
      </xsl:call-template>
    </xsl:if>
     
+    <!-- if we have a proper placeid, then write the page; otherwise warn -->
    <xsl:choose>
-    
-    <!-- make sure we have a valid placeid -->
     <xsl:when test="matches($placenum, '^\d+$')">
      
-     <!-- determine what the output filename will be -->
-     <xsl:variable name="outfilename">
-      <xsl:value-of select="$placenum"/>
-      <xsl:text>.html</xsl:text>
-     </xsl:variable>
-     
-     <!-- open a new output document for reading -->
+     <!-- open a new output document for writing -->
      <xsl:result-document format="html" href="{$destdir}{$outfilename}">
       
       <!-- write the opening of the HTML page -->
@@ -142,18 +202,12 @@
        <xsl:comment>&lt;![endif]</xsl:comment>
     
        <!-- write the page head element and its contents -->
-       <xsl:variable name="sourcedoc">
-        <xsl:value-of select="$sourcedir"/>
-        <xsl:value-of select="$placenum"/>
-        <xsl:text>.xml</xsl:text>
-       </xsl:variable>
-       
        <xsl:call-template name="boilerplate-head">
         <xsl:with-param name="description" select="$description"/>
         <xsl:with-param name="name-app" select="$name-app"/>
         <xsl:with-param name="name-page-short" select="$name-page-short"/>
         <xsl:with-param name="basepath">..</xsl:with-param>
-        <xsl:with-param name="titleStmt" select="document($sourcedoc)/descendant-or-self::t:TEI/descendant-or-self::t:titleStmt"/>
+        <xsl:with-param name="titleStmt" select="$sourcedoc/descendant-or-self::t:titleStmt"/>
        </xsl:call-template>
     
        <!-- write the body element and its contents -->
@@ -167,8 +221,6 @@
          <xsl:with-param name="app-name" select="$name-app"/>
          <xsl:with-param name="basepath">..</xsl:with-param>
         </xsl:call-template>
-        
-        <!-- ADD: breadcrumbs -->
         
         <!-- create the main content portion of the page -->
         <div class="container-fluid">
@@ -196,7 +248,7 @@
            </xsl:for-each>
     
            <!-- core page content -->
-            <xsl:for-each select="document($sourcedoc)/descendant-or-self::t:place[1]">
+            <xsl:for-each select="$sourcedoc/descendant::t:place[1]">
               <div id="{@xml:id}">
                <xsl:apply-templates select=".">
                 <xsl:with-param name="idx" select="$idx"/>
@@ -206,11 +258,38 @@
           </div>
          </div>
          
-         <!-- write the standard page footer -->
-         <xsl:call-template name="boilerplate-footer">
-          <xsl:with-param name="copyright-year" select="$copyright-year"/>
-          <xsl:with-param name="copyright-holders" select="$copyright-holders"/>
-         </xsl:call-template>
+         <!-- footer -->
+         <hr />
+         <footer>
+          <div id="citation">
+           <h3>How to Cite This Entry</h3>
+           <div id="citation-note">
+            <h4>Note:</h4>
+            <xsl:apply-templates select="$sourcedoc/descendant::t:titleStmt" mode="cite-foot">
+             <xsl:with-param name="htmluri" select="$htmluri"/>
+            </xsl:apply-templates>
+           </div>
+           <div id="citation-bibliography">
+            <h4>Bibliography:</h4>
+            <xsl:apply-templates select="$sourcedoc/descendant::t:titleStmt" mode="cite-biblist">
+             <xsl:with-param name="htmluri" select="$htmluri"/>
+            </xsl:apply-templates>
+           </div>
+          </div>
+          <div id="about">
+           <h3>About this Entry</h3>
+           <xsl:apply-templates select="$sourcedoc/descendant::t:titleStmt" mode="about">
+            <xsl:with-param name="htmluri" select="$htmluri"/>
+           </xsl:apply-templates>
+          </div> 
+          <div id="license">
+           <h3>Copyright and License for Reuse</h3>
+           <p>
+            <xsl:text>Except otherwise noted, this page is © </xsl:text>
+            <xsl:value-of select="format-date(xs:date($sourcedoc/descendant::t:publicationStmt/t:date[1]), '[Y]')"/>.</p>
+           <xsl:apply-templates select="$sourcedoc/descendant::t:publicationStmt/t:availability/t:licence"/>
+          </div>
+         </footer>
          
         </div>
     
@@ -300,19 +379,6 @@
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
    </ul>
   </div>
-  <div id="citation">
-   <h3>How to Cite This Entry</h3>
-   <div id="citation-note">
-    <h4>Note:</h4>
-    <xsl:apply-templates select="ancestor::t:TEI/descendant::t:titleStmt" mode="cite-foot"/>
-   </div>
-   <div id="citation-bibliography">
-    <h4>Bibliography:</h4>
-   </div>
-  </div>
-  <div id="about">
-   <h3>About this Entry</h3>
-  </div>
  </xsl:template>
  
  <xsl:template match="t:location[@type='geopolitical' or @type='relative']">
@@ -383,6 +449,23 @@
    <xsl:call-template name="do-refs"/>
   </li>
  </xsl:template>
+ 
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of the licence element in the tei header
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ 
+ <xsl:template match="t:licence">
+  <xsl:if test="@target">
+   <xsl:variable name="licenserev" select="tokenize(@target, '/')[last()-1]"/>
+   <xsl:variable name="licensetype" select="tokenize(substring-before(@target, $licenserev), '/')[last()-1]"/>
+   <a rel="license" href="{@target}"><img
+    alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/{$licensetype}/{$licenserev}/80x15.png"
+   /></a>
+  </xsl:if>
+  <xsl:apply-templates />
+ </xsl:template>
+ 
+ 
  
  <xsl:template name="do-refs">
   <!-- credit sources for data -->

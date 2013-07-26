@@ -2763,9 +2763,6 @@
 <placeName xml:id="name468-2" xml:lang="syr" reg="ܘܐܢܟ">ܘܐܢܟ</placeName>
 <desc type="abstract" xml:lang="en"/><idno type="placeID">468</idno>
 <idno type="SRP">http://syriaca.org/place/468</idno><!--WARNING: 468.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-24-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Robert Aydin</author><author>Dayroyo Roger-Youssef Akhrass</author></bibl></place>
-<place xml:id="place-469" type="settlement"><!--WARNING: 469.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name469-1" xml:lang="en" reg="Samosata">Samosata</placeName>
-<desc type="abstract" xml:lang="en"/><idno type="placeID">469</idno>
-<idno type="SRP">http://syriaca.org/place/469</idno><!--WARNING: 469.xml: No location element was found for this place.--><bibl type="self"><date>2013-07-22-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor></bibl></place>
 <place xml:id="place-47" type="settlement"><placeName xml:id="name47-1" xml:lang="en" reg="Bektaş">Bektaş</placeName>
 <placeName xml:id="name47-2" xml:lang="syr" reg="ܒܓܕܐܫܝܗ">ܒܓܕܐܫܝܗ</placeName>
 <desc type="abstract" xml:lang="en">A village southwest of Mardin.</desc><idno type="placeID">47</idno>
@@ -3759,9 +3756,6 @@
 <place xml:id="place-735" type="region"><!--WARNING: 735.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name735-1" xml:lang="en" reg="Bilijnāye">Bilijnāye</placeName>
 <desc type="abstract" xml:lang="en"/><idno type="placeID">735</idno>
 <idno type="SRP">http://syriaca.org/place/735</idno><location type="nested"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> </location><bibl type="self"><date>2013-07-24-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
-<place xml:id="place-736" type="region"><!--WARNING: 736.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name736-1" xml:lang="en" reg="Bshīr">Bshīr</placeName>
-<desc type="abstract" xml:lang="en"/><idno type="placeID">736</idno>
-<idno type="SRP">http://syriaca.org/place/736</idno><location type="nested"> <region ref="http://syriaca.org/place/724">Seert region</region> </location><bibl type="self"><date>2013-07-22-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
 <place xml:id="place-737" type="region"><!--WARNING: 737.xml: No Syriac language placeName marked as headword was found in the first place element in file--><placeName xml:id="name737-1" xml:lang="en" reg="Chal">Chal</placeName>
 <desc type="abstract" xml:lang="en"/><idno type="placeID">737</idno>
 <idno type="SRP">http://syriaca.org/place/737</idno><location type="nested"> <region ref="http://syriaca.org/place/90">Hakkārī region</region> </location><bibl type="self"><date>2013-07-24-04:00</date><editor>Thomas A. Carlson</editor><editor>David A. Michelson</editor><author>Anthony Davis</author></bibl></place>
