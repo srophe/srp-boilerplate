@@ -220,6 +220,8 @@
         </xsl:when>
         <xsl:otherwise>
           <xsl:call-template name="log">
+            <xsl:with-param name="withElementContext">no</xsl:with-param>
+            <xsl:with-param name="withElementContent">yes</xsl:with-param>
             <xsl:with-param name="msg">persName trapped in mode lastname-first, but does not contain surname and forename elements; therefore subcomponents have been output in document order</xsl:with-param>
           </xsl:call-template>
           <xsl:apply-templates select="t:*" mode="footnote"/>          
@@ -257,6 +259,8 @@
         </xsl:when>
         <xsl:otherwise>
           <xsl:call-template name="log">
+            <xsl:with-param name="withElementContext">no</xsl:with-param>
+            <xsl:with-param name="withElementContent">yes</xsl:with-param>
             <xsl:with-param name="msg">no persName element found, but mode was 'lastname-first'; cannot reorder names reliably</xsl:with-param>
           </xsl:call-template>
           <xsl:apply-templates mode="footnote"/>

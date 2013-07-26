@@ -66,6 +66,7 @@
     <xsl:param name="withFilePathContext">no</xsl:param>
     <xsl:param name="withFileContext">yes</xsl:param>
     <xsl:param name="withElementContext">yes</xsl:param>
+    <xsl:param name="withElementContent">no</xsl:param>
     <xsl:param name="msg">NO MESSAGE PASSED BY CALLING TRAP</xsl:param>
     
     <xsl:variable name="fullpathname" select="base-uri(.)"/>
@@ -98,10 +99,51 @@
         </xsl:choose>
         <xsl:text>: </xsl:text>
       </xsl:if>
+      <xsl:if test="$withElementContent='yes'">
+        <xsl:apply-templates select="." mode="logout"/>
+      </xsl:if>
       <xsl:value-of select="$msg"/>
     </xsl:variable>
     <xsl:message><xsl:value-of select="$outmsg"/></xsl:message>
     <xsl:comment>WARNING: <xsl:value-of select="$outmsg"/></xsl:comment>
   </xsl:template>
   
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     serialize any element for output
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
+
+  <xsl:template match="*" mode="logout">
+    <xsl:text disable-output-escaping="yes">&lt;</xsl:text>
+<!--     <xsl:value-of select="prefix-from-QName(.)"/>
+    <xsl:text>:</xsl:text> -->
+    <xsl:value-of select="local-name()"/> 
+    <xsl:apply-templates select="@*" mode="logout"/>
+    <xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+    <xsl:apply-templates mode="logout"/>
+    <xsl:text disable-output-escaping="yes">&lt;/</xsl:text>
+<!--    <xsl:value-of select="prefix-from-QName(.)"/>
+    <xsl:text>:</xsl:text> -->
+    <xsl:value-of select="local-name()"/>
+    <xsl:text disable-output-escaping="yes">&gt;</xsl:text>    
+  </xsl:template>
+  
+  <xsl:template match="@*" mode="logout">
+    <xsl:text> </xsl:text>
+<!--    <xsl:value-of select="prefix-from-QName(.)"/>
+    <xsl:text>:</xsl:text> -->
+    <xsl:value-of select="local-name()"/>
+    <xsl:text>="</xsl:text>
+    <xsl:value-of select="."/>
+    <xsl:text>"</xsl:text>
+  </xsl:template>
+  
+  <xsl:template match="text()" mode="logout">
+    <xsl:if test="substring(., 1, 1)= ' '">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:if test="substring(., string-length(.), 1)= ' '">
+      <xsl:text> </xsl:text>
+    </xsl:if>
+  </xsl:template>
 </xsl:stylesheet>
