@@ -277,16 +277,8 @@
   </div>
   <div id="type">
    <h3>Place Type</h3>
-   <ul class="dropdown">
-    <li><a data-toggle="dropdown" href="#">
-     <xsl:value-of select="$thistype"/>
-    </a>
-    <ul class="dropdown-menu">
-     <xsl:for-each select="$idx/descendant-or-self::t:place[@type=$thistype and not(@xml:id=$thisid)]">
-      <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en'][1]/@reg"/>
-      <li><a href="{t:idno[@type='placeID']}.html"><xsl:value-of select="t:placeName[@xml:lang='en'][1]"/></a></li>
-     </xsl:for-each>
-    </ul></li>
+   <ul>
+    <li><xsl:value-of select="$thistype"/></li>
    </ul>
   </div>
   <div id="location">
