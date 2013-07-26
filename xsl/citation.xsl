@@ -55,9 +55,8 @@
        
        ================================================================== -->
   
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     template: match=t:titleStmt mode=cite-foot
-     generate a footnote for the matched titleStmt entry
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     generate a footnote for the matched titleStmt element
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:titleStmt" mode="cite-foot">
@@ -110,5 +109,57 @@
     <xsl:text>.</xsl:text>
   </xsl:template>
   
-
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     generate a bibliographic entry for the matched titleStmt element
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:titleStmt" mode="cite-biblio">
+    <xsl:param name="htmluri">SET THE HTMLURI PARAMETER IN MODE=CITE-BIBLIO</xsl:param>
+    <!-- creator(s) of the entry -->
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:editor[@role='creator']"/>
+      </xsl:with-param> 
+    </xsl:call-template>
+    <xsl:text>, </xsl:text>
+    
+    <!-- title of the entry -->
+    <xsl:text>“</xsl:text>
+    <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
+    <xsl:text>”</xsl:text>
+    
+    <!-- monographic title -->
+    <xsl:text> in </xsl:text>
+    <xsl:apply-templates select="t:title[@level='m'][1]" mode="footnote"/>
+    
+    <!-- general editors -->
+    <xsl:text>, eds. </xsl:text>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:editor[@role='general']"/>
+      </xsl:with-param> 
+    </xsl:call-template>
+    <xsl:text>,</xsl:text>
+    
+    <!-- publication date statement -->
+    <xsl:text> entry published </xsl:text>
+    <xsl:for-each select="../t:publicationStmt/t:date[1]">
+      <xsl:value-of select="format-date(xs:date(.), '[MNn] [D], [Y]')"/>
+    </xsl:for-each>
+    <xsl:text>,</xsl:text>
+    
+    <!-- project -->
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="t:sponsor[1]"/>
+    <xsl:text>, ed. </xsl:text>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:principal"/>
+      </xsl:with-param>
+    </xsl:call-template>
+    
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="$htmluri"/>
+    <xsl:text>.</xsl:text>
+  </xsl:template>
 </xsl:stylesheet>

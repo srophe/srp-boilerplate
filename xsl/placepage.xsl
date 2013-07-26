@@ -222,6 +222,9 @@
            </div>
            <div id="citation-bibliography">
             <h4>Bibliography:</h4>
+            <xsl:apply-templates select="$sourcedoc/descendant::t:titleStmt" mode="cite-biblio">
+             <xsl:with-param name="htmluri" select="$htmluri"/>
+            </xsl:apply-templates>
            </div>
           </div>
           <div id="about">
