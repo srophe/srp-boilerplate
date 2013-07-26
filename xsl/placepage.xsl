@@ -408,9 +408,7 @@
  <xsl:template match="t:licence">
   <xsl:if test="@target">
    <xsl:variable name="licenserev" select="tokenize(@target, '/')[last()-1]"/>
-   <xsl:message><xsl:value-of select="$licenserev"/></xsl:message>
    <xsl:variable name="licensetype" select="tokenize(substring-before(@target, $licenserev), '/')[last()-1]"/>
-   <xsl:message><xsl:value-of select="$licensetype"/></xsl:message>
    <a rel="license" href="{@target}"><img
     alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/{$licensetype}/{$licenserev}/80x15.png"
    /></a>
