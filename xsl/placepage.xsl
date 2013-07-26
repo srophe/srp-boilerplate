@@ -203,13 +203,6 @@
                </xsl:apply-templates>
               </div>
             </xsl:for-each>
-           <div id="externals">
-           <p><span class="label">Other formats</span></p>
-            <ul>
-             <li><a href="{$xmlbase}{$placenum}.xml" rel="alternate" type="application/tei+xml">tei xml (source)</a></li>
-             <li><a href="{$base}places/{$placenum}-atom.xml" rel="alternate" type="application/atom+xml">atom xml</a></li>
-            </ul>
-           </div>
           </div>
          </div>
          
