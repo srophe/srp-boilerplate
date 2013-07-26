@@ -76,8 +76,11 @@
     <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
     <xsl:text>”</xsl:text>
     
+    <!-- monographic title -->
+    <xsl:text> in </xsl:text>
+    <xsl:apply-templates select="t:title[@level='m'][1]" mode="footnote"/>
     
-    <xsl:text> in </xsl:text><span class="title">The Syriac Gazetteer</span><xsl:text>, eds. </xsl:text>
+    <xsl:text>, eds. </xsl:text>
     <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss">
         <xsl:copy-of select="t:editor[@role='general']"/>
