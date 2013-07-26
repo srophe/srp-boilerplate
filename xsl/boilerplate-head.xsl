@@ -109,7 +109,7 @@
  <xsl:template match="t:idno[@type='URI']"  mode="b">
   <xsl:call-template name="meta-out">
    <xsl:with-param name="name">DC.identifier</xsl:with-param>
-   <xsl:with-param name="textcontent" select="substring-before(., '/source')"/>
+   <xsl:with-param name="textcontent" select="substring-before(., $teiuripostfix)"/>
   </xsl:call-template>
   
  </xsl:template>
@@ -138,7 +138,11 @@
  <xsl:template match="t:funder | t:principal | t:sponsor" mode="b"/>
  
  <xsl:template match="t:*" mode="b">
-  <xsl:message>foo: <xsl:value-of select="local-name()"/></xsl:message>
+  <xsl:call-template name="log">
+   <xsl:with-param name="msg">
+    <xsl:text>suppressed element with template match=t:* mode=b in boilerplate-head.xsl</xsl:text>
+   </xsl:with-param>
+  </xsl:call-template>
  </xsl:template>
   
   <xsl:template name="meta-out">

@@ -53,6 +53,7 @@
  <xsl:param name="normalization">NFKC</xsl:param>
  <xsl:param name="placeslevel">places/</xsl:param>
  <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
+ <xsl:param name="teiuripostfix">tei</xsl:param>
  
 
  <xsl:variable name="idxquery"><xsl:value-of select="$idxdir"/>index.xml</xsl:variable>
