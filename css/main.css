@@ -95,6 +95,10 @@ body {
 	font-style: italic;
 }
 
+.heading-inline {
+	font-weight: bold;
+}
+
 /* styles for names */
 .placeName {
  font-weight: bold;
