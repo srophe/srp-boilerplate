@@ -354,6 +354,30 @@
   </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     suppress otherwise unhandled descendent nodes of bibl or biblStruct
+     in the context of a bibliographic list (and log the fact that we've 
+     done so)
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="biblist">
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">element suppressed in mode biblist</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     suppress otherwise unhandled descendent nodes of bibl or biblStruct
+     in universal bibliographic context (and log the fact that we've done 
+     so)
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="allbibl">
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">element suppressed in mode allbibl</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      emit the footnote number for a bibl
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
