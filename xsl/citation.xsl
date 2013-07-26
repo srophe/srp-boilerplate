@@ -113,7 +113,7 @@
      generate a bibliographic entry for the matched titleStmt element
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:titleStmt" mode="cite-biblio">
+  <xsl:template match="t:titleStmt" mode="cite-biblist">
     <xsl:param name="htmluri">SET THE HTMLURI PARAMETER IN MODE=CITE-BIBLIO</xsl:param>
     <!-- creator(s) of the entry -->
     <xsl:call-template name="emit-responsible-persons">
