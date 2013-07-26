@@ -21,6 +21,7 @@
  <xsl:import href="citation.xsl"/>
  <xsl:import href="collations.xsl"/>
  <xsl:import href="langattr.xsl"/>
+ <xsl:import href="link-icons.xsl"/>
  <xsl:import href="log.xsl"/>
  <xsl:import href="normalization.xsl"/>
  <xsl:import href="place-title-std.xsl"/>
@@ -174,21 +175,13 @@
          <div class="row-fluid">
           <div class="span7" xml:id="place-content">
            
-           <h2>
-            <xsl:call-template name="place-title-std"/>
-           </h2>
-           <div id="link-icons">
-            <xsl:for-each select="t:idno[@type='Pleiades']">
-             <a href="{.}"><img src="../img/circle-pi-25.png" alt="Image of the Greek letter pi in blue; small icon of the Pleiades project" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Pleiades"/></a>
-            </xsl:for-each>
-            <xsl:for-each select="t:idno[@type='Wikipedia']">
-             <a href="{.}"><img src="../img/Wikipedia-25.png" alt="The Wikipedia icon" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Wikipedia"/></a>
-            </xsl:for-each>
-            <xsl:for-each select="t:location[@type='gps']/t:geo">
-             <a href="https://maps.google.com/maps?f=q&amp;hl=en&amp;q={$base}{$placeslevel}{$placenum}-atom.xml&amp;z=4"><img src="../img/gmaps-25.png" alt="The Google Maps icon" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} on Google Maps"/></a>
-            </xsl:for-each>
-            
-           </div>
+           <!-- create the main heading in the page body -->
+           <h2><xsl:call-template name="place-title-std"/></h2>
+           
+           <!-- create any appropriate link icons -->
+           <xsl:call-template name="link-icons"/>
+           
+           <!-- emit place URI and associated help links -->
            <xsl:for-each select="t:idno[@type='SRP']">
             <div>
              <a href="../help/terms.html#place-uri" title="Click to read more about Place URIs"><div class="helper circle">
