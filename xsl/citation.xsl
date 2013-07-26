@@ -194,10 +194,6 @@
         <xsl:value-of select="format-date(xs:date(.), '[MNn] [D], [Y]')"/>
       </xsl:for-each>
     </p>
-    <p>
-      <span class="heading-inline">URI:</span>
-      <xsl:text> </xsl:text>
-    </p>
     <div>
       <h4>Authorial and Editorial Responsibility:</h4>
       <ul>
