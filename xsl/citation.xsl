@@ -64,7 +64,7 @@
   
   <xsl:template match="t:titleStmt" mode="cite-foot">
     <!-- creator(s) of the entry -->
-    <xsl:call-template name="cite-foot-pers">
+    <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss">
         <xsl:copy-of select="t:editor[@role='creator']"/>
       </xsl:with-param> 
@@ -76,7 +76,7 @@
     <xsl:apply-templates select="t:title[1]" mode="footnote"/>
     <xsl:text>”</xsl:text>
     <xsl:text> in </xsl:text><span class="title">The Syriac Gazetteer</span><xsl:text>, eds. </xsl:text>
-    <xsl:call-template name="cite-foot-pers">
+    <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss">
         <xsl:copy-of select="t:editor[@role='general']"/>
       </xsl:with-param> 

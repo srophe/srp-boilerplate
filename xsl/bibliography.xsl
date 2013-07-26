@@ -134,7 +134,7 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="rcount" select="count($responsible)"/>
-    <xsl:call-template name="cite-foot-pers">
+    <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss" select="$responsible"/>
     </xsl:call-template>
     <xsl:if test="$edited">
@@ -287,13 +287,10 @@
   </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     template: cite-foot-creators
-     
-     handle creators for citation guidance of type footnote; exploit 
-     general bibliographic template logic where possible
+     handle creators for type footnote
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template name="cite-foot-pers">
+  <xsl:template name="emit-responsible-persons">
     <xsl:param name="perss"/>
     <xsl:call-template name="log">
       <xsl:with-param name="msg">
