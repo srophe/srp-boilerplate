@@ -80,16 +80,23 @@
     <xsl:text> in </xsl:text>
     <xsl:apply-templates select="t:title[@level='m'][1]" mode="footnote"/>
     
+    <!-- general editors -->
     <xsl:text>, eds. </xsl:text>
     <xsl:call-template name="emit-responsible-persons">
       <xsl:with-param name="perss">
         <xsl:copy-of select="t:editor[@role='general']"/>
       </xsl:with-param> 
     </xsl:call-template>
-    <xsl:text>, entry published </xsl:text>
+    <xsl:text>,</xsl:text>
+    
+    <!-- publication date statement -->
+    <xsl:text> entry published </xsl:text>
     <xsl:for-each select="../t:publicationStmt/t:date[1]">
       <xsl:value-of select="format-date(xs:date(.), '[MNn] [D], [Y]')"/>
     </xsl:for-each>
+    <xsl:text>,</xsl:text>
+    
+    
   </xsl:template>
   
 
