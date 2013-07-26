@@ -55,11 +55,8 @@
        
        ================================================================== -->
   
-  <xsl:variable name="maxauthorsfootnote">2</xsl:variable>
   
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     template: match=t:bibl mode=footnote
-     
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      generate a footnote for the matched bibl entry; if it contains a 
      pointer, try to look up the master bibliography file and use that
      
@@ -116,10 +113,7 @@
     </li>
   </xsl:template>
   
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     template match=t:biblStruct that contains a t:monograph but not a
-     t:analytic (i.e., this is a book) mode=footnote
-     
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle a footnote for a book
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
@@ -127,45 +121,21 @@
     <!-- this is a monograph/book -->
     
     <!-- handle editors/authors and abbreviate as necessary -->
-    <xsl:variable name="edited" select="if (t:monogr/t:editor) then true() else false()"/>
+    <xsl:variable name="edited" select="if (t:monogr/t:editor[not(@role) or @role!='translator']) then true() else false()"/>
     <xsl:variable name="responsible">
       <xsl:choose>
         <xsl:when test="$edited">
-          <xsl:copy-of select="t:monogr/t:editor"/>
+          <xsl:copy-of select="t:monogr/t:editor[not(@role) or @role!='translator']"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:copy-of select="t:monogr/t:author"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:variable name="rcount" select="count($responsible/t:*)"/>
-    <xsl:choose>
-      <xsl:when test="$rcount &gt; $maxauthorsfootnote">
-        <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
-        <xsl:text> et al.</xsl:text>
-      </xsl:when>
-      <xsl:when test="$rcount = 1">
-        <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
-      </xsl:when>
-      <xsl:when test="$rcount = 2">
-        <xsl:apply-templates select="$responsible/t:*[1]" mode="footnote"/>
-        <xsl:text> and </xsl:text>
-        <xsl:apply-templates select="$responsible/t:*[2]"  mode="footnote"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:for-each select="$responsible/t:*[position() &lt; $maxauthorsfootnote+1]">
-          <xsl:choose>
-            <xsl:when test="position() = $maxauthorsfootnote">
-              <xsl:text> and </xsl:text>
-            </xsl:when>
-            <xsl:when test="position() &gt; 1">
-              <xsl:text>, </xsl:text>
-            </xsl:when>
-          </xsl:choose>
-          <xsl:apply-templates mode="footnote"/>
-        </xsl:for-each>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:variable name="rcount" select="count($responsible)"/>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss" select="$responsible"/>
+    </xsl:call-template>
     <xsl:if test="$edited">
       <xsl:choose>
         <xsl:when test="$rcount = 1">
@@ -196,28 +166,73 @@
     
   </xsl:template>
   
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle name components in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
   <xsl:template match="t:forename | t:addName | t:surname" mode="footnote" priority="1">
     <xsl:if test="preceding-sibling::t:*">
       <xsl:text> </xsl:text>
     </xsl:if>
     <xsl:apply-templates mode="footnote"/>
   </xsl:template>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle date, publisher, place of publication, placenames and foreign
+     tags (i.e., language+script changes) in footnote context (the main
+     reason for this is to capture language and script changes at these
+     levels)
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:date | t:publisher | t:pubPlace | t:placeName" mode="footnote" priority="1">
+  <xsl:template match="t:date | t:publisher | t:pubPlace | t:placeName | t:foreign" mode="footnote" priority="1">
     <span class="{local-name()}">
       <xsl:call-template name="langattr"/>
       <xsl:apply-templates mode="footnote"/>
     </span>
   </xsl:template>
   
-  <xsl:template match="t:persName" mode="footnote">
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle personal names in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:persName | t:name" mode="footnote">
     <span class="persName">
       <xsl:call-template name="langattr"/>
-      <xsl:apply-templates select="t:*" mode="footnote"/>
+      <xsl:apply-templates mode="footnote"/>
+    </span>
+  </xsl:template>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle personal names last-name first
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:persName" mode="lastname-first">
+    <span class="persName">
+      <xsl:call-template name="langattr"/>
+      <xsl:choose>
+        <xsl:when test="t:surname and t:forename">
+          <xsl:apply-templates select="t:surname" mode="footnote"/>
+          <xsl:text>, </xsl:text>
+          <xsl:apply-templates select="t:*[local-name()!='surname']" mode="footnote"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="log">
+            <xsl:with-param name="withElementContext">no</xsl:with-param>
+            <xsl:with-param name="withElementContent">yes</xsl:with-param>
+            <xsl:with-param name="msg">persName trapped in mode lastname-first, but does not contain surname and forename elements; therefore subcomponents have been output in document order</xsl:with-param>
+          </xsl:call-template>
+          <xsl:apply-templates select="t:*" mode="footnote"/>          
+        </xsl:otherwise>
+      </xsl:choose>
     </span>
   </xsl:template>
   
-  <xsl:template match="t:author | t:editor" mode="footnote" priority="1">
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle authors and editors in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:author | t:editor | t:principal" mode="footnote biblist" priority="1">
     <span class="{local-name()}">
       <xsl:choose>
         <xsl:when test="t:persName">
@@ -229,7 +244,33 @@
       </xsl:choose>
     </span>
   </xsl:template>
-    
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle authors and editors in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:author | t:editor | t:principal" mode="lastname-first" priority="1">
+    <span class="{local-name()}">
+      <xsl:choose>
+        <xsl:when test="t:persName">
+          <xsl:apply-templates select="t:persName[1]" mode="lastname-first"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="log">
+            <xsl:with-param name="withElementContext">no</xsl:with-param>
+            <xsl:with-param name="withElementContent">yes</xsl:with-param>
+            <xsl:with-param name="msg">no persName element found, but mode was 'lastname-first'; cannot reorder names reliably</xsl:with-param>
+          </xsl:call-template>
+          <xsl:apply-templates mode="footnote"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </span>
+  </xsl:template>
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle the imprint component of a biblStruct in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
   <xsl:template match="t:imprint" mode="footnote" priority="1">
     <xsl:text>(</xsl:text>
     <xsl:choose>
@@ -264,12 +305,40 @@
     <xsl:text>)</xsl:text>
   </xsl:template>
   
-  <xsl:template match="t:title[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote" priority="1">
-    <span class="title">
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle bibliographic titles in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:title" mode="footnote biblist allbib" priority="1">
+    <span>
+      <xsl:attribute name="class">
+        <xsl:text>title</xsl:text>
+        <xsl:choose>
+          <xsl:when test="@level='a'">
+            <xsl:text>-analytic</xsl:text>            
+          </xsl:when>
+          <xsl:when test="@level='m'">
+            <xsl:text>-monographic</xsl:text>
+          </xsl:when>
+          <xsl:when test="@level='j'">
+            <xsl:text>-journal</xsl:text>
+          </xsl:when>
+          <xsl:when test="@level='s'">
+            <xsl:text>-series</xsl:text>
+          </xsl:when>
+          <xsl:when test="@level='u'">
+            <xsl:text>-unpublished</xsl:text>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:attribute>
       <xsl:call-template name="langattr"/>
-      <xsl:apply-templates select="." mode="out-normal"/>
+      <xsl:apply-templates mode="footnote"/>
     </span>
   </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle cited ranges in the context of a footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:citedRange[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote" priority="1">
     <xsl:choose>
@@ -283,11 +352,115 @@
     <xsl:apply-templates select="." mode="out-normal"/>
   </xsl:template>
   
-  <xsl:template match="t:*[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote">
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle creators for type footnote
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template name="emit-responsible-persons">
+    <xsl:param name="perss"/>
+    <xsl:param name="moded">footnote</xsl:param>
+    <xsl:param name="maxauthorsfootnote">2</xsl:param>
+    <xsl:param name="maxauthorsbiblist">2</xsl:param>
+    
+    <xsl:variable name="ccount" select="count($perss/t:*)"/>
+    <xsl:choose>
+      <xsl:when test="$ccount=1 and $moded='footnote'">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
+      </xsl:when>
+      <xsl:when test="$ccount=1 and $moded='biblist'">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="lastname-first"/>
+      </xsl:when>
+      <xsl:when test="$ccount &gt; $maxauthorsfootnote and $moded='footnote'">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
+        <xsl:text> et al.</xsl:text>
+      </xsl:when>
+      <xsl:when test="$ccount &gt; $maxauthorsbiblist and $moded='biblist'">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="lastname-first"/>
+        <xsl:text> et al.</xsl:text>
+      </xsl:when>
+      <xsl:when test="$ccount = 2 and $moded='footnote'">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="footnote"/>
+        <xsl:text> and </xsl:text>
+        <xsl:apply-templates select="$perss/t:*[2]" mode="footnote"/>
+      </xsl:when>
+      <xsl:when test="$ccount = 2 and $moded='biblist'">
+        <xsl:apply-templates select="$perss/t:*[1]" mode="lastname-first"/>
+        <xsl:text> and </xsl:text>
+        <xsl:apply-templates select="$perss/t:*[2]" mode="biblist"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:for-each select="$perss/t:*[position() &lt; $maxauthorsfootnote+1]">
+          <xsl:choose>
+            <xsl:when test="position() = $maxauthorsfootnote">
+              <xsl:text> and </xsl:text>
+            </xsl:when>
+            <xsl:when test="position() &gt; 1">
+              <xsl:text>, </xsl:text>
+            </xsl:when>
+          </xsl:choose>
+          <xsl:choose>
+            <xsl:when test="$moded='footnote'">
+              <xsl:apply-templates select="." mode="footnote"/>
+            </xsl:when>
+            <xsl:when test="$moded='biblist'">
+              <xsl:apply-templates select="." mode="biblist"/>
+            </xsl:when>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     suppress otherwise unhandled descendent nodes of bibl or biblStruct
+     in the context of a footnote (and log the fact that we've done so)
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:*" mode="footnote">
     <xsl:call-template name="log">
       <xsl:with-param name="msg">element suppressed in mode footnote</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     suppress otherwise unhandled descendent nodes of bibl or biblStruct
+     in the context of a bibliographic list (and log the fact that we've 
+     done so)
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:*" mode="biblist">
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">element suppressed in mode biblist</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     suppress otherwise unhandled descendent nodes of bibl or biblStruct
+     in universal bibliographic context (and log the fact that we've done 
+     so)
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:*" mode="allbibl">
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">element suppressed in mode allbibl</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     suppress otherwise unhandled descendent nodes of bibl or biblStruct
+     in universal bibliographic context (and log the fact that we've done 
+     so)
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:*" mode="lastname-first">
+    <xsl:call-template name="log">
+      <xsl:with-param name="msg">element suppressed in mode lastname-first</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     emit the footnote number for a bibl
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:bibl" mode="footnote-ref">
     <xsl:param name="footnote-number">1</xsl:param>

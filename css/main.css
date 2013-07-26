@@ -91,8 +91,12 @@ body {
 }
 
 
-.title {
+.title-monographic {
 	font-style: italic;
+}
+
+.heading-inline {
+	font-weight: bold;
 }
 
 /* styles for names */

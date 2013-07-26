@@ -142,6 +142,8 @@
      test the current input file to ensure it meets basic expectations
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <xsl:template name="sanity-check">
+    
+    <!-- warn if there is more than one place element in the file -->
     <xsl:if test="count(./descendant-or-self::t:place) &gt; 1">
       <xsl:call-template name="log">
         <xsl:with-param name="msg">
@@ -150,6 +152,8 @@
         <xsl:with-param name="withElementContext">no</xsl:with-param>
       </xsl:call-template>
     </xsl:if>
+    
+    <!-- warn if the last part of the source URI is not the expected string -->
     <xsl:if test="tokenize(./descendant-or-self::t:publicationStmt/t:idno[1], '/')[last()] != $teiuripostfix">
       <xsl:call-template name="log">
         <xsl:with-param name="msg">
@@ -158,6 +162,28 @@
           <xsl:text>" in first idno element where "</xsl:text>
           <xsl:value-of select="$teiuripostfix"/>
           <xsl:text>" was expected.</xsl:text>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+    
+    <!-- warn if the expected monographic and analytic titles don't appear in the titleStmt element -->
+    <xsl:variable name="tmcount" select="count(./descendant::t:titleStmt/t:title[@level='m'])"/>
+    <xsl:if test="$tmcount != 1">
+      <xsl:call-template name="log">
+        <xsl:with-param name="msg">
+          <xsl:text>Unexpected number (</xsl:text>
+          <xsl:value-of select="$tmcount"/>
+          <xsl:text>) of monographic-level titles in the titleStmt</xsl:text>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:if>
+    <xsl:variable name="tacount" select="count(./descendant::t:titleStmt/t:title[@level='a'])"/>
+    <xsl:if test="$tmcount != 1">
+      <xsl:call-template name="log">
+        <xsl:with-param name="msg">
+          <xsl:text>Unexpected number (</xsl:text>
+          <xsl:value-of select="$tacount"/>
+          <xsl:text>) of analytic-level titles in the titleStmt</xsl:text>
         </xsl:with-param>
       </xsl:call-template>
     </xsl:if>

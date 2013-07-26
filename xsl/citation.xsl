@@ -55,66 +55,199 @@
        
        ================================================================== -->
   
-  <xsl:variable name="maxauthorsfootnote">2</xsl:variable>
-  
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     template: match=t:titleStmt mode=cite-foot
-     generate a footnote for the matched titleStmt entry
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     generate a footnote for the matched titleStmt element
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:titleStmt" mode="cite-foot">
-    <xsl:call-template name="cite-foot-pers">
-      <xsl:with-param name="perss" select="t:editor[@role='creator']"/>
+    <xsl:param name="htmluri">SET THE HTMLURI PARAMETER IN MODE=CITE-FOOT</xsl:param>
+    <!-- creator(s) of the entry -->
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:editor[@role='creator']"/>
+      </xsl:with-param> 
     </xsl:call-template>
     <xsl:text>, </xsl:text>
+    
+    <!-- title of the entry -->
     <xsl:text>“</xsl:text>
-    <xsl:call-template name="place-title-std">
-      <xsl:with-param name="place" select="ancestor::t:TEI/descendant::t:place[1]"/>
-    </xsl:call-template>
+    <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
     <xsl:text>”</xsl:text>
-    <xsl:text> in </xsl:text><span class="title">The Syriac Gazetteer</span><xsl:text>, eds. </xsl:text>
-    <xsl:call-template name="cite-foot-pers">
-      <xsl:with-param name="perss" select="t:editor[@role='general']"/>
+    
+    <!-- monographic title -->
+    <xsl:text> in </xsl:text>
+    <xsl:apply-templates select="t:title[@level='m'][1]" mode="footnote"/>
+    
+    <!-- general editors -->
+    <xsl:text>, eds. </xsl:text>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:editor[@role='general']"/>
+      </xsl:with-param> 
     </xsl:call-template>
-    <xsl:text>, entry published </xsl:text>
+    <xsl:text>,</xsl:text>
+    
+    <!-- publication date statement -->
+    <xsl:text> entry published </xsl:text>
     <xsl:for-each select="../t:publicationStmt/t:date[1]">
       <xsl:value-of select="format-date(xs:date(.), '[MNn] [D], [Y]')"/>
     </xsl:for-each>
+    <xsl:text>,</xsl:text>
+    
+    <!-- project -->
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="t:sponsor[1]"/>
+    <xsl:text>, ed. </xsl:text>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:principal"/>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:text>, </xsl:text>
+    
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="$htmluri"/>
+    <xsl:text>.</xsl:text>
   </xsl:template>
   
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     template: cite-foot-creators
-     
-     handle creators for citation guidance of type footnote; exploit 
-     general bibliographic template logic where possible
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     generate a bibliographic entry for the matched titleStmt element
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template name="cite-foot-pers">
-    <xsl:param name="perss"/>
-    <xsl:variable name="ccount" select="count($perss)"/>
-    <xsl:choose>
-      <xsl:when test="$ccount=1 or $ccount &gt; $maxauthorsfootnote">
-        <xsl:apply-templates select="$perss[1]" mode="footnote"/>
-        <xsl:text> et al.</xsl:text>
-      </xsl:when>
-      <xsl:when test="$ccount = 2">
-        <xsl:apply-templates select="$perss[1]" mode="footnote"/>
-        <xsl:text> and </xsl:text>
-        <xsl:apply-templates select="$perss[2]" mode="footnote"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:for-each select="$perss[position() &lt; $maxauthorsfootnote+1]">
-          <xsl:choose>
-            <xsl:when test="position() = $maxauthorsfootnote">
-              <xsl:text> and </xsl:text>
-            </xsl:when>
-            <xsl:when test="position() &gt; 1">
-              <xsl:text>, </xsl:text>
-            </xsl:when>
-          </xsl:choose>
-          <xsl:apply-templates select="." mode="footnote"/>
-        </xsl:for-each>
-      </xsl:otherwise>
-    </xsl:choose>
+  <xsl:template match="t:titleStmt" mode="cite-biblist">
+    <xsl:param name="htmluri">SET THE HTMLURI PARAMETER IN MODE=CITE-BIBLIST</xsl:param>
+    <!-- creator(s) of the entry -->
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:editor[@role='creator']"/>
+      </xsl:with-param> 
+      <xsl:with-param name="moded">biblist</xsl:with-param>
+    </xsl:call-template>
+    <xsl:text>, </xsl:text>
+    
+    <!-- title of the entry -->
+    <xsl:text>“</xsl:text>
+    <xsl:apply-templates select="t:title[@level='a'][1]" mode="biblist"/>
+    <xsl:text>.”</xsl:text>
+    
+    <!-- monographic title -->
+    <xsl:text> In </xsl:text>
+    <xsl:apply-templates select="t:title[@level='m'][1]" mode="biblist"/>
+    
+    <!-- general editors -->
+    <xsl:text>, edited by </xsl:text>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:editor[@role='general']"/>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:text>.</xsl:text>
+    
+    <!-- publication date statement -->
+    <xsl:text> Entry published </xsl:text>
+    <xsl:for-each select="../t:publicationStmt/t:date[1]">
+      <xsl:value-of select="format-date(xs:date(.), '[MNn] [D], [Y]')"/>
+    </xsl:for-each>
+    <xsl:text>.</xsl:text>
+    
+    <!-- project -->
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="t:sponsor[1]"/>
+    <xsl:text>, edited by </xsl:text>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss">
+        <xsl:copy-of select="t:principal"/>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:text>.</xsl:text>
+    
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="$htmluri"/>
+    <xsl:text>.</xsl:text>
   </xsl:template>
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     generate an "about this entry" section for the matched titleStmt element
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:titleStmt" mode="about">
+    <xsl:param name="htmluri">SET THE HTMLURI PARAMETER IN MODE=ABOUT</xsl:param>
+    <p>
+      <span class="heading-inline">Entry Title:</span>
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
+    </p>
+    <p>
+      <span class="heading-inline">Entry Contributor<xsl:if test="count(t:editor[@role='creator'])&gt;1">s</xsl:if>:</span>
+      <xsl:text> </xsl:text>
+      <xsl:call-template name="emit-responsible-persons">
+        <xsl:with-param name="perss">
+          <xsl:copy-of select="t:editor[@role='creator']"/>
+        </xsl:with-param> 
+        <xsl:with-param name="maxauthorsfootnote" select="count(t:editor[@role='creator'])+1"/>
+      </xsl:call-template>
+    </p>
+    <p>
+      <span class="heading-inline">Publication Date:</span>
+      <xsl:text> </xsl:text>      
+      <xsl:for-each select="../t:publicationStmt/t:date[1]">
+        <xsl:value-of select="format-date(xs:date(.), '[MNn] [D], [Y]')"/>
+      </xsl:for-each>
+    </p>
+    <div>
+      <h4>Authorial and Editorial Responsibility:</h4>
+      <ul>
+        <li>
+          <xsl:call-template name="emit-responsible-persons">
+            <xsl:with-param name="perss">
+              <xsl:copy-of select="t:principal"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:text>, general editor</xsl:text>
+          <xsl:if test="count(t:principal) &gt; 1">s</xsl:if>
+          <xsl:text>, </xsl:text>
+          <xsl:value-of select="t:sponsor[1]"/>
+        </li>
+        <li>
+          <xsl:call-template name="emit-responsible-persons">
+            <xsl:with-param name="perss">
+              <xsl:copy-of select="t:editor[@role='general']"/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:text>, editor</xsl:text>
+          <xsl:if test="count(t:editor[@role='general'])&gt; 1">s</xsl:if>
+          <xsl:text>, </xsl:text>
+          <xsl:apply-templates select="t:title[@level='m'][1]" mode="footnote"/>
+        </li>
+        <li>
+          <xsl:call-template name="emit-responsible-persons">
+            <xsl:with-param name="perss">
+              <xsl:copy-of select="t:editor[@role='creator']"/>
+            </xsl:with-param> 
+            <xsl:with-param name="moded">biblist</xsl:with-param>
+          </xsl:call-template>
+          <xsl:text>, entry contributor</xsl:text>
+          <xsl:if test="count(t:editor[@role='creator'])&gt; 1">s</xsl:if>
+          <xsl:text>, </xsl:text>
+          <xsl:text>“</xsl:text>
+          <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
+          <xsl:text>”</xsl:text>
+        </li>
+      </ul>
+    </div>
+    <xsl:if test="t:respStmt">
+      <div>
+        <h4>Additional Credit:</h4>
+        <ul>
+          <xsl:for-each select="t:respStmt">
+            <li>
+              <xsl:value-of select="t:resp"/>
+              <xsl:text> </xsl:text>
+              <xsl:apply-templates select="t:name" mode="footnote"/>
+            </li>
+          </xsl:for-each>
+        </ul>
+      </div>
+    </xsl:if>
+  </xsl:template>  
 </xsl:stylesheet>
