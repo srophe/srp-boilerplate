@@ -17,7 +17,6 @@
  <xsl:import href="boilerplate-bottom.xsl"/>
  <xsl:import href="boilerplate-badbrowser.xsl"/>
  <xsl:import href="boilerplate-nav.xsl"/>
- <xsl:import href="boilerplate-footer.xsl"/>
  <xsl:import href="citation.xsl"/>
  <xsl:import href="collations.xsl"/>
  <xsl:import href="langattr.xsl"/>
@@ -206,11 +205,23 @@
           </div>
          </div>
          
-         <!-- write the standard page footer -->
-         <xsl:call-template name="boilerplate-footer">
-          <xsl:with-param name="copyright-year" select="$copyright-year"/>
-          <xsl:with-param name="copyright-holders" select="$copyright-holders"/>
-         </xsl:call-template>
+         <!-- footer -->
+         <hr />
+         <footer>
+          <div id="citation">
+           <h3>How to Cite This Entry</h3>
+           <div id="citation-note">
+            <h4>Note:</h4>
+            <xsl:apply-templates select="ancestor::t:TEI/descendant::t:titleStmt" mode="cite-foot"/>
+           </div>
+           <div id="citation-bibliography">
+            <h4>Bibliography:</h4>
+           </div>
+          </div>
+          <div id="about">
+           <h3>About this Entry</h3>
+          </div>          
+         </footer>
          
         </div>
     
@@ -299,19 +310,6 @@
    <ul>
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
    </ul>
-  </div>
-  <div id="citation">
-   <h3>How to Cite This Entry</h3>
-   <div id="citation-note">
-    <h4>Note:</h4>
-    <xsl:apply-templates select="ancestor::t:TEI/descendant::t:titleStmt" mode="cite-foot"/>
-   </div>
-   <div id="citation-bibliography">
-    <h4>Bibliography:</h4>
-   </div>
-  </div>
-  <div id="about">
-   <h3>About this Entry</h3>
   </div>
  </xsl:template>
  
