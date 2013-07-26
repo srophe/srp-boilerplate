@@ -264,7 +264,27 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:title" mode="footnote" priority="1">
-    <span class="title">
+    <span>
+      <xsl:attribute name="class">
+        <xsl:text>title</xsl:text>
+        <xsl:choose>
+          <xsl:when test="@level='a'">
+            <xsl:text>-analytic</xsl:text>            
+          </xsl:when>
+          <xsl:when test="@level='m'">
+            <xsl:text>-monographic</xsl:text>
+          </xsl:when>
+          <xsl:when test="@level='j'">
+            <xsl:text>-journal</xsl:text>
+          </xsl:when>
+          <xsl:when test="@level='s'">
+            <xsl:text>-series</xsl:text>
+          </xsl:when>
+          <xsl:when test="@level='u'">
+            <xsl:text>-unpublished</xsl:text>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:attribute>
       <xsl:call-template name="langattr"/>
       <xsl:apply-templates mode="footnote"/>
     </span>
