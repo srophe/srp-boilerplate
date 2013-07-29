@@ -201,7 +201,7 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:if>
-    <xsl:text>, </xsl:text>
+    <xsl:text>. </xsl:text>
     
     <!-- handle titles -->
     <xsl:for-each select="t:monogr[1]">
@@ -228,7 +228,14 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:bibl" mode="biblist">
-    <xsl:apply-templates mode="biblist"/>
+    <xsl:choose>
+      <xsl:when test="t:ptr">
+        <xsl:apply-templates select="t:ptr" mode="biblist"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates mode="biblist"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>  
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
