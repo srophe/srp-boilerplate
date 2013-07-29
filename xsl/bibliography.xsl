@@ -166,6 +166,61 @@
     
   </xsl:template>
   
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle a bibllist entry for a book
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:biblStruct[t:monogr and not(t:analytic)]" mode="biblist">
+    <!-- this is a monograph/book -->
+    
+    <!-- handle editors/authors and abbreviate as necessary -->
+    <xsl:variable name="edited" select="if (t:monogr/t:editor[not(@role) or @role!='translator']) then true() else false()"/>
+    <xsl:variable name="responsible">
+      <xsl:choose>
+        <xsl:when test="$edited">
+          <xsl:copy-of select="t:monogr/t:editor[not(@role) or @role!='translator']"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="t:monogr/t:author"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="rcount" select="count($responsible)"/>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss" select="$responsible"/>
+      <xsl:with-param name="moded">biblist</xsl:with-param>
+    </xsl:call-template>
+    <xsl:if test="$edited">
+      <xsl:choose>
+        <xsl:when test="$rcount = 1">
+          <xsl:text> (ed.)</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text> (eds.)</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+    <xsl:text>, </xsl:text>
+    
+    <!-- handle titles -->
+    <xsl:for-each select="t:monogr[1]">
+      <xsl:choose>
+        <xsl:when test="t:title[@xml:lang='en']">
+          <xsl:apply-templates select="t:title[@xml:lang='en']" mode="footnote"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="t:monogr/t:title[1]" mode="footnote"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+    
+    <xsl:text> </xsl:text>
+    
+    <xsl:apply-templates select="t:monogr/t:imprint" mode="footnote"/>
+    
+  </xsl:template>
+  
+  
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      generate a bibl list entry for the matched bibl; if it contains a 
      pointer, try to look up the master bibliography file and use that
