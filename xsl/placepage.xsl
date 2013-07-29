@@ -407,7 +407,9 @@
  
  <xsl:template match="t:listBibl">
   <ul class="listBibl">
-   <xsl:apply-templates select="t:bibl" mode="biblist"/>
+   <xsl:for-each select="t:bibl">
+    <li><xsl:apply-templates select="." mode="biblist"/></li>
+   </xsl:for-each>
   </ul>
  </xsl:template>
  

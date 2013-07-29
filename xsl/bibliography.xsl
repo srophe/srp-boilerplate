@@ -172,6 +172,7 @@
   
   <xsl:template match="t:biblStruct[t:monogr and not(t:analytic)]" mode="biblist">
     <!-- this is a monograph/book -->
+    <xsl:message>foo</xsl:message>
     
     <!-- handle editors/authors and abbreviate as necessary -->
     <xsl:variable name="edited" select="if (t:monogr/t:editor[not(@role) or @role!='translator']) then true() else false()"/>
@@ -206,17 +207,17 @@
     <xsl:for-each select="t:monogr[1]">
       <xsl:choose>
         <xsl:when test="t:title[@xml:lang='en']">
-          <xsl:apply-templates select="t:title[@xml:lang='en']" mode="footnote"/>
+          <xsl:apply-templates select="t:title[@xml:lang='en']" mode="biblist"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:apply-templates select="t:monogr/t:title[1]" mode="footnote"/>
+          <xsl:apply-templates select="t:monogr/t:title[1]" mode="biblist"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:for-each>
     
     <xsl:text> </xsl:text>
     
-    <xsl:apply-templates select="t:monogr/t:imprint" mode="footnote"/>
+    <xsl:apply-templates select="t:monogr/t:imprint" mode="biblist"/>
     
   </xsl:template>
   
