@@ -166,6 +166,45 @@
     
   </xsl:template>
   
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     generate a bibl list entry for the matched bibl; if it contains a 
+     pointer, try to look up the master bibliography file and use that
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:bibl" mode="biblist">
+    <xsl:apply-templates mode="biblist"/>
+  </xsl:template>  
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle a ptr inside a bibl: try to look up the corresponding item
+     internally or externally and process that
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:ptr[ancestor::t:*[1]/self::t:bibl]" mode="biblist">
+    <xsl:choose>
+      <xsl:when test="starts-with(@target, '#')">
+        <xsl:variable name="thistarget" select="substring-after(@target, '#')"/>
+        <xsl:apply-templates select="ancestor::t:TEI/descendant::t:*[@xml:id=$thistarget]" mode="biblist"/>
+      </xsl:when>
+      <xsl:when test="starts-with(@target, 'http://syriaca.org/bibl/')">
+        <xsl:variable name="biblfilepath">
+          <xsl:value-of select="$biblsourcedir"/>
+          <xsl:value-of select="substring-after(@target, 'http://syriaca.org/bibl/')"/>
+          <xsl:text>.xml</xsl:text>
+        </xsl:variable>
+        <xsl:choose>
+          <xsl:when test="doc-available($biblfilepath)">
+            <xsl:apply-templates select="document($biblfilepath)/descendant::t:biblStruct[1]" mode="biblist"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="log">
+              <xsl:with-param name="msg">could not find referenced bibl document <xsl:value-of select="$biblfilepath"/></xsl:with-param>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle name components in the context of a footnote

@@ -401,9 +401,20 @@
   </li>
  </xsl:template>
  
+ <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of a p element 
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ 
+ <xsl:template match="t:listBibl">
+  <ul class="listBibl">
+   <xsl:apply-templates select="t:bibl" mode="biblist"/>
+  </ul>
+ </xsl:template>
+ 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle standard output of a p element 
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
  <xsl:template match="t:p">
   <p>
    <xsl:call-template name="langattr"/>
