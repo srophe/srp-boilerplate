@@ -401,6 +401,17 @@
   </li>
  </xsl:template>
  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of a p element 
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ <xsl:template match="t:p">
+  <p>
+   <xsl:call-template name="langattr"/>
+   <xsl:apply-templates/>
+  </p>
+ </xsl:template>
+ 
+ 
  <xsl:template match="t:quote">
   <xsl:text>“</xsl:text>
   <xsl:apply-templates/>
