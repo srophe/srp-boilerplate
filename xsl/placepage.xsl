@@ -386,6 +386,15 @@
   <xsl:call-template name="do-refs"/></li>
  </xsl:template>
  
+ <xsl:template match="t:location[@type='nested']">
+  <li>Contained by <xsl:for-each select="t:*">
+   <xsl:apply-templates select="."/>
+   <xsl:if test="following-sibling::t:*">
+    <xsl:text> within </xsl:text>
+   </xsl:if>
+  </xsl:for-each></li>
+ </xsl:template>
+ 
  <xsl:template match="t:location[@type='gps' and t:geo]">
   <li>Coordinates: <xsl:value-of select="t:geo"/><xsl:call-template name="do-refs"/></li>
  </xsl:template>
