@@ -392,7 +392,8 @@
    <xsl:if test="following-sibling::t:*">
     <xsl:text> within </xsl:text>
    </xsl:if>
-  </xsl:for-each></li>
+  </xsl:for-each>
+  <xsl:text>.</xsl:text></li>
  </xsl:template>
  
  <xsl:template match="t:location[@type='gps' and t:geo]">
