@@ -499,7 +499,13 @@
   <xsl:apply-templates />
  </xsl:template>
  
+ <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of the ref element
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
  
+<xsl:template match="t:ref">
+ <a href="{@target}"><xsl:apply-templates/></a>
+</xsl:template> 
  
  <xsl:template name="do-refs">
   <!-- credit sources for data -->
