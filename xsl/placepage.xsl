@@ -401,8 +401,8 @@
   </li>
  </xsl:template>
  
- <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     handle standard output of a p element 
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of a listBibl element 
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
  
  <xsl:template match="t:listBibl">
@@ -412,7 +412,17 @@
    </xsl:for-each>
   </ul>
  </xsl:template>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of a note element 
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
  
+ <xsl:template match="t:note">
+  <p>
+   <xsl:apply-templates/>
+   <xsl:text>.</xsl:text>
+  </p>
+ </xsl:template>
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle standard output of a p element 
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
