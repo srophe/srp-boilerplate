@@ -393,7 +393,9 @@
     <xsl:text> within </xsl:text>
    </xsl:if>
   </xsl:for-each>
-  <xsl:text>.</xsl:text></li>
+  <xsl:text>.</xsl:text>
+   <xsl:call-template name="do-refs"/>
+  </li>
  </xsl:template>
  
  <xsl:template match="t:location[@type='gps' and t:geo]">
