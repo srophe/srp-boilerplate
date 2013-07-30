@@ -362,11 +362,11 @@
     </xsl:for-each-group>
    </ul>
   </div>
-  <xsl:if test="$idx/descendant::t:location[@type='geopolitical']/t:*[@ref=$thisuri]">
+  <xsl:if test="$idx/descendant::t:location[@type='nested']/t:*[@ref=$thisuri]">
    <div id="contents">
     <h3>Contains</h3>
     <ul>
-     <xsl:for-each select="$idx/descendant::t:region[@ref=$thisuri]/ancestor::t:place">
+     <xsl:for-each select="$idx/descendant::t:*[@ref=$thisuri]/ancestor::t:place">
       <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en'][1]/@reg"/>
       <li><a href="{t:idno[@type='placeID']}.html"><xsl:call-template name="place-title-std"/></a></li>
      </xsl:for-each>
@@ -384,6 +384,22 @@
  <xsl:template match="t:location[@type='geopolitical' or @type='relative']">
   <li><xsl:apply-templates/>
   <xsl:call-template name="do-refs"/></li>
+ </xsl:template>
+ 
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of 'nested' locations 
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ 
+ <xsl:template match="t:location[@type='nested']">
+  <li>Within <xsl:for-each select="t:*">
+   <xsl:apply-templates select="."/>
+   <xsl:if test="following-sibling::t:*">
+    <xsl:text> within </xsl:text>
+   </xsl:if>
+  </xsl:for-each>
+  <xsl:text>.</xsl:text>
+   <xsl:call-template name="do-refs"/>
+  </li>
  </xsl:template>
  
  <xsl:template match="t:location[@type='gps' and t:geo]">
