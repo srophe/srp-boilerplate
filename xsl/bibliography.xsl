@@ -166,6 +166,107 @@
     
   </xsl:template>
   
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle a bibllist entry for a book
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:biblStruct[t:monogr and not(t:analytic)]" mode="biblist">
+    <!-- this is a monograph/book -->
+    
+    <!-- handle editors/authors and abbreviate as necessary -->
+    <xsl:variable name="edited" select="if (t:monogr/t:editor[not(@role) or @role!='translator']) then true() else false()"/>
+    <xsl:variable name="responsible">
+      <xsl:choose>
+        <xsl:when test="$edited">
+          <xsl:copy-of select="t:monogr/t:editor[not(@role) or @role!='translator']"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="t:monogr/t:author"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="rcount" select="count($responsible)"/>
+    <xsl:call-template name="emit-responsible-persons">
+      <xsl:with-param name="perss" select="$responsible"/>
+      <xsl:with-param name="moded">biblist</xsl:with-param>
+    </xsl:call-template>
+    <xsl:if test="$edited">
+      <xsl:choose>
+        <xsl:when test="$rcount = 1">
+          <xsl:text> (ed.)</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text> (eds.)</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+    <xsl:text>. </xsl:text>
+    
+    <!-- handle titles -->
+    <xsl:for-each select="t:monogr[1]">
+      <xsl:choose>
+        <xsl:when test="t:title[@xml:lang='en']">
+          <xsl:apply-templates select="t:title[@xml:lang='en']" mode="biblist"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="t:monogr/t:title[1]" mode="biblist"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+    
+    <xsl:text> </xsl:text>
+    
+    <xsl:apply-templates select="t:monogr/t:imprint" mode="biblist"/>
+    
+  </xsl:template>
+  
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     generate a bibl list entry for the matched bibl; if it contains a 
+     pointer, try to look up the master bibliography file and use that
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:bibl" mode="biblist">
+    <xsl:choose>
+      <xsl:when test="t:ptr">
+        <xsl:apply-templates select="t:ptr" mode="biblist"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates mode="biblist"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>  
+  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle a ptr inside a bibl: try to look up the corresponding item
+     internally or externally and process that
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  
+  <xsl:template match="t:ptr[ancestor::t:*[1]/self::t:bibl]" mode="biblist">
+    <xsl:choose>
+      <xsl:when test="starts-with(@target, '#')">
+        <xsl:variable name="thistarget" select="substring-after(@target, '#')"/>
+        <xsl:apply-templates select="ancestor::t:TEI/descendant::t:*[@xml:id=$thistarget]" mode="biblist"/>
+      </xsl:when>
+      <xsl:when test="starts-with(@target, 'http://syriaca.org/bibl/')">
+        <xsl:variable name="biblfilepath">
+          <xsl:value-of select="$biblsourcedir"/>
+          <xsl:value-of select="substring-after(@target, 'http://syriaca.org/bibl/')"/>
+          <xsl:text>.xml</xsl:text>
+        </xsl:variable>
+        <xsl:choose>
+          <xsl:when test="doc-available($biblfilepath)">
+            <xsl:apply-templates select="document($biblfilepath)/descendant::t:biblStruct[1]" mode="biblist"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="log">
+              <xsl:with-param name="msg">could not find referenced bibl document <xsl:value-of select="$biblfilepath"/></xsl:with-param>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle name components in the context of a footnote
@@ -268,10 +369,10 @@
   </xsl:template>
   
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     handle the imprint component of a biblStruct in the context of a footnote
+     handle the imprint component of a biblStruct
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:imprint" mode="footnote" priority="1">
+  <xsl:template match="t:imprint" mode="footnote biblist" priority="1">
     <xsl:text>(</xsl:text>
     <xsl:choose>
       <xsl:when test="t:pubPlace">

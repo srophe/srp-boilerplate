@@ -401,6 +401,40 @@
   </li>
  </xsl:template>
  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of a listBibl element 
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ 
+ <xsl:template match="t:listBibl">
+  <ul class="listBibl">
+   <xsl:for-each select="t:bibl">
+    <li><xsl:apply-templates select="." mode="biblist"/><xsl:text>.</xsl:text></li>
+   </xsl:for-each>
+  </ul>
+ </xsl:template>
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of a note element 
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ 
+ <xsl:template match="t:note">
+  <p>
+   <xsl:apply-templates/>
+   <xsl:text>.</xsl:text>
+  </p>
+ </xsl:template>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of a p element 
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+ <xsl:template match="t:p">
+  <p>
+   <xsl:call-template name="langattr"/>
+   <xsl:apply-templates/>
+  </p>
+ </xsl:template>
+ 
+ 
  <xsl:template match="t:quote">
   <xsl:text>“</xsl:text>
   <xsl:apply-templates/>
@@ -465,7 +499,13 @@
   <xsl:apply-templates />
  </xsl:template>
  
+ <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of the ref element
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
  
+<xsl:template match="t:ref">
+ <a href="{@target}"><xsl:apply-templates/></a>
+</xsl:template> 
  
  <xsl:template name="do-refs">
   <!-- credit sources for data -->
