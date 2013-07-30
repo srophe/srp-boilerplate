@@ -370,10 +370,10 @@
   </xsl:template>
   
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-     handle the imprint component of a biblStruct in the context of a footnote
+     handle the imprint component of a biblStruct
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:imprint" mode="footnote" priority="1">
+  <xsl:template match="t:imprint" mode="footnote biblist" priority="1">
     <xsl:text>(</xsl:text>
     <xsl:choose>
       <xsl:when test="t:pubPlace">
