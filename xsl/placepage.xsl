@@ -386,6 +386,10 @@
   <xsl:call-template name="do-refs"/></li>
  </xsl:template>
  
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     handle standard output of 'nested' locations 
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ 
  <xsl:template match="t:location[@type='nested']">
   <li>Within <xsl:for-each select="t:*">
    <xsl:apply-templates select="."/>
