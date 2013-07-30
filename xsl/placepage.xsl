@@ -362,11 +362,11 @@
     </xsl:for-each-group>
    </ul>
   </div>
-  <xsl:if test="$idx/descendant::t:location[@type='geopolitical']/t:*[@ref=$thisuri]">
+  <xsl:if test="$idx/descendant::t:location[@type='nested']/t:*[@ref=$thisuri]">
    <div id="contents">
     <h3>Contains</h3>
     <ul>
-     <xsl:for-each select="$idx/descendant::t:region[@ref=$thisuri]/ancestor::t:place">
+     <xsl:for-each select="$idx/descendant::t:*[@ref=$thisuri]/ancestor::t:place">
       <xsl:sort collation="mixed" select="t:placeName[@xml:lang='en'][1]/@reg"/>
       <li><a href="{t:idno[@type='placeID']}.html"><xsl:call-template name="place-title-std"/></a></li>
      </xsl:for-each>
