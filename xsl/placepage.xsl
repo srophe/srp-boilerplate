@@ -387,7 +387,7 @@
  </xsl:template>
  
  <xsl:template match="t:location[@type='nested']">
-  <li>Contained by <xsl:for-each select="t:*">
+  <li>Within <xsl:for-each select="t:*">
    <xsl:apply-templates select="."/>
    <xsl:if test="following-sibling::t:*">
     <xsl:text> within </xsl:text>
