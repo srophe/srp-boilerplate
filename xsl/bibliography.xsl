@@ -172,7 +172,6 @@
   
   <xsl:template match="t:biblStruct[t:monogr and not(t:analytic)]" mode="biblist">
     <!-- this is a monograph/book -->
-    <xsl:message>foo</xsl:message>
     
     <!-- handle editors/authors and abbreviate as necessary -->
     <xsl:variable name="edited" select="if (t:monogr/t:editor[not(@role) or @role!='translator']) then true() else false()"/>
