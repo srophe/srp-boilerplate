@@ -104,6 +104,7 @@
  <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
  <xsl:param name="teiuripostfix">tei</xsl:param>
  <xsl:param name="htmluripostfix">html</xsl:param>
+ <xsl:param name="editorssourcedoc">http://syriaca.org/editors.xml</xsl:param>
  <xsl:param name="editoruriprefix">http://syriaca.org/editors.xml#</xsl:param>
  
 
