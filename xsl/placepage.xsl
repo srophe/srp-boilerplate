@@ -376,6 +376,7 @@
   </xsl:if>
   <div id="sources">
    <h3>Sources</h3>
+   <small><p>Any information without attribution has been created following the Syriac.org <a href="http://syriaca.org/documentation/">editorial guidelines</a>.</p></small>
    <ul>
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
    </ul>
