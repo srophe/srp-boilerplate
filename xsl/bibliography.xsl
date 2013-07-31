@@ -333,10 +333,11 @@
      handle authors and editors in the context of a footnote
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:author | t:editor | t:principal" mode="footnote biblist" priority="1">
+  <xsl:template match="t:author | t:editor | t:principal | t:person" mode="footnote biblist" priority="1">
     <xsl:choose>
       <xsl:when test="@ref and starts-with(@ref, $editoruriprefix)">
-        <xsl:message>author/editor/principal trapped a ref: <xsl:value-of select="@ref"/></xsl:message>
+        <xsl:variable name="sought" select="substring-after(@ref, $editoruriprefix)"/>
+        <xsl:apply-templates select="$editorssourcedoc/descendant::t:body/t:listPerson[1]/t:person[@xml:id=$sought][1]" mode="footnote"/>
       </xsl:when>
       <xsl:otherwise>
         <span class="{local-name()}">
@@ -357,10 +358,11 @@
      handle authors and editors in the context of a footnote
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:author | t:editor | t:principal" mode="lastname-first" priority="1">
+  <xsl:template match="t:author | t:editor | t:principal | t:person" mode="lastname-first" priority="1">
     <xsl:choose>
       <xsl:when test="@ref and starts-with(@ref, $editoruriprefix)">
-        <xsl:message>author/editor/principal trapped a ref: <xsl:value-of select="@ref"/></xsl:message>
+        <xsl:variable name="sought" select="substring-after(@ref, $editoruriprefix)"/>
+        <xsl:apply-templates select="$editorssourcedoc/descendant::t:body/t:listPerson[1]/t:person[@xml:id=$sought][1]" mode="lastname-first"/>
       </xsl:when>
       <xsl:otherwise>
         <span class="{local-name()}">
