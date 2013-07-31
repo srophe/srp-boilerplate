@@ -104,12 +104,11 @@
  <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
  <xsl:param name="teiuripostfix">tei</xsl:param>
  <xsl:param name="htmluripostfix">html</xsl:param>
- <xsl:param name="editorssourcedoc">http://syriaca.org/editors.xml</xsl:param>
+ <xsl:param name="editorssourcepath">../../syriaca/editors.xml</xsl:param>
  <xsl:param name="editoruriprefix">http://syriaca.org/editors.xml#</xsl:param>
- 
 
  <xsl:variable name="idxquery"><xsl:value-of select="$idxdir"/>index.xml</xsl:variable>
- 
+ <xsl:variable name="editorssourcedoc" select="document($editorssourcepath)"/>
 
  <!-- =================================================================== -->
  <!-- TEMPLATES -->
