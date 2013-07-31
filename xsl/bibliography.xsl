@@ -333,40 +333,57 @@
      handle authors and editors in the context of a footnote
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:author | t:editor | t:principal" mode="footnote biblist" priority="1">
-    <span class="{local-name()}">
-      <xsl:choose>
-        <xsl:when test="t:persName">
-          <xsl:apply-templates select="t:persName[1]" mode="footnote"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates mode="footnote"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </span>
+  <xsl:template match="t:author | t:editor | t:principal | t:person" mode="footnote biblist" priority="1">
+    <xsl:choose>
+      <xsl:when test="@ref and starts-with(@ref, $editoruriprefix)">
+        <xsl:variable name="sought" select="substring-after(@ref, $editoruriprefix)"/>
+        <xsl:apply-templates select="$editorssourcedoc/descendant::t:body/t:listPerson[1]/t:person[@xml:id=$sought][1]" mode="footnote"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="{local-name()}">
+          <xsl:choose>
+            <xsl:when test="t:persName">
+              <xsl:apply-templates select="t:persName[1]" mode="footnote"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates mode="footnote"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle authors and editors in the context of a footnote
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
-  <xsl:template match="t:author | t:editor | t:principal" mode="lastname-first" priority="1">
-    <span class="{local-name()}">
-      <xsl:choose>
-        <xsl:when test="t:persName">
-          <xsl:apply-templates select="t:persName[1]" mode="lastname-first"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:call-template name="log">
-            <xsl:with-param name="withElementContext">no</xsl:with-param>
-            <xsl:with-param name="withElementContent">yes</xsl:with-param>
-            <xsl:with-param name="msg">no persName element found, but mode was 'lastname-first'; cannot reorder names reliably</xsl:with-param>
-          </xsl:call-template>
-          <xsl:apply-templates mode="footnote"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </span>
+  <xsl:template match="t:author | t:editor | t:principal | t:person" mode="lastname-first" priority="1">
+    <xsl:choose>
+      <xsl:when test="@ref and starts-with(@ref, $editoruriprefix)">
+        <xsl:variable name="sought" select="substring-after(@ref, $editoruriprefix)"/>
+        <xsl:apply-templates select="$editorssourcedoc/descendant::t:body/t:listPerson[1]/t:person[@xml:id=$sought][1]" mode="lastname-first"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <span class="{local-name()}">
+          <xsl:choose>
+            <xsl:when test="t:persName">
+              <xsl:apply-templates select="t:persName[1]" mode="lastname-first"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="log">
+                <xsl:with-param name="withElementContext">no</xsl:with-param>
+                <xsl:with-param name="withElementContent">yes</xsl:with-param>
+                <xsl:with-param name="msg">no persName element found, but mode was 'lastname-first'; cannot reorder names reliably</xsl:with-param>
+              </xsl:call-template>
+              <xsl:apply-templates mode="footnote"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </span>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
+  
   
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle the imprint component of a biblStruct
