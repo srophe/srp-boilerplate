@@ -298,7 +298,7 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:persName | t:name" mode="footnote">
-    <span class="persName">
+    <span class="{local-name()}">
       <xsl:call-template name="langattr"/>
       <xsl:apply-templates select="t:*" mode="footnote"/>
     </span>
