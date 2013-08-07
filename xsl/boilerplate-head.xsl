@@ -7,41 +7,44 @@
  exclude-result-prefixes="xs t s"
  version="2.0">
  
+ <xsl:variable name="n">
+  <xsl:text>
+</xsl:text>
+ </xsl:variable>
+ 
  <xsl:template name="boilerplate-head">
   <xsl:param name="name-app">CHANGE THE APP NAME</xsl:param>
   <xsl:param name="name-page-short">CHANGE THE SHORT PAGE NAME</xsl:param>
   <xsl:param name="description">CHANGE THE DESCRIPTION</xsl:param>
   <xsl:param name="basepath">.</xsl:param>
+  <xsl:param name="sourcedoc"/>
   <xsl:param name="titleStmt"/>
   
   <head>
    <meta charset="utf-8"/>
    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
    <title><xsl:value-of select="$name-app"/> | <xsl:value-of select="$name-page-short"/></title>
-   <meta name="description" content="{$description}"/>
+   <xsl:if test="normalize-space(xs:string($description))!=''">
+    <meta name="description" content="{normalize-space(xs:string($description))}"/>
+   </xsl:if>
    <meta name="viewport" content="width=device-width"/>
-   
+   <xsl:apply-templates select="$sourcedoc/descendant::t:geo[1]" mode="json-uri"/>
    <xsl:call-template name="boilerplate-biblio">
     <xsl:with-param name="titleStmt" select="$titleStmt"/>
    </xsl:call-template>
-   
    <link rel="stylesheet" href="{$basepath}/css/bootstrap.min.css"/>
-   <style>
-    body{
-     padding:10px;
-     padding-top:70px;
-     padding-bottom:40px;
-    }</style>
+   <xsl:value-of select="$n"/>
+   <style>body{padding:10px; padding-top:70px; padding-bottom:40px;}</style>
+   <xsl:value-of select="$n"/>
    <link rel="stylesheet" href="{$basepath}/css/bootstrap-responsive.min.css"/>
-    
    <link rel="stylesheet" href="{$basepath}/css/main.css"/>
-
-   <script src="{$basepath}/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"/>
-   
+   <xsl:value-of select="$n"/>
+   <script src="{$basepath}/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"/>   
+   <xsl:value-of select="$n"/>
    <script src='http://isawnyu.github.com/awld-js/lib/requirejs/require.min.js' type='text/javascript'></script>
+   <xsl:value-of select="$n"/>
    <script src='http://isawnyu.github.com/awld-js/awld.js?autoinit' type='text/javascript'></script>
   </head>
-   
  </xsl:template>
  
  <xsl:template name="boilerplate-biblio">
@@ -67,10 +70,12 @@
  </xsl:template>
  
  <xsl:template match="t:publicationStmt" mode="b">
-  <xsl:apply-templates mode="b"/>
+  <xsl:apply-templates select="t:*" mode="b"/>
  </xsl:template>
  
- <xsl:template match="t:title" mode="b">
+ <xsl:template match="t:title[@level='m']" mode="b"/>
+ 
+ <xsl:template match="t:title[@level='a']" mode="b">
   <xsl:call-template name="meta-out">
    <xsl:with-param name="name">DC.title</xsl:with-param>
    <xsl:with-param name="content" select="."/>
@@ -85,7 +90,7 @@
  </xsl:template>
  
  <xsl:template match="t:availability" mode="b">
-  <xsl:apply-templates mode="b"/>
+  <xsl:apply-templates select="t:*" mode="b"/>
  </xsl:template>
  
  <xsl:template match="t:licence[@target]" mode="b">
