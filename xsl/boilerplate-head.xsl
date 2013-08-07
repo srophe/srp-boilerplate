@@ -12,6 +12,7 @@
   <xsl:param name="name-page-short">CHANGE THE SHORT PAGE NAME</xsl:param>
   <xsl:param name="description">CHANGE THE DESCRIPTION</xsl:param>
   <xsl:param name="basepath">.</xsl:param>
+  <xsl:param name="sourcedoc"/>
   <xsl:param name="titleStmt"/>
   
   <head>
@@ -21,6 +22,7 @@
    <meta name="description" content="{$description}"/>
    <meta name="viewport" content="width=device-width"/>
    
+   <xsl:apply-templates select="$sourcedoc/descendant::t:geo[1]" mode="json-uri"/>
    <xsl:call-template name="boilerplate-biblio">
     <xsl:with-param name="titleStmt" select="$titleStmt"/>
    </xsl:call-template>

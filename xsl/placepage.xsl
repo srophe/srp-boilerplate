@@ -68,6 +68,7 @@
  <xsl:import href="boilerplate-nav.xsl"/>
  <xsl:import href="citation.xsl"/>
  <xsl:import href="collations.xsl"/>
+ <xsl:import href="json-uri.xsl"/>
  <xsl:import href="langattr.xsl"/>
  <xsl:import href="link-icons.xsl"/>
  <xsl:import href="log.xsl"/>
@@ -209,6 +210,7 @@
         <xsl:with-param name="name-page-short" select="$name-page-short"/>
         <xsl:with-param name="basepath">..</xsl:with-param>
         <xsl:with-param name="titleStmt" select="$sourcedoc/descendant-or-self::t:titleStmt"/>
+        <xsl:with-param name="sourcedoc" select="$sourcedoc"/>
        </xsl:call-template>
     
        <!-- write the body element and its contents -->
