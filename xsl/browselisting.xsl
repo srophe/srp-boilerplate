@@ -98,6 +98,7 @@
  <xsl:param name="copyright-holders">CHANGE THE COPYRIGHT HOLDERS PARAMETER</xsl:param>
  <xsl:param name="copyright-year">2013</xsl:param>
  <xsl:param name="base">http://srophe.github.io/srp-places-app/</xsl:param>
+ <xsl:param name="teiuripostfix">tei</xsl:param>
  
  <xsl:variable name="idxquery"><xsl:value-of select="$sourcedir"/>index.xml</xsl:variable>
  
