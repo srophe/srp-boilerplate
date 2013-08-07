@@ -19,6 +19,7 @@
   <xsl:param name="basepath">.</xsl:param>
   <xsl:param name="sourcedoc"/>
   <xsl:param name="titleStmt"/>
+  <xsl:param name="do-json">yes</xsl:param>
   
   <head>
    <meta charset="utf-8"/>
@@ -28,7 +29,9 @@
     <meta name="description" content="{normalize-space(xs:string($description))}"/>
    </xsl:if>
    <meta name="viewport" content="width=device-width"/>
-   <xsl:apply-templates select="$sourcedoc/descendant::t:geo[1]" mode="json-uri"/>
+   <xsl:if test="$do-json='yes'">
+    <xsl:apply-templates select="$sourcedoc/descendant::t:geo[1]" mode="json-uri"/>
+   </xsl:if>
    <xsl:call-template name="boilerplate-biblio">
     <xsl:with-param name="titleStmt" select="$titleStmt"/>
    </xsl:call-template>

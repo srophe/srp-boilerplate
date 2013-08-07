@@ -123,6 +123,7 @@
     <xsl:with-param name="description" select="$description"/>
     <xsl:with-param name="name-app" select="$name-app"/>
     <xsl:with-param name="name-page-short" select="$name-page-short"/>
+    <xsl:with-param name="do-json">no</xsl:with-param>
    </xsl:call-template>
 
    <!-- write the body element and its contents -->
