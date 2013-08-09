@@ -80,6 +80,22 @@
       <span class="footnote-tgt"><xsl:value-of select="$thisnum"/></span>
       <xsl:text> </xsl:text>
       <span class="footnote-content">
+        <!-- if there is an analytic title present, then we have a separately titled book 
+          section -->
+        <xsl:if test="./t:title[@level='a']">
+          <xsl:variable name="authors">
+            <xsl:copy-of select="t:author"/>
+          </xsl:variable>
+          <xsl:call-template name="emit-responsible-persons">
+            <xsl:with-param name="perss" select="$authors"/>
+          </xsl:call-template>
+          <xsl:if test="t:author">
+            <xsl:text>, </xsl:text>
+          </xsl:if>
+          <xsl:text>“</xsl:text>
+          <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
+          <xsl:text>” in </xsl:text>
+        </xsl:if>
         <!-- if the reference points at a master bibliographic record file, use it; otherwise, do 
      what you can with the contents of the present element -->
         <xsl:choose>
@@ -112,6 +128,7 @@
       </span>
     </li>
   </xsl:template>
+  
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle a footnote for a book
@@ -159,6 +176,17 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:for-each>
+    
+    <!-- handle translator, if present -->
+    <xsl:variable name="transs"> 
+      <xsl:copy-of select="t:monogr[1]/t:editor[@role='translator']"/>
+    </xsl:variable>
+    <xsl:if test="count($transs/descendant::t:editor) &gt; 0">
+      <xsl:text>, trans. </xsl:text>
+      <xsl:call-template name="emit-responsible-persons">
+        <xsl:with-param name="perss" select="$transs"/>
+      </xsl:call-template>
+    </xsl:if>
     
     <xsl:text> </xsl:text>
     
@@ -467,15 +495,36 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   
   <xsl:template match="t:citedRange[ancestor::t:bibl or ancestor::t:biblStruct]" mode="footnote" priority="1">
+    <xsl:variable name="prefix">
+      <xsl:choose>
+        <xsl:when test="@unit='pp' and contains(., '-')">
+          <xsl:text>pp. </xsl:text>
+        </xsl:when>
+        <xsl:when test="@unit='pp' and not(contains(., '-'))">
+          <xsl:text>p. </xsl:text>
+        </xsl:when>
+        <xsl:when test="@unit='entry'">
+          <xsl:text>“</xsl:text>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="suffix">
+      <xsl:choose>
+        <xsl:when test="@unit='entry'">
+          <xsl:text>”</xsl:text>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:apply-templates select="$prefix"/>
     <xsl:choose>
-      <xsl:when test="@unit='pp' and contains(., '-')">
-        <xsl:text>pp. </xsl:text>
+      <xsl:when test="@target">
+        <a href="{@target}"><xsl:apply-templates select="." mode="out-normal"/></a>
       </xsl:when>
-      <xsl:when test="@unit='pp' and not(contains(., '-'))">
-        <xsl:text>p. </xsl:text>
-      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="." mode="out-normal"/>
+      </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates select="." mode="out-normal"/>
+    <xsl:apply-templates select="$suffix"/>
   </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
