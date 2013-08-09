@@ -80,6 +80,22 @@
       <span class="footnote-tgt"><xsl:value-of select="$thisnum"/></span>
       <xsl:text> </xsl:text>
       <span class="footnote-content">
+        <!-- if there is an analytic title present, then we have a separately titled book 
+          section -->
+        <xsl:if test="./t:title[@level='a']">
+          <xsl:variable name="authors">
+            <xsl:copy-of select="t:author"/>
+          </xsl:variable>
+          <xsl:call-template name="emit-responsible-persons">
+            <xsl:with-param name="perss" select="$authors"/>
+          </xsl:call-template>
+          <xsl:if test="t:author">
+            <xsl:text>, </xsl:text>
+          </xsl:if>
+          <xsl:text>“</xsl:text>
+          <xsl:apply-templates select="t:title[@level='a'][1]" mode="footnote"/>
+          <xsl:text>” in </xsl:text>
+        </xsl:if>
         <!-- if the reference points at a master bibliographic record file, use it; otherwise, do 
      what you can with the contents of the present element -->
         <xsl:choose>
@@ -112,6 +128,7 @@
       </span>
     </li>
   </xsl:template>
+  
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle a footnote for a book
