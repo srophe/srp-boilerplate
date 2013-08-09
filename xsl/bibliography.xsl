@@ -160,6 +160,17 @@
       </xsl:choose>
     </xsl:for-each>
     
+    <!-- handle translator, if present -->
+    <xsl:variable name="transs"> 
+      <xsl:copy-of select="t:monogr[1]/t:editor[@role='editor']"/>
+    </xsl:variable>
+    <xsl:if test="count($transs) &gt; 0">
+      <xsl:text>, trans. </xsl:text>
+      <xsl:call-template name="emit-responsible-persons">
+        <xsl:with-param name="perss" select="$transs"/>
+      </xsl:call-template>
+    </xsl:if>
+    
     <xsl:text> </xsl:text>
     
     <xsl:apply-templates select="t:monogr/t:imprint" mode="footnote"/>
