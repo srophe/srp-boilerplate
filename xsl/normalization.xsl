@@ -25,12 +25,12 @@
  
  <xsl:template match="text()" mode="text-normal">
   <xsl:variable name="prefix">
-   <xsl:if test="string-length(.) &gt; 0 and substring(., 1, 1)=' '">
+   <xsl:if test="(preceding-sibling::t:* or preceding-sibling::text()[normalize-space()!='']) and string-length(.) &gt; 0 and substring(., 1, 1)=' '">
     <xsl:text> </xsl:text>
    </xsl:if>
   </xsl:variable>
   <xsl:variable name="suffix">
-   <xsl:if test="string-length(.) &gt; 0 and substring(., string-length(.), 1)=' '">
+   <xsl:if test="(following-sibling::t:* or following-sibling::text()[normalize-space()!='']) and string-length(.) &gt; 0 and substring(., string-length(.), 1)=' '">
     <xsl:text> </xsl:text>
    </xsl:if>
   </xsl:variable>
