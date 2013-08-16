@@ -325,7 +325,7 @@
      placeName
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
   <xsl:template name="get-title">
-    <xsl:message>foo</xsl:message>
+    <placeName type="title">test place entry title</placeName>
   </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 

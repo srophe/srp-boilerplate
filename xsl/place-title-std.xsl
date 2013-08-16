@@ -20,7 +20,8 @@
     <xsl:param name="secondlang">syr</xsl:param>
     <xsl:param name="withplaceholder">yes</xsl:param>
     
-    <!-- handle first lang -->
+    <xsl:apply-templates select="$place/t:placeName[@type='title']" mode="std-title"/>
+<!--    
     <xsl:choose>
       <xsl:when test="$place/t:placeName[@xml:lang=$firstlang]">
         <xsl:apply-templates select="$place/t:placeName[@xml:lang=$firstlang][1]" mode="std-title">
@@ -35,10 +36,8 @@
       </xsl:otherwise>
     </xsl:choose>
     
-    <!-- separator -->
     <xsl:text> — </xsl:text>
     
-    <!-- handle second lang -->
     <xsl:choose>
       <xsl:when test="$place/t:placeName[@xml:lang=$secondlang]">
         <xsl:apply-templates select="$place/t:placeName[@xml:lang=$secondlang][1]" mode="std-title">
@@ -52,7 +51,8 @@
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
-
+-->
+    
   </xsl:template>
   
   <xsl:template match="t:placeName" mode="std-title">
