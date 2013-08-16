@@ -333,7 +333,11 @@
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        
+        <placeName type="title">
+          <xsl:for-each select="$title/node()">
+            <xsl:apply-templates select="." mode="text-normal"/>
+          </xsl:for-each>
+        </placeName>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
