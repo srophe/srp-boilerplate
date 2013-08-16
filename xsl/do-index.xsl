@@ -67,6 +67,7 @@
        
        ================================================================== -->
   
+  <xsl:import href="langattr.xsl"/>
   <xsl:import href="log.xsl"/>
   <xsl:import href="normalization.xsl"/>
   
@@ -334,6 +335,9 @@
       </xsl:when>
       <xsl:otherwise>
         <placeName type="title">
+          <xsl:for-each select="$title">
+            <xsl:call-template name="langattr"/>
+          </xsl:for-each>
           <xsl:for-each select="$title/node()">
             <xsl:apply-templates select="." mode="text-normal"/>
           </xsl:for-each>
