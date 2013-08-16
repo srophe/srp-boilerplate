@@ -325,7 +325,17 @@
      placeName
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
   <xsl:template name="get-title">
-    <placeName type="title">test place entry title</placeName>
+    <xsl:variable name="title" select="./descendant-or-self::t:TEI/t:teiHeader/t:fileDesc/t:titleStmt/t:title[@level='a'][1]"/>
+    <xsl:choose>
+      <xsl:when test="not($title)">
+        <xsl:call-template name="log">
+          <xsl:with-param name="msg">couldn't find analytic title!</xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
