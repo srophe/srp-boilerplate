@@ -334,10 +334,18 @@
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
+        <xsl:variable name="tstring">
+          <xsl:for-each select="$title/node()">
+            <xsl:apply-templates select="." mode="text-normal"/>
+          </xsl:for-each>
+        </xsl:variable>
         <placeName type="title">
           <xsl:for-each select="$title">
             <xsl:copy-of select="@xml:lang"/>
           </xsl:for-each>
+          <xsl:attribute name="reg">
+            <xsl:value-of select="ipse:allsort($tstring)"/>
+          </xsl:attribute>
           <xsl:for-each select="$title/node()">
             <xsl:choose>
               <xsl:when test="self::t:foreign">
@@ -627,7 +635,33 @@
   </xsl:function>
   
   
-<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     function: ipse:allsort
+     
+     creates a search key matching SRP expectations for all language
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
+  <xsl:function name="ipse:allsort">
+    <xsl:param name="instring"></xsl:param>
+    <xsl:variable name="norm">
+      <xsl:apply-templates select="$instring" mode="out-normal"/>
+    </xsl:variable>
+    <xsl:variable name="ready">
+      <xsl:choose>
+        <xsl:when test="contains($norm, '—')">
+          <xsl:value-of select="normalize-space(substring-before($norm, '—'))"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$norm"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:call-template name="enstrip">
+      <xsl:with-param name="instring" select="upper-case($ready)"/>
+    </xsl:call-template>
+  </xsl:function>
+  
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      named template: enstrip
      
      recursively strips undesireable leading and bracketing characters
