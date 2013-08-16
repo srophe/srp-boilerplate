@@ -116,9 +116,11 @@
               </xsl:otherwise>
             </xsl:choose>
             <xsl:if test="t:citedRange">
+              <xsl:for-each select="t:citedRange">
                 <xsl:text>, </xsl:text>
-                <xsl:apply-templates select="t:citedRange" mode="footnote"/>
-              </xsl:if>
+                <xsl:apply-templates select="." mode="footnote"/>
+              </xsl:for-each>
+            </xsl:if>
             <xsl:text>.</xsl:text>
           </xsl:when>
           <xsl:otherwise>
