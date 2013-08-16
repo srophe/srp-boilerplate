@@ -116,6 +116,7 @@
                 <xsl:call-template name="sanity-check"/>
                 <xsl:call-template name="copy-xml-id"/>
                 <xsl:call-template name="get-placeType"/>
+                <xsl:call-template name="get-title"/>
                 <xsl:call-template name="get-canonicalNames"/>
                 <xsl:call-template name="get-abstract"/>
                 <xsl:call-template name="get-placeID"/>
@@ -316,6 +317,16 @@
     </xsl:choose>
   </xsl:template>
   
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     named template: get-title
+     
+     get place entry title and copy it into index as a specially typed
+     placeName
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
+  <xsl:template name="get-title">
+    <xsl:message>foo</xsl:message>
+  </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      named template: get-canonicalNames
