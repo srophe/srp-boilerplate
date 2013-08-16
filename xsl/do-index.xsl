@@ -336,10 +336,20 @@
       <xsl:otherwise>
         <placeName type="title">
           <xsl:for-each select="$title">
-            <xsl:call-template name="langattr"/>
+            <xsl:copy-of select="@xml:lang"/>
           </xsl:for-each>
           <xsl:for-each select="$title/node()">
-            <xsl:apply-templates select="." mode="text-normal"/>
+            <xsl:choose>
+              <xsl:when test="self::t:foreign">
+                <foreign>
+                  <xsl:copy-of select="@xml:lang"/>
+                  <xsl:apply-templates select="." mode="text-normal"/>
+                </foreign>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:apply-templates select="." mode="text-normal"/>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:for-each>
         </placeName>
       </xsl:otherwise>
