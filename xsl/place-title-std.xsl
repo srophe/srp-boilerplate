@@ -6,6 +6,7 @@
   exclude-result-prefixes="xs t"
   version="2.0">
   
+  <xsl:import href="langattr.xsl"/>
   <xsl:import href="log.xsl"/>
   <xsl:import href="normalization.xsl"/>
   
@@ -55,26 +56,25 @@
     
   </xsl:template>
   
-  <xsl:template match="t:placeName" mode="std-title">
+  <xsl:template match="t:placeName[@type='title']" mode="std-title">
+      <xsl:for-each select="node()">
+        <bdi>
+          <xsl:for-each select="ancestor-or-self::t:*[@xml:lang][1]">
+            <xsl:attribute name="dir">
+              <xsl:call-template name="getdirection"/>
+            </xsl:attribute>
+            <xsl:call-template name="langattr"/>
+          </xsl:for-each>
+          <xsl:apply-templates select="." mode="text-normal"/>
+        </bdi>
+      </xsl:for-each>
+  </xsl:template>
+  
+  <xsl:template match="t:placeName[not(@type) or @type!='title']" mode="std-title">
     <xsl:param name="withbdi" select="$withbdidefault"/>
     <xsl:param name="withtype" select="$withtypedefault"/>
     <xsl:variable name="dir">
-      <xsl:choose>
-        <xsl:when test="not(@xml:lang)">
-          <xsl:call-template name="log">
-            <xsl:with-param name="msg">no @xml:lang attribute in place-title-std.xsl</xsl:with-param>
-          </xsl:call-template>
-          <xsl:text></xsl:text>
-        </xsl:when>
-        <xsl:when test="@xml:lang='en'">ltr</xsl:when>
-        <xsl:when test="@xml:lang='syr' or @xml:lang='ar'">rtl</xsl:when>
-        <xsl:otherwise>
-          <xsl:call-template name="log">
-            <xsl:with-param name="msg">untrapped @xml:lang value in place-title-std.xsl (<xsl:value-of select="@xml:lang"/>)</xsl:with-param>
-          </xsl:call-template>
-          <xsl:text></xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:call-template name="getdirection"/>
     </xsl:variable>
     
     <xsl:choose>
@@ -113,6 +113,25 @@
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>[ Romanized Not Available ]</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  
+  <xsl:template name="getdirection">
+    <xsl:choose>
+      <xsl:when test="not(@xml:lang)">
+        <xsl:call-template name="log">
+          <xsl:with-param name="msg">no @xml:lang attribute in place-title-std.xsl</xsl:with-param>
+        </xsl:call-template>
+        <xsl:text></xsl:text>
+      </xsl:when>
+      <xsl:when test="@xml:lang='en'">ltr</xsl:when>
+      <xsl:when test="@xml:lang='syr' or @xml:lang='ar'">rtl</xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="log">
+          <xsl:with-param name="msg">untrapped @xml:lang value in place-title-std.xsl (<xsl:value-of select="@xml:lang"/>)</xsl:with-param>
+        </xsl:call-template>
+        <xsl:text></xsl:text>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
