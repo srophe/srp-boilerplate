@@ -327,6 +327,7 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
   <xsl:template name="get-title">
     <xsl:variable name="title" select="./descendant-or-self::t:TEI/t:teiHeader/t:fileDesc/t:titleStmt/t:title[@level='a'][1]"/>
+    <xsl:variable name="place" select="./descendant-or-self::t:place[1]"/>
     <xsl:choose>
       <xsl:when test="not($title)">
         <xsl:call-template name="log">
@@ -339,6 +340,39 @@
             <xsl:apply-templates select="." mode="text-normal"/>
           </xsl:for-each>
         </xsl:variable>
+        
+        <!-- test for syriaca headwords matching the title -->
+        <xsl:variable name="headworden">
+          <xsl:for-each select="$place/t:placeName[contains(@syriaca-tags, '#syriaca-headword') and @xml:lang='en'][1]">
+            <xsl:apply-templates select="." mode="text-normal"/>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="string-length($headworden) &gt; 0 and not(contains($tstring, $headworden))">
+          <xsl:call-template name="log">
+            <xsl:with-param name="msg">
+              <xsl:text>English headword string "</xsl:text>
+              <xsl:value-of select="$headworden"/>
+              <xsl:text>" not found in title string "</xsl:text>
+              <xsl:value-of select="$tstring"/>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        <xsl:variable name="headwordsyr">
+          <xsl:for-each select="$place/t:placeName[contains(@syriaca-tags, '#syriaca-headword') and @xml:lang='syr'][1]">
+            <xsl:apply-templates select="." mode="text-normal"/>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="string-length($headwordsyr) &gt; 0 and not(contains($tstring, $headwordsyr))">
+          <xsl:call-template name="log">
+            <xsl:with-param name="msg">
+              <xsl:text>Syriac headword string "</xsl:text>
+              <xsl:value-of select="$headwordsyr"/>
+              <xsl:text>" not found in title string "</xsl:text>
+              <xsl:value-of select="$tstring"/>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
         <placeName type="title">
           <xsl:for-each select="$title">
             <xsl:copy-of select="@xml:lang"/>
