@@ -14,6 +14,7 @@
   <xsl:param name="withtypedefault">yes</xsl:param>
   
   <xsl:template name="place-title-std">
+    <xsl:param name="mode">preindexed</xsl:param>
     <xsl:param name="place" select="."/>
     <xsl:param name="withbdi" select="$withbdidefault"/>
     <xsl:param name="withtype" select="$withtypedefault"/>
@@ -21,38 +22,43 @@
     <xsl:param name="secondlang">syr</xsl:param>
     <xsl:param name="withplaceholder">yes</xsl:param>
     
-    <xsl:apply-templates select="$place/t:placeName[@type='title']" mode="std-title"/>
-<!--    
     <xsl:choose>
-      <xsl:when test="$place/t:placeName[@xml:lang=$firstlang]">
-        <xsl:apply-templates select="$place/t:placeName[@xml:lang=$firstlang][1]" mode="std-title">
-          <xsl:with-param name="withbdi" select="$withbdi"/>
-          <xsl:with-param name="withtype" select="$withtype"/>
-        </xsl:apply-templates>
+      <xsl:when test="$mode='preindexed'">
+        <xsl:apply-templates select="$place/t:placeName[@type='title']" mode="std-title"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="not-avail">
-          <xsl:with-param name="withbdi" select="$withbdi"/>
-        </xsl:call-template>
+        <xsl:choose>
+          <xsl:when test="$place/t:placeName[not(@type) and @xml:lang=$firstlang]">
+            <xsl:apply-templates select="$place/t:placeName[not(@type) and @xml:lang=$firstlang][1]" mode="std-title">
+              <xsl:with-param name="withbdi" select="$withbdi"/>
+              <xsl:with-param name="withtype" select="$withtype"/>
+            </xsl:apply-templates>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="not-avail">
+              <xsl:with-param name="withbdi" select="$withbdi"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
+        
+        <xsl:text> — </xsl:text>
+        
+        <xsl:choose>
+          <xsl:when test="$place/t:placeName[not(@type) and @xml:lang=$secondlang]">
+            <xsl:apply-templates select="$place/t:placeName[not(@type) and @xml:lang=$secondlang][1]" mode="std-title">
+              <xsl:with-param name="withbdi" select="$withbdi"/>
+              <xsl:with-param name="withtype">no</xsl:with-param>
+            </xsl:apply-templates>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="not-avail">
+              <xsl:with-param name="withbdi" select="$withbdi"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
     
-    <xsl:text> — </xsl:text>
-    
-    <xsl:choose>
-      <xsl:when test="$place/t:placeName[@xml:lang=$secondlang]">
-        <xsl:apply-templates select="$place/t:placeName[@xml:lang=$secondlang][1]" mode="std-title">
-          <xsl:with-param name="withbdi" select="$withbdi"/>
-          <xsl:with-param name="withtype">no</xsl:with-param>
-        </xsl:apply-templates>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:call-template name="not-avail">
-          <xsl:with-param name="withbdi" select="$withbdi"/>
-        </xsl:call-template>
-      </xsl:otherwise>
-    </xsl:choose>
--->
     
   </xsl:template>
   
