@@ -220,7 +220,9 @@
      </xsl:variable>
      <li>
       <a href="{$htmlurl}">
-       <xsl:call-template name="place-title-std"/>
+       <xsl:call-template name="place-title-std">
+        <xsl:with-param name="mode">browselisting</xsl:with-param>
+       </xsl:call-template>
       </a>
      </li>
     </xsl:when>
@@ -257,6 +259,7 @@
        <li>
         <a href="{$htmlurl}">
          <xsl:call-template name="place-title-std">
+          <xsl:with-param name="mode">browselisting</xsl:with-param>
           <xsl:with-param name="firstlang">syr</xsl:with-param>
           <xsl:with-param name="secondlang">en</xsl:with-param>
          </xsl:call-template>
@@ -291,7 +294,9 @@
       </xsl:variable>
       <li>
        <a href="{$htmlurl}"><xsl:value-of select="$placenum"/><xsl:text>: </xsl:text>
-        <xsl:call-template name="place-title-std"/>
+        <xsl:call-template name="place-title-std">
+         <xsl:with-param name="mode">browselisting</xsl:with-param>
+        </xsl:call-template>
        </a>
       </li>
      </xsl:when>

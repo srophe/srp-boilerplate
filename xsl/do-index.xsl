@@ -67,6 +67,7 @@
        
        ================================================================== -->
   
+  <xsl:import href="langattr.xsl"/>
   <xsl:import href="log.xsl"/>
   <xsl:import href="normalization.xsl"/>
   
@@ -116,6 +117,7 @@
                 <xsl:call-template name="sanity-check"/>
                 <xsl:call-template name="copy-xml-id"/>
                 <xsl:call-template name="get-placeType"/>
+                <xsl:call-template name="get-title"/>
                 <xsl:call-template name="get-canonicalNames"/>
                 <xsl:call-template name="get-abstract"/>
                 <xsl:call-template name="get-placeID"/>
@@ -316,6 +318,85 @@
     </xsl:choose>
   </xsl:template>
   
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     named template: get-title
+     
+     get place entry title and copy it into index as a specially typed
+     placeName
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
+  <xsl:template name="get-title">
+    <xsl:variable name="title" select="./descendant-or-self::t:TEI/t:teiHeader/t:fileDesc/t:titleStmt/t:title[@level='a'][1]"/>
+    <xsl:variable name="place" select="./descendant-or-self::t:place[1]"/>
+    <xsl:choose>
+      <xsl:when test="not($title)">
+        <xsl:call-template name="log">
+          <xsl:with-param name="msg">couldn't find analytic title!</xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:variable name="tstring">
+          <xsl:for-each select="$title/node()">
+            <xsl:apply-templates select="." mode="text-normal"/>
+          </xsl:for-each>
+        </xsl:variable>
+        
+        <!-- test for syriaca headwords matching the title -->
+        <xsl:variable name="headworden">
+          <xsl:for-each select="$place/t:placeName[contains(@syriaca-tags, '#syriaca-headword') and @xml:lang='en'][1]">
+            <xsl:apply-templates select="." mode="text-normal"/>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="string-length($headworden) &gt; 0 and not(contains($tstring, $headworden))">
+          <xsl:call-template name="log">
+            <xsl:with-param name="msg">
+              <xsl:text>English headword string "</xsl:text>
+              <xsl:value-of select="$headworden"/>
+              <xsl:text>" not found in title string "</xsl:text>
+              <xsl:value-of select="$tstring"/>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        <xsl:variable name="headwordsyr">
+          <xsl:for-each select="$place/t:placeName[contains(@syriaca-tags, '#syriaca-headword') and @xml:lang='syr'][1]">
+            <xsl:apply-templates select="." mode="text-normal"/>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="string-length($headwordsyr) &gt; 0 and not(contains($tstring, $headwordsyr))">
+          <xsl:call-template name="log">
+            <xsl:with-param name="msg">
+              <xsl:text>Syriac headword string "</xsl:text>
+              <xsl:value-of select="$headwordsyr"/>
+              <xsl:text>" not found in title string "</xsl:text>
+              <xsl:value-of select="$tstring"/>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:if>
+        
+        <placeName type="title">
+          <xsl:for-each select="$title">
+            <xsl:copy-of select="@xml:lang"/>
+          </xsl:for-each>
+          <xsl:attribute name="reg">
+            <xsl:value-of select="ipse:allsort($tstring)"/>
+          </xsl:attribute>
+          <xsl:for-each select="$title/node()">
+            <xsl:choose>
+              <xsl:when test="self::t:foreign">
+                <foreign>
+                  <xsl:copy-of select="@xml:lang"/>
+                  <xsl:apply-templates select="." mode="text-normal"/>
+                </foreign>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:apply-templates select="." mode="text-normal"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
+        </placeName>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
   
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      named template: get-canonicalNames
@@ -588,7 +669,33 @@
   </xsl:function>
   
   
-<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     function: ipse:allsort
+     
+     creates a search key matching SRP expectations for all language
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->  
+  <xsl:function name="ipse:allsort">
+    <xsl:param name="instring"></xsl:param>
+    <xsl:variable name="norm">
+      <xsl:apply-templates select="$instring" mode="out-normal"/>
+    </xsl:variable>
+    <xsl:variable name="ready">
+      <xsl:choose>
+        <xsl:when test="contains($norm, '—')">
+          <xsl:value-of select="normalize-space(substring-before($norm, '—'))"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$norm"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:call-template name="enstrip">
+      <xsl:with-param name="instring" select="upper-case($ready)"/>
+    </xsl:call-template>
+  </xsl:function>
+  
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      named template: enstrip
      
      recursively strips undesireable leading and bracketing characters
