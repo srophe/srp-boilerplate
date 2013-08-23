@@ -487,8 +487,19 @@
           </xsl:when>
         </xsl:choose>
       </xsl:attribute>
-      <xsl:call-template name="langattr"/>
-      <xsl:apply-templates mode="footnote"/>
+      <xsl:for-each select="./node()">
+        <xsl:if test="not(self::text()) or string-length(normalize-space(.))&gt;0 or count(following-sibling::node())=0">
+            <bdi>
+              <xsl:for-each select="ancestor-or-self::t:*[@xml:lang][1]">
+                <xsl:attribute name="dir">
+                  <xsl:call-template name="getdirection"/>
+                </xsl:attribute>
+                <xsl:call-template name="langattr"/>
+              </xsl:for-each>
+              <xsl:apply-templates select="." mode="text-normal"/>
+            </bdi>
+        </xsl:if>
+      </xsl:for-each>
     </span>
   </xsl:template>
   
