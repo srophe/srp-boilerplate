@@ -3,6 +3,10 @@ Description: [Saxon-PE] index.xml: quote[1]: untrapped element for mode="cleanou
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 10.xml: desc@xml:id="abstract-en-10": untrapped element suppressed
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 100.xml: desc@xml:id="abstract-en-100": untrapped element suppressed
 Start location: 107:0
 
