@@ -5,6 +5,7 @@
  xmlns:t="http://www.tei-c.org/ns/1.0" 
  xmlns:s="http://syriaca.org"
  xmlns:saxon="http://saxon.sf.net/" 
+ xmlns:x="http://www.w3.org/1999/xhtml"
  xmlns="http://www.w3.org/1999/xhtml"
  exclude-result-prefixes="xs t s saxon" version="2.0">
 
@@ -80,7 +81,7 @@
  <!-- set output so we get (mostly) indented HTML -->
  <!-- =================================================================== -->
 
- <xsl:output name="html" encoding="UTF-8" method="html" indent="yes"/>
+ <xsl:output name="html" encoding="UTF-8" method="xhtml" indent="no"/>
 
  <!-- =================================================================== -->
  <!-- initialize top-level variables and transform parameters -->
