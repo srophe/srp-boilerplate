@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>ʿAyn Dulba (settlement) — [ Not Available ]</title>
+   <title>
+      <bdi xmlns="http://www.w3.org/1999/xhtml"
+           dir="ltr"
+           xml:lang="en"
+           lang="en">ʿAyn Dulba</bdi>
+   </title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/681-atom.xml"/>
    <id>tag:syriaca.org,2013:place-681</id>
-   <updated>2013-07-11-04:00</updated>
+   <updated>2013-08-07-04:00</updated>
    <entry>
-      <title>ʿAyn Dulba (settlement) — [ Not Available ]</title>
+      <title>
+         <bdi xmlns="http://www.w3.org/1999/xhtml"
+              dir="ltr"
+              xml:lang="en"
+              lang="en">ʿAyn Dulba</bdi>
+      </title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/681.html"/>
@@ -15,7 +25,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/681-atom.xml"/>
       <id>tag:syriaca.org,2013:place-681</id>
-      <updated>2013-07-11-04:00</updated>
+      <updated>2013-08-07-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>

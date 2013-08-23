@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>Kapro d-Birto (settlement) — ܟܦܪܐ ܕܒܝܪܬܐ</title>
+   <title>
+      <bdi xmlns="http://www.w3.org/1999/xhtml"
+           dir="ltr"
+           xml:lang="en"
+           lang="en">Kapro d-Birto — </bdi>
+      <bdi xmlns="http://www.w3.org/1999/xhtml"
+           dir="rtl"
+           xml:lang="syr"
+           lang="syr">ܟܦܪܐ ܕܒܝܪܬܐ</bdi>
+   </title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/564-atom.xml"/>
    <id>tag:syriaca.org,2013:place-564</id>
-   <updated>2013-07-11-04:00</updated>
+   <updated>2013-08-07-04:00</updated>
    <entry>
-      <title>Kapro d-Birto (settlement) — ܟܦܪܐ ܕܒܝܪܬܐ</title>
+      <title>
+         <bdi xmlns="http://www.w3.org/1999/xhtml"
+              dir="ltr"
+              xml:lang="en"
+              lang="en">Kapro d-Birto — </bdi>
+         <bdi xmlns="http://www.w3.org/1999/xhtml"
+              dir="rtl"
+              xml:lang="syr"
+              lang="syr">ܟܦܪܐ ܕܒܝܪܬܐ</bdi>
+      </title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/564.html"/>
@@ -15,7 +33,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/564-atom.xml"/>
       <id>tag:syriaca.org,2013:place-564</id>
-      <updated>2013-07-11-04:00</updated>
+      <updated>2013-08-07-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>

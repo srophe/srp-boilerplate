@@ -1035,10 +1035,6 @@ Description: [Saxon-PE] 1231.xml: No Syriac language placeName marked as headwor
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
-Description: [Saxon-PE] 1231.xml: No location element was found for this place.
-Start location: 107:0
-
-System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 1232.xml: No Syriac language placeName marked as headword was found in the first place element in file
 Start location: 107:0
 
@@ -1444,6 +1440,10 @@ Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 132.xml: No Syriac language placeName marked as headword was found in the first place element in file
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 132.xml: No location element was found for this place.
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
@@ -1983,6 +1983,14 @@ Description: [Saxon-PE] 1448.xml: No Syriac language placeName marked as headwor
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1449.xml: No Syriac language placeName marked as headword was found in the first place element in file
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1449.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 145.xml: No Syriac language placeName marked as headword was found in the first place element in file
 Start location: 107:0
 
@@ -1991,7 +1999,87 @@ Description: [Saxon-PE] 145.xml: No location element was found for this place.
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1450.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1451.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1452.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1453.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1454.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1455.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1456.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1457.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1458.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1459.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 146.xml: No Syriac language placeName marked as headword was found in the first place element in file
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1460.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1461.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1462.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1463.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1464.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1465.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1466.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1467.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1468.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1469.xml: No location element was found for this place.
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
@@ -2003,6 +2091,54 @@ Description: [Saxon-PE] 147.xml: No location element was found for this place.
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1470.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1471.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1472.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1473.xml: No Syriac language placeName marked as headword was found in the first place element in file
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1473.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1474.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1475.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1476.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1477.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1478.xml: No Syriac language placeName marked as headword was found in the first place element in file
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1478.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1479.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 148.xml: No Syriac language placeName marked as headword was found in the first place element in file
 Start location: 107:0
 
@@ -2011,7 +2147,95 @@ Description: [Saxon-PE] 148.xml: No location element was found for this place.
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1480.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1481.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1482.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1483.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1484.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1485.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1486.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1487.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1488.xml: No Syriac language placeName marked as headword was found in the first place element in file
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1488.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1489.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 149.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1490.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1491.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1492.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1493.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1494.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1495.xml: No Syriac language placeName marked as headword was found in the first place element in file
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1495.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1496.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1497.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1498.xml: No location element was found for this place.
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 1499.xml: No location element was found for this place.
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
@@ -2232,10 +2456,6 @@ Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 208.xml: No Syriac language placeName marked as headword was found in the first place element in file
-Start location: 107:0
-
-System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
-Description: [Saxon-PE] 211.xml: No Syriac language placeName marked as headword was found in the first place element in file
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
@@ -3527,10 +3747,6 @@ Description: [Saxon-PE] 485.xml: No location element was found for this place.
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
-Description: [Saxon-PE] 486.xml: No Syriac language placeName marked as headword was found in the first place element in file
-Start location: 107:0
-
-System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 486.xml: No location element was found for this place.
 Start location: 107:0
 
@@ -4228,10 +4444,6 @@ Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 606.xml: No location element was found for this place.
-Start location: 107:0
-
-System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
-Description: [Saxon-PE] 607.xml: No Syriac language placeName marked as headword was found in the first place element in file
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
@@ -5264,6 +5476,10 @@ Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
 Description: [Saxon-PE] 750.xml: No Syriac language placeName marked as headword was found in the first place element in file
+Start location: 107:0
+
+System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
+Description: [Saxon-PE] 750.xml: No location element was found for this place.
 Start location: 107:0
 
 System ID: /Users/paregorios/Documents/files/S/syriac/repos/srp-places-app/xsl/log.xsl
