@@ -252,7 +252,10 @@
            </xsl:for-each>
            
            <!-- The map widget -->
-           <div id="map"></div>
+           <xsl:if test="t:location[@type='gps' and t:geo]">
+            <div id="map"></div>
+           </xsl:if>
+           
     
            <!-- core page content -->
             <xsl:for-each select="$sourcedoc/descendant::t:place[1]">
