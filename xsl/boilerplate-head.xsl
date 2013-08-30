@@ -47,6 +47,10 @@
    <script src='http://isawnyu.github.com/awld-js/lib/requirejs/require.min.js' type='text/javascript'></script>
    <xsl:value-of select="$n"/>
    <script src='http://isawnyu.github.com/awld-js/awld.js?autoinit' type='text/javascript'></script>
+   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+   <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+   <![endif]-->
   </head>
  </xsl:template>
  

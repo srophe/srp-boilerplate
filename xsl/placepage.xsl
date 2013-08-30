@@ -250,6 +250,9 @@
            <xsl:for-each select="t:desc[@type='abstract' or starts-with(@xml:id, 'abstract-en')][1]">
             <p><xsl:apply-templates mode="cleanout"/></p>
            </xsl:for-each>
+           
+           <!-- The map widget -->
+           <div id="map"></div>
     
            <!-- core page content -->
             <xsl:for-each select="$sourcedoc/descendant::t:place[1]">
