@@ -220,3 +220,11 @@ div[id|=place] > div:last-of-type {
 .pubPlace > .placeName {
 	font-weight: normal;
 }
+
+/* Map styles */
+
+#map {
+  height: 180px;
+  margin-bottom: 1em;
+}
+
