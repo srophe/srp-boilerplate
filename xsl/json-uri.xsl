@@ -7,9 +7,7 @@
   version="2.0">
   
   <xsl:template match="t:geo" mode="json-uri">
-    <xsl:variable name="coords">
-      <xsl:value-of select="tokenize(normalize-space(.), ' ')"/>
-    </xsl:variable>
+    <xsl:variable name="coords" select="tokenize(normalize-space(.), '\s+')"/>
     <xsl:variable name="json">
       <xsl:text>{"type": "Point", "coordinates": [</xsl:text>
       <xsl:value-of select="$coords[2]"/>
