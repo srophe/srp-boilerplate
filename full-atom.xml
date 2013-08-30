@@ -31024,6 +31024,29 @@
          <bdi xmlns="http://www.w3.org/1999/xhtml"
               dir="ltr"
               xml:lang="en"
+              lang="en">Ghūrzān — </bdi>
+         <bdi xmlns="http://www.w3.org/1999/xhtml"
+              dir="rtl"
+              xml:lang="syr"
+              lang="syr">ܓܘܪܙܐܢ</bdi>
+      </title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/1461.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/1461-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-1461</id>
+      <updated>2013-07-31-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+   </entry>
+   <entry>
+      <title>
+         <bdi xmlns="http://www.w3.org/1999/xhtml"
+              dir="ltr"
+              xml:lang="en"
               lang="en">Mor Behnam Hermitage — </bdi>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
               dir="rtl"
@@ -31058,29 +31081,6 @@
       <id>tag:syriaca.org,2013:place-518</id>
       <updated>2013-07-31</updated>
       <summary>A mountain north of Damascus.</summary>
-      <author>Thomas A. Carlson</author>
-      <author>David A. Michelson</author>
-   </entry>
-   <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Ghūrzān — </bdi>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="rtl"
-              xml:lang="syr"
-              lang="syr">ܓܘܪܙܐܢ</bdi>
-      </title>
-      <link rel="alternate"
-            type="text/html"
-            href="http://srophe.github.io/srp-places-app/places/1461.html"/>
-      <link rel="self"
-            type="application/atom+xml"
-            href="http://srophe.github.io/srp-places-app/places/1461-atom.xml"/>
-      <id>tag:syriaca.org,2013:place-1461</id>
-      <updated>2013-07-31-04:00</updated>
-      <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
    </entry>
