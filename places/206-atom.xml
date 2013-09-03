@@ -10,7 +10,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/206-atom.xml"/>
    <id>tag:syriaca.org,2013:place-206</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
@@ -25,8 +25,8 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/206-atom.xml"/>
       <id>tag:syriaca.org,2013:place-206</id>
-      <updated>2013-08-07-04:00</updated>
-      <summary/>
+      <updated>2013-08-29-04:00</updated>
+      <summary> Urmia (Urūmiyya, Rīzāya), a city in northwest Iran, west of Lake Urmia, is first mentioned in E.-Syr. sources in 1111, whereas the mentioning of bishops in Azerbaijan (Hoshaʿ of Ganzak in 486, Ḥenanishoʿ in 605), testify to earlier presence of the Ch. of E. in this region. </summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Anthony Davis</contributor>

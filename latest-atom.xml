@@ -5,7 +5,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/latest-atom.xml"/>
    <id>tag:syriaca.org,2013:gazetteer-latest</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
@@ -20,7 +20,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/881-atom.xml"/>
       <id>tag:syriaca.org,2013:place-881</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -40,7 +40,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/659-atom.xml"/>
       <id>tag:syriaca.org,2013:place-659</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -59,7 +59,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/882-atom.xml"/>
       <id>tag:syriaca.org,2013:place-882</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -79,7 +79,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/883-atom.xml"/>
       <id>tag:syriaca.org,2013:place-883</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -99,7 +99,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/14-atom.xml"/>
       <id>tag:syriaca.org,2013:place-14</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary>An ancient port on the coast of Phoenice, and the last Crusader foothold in the Levant.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -126,7 +126,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/15-atom.xml"/>
       <id>tag:syriaca.org,2013:place-15</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary>A city on the Seyhan River in south-eastern Anatolia, near the Mediterranean coast.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -134,6 +134,26 @@
       <georss:where>
          <georss:point>37 35.32133</georss:point>
       </georss:where>
+   </entry>
+   <entry>
+      <title>
+         <bdi xmlns="http://www.w3.org/1999/xhtml"
+              dir="ltr"
+              xml:lang="en"
+              lang="en">Adeḥ</bdi>
+      </title>
+      <link rel="alternate"
+            type="text/html"
+            href="http://srophe.github.io/srp-places-app/places/884.html"/>
+      <link rel="self"
+            type="application/atom+xml"
+            href="http://srophe.github.io/srp-places-app/places/884-atom.xml"/>
+      <id>tag:syriaca.org,2013:place-884</id>
+      <updated>2013-08-29-04:00</updated>
+      <summary/>
+      <author>Thomas A. Carlson</author>
+      <author>David A. Michelson</author>
+      <contributor>Anthony Davis</contributor>
    </entry>
    <entry>
       <title>
@@ -153,7 +173,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/5-atom.xml"/>
       <id>tag:syriaca.org,2013:place-5</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary>A region west of the Caspian Sea, encompassing the modern country of Azerbaijan and the provinces of northwest Iran.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
@@ -173,28 +193,8 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/993-atom.xml"/>
       <id>tag:syriaca.org,2013:place-993</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary> Classical Adiabene, Syriac Ḥadyāb, refers to the region between the Upper and Lower Zab rivers, from the Tigris in the west to Mt. Ṣalāḥ al-dīn (= Mt. Pirmum) in the east. </summary>
-      <author>Thomas A. Carlson</author>
-      <author>David A. Michelson</author>
-      <contributor>Anthony Davis</contributor>
-   </entry>
-   <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Āḏeḥ</bdi>
-      </title>
-      <link rel="alternate"
-            type="text/html"
-            href="http://srophe.github.io/srp-places-app/places/884.html"/>
-      <link rel="self"
-            type="application/atom+xml"
-            href="http://srophe.github.io/srp-places-app/places/884-atom.xml"/>
-      <id>tag:syriaca.org,2013:place-884</id>
-      <updated>2013-08-07-04:00</updated>
-      <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Anthony Davis</contributor>
@@ -213,7 +213,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/16-atom.xml"/>
       <id>tag:syriaca.org,2013:place-16</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary>An ancient and medieval port on the coast of Cilicia.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>

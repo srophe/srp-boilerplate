@@ -10,7 +10,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/90-atom.xml"/>
    <id>tag:syriaca.org,2013:place-90</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
@@ -25,8 +25,8 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/90-atom.xml"/>
       <id>tag:syriaca.org,2013:place-90</id>
-      <updated>2013-08-07-04:00</updated>
-      <summary/>
+      <updated>2013-08-29-04:00</updated>
+      <summary> The region in the southeast corner of Turkey dominated by the mountains Cilo Dag (4170 m.) and Sat Dag (3810 m.), and the highlands around them, cut by the gorges of the Great Zab River and its tributaries. </summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Anthony Davis</contributor>

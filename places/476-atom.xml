@@ -10,7 +10,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/476-atom.xml"/>
    <id>tag:syriaca.org,2013:place-476</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
@@ -25,8 +25,8 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/476-atom.xml"/>
       <id>tag:syriaca.org,2013:place-476</id>
-      <updated>2013-08-07-04:00</updated>
-      <summary/>
+      <updated>2013-08-29-04:00</updated>
+      <summary> The School of Nisibis was an E.-Syr. institution of learning founded in part by refugees from the School of Edessa after the latter was forcibly closed by the religious and political authorities in 489, because it had become an exegetical circle of dyophysite Christians whose Antiochene theology was no longer welcome in a Roman Empire split by Christological controversy. </summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
    </entry>

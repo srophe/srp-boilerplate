@@ -4,19 +4,19 @@
       <bdi xmlns="http://www.w3.org/1999/xhtml"
            dir="ltr"
            xml:lang="en"
-           lang="en">Gāzartā</bdi>
+           lang="en">Gazarta</bdi>
    </title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/712-atom.xml"/>
    <id>tag:syriaca.org,2013:place-712</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
               dir="ltr"
               xml:lang="en"
-              lang="en">Gāzartā</bdi>
+              lang="en">Gazarta</bdi>
       </title>
       <link rel="alternate"
             type="text/html"
@@ -25,7 +25,7 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/712-atom.xml"/>
       <id>tag:syriaca.org,2013:place-712</id>
-      <updated>2013-08-07-04:00</updated>
+      <updated>2013-08-29-04:00</updated>
       <summary/>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>

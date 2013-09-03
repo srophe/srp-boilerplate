@@ -14,7 +14,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/137-atom.xml"/>
    <id>tag:syriaca.org,2013:place-137</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
@@ -33,8 +33,8 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/137-atom.xml"/>
       <id>tag:syriaca.org,2013:place-137</id>
-      <updated>2013-08-07-04:00</updated>
-      <summary/>
+      <updated>2013-08-29-04:00</updated>
+      <summary> Principal town of Ṭur ʿAbdin, situated at the geographical center of the region where the main east-west road from Mardin to Gozarto (Cizre) and the north-south road from Ḥesno d-Kifo (Hasankeyf) to Nisibis meet. </summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Anthony Davis</contributor>

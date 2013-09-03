@@ -14,7 +14,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/233-atom.xml"/>
    <id>tag:syriaca.org,2013:place-233</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
@@ -33,13 +33,10 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/233-atom.xml"/>
       <id>tag:syriaca.org,2013:place-233</id>
-      <updated>2013-08-07-04:00</updated>
-      <summary/>
+      <updated>2013-08-29-04:00</updated>
+      <summary> The Monastery of Tell ʿAda, also known as the ‘Great Monastery’, is located just over 48 km. from Aleppo; 1500 m. north of the present village of Tell ʿAda. </summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Robert Aydin</contributor>
-      <georss:where>
-         <georss:point>35.137477 37.103175</georss:point>
-      </georss:where>
    </entry>
 </feed>

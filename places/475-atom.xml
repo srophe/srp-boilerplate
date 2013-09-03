@@ -10,7 +10,7 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/475-atom.xml"/>
    <id>tag:syriaca.org,2013:place-475</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
@@ -25,8 +25,8 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/475-atom.xml"/>
       <id>tag:syriaca.org,2013:place-475</id>
-      <updated>2013-08-07-04:00</updated>
-      <summary/>
+      <updated>2013-08-29-04:00</updated>
+      <summary> Also known as Veh-Ardashir or New Seleucia. Located on the Tigris, south of modern Baghdad, the name Kokhe is Aramaic in origin. </summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
    </entry>

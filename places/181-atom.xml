@@ -4,27 +4,19 @@
       <bdi xmlns="http://www.w3.org/1999/xhtml"
            dir="ltr"
            xml:lang="en"
-           lang="en">Sebaste — </bdi>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="rtl"
-           xml:lang="syr"
-           lang="syr">ܣܝܘܐܣ</bdi>
+           lang="en">Sebaste</bdi>
    </title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/181-atom.xml"/>
    <id>tag:syriaca.org,2013:place-181</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
               dir="ltr"
               xml:lang="en"
-              lang="en">Sebaste — </bdi>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="rtl"
-              xml:lang="syr"
-              lang="syr">ܣܝܘܐܣ</bdi>
+              lang="en">Sebaste</bdi>
       </title>
       <link rel="alternate"
             type="text/html"
@@ -33,8 +25,8 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/181-atom.xml"/>
       <id>tag:syriaca.org,2013:place-181</id>
-      <updated>2013-08-07-04:00</updated>
-      <summary/>
+      <updated>2013-08-29-04:00</updated>
+      <summary>A Roman city on the Cilician coast.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <georss:where>

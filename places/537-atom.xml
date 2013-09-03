@@ -4,7 +4,7 @@
       <bdi xmlns="http://www.w3.org/1999/xhtml"
            dir="ltr"
            xml:lang="en"
-           lang="en">Beth Qesyono — </bdi>
+           lang="en">Beth Qustan — </bdi>
       <bdi xmlns="http://www.w3.org/1999/xhtml"
            dir="rtl"
            xml:lang="syr"
@@ -14,13 +14,13 @@
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/537-atom.xml"/>
    <id>tag:syriaca.org,2013:place-537</id>
-   <updated>2013-08-07-04:00</updated>
+   <updated>2013-08-29-04:00</updated>
    <entry>
       <title>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
               dir="ltr"
               xml:lang="en"
-              lang="en">Beth Qesyono — </bdi>
+              lang="en">Beth Qustan — </bdi>
          <bdi xmlns="http://www.w3.org/1999/xhtml"
               dir="rtl"
               xml:lang="syr"
@@ -33,8 +33,8 @@
             type="application/atom+xml"
             href="http://srophe.github.io/srp-places-app/places/537-atom.xml"/>
       <id>tag:syriaca.org,2013:place-537</id>
-      <updated>2013-08-07-04:00</updated>
-      <summary/>
+      <updated>2013-08-29-04:00</updated>
+      <summary>A village in Ṭur ʿAbdin.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
    </entry>
