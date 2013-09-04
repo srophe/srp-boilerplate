@@ -22,7 +22,7 @@ if (uri) {
   var latlng = new L.LatLng(coords[1], coords[0]);
 }
 
-var map = L.map('map', {attributionControl: false}).setView(latlng, 11);
+var map = L.map('map', {attributionControl: false}).setView(latlng, 5);
 L.control.attribution({prefix: false}).addTo(map);
 
 terrain.addTo(map);
