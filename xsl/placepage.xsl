@@ -371,6 +371,15 @@
    </ul>
   </div>
   
+  <!-- Events without @type="attestation" -->
+  <xsl:if test="t:event[not(@type='attestation')]">
+   <div id="description">
+    <h3>Event<xsl:if test="count(t:event[not(@type='attestation')]) &gt; 1">s</xsl:if></h3>
+    <ul>
+     <xsl:apply-templates select="t:event[not(@type='attestation')]" mode="event"/>
+    </ul>
+   </div>   
+  </xsl:if>
   
   <xsl:if test="$idx/descendant::t:location[@type='nested']/t:*[@ref=$thisuri]">
    <div id="contents">
@@ -401,6 +410,18 @@
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
    </ul>
   </div>
+ </xsl:template>
+ 
+ <!-- Template to print out events -->
+ <xsl:template match="t:event" mode="event">
+  <li> 
+   <!-- There are several desc templates, this 'plain' mode ouputs all the child elements with no p or li tags -->
+   <xsl:apply-templates select="child::*" mode="plain"/>
+   <!-- Adds when attribute data if available -->
+   <xsl:if test="@when"><xsl:text> </xsl:text>(<xsl:value-of select="string(@when)"/>)</xsl:if>
+   <!-- Adds footnotes if available -->
+   <xsl:if test="@source"><xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/></xsl:if>
+  </li>
  </xsl:template>
  
  <!-- Template for related people and places -->
