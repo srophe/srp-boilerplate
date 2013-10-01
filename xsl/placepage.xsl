@@ -414,6 +414,7 @@
  
  <!-- Template to print out events -->
  <xsl:template match="t:event" mode="event">
+  <!-- @when, @notBefore, @notAfter, @from, @to -->
   <li> 
    <!-- There are several desc templates, this 'plain' mode ouputs all the child elements with no p or li tags -->
    <xsl:apply-templates select="child::*" mode="plain"/>
@@ -531,8 +532,11 @@
      Description templates 
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
  <!-- Descriptions without list elements or paragraph elements -->
- <xsl:template match="t:desc[not(starts-with(@xml:id, 'abstract-en'))]" mode="plain">
+ <xsl:template match="t:desc" mode="plain">
    <xsl:apply-templates/>
+ </xsl:template>
+ <xsl:template match="t:label" mode="plain">
+  <xsl:apply-templates/>
  </xsl:template>
  <!-- Descriptions for place abstract -->
  <xsl:template match="t:desc[not(starts-with(@xml:id, 'abstract-en'))]" mode="abstract">

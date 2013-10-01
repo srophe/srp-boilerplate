@@ -7,10 +7,70 @@
  exclude-result-prefixes="xs t"
  version="2.0">
  
+ <!-- 
+  Function to output dates in correct formats passes whole element to function, 
+  function also uses trim-date to strip leading 0
+ -->
+ <xsl:function name="local:do-dates">
+  <xsl:param name="element" as="node()"/>
+  <xsl:if test="$element/@when or $element/@notBefore or $element/@notAfter or $element/@from or $element/@to">
+   (
+   <!-- Formats to and from dates -->
+   <xsl:choose>
+    <xsl:when test="$element/@from">
+     <xsl:choose>
+      <xsl:when test="$element/@to">
+       <xsl:value-of select="local:trim-date($element/@from)"/>-<xsl:value-of select="local:trim-date($element/@to)"/> 
+      </xsl:when>
+      <xsl:otherwise>
+       from <xsl:value-of select="local:trim-date($element/@from)"/>
+      </xsl:otherwise>
+     </xsl:choose>
+    </xsl:when>
+    <xsl:when test="$element/@to">
+     to <xsl:value-of select="local:trim-date($element/@to)"/>
+    </xsl:when>
+   </xsl:choose>
+   <!-- Formats notBefore and notAfter dates -->
+   <xsl:if test="$element/@notBefore">
+    <!-- Adds comma if there are other dates -->
+    <xsl:if test="$element/@to or $element/@from">, </xsl:if>
+    not before <xsl:value-of select="local:trim-date($element/@notBefore)"/>
+   </xsl:if>
+   <xsl:if test="$element/@notAfter">
+    <!-- Adds comma if there are other dates -->
+    <xsl:if test="$element/@to or $element/@from or $element/@notBefore">, </xsl:if>
+    not after<xsl:value-of select="local:trim-date($element/@notAfter)"/>
+   </xsl:if>
+   <!-- Formats when, single date -->
+   <xsl:if test="$element/@when">
+    <!-- Adds comma if there are other dates -->
+    <xsl:if test="$element/@to or $element/@from or $element/@notBefore or $element/@notAfter">, </xsl:if>
+    <xsl:value-of select="local:trim-date($element/@when)"/>
+   </xsl:if>
+   )
+   </xsl:if>
+ </xsl:function>
+ 
  <!-- Date function to remove leading 0s -->
  <xsl:function name="local:trim-date">
   <xsl:param name="date"/>
-  <xsl:value-of select="string(number($date))"/>
+  <xsl:choose>
+   <!-- NOTE: This can easily be changed to display BCE instead -->
+   <!-- removes leading 0 but leaves -  -->
+   <xsl:when test="starts-with($date,'-0')">
+    <xsl:value-of select="concat('-',substring($date,3))"/>
+   </xsl:when>
+   <!-- removes leading 0 -->
+   <xsl:when test="starts-with($date,'0')">
+    <xsl:value-of select="substring($date,2)"/>
+   </xsl:when>
+   <!-- passes value through without changing it -->
+   <xsl:otherwise>
+    <xsl:value-of select="$date"/>
+   </xsl:otherwise>
+  </xsl:choose>
+<!--  <xsl:value-of select="string(number($date))"/>-->
  </xsl:function>
  
  <!-- Function for adding footnotes -->
@@ -29,7 +89,6 @@
     <xsl:for-each select="tokenize($refs,' ')">
      <span class="footnote-ref">
       <xsl:text> </xsl:text>
-      <!-- NOTE: need a way to count all tokenized values to see if more then one and then add , --> 
       <a href="{.}"><xsl:value-of select="substring-after(.,'-')"/></a><xsl:if test="position() != last()">,<xsl:text> </xsl:text></xsl:if>
      </span>
     </xsl:for-each>
@@ -69,8 +128,5 @@
   <xsl:value-of select="normalize-space(normalize-unicode(., $normalization))"/>
   <xsl:value-of select="$suffix"/>
  </xsl:template>
- 
-
- 
  
 </xsl:stylesheet>
