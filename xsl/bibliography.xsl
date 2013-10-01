@@ -76,7 +76,7 @@
       </xsl:choose>
     </xsl:variable>
     
-    <li xml:id="{@xml:id}">
+    <li xml:id="{@xml:id}" id="{@xml:id}">
       <span class="footnote-tgt"><xsl:value-of select="$thisnum"/></span>
       <xsl:text> </xsl:text>
       <span class="footnote-content">
