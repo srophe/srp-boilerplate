@@ -373,7 +373,7 @@
   
   <!-- Events without @type="attestation" -->
   <xsl:if test="t:event[not(@type='attestation')]">
-   <div id="description">
+   <div id="events">
     <h3>Event<xsl:if test="count(t:event[not(@type='attestation')]) &gt; 1">s</xsl:if></h3>
     <ul>
      <xsl:apply-templates select="t:event[not(@type='attestation')]" mode="event"/>
@@ -410,6 +410,14 @@
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
    </ul>
   </div>
+  
+  <!-- Add errata if present -->
+  <xsl:if test="t:note[@type='errata' or 'deprecation']">
+   <div id="errata">
+    <h3>Errata</h3>
+     <xsl:apply-templates select="t:note[@type='errata' or 'deprecation']"/>
+   </div>
+  </xsl:if>
  </xsl:template>
  
  <!-- Template to print out events -->
@@ -571,9 +579,13 @@
  <xsl:template match="t:note">
   <p>
    <xsl:apply-templates/>
-   <xsl:text>.</xsl:text>
+   <!-- Check for existing punctuation, if none, add . -->
+   <xsl:if test="not(ends-with(.,'.'))">
+    <xsl:text>.</xsl:text>    
+   </xsl:if>
   </p>
  </xsl:template>
+ 
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle standard output of a p element 
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
