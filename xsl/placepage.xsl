@@ -6,6 +6,7 @@
  xmlns:s="http://syriaca.org"
  xmlns:saxon="http://saxon.sf.net/" 
  xmlns:x="http://www.w3.org/1999/xhtml"
+ xmlns:local="http://syriaca.org/ns"
  xmlns="http://www.w3.org/1999/xhtml"
  exclude-result-prefixes="xs t s saxon" version="2.0">
 
@@ -91,7 +92,6 @@
  <!--  name-page-short: short name of the page (for use in head/title) -->
  <!--  colquery: constructed variable with query for collection fn. -->
  <!-- =================================================================== -->
-
  <xsl:param name="idxdir">../places/</xsl:param> 
  <xsl:param name="sourcedir">../../places/xml/</xsl:param>
  <xsl:param name="biblsourcedir">../../bibl/xml/</xsl:param>
@@ -246,10 +246,8 @@
             <p><span class="label label-info">Place URI</span>
              <xsl:text>: </xsl:text><xsl:value-of select="."/></p>
             </div>
-           </xsl:for-each>
-           <xsl:for-each select="t:desc[@type='abstract' or starts-with(@xml:id, 'abstract-en')][1]">
-            <p><xsl:apply-templates mode="cleanout"/></p>
-           </xsl:for-each>
+           </xsl:for-each> 
+           <xsl:apply-templates select="t:desc[@type='abstract' or starts-with(@xml:id, 'abstract-en')][1]" mode="abstract"/>
            
            <!-- The map widget -->
            <xsl:if test="t:location[@type='gps' and t:geo]">
@@ -372,6 +370,8 @@
     </xsl:for-each-group>
    </ul>
   </div>
+  
+  
   <xsl:if test="$idx/descendant::t:location[@type='nested']/t:*[@ref=$thisuri]">
    <div id="contents">
     <h3>Contains</h3>
@@ -383,6 +383,17 @@
     </ul>
    </div>
   </xsl:if>
+ 
+  <!-- Build related places and people if they exist -->
+  <xsl:if test="../t:relation">
+   <div id="relations">
+    <h3>Related Places</h3>
+    <ul>
+     <xsl:apply-templates select="../t:relation"/>
+    </ul>
+   </div>
+  </xsl:if>
+  
   <div id="sources">
    <h3>Sources</h3>
    <p><small>Any information without attribution has been created following the Syriaca.org <a href="http://syriaca.org/documentation/">editorial guidelines</a>.</small></p>
@@ -392,10 +403,85 @@
   </div>
  </xsl:template>
  
+ <!-- Template for related people and places -->
+ <xsl:template match="t:relation">
+  <!-- NOTE: there does not seem to be anyway to tell which placeName to use, script assumes first placeName is canonical  -->
+  <!-- Substring # out of place id -->
+  <xsl:variable name="passive-id" select="substring(@passive,2)"/>
+  <!-- Find place name based on place id -->
+  <xsl:variable name="passive-name" select="//t:place[@xml:id = $passive-id]/t:placeName[1]"/>
+  <!-- Build date output-->
+  <xsl:variable name="do-dates">
+   <xsl:if test="@from or @to">
+    (<xsl:choose>
+     <xsl:when test="@from">
+      <xsl:choose>
+       <xsl:when test="@to">
+        <!-- Uses local function in normalization.xsl to trim leading 0 from dates (NOTE: could rename to helper functions) -->
+        <xsl:value-of select="local:trim-date(@from)"/>-<xsl:value-of select="local:trim-date(@to)"/> 
+       </xsl:when>
+       <xsl:otherwise>
+        from <xsl:value-of select="local:trim-date(@from)"/>
+       </xsl:otherwise>
+      </xsl:choose>
+     </xsl:when>
+     <xsl:when test="@to">
+        to <xsl:value-of select="local:trim-date(@to)"/>
+     </xsl:when>
+    </xsl:choose>)
+   </xsl:if>
+  </xsl:variable>
+  <!-- Name string for use within tokenize function -->
+  <xsl:variable name="name-string">
+   <xsl:choose>
+    <!-- Differentiates between resided and other name attributes -->
+    <xsl:when test="@name='resided'">
+     <xsl:value-of select="@name"/> in 
+    </xsl:when>
+    <xsl:otherwise>
+     <xsl:value-of select="@name"/>
+    </xsl:otherwise>
+   </xsl:choose>
+  </xsl:variable>
+  <!-- Footnote string for use within tokenize function -->
+  <xsl:variable name="footnote" select="@source"/>
+  <!-- Language attribute used by do-refs function -->
+  <xsl:variable name="lang" select="ancestor::t:*[@xml:lang][1]"/>
+  <!-- Uses tokenize to split out multiple active references -->
+  <xsl:for-each select="tokenize(@active,' ')">
+   <!-- Find active name using document() to grab name from actual xml file -->
+   <xsl:variable name="active-name">
+    <!-- Builds filename -->
+    <xsl:variable name="filename" select="tokenize(., '/')[last()]"/>
+     <xsl:choose>
+      <!-- Builds path to place and people xml documents -->
+      <xsl:when test="contains(.,'place/')">
+       <!-- Grabs place name data from xml document -->
+       <xsl:value-of select="document(concat($sourcedir, $filename,'.xml'))/descendant::t:place[1]/t:placeName[1]"/>
+      </xsl:when>
+      <xsl:when test="contains(.,'person/')">
+       <!-- Grabs person name data from xml document -->
+       <xsl:value-of select="document(concat('../../persons/xml/tei/',$filename,'.xml'))/descendant::t:person[1]/t:persName[1]/descendant::*"/>
+      </xsl:when>
+     </xsl:choose>
+   </xsl:variable>
+   <li>
+    <!--NOTE:  href is currently pointing to the value in the relation element, files do not currently exist at this location  -->
+    <a href="{concat(.,'.html')}"><xsl:value-of select="$active-name"/></a><xsl:text> </xsl:text>
+    <xsl:value-of select="$name-string"/><xsl:text> </xsl:text>
+    <xsl:value-of select="$passive-name"/><xsl:text> </xsl:text>
+    <xsl:value-of select="$do-dates"/><xsl:text> </xsl:text>
+    <!-- If footnotes exist call function do-refs pass footnotes and language variables to function -->
+    <xsl:if test="$footnote"><xsl:sequence select="local:do-refs($footnote,$lang)"/></xsl:if>
+   </li>
+  </xsl:for-each>
+ </xsl:template>
+ 
  <xsl:template match="t:location[@type='geopolitical' or @type='relative']">
   <li><xsl:apply-templates/>
-  <xsl:call-template name="do-refs"/></li>
+   <xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/></li>
  </xsl:template>
+ 
  
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle standard output of 'nested' locations 
@@ -409,18 +495,31 @@
    </xsl:if>
   </xsl:for-each>
   <xsl:text>.</xsl:text>
-   <xsl:call-template name="do-refs"/>
+   <xsl:apply-templates select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/>
   </li>
  </xsl:template>
  
  <xsl:template match="t:location[@type='gps' and t:geo]">
-  <li>Coordinates: <xsl:value-of select="t:geo"/><xsl:call-template name="do-refs"/></li>
+  <li>Coordinates: <xsl:value-of select="t:geo"/><xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/></li>
  </xsl:template>
  
  <xsl:template match="t:offset | t:measure">
   <xsl:apply-templates select="." mode="out-normal"/>
  </xsl:template>
- 
+ <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+     Description templates 
+     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+ <!-- Descriptions without list elements or paragraph elements -->
+ <xsl:template match="t:desc[not(starts-with(@xml:id, 'abstract-en'))]" mode="plain">
+   <xsl:apply-templates/>
+ </xsl:template>
+ <!-- Descriptions for place abstract -->
+ <xsl:template match="t:desc[not(starts-with(@xml:id, 'abstract-en'))]" mode="abstract">
+  <p>
+   <xsl:apply-templates/>
+  </p>
+ </xsl:template>
+ <!-- General descriptions within the body of the place element, uses lists -->
  <xsl:template match="t:desc[not(starts-with(@xml:id, 'abstract-en'))]">
   <li>
    <xsl:call-template name="langattr"/>
@@ -466,7 +565,7 @@
   <xsl:text>“</xsl:text>
   <xsl:apply-templates/>
   <xsl:text>”</xsl:text>
-  <xsl:call-template name="do-refs"/>
+  <xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/>
  </xsl:template>
  
  <xsl:template match="t:placeName | t:region | t:settlement">
@@ -507,10 +606,11 @@
     <xsl:apply-templates select="." mode="out-normal"/>
    </span>
       
-   <xsl:call-template name="do-refs"/>
+   <xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/>
   </li>
  </xsl:template>
  
+
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle standard output of the licence element in the tei header
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -534,6 +634,10 @@
  <a href="{@target}"><xsl:apply-templates/></a>
 </xsl:template> 
  
+ <!-- NOTE: change to a function? Once I understand how it actually works.
+  depreciated
+  Use local:function in normalization.xsl
+ -->
  <xsl:template name="do-refs">
   <!-- credit sources for data -->
   <xsl:if test="@source">
@@ -571,6 +675,7 @@
   </xsl:choose>
  </xsl:template>
  
+ <!-- NOTE: where is this used? -->
  <xsl:template name="get-description-ele" as="element()*">
   <xsl:choose>
    <xsl:when test="./descendant-or-self::t:listPlace/t:place/t:desc[starts-with(@xml:id, 'abstract-en')]">
