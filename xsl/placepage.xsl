@@ -373,7 +373,7 @@
   
   <!-- Events without @type="attestation" -->
   <xsl:if test="t:event[not(@type='attestation')]">
-   <div id="events">
+   <div id="description">
     <h3>Event<xsl:if test="count(t:event[not(@type='attestation')]) &gt; 1">s</xsl:if></h3>
     <ul>
      <xsl:apply-templates select="t:event[not(@type='attestation')]" mode="event"/>
@@ -403,6 +403,16 @@
    </div>
   </xsl:if>
   
+  <!-- Build errata -->
+  <xsl:if test="t:note[@type='errata' or @type='deprecation']">
+   <div id="errata">
+    <h3>Errata</h3>
+    <ul>
+     <xsl:apply-templates select="t:note[@type='errata']| t:note[@type='deprecation']"/>
+    </ul>
+   </div>
+  </xsl:if>
+  
   <div id="sources">
    <h3>Sources</h3>
    <p><small>Any information without attribution has been created following the Syriaca.org <a href="http://syriaca.org/documentation/">editorial guidelines</a>.</small></p>
@@ -410,14 +420,6 @@
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
    </ul>
   </div>
-  
-  <!-- Add errata if present -->
-  <xsl:if test="t:note[@type='errata' or 'deprecation']">
-   <div id="errata">
-    <h3>Errata</h3>
-     <xsl:apply-templates select="t:note[@type='errata' or 'deprecation']"/>
-   </div>
-  </xsl:if>
  </xsl:template>
  
  <!-- Template to print out events -->
@@ -440,27 +442,8 @@
   <xsl:variable name="passive-id" select="substring(@passive,2)"/>
   <!-- Find place name based on place id -->
   <xsl:variable name="passive-name" select="//t:place[@xml:id = $passive-id]/t:placeName[1]"/>
-  <!-- Build date output-->
-  <xsl:variable name="do-dates">
-   <xsl:if test="@from or @to">
-    (<xsl:choose>
-     <xsl:when test="@from">
-      <xsl:choose>
-       <xsl:when test="@to">
-        <!-- Uses local function in normalization.xsl to trim leading 0 from dates (NOTE: could rename to helper functions) -->
-        <xsl:value-of select="local:trim-date(@from)"/>-<xsl:value-of select="local:trim-date(@to)"/> 
-       </xsl:when>
-       <xsl:otherwise>
-        from <xsl:value-of select="local:trim-date(@from)"/>
-       </xsl:otherwise>
-      </xsl:choose>
-     </xsl:when>
-     <xsl:when test="@to">
-        to <xsl:value-of select="local:trim-date(@to)"/>
-     </xsl:when>
-    </xsl:choose>)
-   </xsl:if>
-  </xsl:variable>
+  <!-- Build date output, uses local function do-dates -->
+  <xsl:variable name="do-dates" select="local:do-dates(.)"/>
   <!-- Name string for use within tokenize function -->
   <xsl:variable name="name-string">
    <xsl:choose>
@@ -536,6 +519,7 @@
  <xsl:template match="t:offset | t:measure">
   <xsl:apply-templates select="." mode="out-normal"/>
  </xsl:template>
+ 
  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      Description templates 
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -577,16 +561,36 @@
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
  
  <xsl:template match="t:note">
+  <xsl:variable name="xmlid" select="@xml:id"/>
   <p>
    <xsl:apply-templates/>
-   <!-- Check for existing punctuation, if none, add . -->
+   <!-- Check for ending punctuation, if none, add . -->
    <xsl:if test="not(ends-with(.,'.'))">
-    <xsl:text>.</xsl:text>    
+    <xsl:text>.</xsl:text>
+   </xsl:if>
+   <!-- If type depreiciated add linked names -->
+   <xsl:if test="@type='deprecation'">
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="../t:link[contains(@target,$xmlid)]"/> 
    </xsl:if>
   </p>
  </xsl:template>
  
-<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+<!-- Handles t:link elements for deperciated notes, pulls value from matching element, output element and footnotes -->
+ <xsl:template match="t:link">
+  <!--NOTE: need code clarification, 
+   Is the element ID always first? are more then one elements referenced by a single link elment? 
+  -->
+  <xsl:variable name="elementID" select="substring-after(substring-before(@target,' '),'#')"/>
+  <xsl:for-each select="/descendant-or-self::*[@xml:id=$elementID]">
+   <xsl:apply-templates select="."/>
+   <!-- NOTE: position last is not working? -->
+<!--   <xsl:if test="not(../preceding-sibling::*[@xml:id=$elementID])"><xsl:text>, </xsl:text></xsl:if>-->
+   <xsl:text> </xsl:text>
+  </xsl:for-each>
+ </xsl:template>
+
+ <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
      handle standard output of a p element 
      ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
@@ -625,9 +629,11 @@
     </xsl:choose>
    </xsl:when>
    <xsl:otherwise>
+    <!-- NOTE: added footnotes to all placeNames if available. Uses local do-refs function -->
     <span class="placeName">
      <xsl:call-template name="langattr"/>
      <xsl:apply-templates mode="cleanout"/>
+     <xsl:sequence select="local:do-refs(@source,@xml:lang)"/>
     </span>
    </xsl:otherwise>
   </xsl:choose>
@@ -635,16 +641,22 @@
 
  <xsl:template match="t:placeName"  mode="list">
   <xsl:param name="idx"/>
-  <li dir="ltr">
-   
-   <!-- write out the placename itself, with appropriate language and directionality indicia -->
-   <span class="placeName">
-    <xsl:call-template name="langattr"/>
-    <xsl:apply-templates select="." mode="out-normal"/>
-   </span>
-      
-   <xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/>
-  </li>
+  <xsl:variable name="nameID" select="concat('#',@xml:id)"/>
+  <xsl:choose>
+   <!-- Suppress depreciated names here -->
+   <xsl:when test="/descendant-or-self::t:link[substring-before(@target,' ') = $nameID][contains(@target,'deprecation')]"/>
+   <!-- Output all other names -->
+   <xsl:otherwise>
+    <li dir="ltr">
+     <!-- write out the placename itself, with appropriate language and directionality indicia -->
+     <span class="placeName">
+      <xsl:call-template name="langattr"/>
+      <xsl:apply-templates select="." mode="out-normal"/>
+     </span>
+     <xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/>
+    </li>
+   </xsl:otherwise>
+  </xsl:choose>
  </xsl:template>
  
 
@@ -671,9 +683,8 @@
  <a href="{@target}"><xsl:apply-templates/></a>
 </xsl:template> 
  
- <!-- NOTE: change to a function? Once I understand how it actually works.
-  depreciated
-  Use local:function in normalization.xsl
+ <!-- NOTE: depreciated
+  Use local function local:do-refs(element,lang) in normalization.xsl
  -->
  <xsl:template name="do-refs">
   <!-- credit sources for data -->
