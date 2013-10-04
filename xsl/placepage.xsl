@@ -381,6 +381,7 @@
     </ul>
    </div>
   </xsl:if>
+  
   <!-- Events without @type="attestation" -->
   <xsl:if test="t:event[not(@type='attestation')]">
    <div id="event">
@@ -389,8 +390,17 @@
      <xsl:apply-templates select="t:event[not(@type='attestation')]" mode="event"/>
     </ul>
    </div>   
-  </xsl:if>
+  </xsl:if> 
   
+  <!-- Events with @type="attestation" -->
+  <xsl:if test="t:event[@type='attestation']">
+   <div id="event">
+    <h3>Attestation<xsl:if test="count(t:event[@type='attestation']) &gt; 1">s</xsl:if></h3>
+    <ul>
+     <xsl:apply-templates select="t:event[@type='attestation']" mode="event"/>
+    </ul>
+   </div>   
+  </xsl:if> 
   <xsl:if test="t:state[@type='confession']">
    <div id="description">
     <h3>Known Religious Communities:</h3>
@@ -426,6 +436,7 @@
     <xsl:apply-templates select="t:bibl" mode="footnote"/>
    </ul>
   </div>
+ 
  </xsl:template>
  
  <!-- Template to print out events -->
