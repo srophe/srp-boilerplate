@@ -14,22 +14,17 @@
  <xsl:function name="local:do-dates">
   <xsl:param name="element" as="node()"/>
   <xsl:if test="$element/@when or $element/@notBefore or $element/@notAfter or $element/@from or $element/@to">
-   (
-   <!-- Formats to and from dates -->
-   <xsl:choose>
+   (<xsl:choose>
+    <!-- Formats to and from dates -->
     <xsl:when test="$element/@from">
      <xsl:choose>
       <xsl:when test="$element/@to">
        <xsl:value-of select="local:trim-date($element/@from)"/>-<xsl:value-of select="local:trim-date($element/@to)"/> 
       </xsl:when>
-      <xsl:otherwise>
-       from <xsl:value-of select="local:trim-date($element/@from)"/>
-      </xsl:otherwise>
+      <xsl:otherwise>from <xsl:value-of select="local:trim-date($element/@from)"/></xsl:otherwise>
      </xsl:choose>
     </xsl:when>
-    <xsl:when test="$element/@to">
-     to <xsl:value-of select="local:trim-date($element/@to)"/>
-    </xsl:when>
+    <xsl:when test="$element/@to">to <xsl:value-of select="local:trim-date($element/@to)"/></xsl:when>
    </xsl:choose>
    <!-- Formats notBefore and notAfter dates -->
    <xsl:if test="$element/@notBefore">
@@ -47,8 +42,7 @@
     <!-- Adds comma if there are other dates -->
     <xsl:if test="$element/@to or $element/@from or $element/@notBefore or $element/@notAfter">, </xsl:if>
     <xsl:value-of select="local:trim-date($element/@when)"/>
-   </xsl:if>
-   )
+   </xsl:if>)
    </xsl:if>
  </xsl:function>
  

@@ -239,7 +239,7 @@
           <xsl:apply-templates select="t:title[@xml:lang='en']" mode="biblist"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:apply-templates select="t:monogr/t:title[1]" mode="biblist"/>
+          <xsl:apply-templates select="t:title[1]" mode="biblist"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:for-each>

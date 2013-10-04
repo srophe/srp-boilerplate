@@ -424,12 +424,11 @@
  
  <!-- Template to print out events -->
  <xsl:template match="t:event" mode="event">
-  <!-- @when, @notBefore, @notAfter, @from, @to -->
   <li> 
    <!-- There are several desc templates, this 'plain' mode ouputs all the child elements with no p or li tags -->
    <xsl:apply-templates select="child::*" mode="plain"/>
-   <!-- Adds when attribute data if available -->
-   <xsl:if test="@when"><xsl:text> </xsl:text>(<xsl:value-of select="string(@when)"/>)</xsl:if>
+   <!-- Adds dates if available -->
+   <xsl:sequence select="local:do-dates(.)"/>
    <!-- Adds footnotes if available -->
    <xsl:if test="@source"><xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/></xsl:if>
   </li>
@@ -463,9 +462,9 @@
   <!-- Uses tokenize to split out multiple active references -->
   <xsl:for-each select="tokenize(@active,' ')">
    <!-- Find active name using document() to grab name from actual xml file -->
+   <!-- Builds filename -->
+   <xsl:variable name="filename" select="tokenize(., '/')[last()]"/>
    <xsl:variable name="active-name">
-    <!-- Builds filename -->
-    <xsl:variable name="filename" select="tokenize(., '/')[last()]"/>
      <xsl:choose>
       <!-- Builds path to place and people xml documents -->
       <xsl:when test="contains(.,'place/')">
@@ -480,7 +479,7 @@
    </xsl:variable>
    <li>
     <!--NOTE:  href is currently pointing to the value in the relation element, files do not currently exist at this location  -->
-    <a href="{concat(.,'.html')}"><xsl:value-of select="$active-name"/></a><xsl:text> </xsl:text>
+    <a href="{concat($filename,'.html')}"><xsl:value-of select="$active-name"/></a><xsl:text> </xsl:text>
     <xsl:value-of select="$name-string"/><xsl:text> </xsl:text>
     <xsl:value-of select="$passive-name"/><xsl:text> </xsl:text>
     <xsl:value-of select="$do-dates"/><xsl:text> </xsl:text>
@@ -562,25 +561,36 @@
  
  <xsl:template match="t:note">
   <xsl:variable name="xmlid" select="@xml:id"/>
-  <p>
-   <xsl:apply-templates/>
-   <!-- Check for ending punctuation, if none, add . -->
-   <xsl:if test="not(ends-with(.,'.'))">
-    <xsl:text>.</xsl:text>
-   </xsl:if>
-   <!-- If type depreiciated add linked names -->
-   <xsl:if test="@type='deprecation'">
-    <xsl:text> </xsl:text>
-    <xsl:apply-templates select="../t:link[contains(@target,$xmlid)]"/> 
-   </xsl:if>
-  </p>
+  <xsl:choose>
+   <!-- Adds definition list for depreciated names -->
+   <xsl:when test="@type='deprecation'">
+    <dl>
+     <dt>
+      <xsl:apply-templates select="../t:link[contains(@target,$xmlid)]"/>
+     </dt>
+     <dd>
+      <xsl:apply-templates/>
+      <!-- Check for ending punctuation, if none, add . -->
+      <xsl:if test="not(ends-with(.,'.'))">
+       <xsl:text>.</xsl:text>
+      </xsl:if>
+     </dd>
+    </dl>
+   </xsl:when>
+   <xsl:otherwise>
+    <p>
+     <xsl:apply-templates/>
+     <!-- Check for ending punctuation, if none, add . -->
+     <xsl:if test="not(ends-with(.,'.'))">
+      <xsl:text>.</xsl:text>
+     </xsl:if>
+    </p>
+   </xsl:otherwise>
+  </xsl:choose>
  </xsl:template>
  
 <!-- Handles t:link elements for deperciated notes, pulls value from matching element, output element and footnotes -->
  <xsl:template match="t:link">
-  <!--NOTE: need code clarification, 
-   Is the element ID always first? are more then one elements referenced by a single link elment? 
-  -->
   <xsl:variable name="elementID" select="substring-after(substring-before(@target,' '),'#')"/>
   <xsl:for-each select="/descendant-or-self::*[@xml:id=$elementID]">
    <xsl:apply-templates select="."/>
@@ -723,7 +733,8 @@
   </xsl:choose>
  </xsl:template>
  
- <!-- NOTE: where is this used? -->
+ <!-- NOTE: where is this used? Seems to be an issue with syrac text-->
+ 
  <xsl:template name="get-description-ele" as="element()*">
   <xsl:choose>
    <xsl:when test="./descendant-or-self::t:listPlace/t:place/t:desc[starts-with(@xml:id, 'abstract-en')]">
