@@ -370,17 +370,6 @@
     </xsl:for-each-group>
    </ul>
   </div>
-  
-  <!-- Events without @type="attestation" -->
-  <xsl:if test="t:event[not(@type='attestation')]">
-   <div id="description">
-    <h3>Event<xsl:if test="count(t:event[not(@type='attestation')]) &gt; 1">s</xsl:if></h3>
-    <ul>
-     <xsl:apply-templates select="t:event[not(@type='attestation')]" mode="event"/>
-    </ul>
-   </div>   
-  </xsl:if>
-  
   <xsl:if test="$idx/descendant::t:location[@type='nested']/t:*[@ref=$thisuri]">
    <div id="contents">
     <h3>Contains</h3>
@@ -392,7 +381,25 @@
     </ul>
    </div>
   </xsl:if>
- 
+  <!-- Events without @type="attestation" -->
+  <xsl:if test="t:event[not(@type='attestation')]">
+   <div id="event">
+    <h3>Event<xsl:if test="count(t:event[not(@type='attestation')]) &gt; 1">s</xsl:if></h3>
+    <ul>
+     <xsl:apply-templates select="t:event[not(@type='attestation')]" mode="event"/>
+    </ul>
+   </div>   
+  </xsl:if>
+  
+  <xsl:if test="t:state[@type='confession']">
+   <div id="description">
+    <h3>Known Religious Communities:</h3>
+    <ul>
+     <xsl:apply-templates select="t:state[@type='confession']"/>
+    </ul>
+   </div>   
+  </xsl:if>
+  
   <!-- Build related places and people if they exist -->
   <xsl:if test="../t:relation">
    <div id="relations">
@@ -411,8 +418,7 @@
      <xsl:apply-templates select="t:note[@type='errata']| t:note[@type='deprecation']"/>
     </ul>
    </div>
-  </xsl:if>
-  
+  </xsl:if> 
   <div id="sources">
    <h3>Sources</h3>
    <p><small>Any information without attribution has been created following the Syriaca.org <a href="http://syriaca.org/documentation/">editorial guidelines</a>.</small></p>
@@ -431,6 +437,15 @@
    <xsl:sequence select="local:do-dates(.)"/>
    <!-- Adds footnotes if available -->
    <xsl:if test="@source"><xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/></xsl:if>
+  </li>
+ </xsl:template>
+ 
+ <!-- Template to print out confession section -->
+ <xsl:template match="t:state[@type='confession']">
+  <!--NOTE:  May need to switch to apply-templates, but will also have to add a label template -->
+  <li>
+   <xsl:value-of select="."/>
+   <xsl:sequence select="local:do-dates(.)"/>
   </li>
  </xsl:template>
  
