@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="ltr"
-           xml:lang="en"
-           lang="en">Reshʿayna — </bdi>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="rtl"
-           xml:lang="syr"
-           lang="syr">ܪܝܫ ܥܝܢܐ</bdi>
-   </title>
+   <title>Reshʿayna — ܪܝܫ ܥܝܢܐ</title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/172-atom.xml"/>
    <id>tag:syriaca.org,2013:place-172</id>
    <updated>2013-08-29-04:00</updated>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Reshʿayna — </bdi>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="rtl"
-              xml:lang="syr"
-              lang="syr">ܪܝܫ ܥܝܢܐ</bdi>
-      </title>
+      <title>Reshʿayna — ܪܝܫ ܥܝܢܐ</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/172.html"/>
@@ -34,7 +16,7 @@
             href="http://srophe.github.io/srp-places-app/places/172-atom.xml"/>
       <id>tag:syriaca.org,2013:place-172</id>
       <updated>2013-08-29-04:00</updated>
-      <summary> City on the Khabur, located in the eastern part of ancient Osrhoene and today straddling the Turkish-Syrian border, the Syrian part now bearing the name Raʾs al-ʿAyn and the Turkish part Ceylanpınar (earlier Resülayn). </summary>
+      <summary> City on the Khabur, located in the eastern part of ancient Osrhoene and today straddling the Turkish-Syrian border, the Syrian part now bearing the name Raʾs al-ʿAyn and the Turkish part Ceylanpınar (earlier Resülayn).</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Robert Aydin</contributor>

@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="ltr"
-           xml:lang="en"
-           lang="en">Karka d-Beth Slokh — </bdi>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="rtl"
-           xml:lang="syr"
-           lang="syr">ܟܪܟܐ ܕܒܝܬ ܣܠܘܟ</bdi>
-   </title>
+   <title>Karka d-Beth Slokh — ܟܪܟܐ ܕܒܝܬ ܣܠܘܟ</title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/108-atom.xml"/>
    <id>tag:syriaca.org,2013:place-108</id>
    <updated>2013-08-29-04:00</updated>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Karka d-Beth Slokh — </bdi>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="rtl"
-              xml:lang="syr"
-              lang="syr">ܟܪܟܐ ܕܒܝܬ ܣܠܘܟ</bdi>
-      </title>
+      <title>Karka d-Beth Slokh — ܟܪܟܐ ܕܒܝܬ ܣܠܘܟ</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/108.html"/>
@@ -34,7 +16,7 @@
             href="http://srophe.github.io/srp-places-app/places/108-atom.xml"/>
       <id>tag:syriaca.org,2013:place-108</id>
       <updated>2013-08-29-04:00</updated>
-      <summary> The name occurs in the 6th cent. ‘History of Karka d- Beth Slokh and its Martyrs’ published by Bedjan, and it means literally 'Fortress of the House of Seleucus.' </summary>
+      <summary> The name occurs in the 6th cent. ‘History of Karka d- Beth Slokh and its Martyrs’ published by Bedjan, and it means literally 'Fortress of the House of Seleucus.'</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Robert Aydin</contributor>

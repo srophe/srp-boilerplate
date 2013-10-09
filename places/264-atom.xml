@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="ltr"
-           xml:lang="en"
-           lang="en">Maʿad</bdi>
-   </title>
+   <title>Maʿad</title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/264-atom.xml"/>
    <id>tag:syriaca.org,2013:place-264</id>
    <updated>2013-08-29-04:00</updated>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Maʿad</bdi>
-      </title>
+      <title>Maʿad</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/264.html"/>
@@ -26,7 +16,7 @@
             href="http://srophe.github.io/srp-places-app/places/264-atom.xml"/>
       <id>tag:syriaca.org,2013:place-264</id>
       <updated>2013-08-29-04:00</updated>
-      <summary> The village of Maʿad is 14 km. northeast of Byblos (Jbeil), 52 km. from Beirut, 525 m. above sea level. </summary>
+      <summary> The village of Maʿad is 14 km. northeast of Byblos (Jbeil), 52 km. from Beirut, 525 m. above sea level.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
    </entry>

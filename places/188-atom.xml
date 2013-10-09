@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="ltr"
-           xml:lang="en"
-           lang="en">Siirt — </bdi>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="rtl"
-           xml:lang="syr"
-           lang="syr">ܣܥܪܬ</bdi>
-   </title>
+   <title>Siirt — ܣܥܪܬ</title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/188-atom.xml"/>
    <id>tag:syriaca.org,2013:place-188</id>
    <updated>2013-08-29-04:00</updated>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Siirt — </bdi>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="rtl"
-              xml:lang="syr"
-              lang="syr">ܣܥܪܬ</bdi>
-      </title>
+      <title>Siirt — ܣܥܪܬ</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/188.html"/>
@@ -34,7 +16,7 @@
             href="http://srophe.github.io/srp-places-app/places/188-atom.xml"/>
       <id>tag:syriaca.org,2013:place-188</id>
       <updated>2013-08-29-04:00</updated>
-      <summary> A city in eastern Turkey, southwest of Lake Van. </summary>
+      <summary> A city in eastern Turkey, southwest of Lake Van.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Robert Aydin</contributor>

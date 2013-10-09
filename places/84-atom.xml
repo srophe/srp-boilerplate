@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="ltr"
-           xml:lang="en"
-           lang="en">Fars</bdi>
-   </title>
+   <title>Fars</title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/84-atom.xml"/>
    <id>tag:syriaca.org,2013:place-84</id>
    <updated>2013-08-29-04:00</updated>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Fars</bdi>
-      </title>
+      <title>Fars</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/84.html"/>
@@ -26,7 +16,7 @@
             href="http://srophe.github.io/srp-places-app/places/84-atom.xml"/>
       <id>tag:syriaca.org,2013:place-84</id>
       <updated>2013-08-29-04:00</updated>
-      <summary> A region in southwestern Iran, often identified as the heartland of the Iranian people. </summary>
+      <summary> A region in southwestern Iran, often identified as the heartland of the Iranian people.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Anthony Davis</contributor>

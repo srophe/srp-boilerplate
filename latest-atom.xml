@@ -7,12 +7,7 @@
    <id>tag:syriaca.org,2013:gazetteer-latest</id>
    <updated>2013-08-29-04:00</updated>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Ābājālūi</bdi>
-      </title>
+      <title>Ābājālūi</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/881.html"/>
@@ -27,12 +22,7 @@
       <contributor>Anthony Davis</contributor>
    </entry>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Abba Ṣliba</bdi>
-      </title>
+      <title>Abba Ṣliba</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/659.html"/>
@@ -46,12 +36,7 @@
       <author>David A. Michelson</author>
    </entry>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Abnāye</bdi>
-      </title>
+      <title>Abnāye</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/882.html"/>
@@ -66,12 +51,7 @@
       <contributor>Anthony Davis</contributor>
    </entry>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Abrō</bdi>
-      </title>
+      <title>Abrō</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/883.html"/>
@@ -86,12 +66,7 @@
       <contributor>Anthony Davis</contributor>
    </entry>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Acre</bdi>
-      </title>
+      <title>Acre</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/14.html"/>
@@ -109,16 +84,7 @@
       </georss:where>
    </entry>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Adana — </bdi>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="rtl"
-              xml:lang="syr"
-              lang="syr">ܐܛܢܗ</bdi>
-      </title>
+      <title>Adana — ܐܛܢܗ</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/15.html"/>
@@ -136,12 +102,7 @@
       </georss:where>
    </entry>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Adeḥ</bdi>
-      </title>
+      <title>Adeḥ</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/884.html"/>
@@ -156,16 +117,7 @@
       <contributor>Anthony Davis</contributor>
    </entry>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Adharbayjān — </bdi>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="rtl"
-              xml:lang="syr"
-              lang="syr">ܐܕܪܒܝܓܐܢ</bdi>
-      </title>
+      <title>Adharbayjān — ܐܕܪܒܝܓܐܢ</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/5.html"/>
@@ -180,12 +132,7 @@
       <contributor>Robert Aydin</contributor>
    </entry>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Adiabene</bdi>
-      </title>
+      <title>Adiabene</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/993.html"/>
@@ -194,18 +141,13 @@
             href="http://srophe.github.io/srp-places-app/places/993-atom.xml"/>
       <id>tag:syriaca.org,2013:place-993</id>
       <updated>2013-08-29-04:00</updated>
-      <summary> Classical Adiabene, Syriac Ḥadyāb, refers to the region between the Upper and Lower Zab rivers, from the Tigris in the west to Mt. Ṣalāḥ al-dīn (= Mt. Pirmum) in the east. </summary>
+      <summary> Classical Adiabene, Syriac Ḥadyāb, refers to the region between the Upper and Lower Zab rivers, from the Tigris in the west to Mt. Ṣalāḥ al-dīn (= Mt. Pirmum) in the east.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Anthony Davis</contributor>
    </entry>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Aegeae</bdi>
-      </title>
+      <title>Aegeae</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/16.html"/>

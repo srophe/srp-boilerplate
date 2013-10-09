@@ -1,31 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="ltr"
-           xml:lang="en"
-           lang="en">Qenneshre — </bdi>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="rtl"
-           xml:lang="syr"
-           lang="syr">ܕܝܪܐ ܕܩܢܫܪܝܢ</bdi>
-   </title>
+   <title>Qenneshre — ܕܝܪܐ ܕܩܢܫܪܝܢ</title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/230-atom.xml"/>
    <id>tag:syriaca.org,2013:place-230</id>
    <updated>2013-08-29-04:00</updated>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Qenneshre — </bdi>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="rtl"
-              xml:lang="syr"
-              lang="syr">ܕܝܪܐ ܕܩܢܫܪܝܢ</bdi>
-      </title>
+      <title>Qenneshre — ܕܝܪܐ ܕܩܢܫܪܝܢ</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/230.html"/>
@@ -34,7 +16,7 @@
             href="http://srophe.github.io/srp-places-app/places/230-atom.xml"/>
       <id>tag:syriaca.org,2013:place-230</id>
       <updated>2013-08-29-04:00</updated>
-      <summary> A W.-Syr. monastery that in its heyday (6th–9th cent.) stood out as a center of Greek study in the Syriac-speaking Near East and which played a key role in the transmission of Greek learning into Syriac. </summary>
+      <summary> A W.-Syr. monastery that in its heyday (6th–9th cent.) stood out as a center of Greek study in the Syriac-speaking Near East and which played a key role in the transmission of Greek learning into Syriac.</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
       <contributor>Robert Aydin</contributor>

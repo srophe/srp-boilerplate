@@ -74,9 +74,12 @@
         <xsl:result-document format="atom" href="{$destdir}{$placeslevel}{t:idno[@type='placeID']}-atom.xml">
           <feed xmlns="http://www.w3.org/2005/Atom">
             <title>
-              <xsl:call-template name="place-title-std">
-                <xsl:with-param name="withbdi">no</xsl:with-param>
-              </xsl:call-template>
+              <xsl:variable name="title">
+                <xsl:call-template name="place-title-std">
+                  <xsl:with-param name="withbdi">no</xsl:with-param>
+                </xsl:call-template>                
+              </xsl:variable>
+              <xsl:value-of select="$title"/>
             </title>
             <link rel="self" type="application/atom+xml" href="{$base}{t:idno[@type='placeID']}-atom.xml"/>
             <id>tag:syriaca.org,2013:<xsl:value-of select="@xml:id"/></id>
@@ -91,9 +94,12 @@
   <xsl:template match="t:place" mode="atom-entry">
     <entry>
       <title>
-        <xsl:call-template name="place-title-std">
-          <xsl:with-param name="withbdi">no</xsl:with-param>
-        </xsl:call-template>
+        <xsl:variable name="title">
+          <xsl:call-template name="place-title-std">
+            <xsl:with-param name="withbdi">no</xsl:with-param>
+          </xsl:call-template>                
+        </xsl:variable>
+        <xsl:value-of select="$title"/>
       </title>
       <link rel="alternate" type="text/html" href="{$base}{$placeslevel}{t:idno[@type='placeID']}.html"></link>
       <link rel="self" type="application/atom+xml" href="{$base}{$placeslevel}{t:idno[@type='placeID']}-atom.xml"></link>

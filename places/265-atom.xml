@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss">
-   <title>
-      <bdi xmlns="http://www.w3.org/1999/xhtml"
-           dir="ltr"
-           xml:lang="en"
-           lang="en">Eddé</bdi>
-   </title>
+   <title>Eddé</title>
    <link rel="self"
          type="application/atom+xml"
          href="http://srophe.github.io/srp-places-app/265-atom.xml"/>
    <id>tag:syriaca.org,2013:place-265</id>
    <updated>2013-08-29-04:00</updated>
    <entry>
-      <title>
-         <bdi xmlns="http://www.w3.org/1999/xhtml"
-              dir="ltr"
-              xml:lang="en"
-              lang="en">Eddé</bdi>
-      </title>
+      <title>Eddé</title>
       <link rel="alternate"
             type="text/html"
             href="http://srophe.github.io/srp-places-app/places/265.html"/>
@@ -26,7 +16,7 @@
             href="http://srophe.github.io/srp-places-app/places/265-atom.xml"/>
       <id>tag:syriaca.org,2013:place-265</id>
       <updated>2013-08-29-04:00</updated>
-      <summary> The town of Eddé lies in the foothills of Mount Lebanon, above the town of Batrun (Botrom). </summary>
+      <summary> The town of Eddé lies in the foothills of Mount Lebanon, above the town of Batrun (Botrom).</summary>
       <author>Thomas A. Carlson</author>
       <author>David A. Michelson</author>
    </entry>
