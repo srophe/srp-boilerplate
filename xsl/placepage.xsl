@@ -236,7 +236,6 @@
            
            <!-- create any appropriate link icons -->
            <xsl:call-template name="link-icons"/>
-           
            <!-- emit place URI and associated help links -->
            <xsl:for-each select="t:idno[@type='SRP']">
             <div>
@@ -429,6 +428,11 @@
     </ul>
    </div>
   </xsl:if> 
+  <!-- Add see also -->
+  <!-- NOTE: does not work, as link icons relys on index.xml data -->
+<!--  <xsl:call-template name="link-icons-text"/>-->
+  
+  <!-- Sources -->
   <div id="sources">
    <h3>Sources</h3>
    <p><small>Any information without attribution has been created following the Syriaca.org <a href="http://syriaca.org/documentation/">editorial guidelines</a>.</small></p>
