@@ -29,13 +29,11 @@
    <!-- Formats notBefore and notAfter dates -->
    <xsl:if test="$element/@notBefore">
     <!-- Adds comma if there are other dates -->
-    <xsl:if test="$element/@to or $element/@from">, </xsl:if>
-    not before <xsl:value-of select="local:trim-date($element/@notBefore)"/>
+    <xsl:if test="$element/@to or $element/@from">, </xsl:if>not before <xsl:value-of select="local:trim-date($element/@notBefore)"/>
    </xsl:if>
    <xsl:if test="$element/@notAfter">
     <!-- Adds comma if there are other dates -->
-    <xsl:if test="$element/@to or $element/@from or $element/@notBefore">, </xsl:if>
-    not after<xsl:value-of select="local:trim-date($element/@notAfter)"/>
+    <xsl:if test="$element/@to or $element/@from or $element/@notBefore">, </xsl:if>not after<xsl:value-of select="local:trim-date($element/@notAfter)"/>
    </xsl:if>
    <!-- Formats when, single date -->
    <xsl:if test="$element/@when">
