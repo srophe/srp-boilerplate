@@ -402,7 +402,7 @@
   </xsl:if> 
   <xsl:if test="t:state[@type='confession']">
    <div id="description">
-    <h3>Known Religious Communities:</h3>
+    <h3>Known Religious Communities</h3>
     <ul>
      <xsl:apply-templates select="t:state[@type='confession']"/>
     </ul>
