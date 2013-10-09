@@ -555,7 +555,7 @@
  <xsl:template match="t:label" mode="plain">
   <xsl:apply-templates/>
  </xsl:template>
- <!-- Descriptions for place abstract -->
+ <!-- Descriptions for place abstract  added template for abstracts, handles quotes and references.-->
  <xsl:template match="t:desc[not(starts-with(@xml:id, 'abstract-en'))]" mode="abstract">
   <p>
    <xsl:apply-templates/>

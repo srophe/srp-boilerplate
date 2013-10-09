@@ -117,14 +117,20 @@
   <xsl:template match="t:editor" mode="atom-out">
     <xsl:variable name="name" select="normalize-space(normalize-unicode(xs:string(.), $normalization))"/>
     <xsl:if test="not(preceding-sibling::t:editor[normalize-space(normalize-unicode(xs:string(.), $normalization))=$name])">
-      <author><xsl:value-of select="$name"/></author>
+      <author>
+        <name>
+          <xsl:value-of select="$name"/>          
+        </name>
+      </author>
     </xsl:if>
   </xsl:template>
   
   <xsl:template match="t:author" mode="atom-out">
     <xsl:variable name="name" select="normalize-space(normalize-unicode(xs:string(.), $normalization))"/>
     <xsl:if test="not(preceding-sibling::t:editor[normalize-space(normalize-unicode(xs:string(.), $normalization))=$name]) and not(preceding-sibling::t:author[normalize-space(normalize-unicode(xs:string(.), $normalization))=$name])">
-      <contributor><xsl:value-of select="$name"/></contributor>
+      <contributor>
+        <name><xsl:value-of select="$name"/></name>
+      </contributor>
     </xsl:if>
   </xsl:template>
   
