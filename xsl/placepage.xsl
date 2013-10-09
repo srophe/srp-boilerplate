@@ -430,7 +430,7 @@
   </xsl:if> 
   <!-- Add see also -->
   <!-- NOTE: does not work, as link icons relys on index.xml data -->
-<!--  <xsl:call-template name="link-icons-text"/>-->
+  <xsl:call-template name="link-icons-text"/>
   
   <!-- Sources -->
   <div id="sources">
