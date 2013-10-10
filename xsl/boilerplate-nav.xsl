@@ -18,17 +18,11 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
      </a>
-     <p class="brand"><xsl:value-of select="$app-name"/><br/>
+     <p class="brand"><a href="{$basepath}"><xsl:value-of select="$app-name"/></a><br/>
       <span style="font-size:.75em; font-style:italic;">Pre-Publication Draft</span>
      </p>
      <div class="nav-collapse collapse">
       <ul class="nav">
-       <xsl:element name="li">
-        <xsl:if test="$active='home'">
-         <xsl:attribute name="class">active</xsl:attribute>
-        </xsl:if>
-        <a href="{$basepath}/index.html">home</a>
-       </xsl:element>
        <xsl:element name="li">
         <xsl:if test="$active='browse'">
          <xsl:attribute name="class">active</xsl:attribute>
