@@ -18,7 +18,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
      </a>
-     <p class="brand"><a href="{$basepath}"><xsl:value-of select="$app-name"/></a><br/>
+     <p class="brand"><a href="{$basepath}/index.html"><xsl:value-of select="$app-name"/></a><br/>
       <span style="font-size:.75em; font-style:italic;">Pre-Publication Draft</span>
      </p>
      <div class="nav-collapse collapse">
