@@ -57,9 +57,5 @@
     </div><xsl:comment>/ .container-fluid</xsl:comment>
    </div>
   </div>
-  <!-- Draft warning div, remove at publication time -->
-  <div>
-   <p style="margin:0 2em; padding:0;">Pre-Publication Draft</p>
-  </div>  
  </xsl:template>
 </xsl:stylesheet>
