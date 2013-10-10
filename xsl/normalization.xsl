@@ -51,7 +51,7 @@
    <!-- NOTE: This can easily be changed to display BCE instead -->
    <!-- removes leading 0 but leaves -  -->
    <xsl:when test="starts-with($date,'-0')">
-    <xsl:value-of select="concat('-',substring($date,3))"/>
+    <xsl:value-of select="concat(substring($date,3),' BCE')"/>
    </xsl:when>
    <!-- removes leading 0 -->
    <xsl:when test="starts-with($date,'0')">
