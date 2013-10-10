@@ -403,6 +403,7 @@
   <xsl:if test="t:state[@type='confession']">
    <div id="description">
     <h3>Known Religious Communities</h3>
+    <p style="font-size:small;"><em>This list is not necessarily exhaustive, and the order does not represent importance or proportion of the population.  Instead, the list only represents groups for which Syriac.org has source(s) and dates.</em></p>
     <ul>
      <xsl:apply-templates select="t:state[@type='confession']"/>
     </ul>
