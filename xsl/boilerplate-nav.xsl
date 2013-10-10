@@ -18,7 +18,9 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
      </a>
-     <p class="brand"><xsl:value-of select="$app-name"/></p>
+     <p class="brand"><xsl:value-of select="$app-name"/><br/>
+      <span style="font-size:.75em; font-style:italic;">Pre-Publication Draft</span>
+     </p>
      <div class="nav-collapse collapse">
       <ul class="nav">
        <xsl:element name="li">
@@ -55,6 +57,9 @@
     </div><xsl:comment>/ .container-fluid</xsl:comment>
    </div>
   </div>
-  
+  <!-- Draft warning div, remove at publication time -->
+  <div>
+   <p style="margin:0 2em; padding:0;">Pre-Publication Draft</p>
+  </div>  
  </xsl:template>
 </xsl:stylesheet>

@@ -1,63 +1,493 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]>--><html xmlns:x="http://www.w3.org/1999/xhtml" xmlns:local="http://syriaca.org/ns" xmlns="http://www.w3.org/1999/xhtml" class="no-js"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><title>The Syriac Gazetteer | Edessa — ܐܘܪܗܝ Edessa</title><meta name="description" content="A city of Mesopotamia, the capital of the ancient kingdom of Osrhoene, modern Urfa." /><meta name="viewport" content="width=device-width" /><link rel="where" href="data:application/json,%7B%22type%22%3A%20%22Point%22%2C%20%22coordinates%22%3A%20%5B38.8%2C%2037.15%5D%7D" /><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" /><link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" /><meta name="DC.subject" property="dc.subject" content="Geography, Ancient" /><meta name="DC.type" property="dc.type" content="Text" /><meta name="DC.isPartOf" property="dc.ispartof" content="The Syriac Gazetteer" /><meta name="DC.title" property="dc.title" lang="en" content="Edessa — ܐܘܪܗܝ" /><meta name="DC.creator" property="dc.creator" lang="en" content="Thomas A. Carlson" /><meta name="DC.creator" property="dc.creator" lang="en" content="David A. Michelson" /><meta name="DC.contributor" property="dc.contributor" lang="en" content="Robert Aydin" /><meta name="DC.contributor" property="dc.contributor" lang="en" content="Dayroyo Roger-Youssef Akhrass" /><meta name="DC.contributor" property="dc.contributor" lang="en" content="Anthony Davis" /><meta name="DC.publisher" property="dc.publisher" lang="en" content="Syriaca.org: The Syriac Reference Portal" /><meta name="DC.identifier" property="dc.identifier" content="http://syriaca.org/place/78/" /><meta name="DC.rights" property="dc.rights" lang="en" content="Distributed under a Creative Commons Attribution 3.0 Unported License. This entry incorporates copyrighted material from the following work(s): used under a Creative Commons Attribution license" /><meta name="DCTERMS.license" property="dcterms.license" content="http://creativecommons.org/licenses/by/3.0/" /><meta name="DC.date" property="dc.date" lang="en" content="2013-08-14" /><link rel="stylesheet" href="../css/bootstrap.min.css" />
-<style>body{padding:10px; padding-top:70px; padding-bottom:40px;}</style>
-<link rel="stylesheet" href="../css/bootstrap-responsive.min.css" /><link rel="stylesheet" href="../css/main.css" />
-<script src="../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<script src="http://isawnyu.github.com/awld-js/lib/requirejs/require.min.js" type="text/javascript"></script>
-<script src="http://isawnyu.github.com/awld-js/awld.js?autoinit" type="text/javascript"></script><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" /></head><body xml:lang="en" lang="en">
-   
-    <!--[if lt IE 7]>
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]>-->
+<html xmlns:x="http://www.w3.org/1999/xhtml" xmlns:local="http://syriaca.org/ns"
+    xmlns="http://www.w3.org/1999/xhtml" class="no-js">
+    <!--<![endif]-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>The Syriac Gazetteer | Edessa — ܐܘܪܗܝ Edessa</title>
+        <meta name="description"
+            content="A city of Mesopotamia, the capital of the ancient kingdom of Osrhoene, modern Urfa." />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="where"
+            href="data:application/json,%7B%22type%22%3A%20%22Point%22%2C%20%22coordinates%22%3A%20%5B38.8%2C%2037.15%5D%7D" />
+        <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+        <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+        <meta name="DC.subject" property="dc.subject" content="Geography, Ancient" />
+        <meta name="DC.type" property="dc.type" content="Text" />
+        <meta name="DC.isPartOf" property="dc.ispartof" content="The Syriac Gazetteer" />
+        <meta name="DC.title" property="dc.title" lang="en" content="Edessa — ܐܘܪܗܝ" />
+        <meta name="DC.creator" property="dc.creator" lang="en" content="Thomas A. Carlson" />
+        <meta name="DC.creator" property="dc.creator" lang="en" content="David A. Michelson" />
+        <meta name="DC.contributor" property="dc.contributor" lang="en" content="Robert Aydin" />
+        <meta name="DC.contributor" property="dc.contributor" lang="en"
+            content="Dayroyo Roger-Youssef Akhrass" />
+        <meta name="DC.contributor" property="dc.contributor" lang="en" content="Anthony Davis" />
+        <meta name="DC.publisher" property="dc.publisher" lang="en"
+            content="Syriaca.org: The Syriac Reference Portal" />
+        <meta name="DC.identifier" property="dc.identifier" content="http://syriaca.org/place/78/" />
+        <meta name="DC.rights" property="dc.rights" lang="en"
+            content="Distributed under a Creative Commons Attribution 3.0 Unported License. This entry incorporates copyrighted material from the following work(s): used under a Creative Commons Attribution license" />
+        <meta name="DCTERMS.license" property="dcterms.license"
+            content="http://creativecommons.org/licenses/by/3.0/" />
+        <meta name="DC.date" property="dc.date" lang="en" content="2013-08-14" />
+        <link rel="stylesheet" href="../css/bootstrap.min.css" />
+        <style>
+            body{
+                padding:10px;
+                padding-top:70px;
+                padding-bottom:40px;
+            }</style>
+        <link rel="stylesheet" href="../css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="../css/main.css" />
+        <script src="../js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="http://isawnyu.github.com/awld-js/lib/requirejs/require.min.js" type="text/javascript"></script>
+        <script src="http://isawnyu.github.com/awld-js/awld.js?autoinit" type="text/javascript"></script>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+    </head>
+    <body xml:lang="en" lang="en">
+        <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-   
-  <div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><p class="brand">The Syriac Gazetteer</p><div class="nav-collapse collapse"><ul class="nav"><li><a href="../index.html">home</a></li><li class="active"><a href="../browse.html">browse</a></li><li><a href="../about.html">about</a></li><li><a href="../help/index.html">help</a></li></ul><p class="navbar-text"><a class="pull-right btn btn-info">advanced</a></p><form class="navbar-search pull-right s-asearch"><input class="search-query" type="text" placeholder="search" /></form></div><!--/.nav-collapse--></div><!--/ .container-fluid--></div></div><div class="container-fluid"><div class="row-fluid"><div class="span7" xml:id="place-content"><h2><bdi dir="ltr" xml:lang="en" lang="en">Edessa — </bdi><bdi dir="rtl" xml:lang="syr" lang="syr">ܐܘܪܗܝ</bdi></h2><div id="link-icons"><a href="http://pleiades.stoa.org/places/658457"><img src="../img/circle-pi-25.png" alt="Image of the Greek letter pi in blue; small icon of the Pleiades project" title="click to view Edessa — ܐܘܪܗܝ in Pleiades" /></a><a href="http://en.wikipedia.org/wiki/Edessa"><img src="../img/Wikipedia-25.png" alt="The Wikipedia icon" title="click to view Edessa — ܐܘܪܗܝ in Wikipedia" /></a><a href="http://en.wikipedia.org/wiki/%C5%9Eanl%C4%B1urfa"><img src="../img/Wikipedia-25.png" alt="The Wikipedia icon" title="click to view Edessa — ܐܘܪܗܝ in Wikipedia" /></a><a href="https://maps.google.com/maps?f=q&amp;hl=en&amp;q=http://srophe.github.io/srp-places-app/places/78-atom.xml&amp;z=4"><img src="../img/gmaps-25.png" alt="The Google Maps icon" title="click to view Edessa — ܐܘܪܗܝ on Google Maps" /></a><a href="https://github.com/srophe/places/blob/master/xml/78.xml" rel="alternate" type="application/tei+xml"><img src="../img/tei-25.png" alt="The Text Encoding Initiative icon" title="click to view the TEI XML source data for this place" /></a><a href="http://srophe.github.io/srp-places-app/places/78-atom.xml" rel="alternate" type="application/atom+xml"><img src="../img/atom-25.png" alt="The Atom format icon" title="click to view this data in Atom XML format" /></a></div><div><a href="../help/terms.html#place-uri" title="Click to read more about Place URIs"><div class="helper circle"><p>i</p></div></a><p><span class="label label-info">Place URI</span>: http://syriaca.org/place/78</p></div><p>A city of <a class="placeName" href="124.html">Mesopotamia</a>, the capital of the ancient
-            kingdom of <a class="placeName" href="145.html">Osrhoene</a>, modern Urfa.</p><div id="map"></div><div id="place-78"><div id="placenames"><h3>Names</h3><ul><li dir="ltr"><span class="placeName" xml:lang="syr" lang="syr"><bdi dir="rtl">ܐܘܪܗܝ</bdi></span><bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"></bdi></li><li dir="ltr"><span class="placeName" xml:lang="en" lang="en">Edessa</span><bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-2">2</a>, </span><span class="footnote-ref"> <a href="#bib78-5">5</a>, </span><span class="footnote-ref"> <a href="#bib78-6">6</a>, </span><span class="footnote-ref"> <a href="#bib78-7">7</a></span></bdi></li><li dir="ltr"><span class="placeName" xml:lang="syr-Syrj" lang="syr-Syrj"><bdi dir="rtl">ܐܘܪܗܳܝ</bdi></span><bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-3">3</a>, </span><span class="footnote-ref"> <a href="#bib78-8">8</a></span></bdi></li><li dir="ltr"><span class="placeName" xml:lang="syr-Syrj" lang="syr-Syrj"><bdi dir="rtl">ܐܘܪܦܰܗ̈</bdi></span><bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-3">3</a></span></bdi></li><li dir="ltr"><span class="placeName" xml:lang="ar" lang="ar"><bdi dir="rtl">الرها</bdi></span><bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-4">4</a></span></bdi></li><li dir="ltr"><span class="placeName" xml:lang="ar" lang="ar"><bdi dir="rtl">اورفه</bdi></span><bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-4">4</a></span></bdi></li><li dir="ltr"><span class="placeName" xml:lang="en" lang="en">Urfa</span><bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-2">2</a>, </span><span class="footnote-ref"> <a href="#bib78-5">5</a>, </span><span class="footnote-ref"> <a href="#bib78-7">7</a></span></bdi></li></ul></div><div id="type"><h3>Place Type</h3><ul><li>settlement</li></ul></div><div id="location"><h3>Location</h3><ul><li>Coordinates: 37.15 38.8<bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-2">2</a></span></bdi></li><li>
-                        five day journey
-                        eastward from
-                        <a class="placeName" href="18.html">Aleppo</a>
-                    <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-5">5</a></span></bdi></li></ul></div><div id="description"><h3>Description</h3><ul><li xml:lang="syr-Syrj" lang="syr-Syrj">
-                        “ܡܕܺܝܢܬܐ ܗܳܝ ܛܒܝܒܬܳܐ ܠܡܰܕܢܚܳܐ ܕܚܳܠܳܒ ܚܰܡܫܳܐ ܝܰܘܡ̈ܝܢ ܘܡܶܫܬܰܡܗܐ ܝܰܘܡܳܢ ܐܘܪܦܰܗ̈”<bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-3">3</a></span></bdi>
-                    </li><li xml:lang="ar" lang="ar">
-                        “مدينة مشهورة خمسة ايام عن حلب شرقا وتسمى اليوم اورفه.”<bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-4">4</a></span></bdi>
-                    </li><li xml:lang="en" lang="en">
-                        “183. Edessa”<bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-1">1</a></span></bdi>
-                    </li><!--WARNING: 78.xml: desc@xml:id="abstract-en-78": untrapped element suppressed--><li xml:lang="en" lang="en">
-                        “a famous city, five day journey eastward from <a class="placeName" href="18.html">Aleppo</a>, now called Urfa.”<bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-5">5</a></span></bdi>
-                    </li></ul></div><div id="event"><h3>Events</h3><ul><li>Renamed Edessa by Seleucus I Nicator.
-   (304 BCE)
-   <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-1">1</a></span></bdi></li><li>Flood of the river <a class="placeName" href="191.html">Daiṣan</a> destroyed part of city.
-   (201)
-   <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-1">1</a></span></bdi></li></ul></div><div id="event"><h3>Attestations</h3><ul><li>Attestation of name ܐܘܪܗܝ in the anonymous Chronicle of 1234.
-   (not before 1146, not after 1234)
-   <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-9">9</a></span></bdi></li><li>Attestation of confession Syrian Orthodox in the anonymous Chronicle of 1234.
-   (1146)
-   <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-9">9</a></span></bdi></li></ul></div><div id="description"><h3>Known Religious Communities</h3><p style="font-size:small;"><em>This list is not necessarily exhaustive, and the order does not represent importance or proportion of the population.  Instead, the list only represents groups for which Syriac.org has source(s) and dates.</em></p><ul><li>
-                        Syrian Orthodox
-                    
-   (451-1924)
-   </li><li>
-                        Muslim
-                    
-   (from 641)
-   </li><li>
-                        Latin
-                    
-   (1098-1144)
-   </li></ul></div><div id="relations"><h3>Related Places</h3><ul><li><a href="145.html">Osrhoene</a> contains Edessa 
-   (to 363)
-    <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-1">1</a></span></bdi></li><li><a href="166.html">Roman Empire</a> contains Edessa 
-   (to 363)
-    <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-1">1</a></span></bdi></li><li><a href="13.html">Ephrem</a> resided in 
-     Edessa 
-   (363-373)
-    <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref"> <a href="#bib78-1">1</a></span></bdi></li></ul></div><div id="errata"><h3>Errata</h3><ul><p>Amir Harrak's GEDSH article identifies its river as the <a class="placeName" href="43.html">Balikh</a>, but the identification is contested.</p></ul></div><div id="see-also"><h3>See Also</h3><ul><li><a href="http://www.csc.org.il/db/browse.aspx?db=SB&amp;sL=E&amp;sK=Edessa&amp;sT=keywords"> Comprehensive Bibliography on Syriac Christianity</a></li><li><a href="http://pleiades.stoa.org/places/658457"><img src="../img/circle-pi-25.png" alt="Image of the Greek letter pi in blue; small icon of the Pleiades project" title="click to view Edessa in Pleiades" /> View in Pleiades</a></li><li><a href="https://maps.google.com/maps?f=q&amp;hl=en&amp;q=http://srophe.github.io/srp-places-app/places/-atom.xml&amp;z=4"><img src="../img/gmaps-25.png" alt="The Google Maps icon" title="click to view Edessa on Google Maps" /> View in Google Maps</a></li><li><a href="https://github.com/srophe/places/blob/master/xml/.xml" rel="alternate" type="application/tei+xml"><img src="../img/tei-25.png" alt="The Text Encoding Initiative icon" title="click to view the TEI XML source data for this place" /> TEI XML source data</a></li><li><a href="http://srophe.github.io/srp-places-app/places/-atom.xml" rel="alternate" type="application/atom+xml"><img src="../img/atom-25.png" alt="The Atom format icon" title="click to view this data in Atom XML format" /> Atom XML format</a></li><li><a href="http://en.wikipedia.org/wiki/Edessa"><img src="../img/Wikipedia-25.png" alt="The Wikipedia icon" title="click to view Edessa in Wikipedia" /> Wikipedia</a></li><li><a href="http://en.wikipedia.org/wiki/%C5%9Eanl%C4%B1urfa"><img src="../img/Wikipedia-25.png" alt="The Wikipedia icon" title="click to view Edessa in Wikipedia" /> Wikipedia</a></li></ul></div><div id="sources"><h3>Sources</h3><p><small>Any information without attribution has been created following the Syriaca.org <a href="http://syriaca.org/documentation/">editorial guidelines</a>.</small></p><ul><li xml:id="bib78-1" id="bib78-1"><span class="footnote-tgt">1</span> <span class="footnote-content"><span class="author">A. Harrak</span>, “<span class="title-analytic"><bdi dir="ltr" xml:lang="en" lang="en">183. Edessa</bdi></span>” in <span class="editor"><span class="persName">Sebastian P. Brock</span></span> et al. (ed.), <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">The Gorgias Encyclopedic Dictionary of the Syriac Heritage</bdi></span> (<span class="pubPlace">Piscataway, <span class="placeName">NJ</span></span>: <span class="publisher">Gorgias Press</span>, <span class="date">2011</span>), pp. 138-139.</span></li><li xml:id="bib78-2" id="bib78-2"><span class="footnote-tgt">2</span> <span class="footnote-content"><span class="editor"><span class="persName">Sebastian P. Brock</span></span> et al. (ed.), <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">The Gorgias Encyclopedic Dictionary of the Syriac Heritage</bdi></span> (<span class="pubPlace">Piscataway, <span class="placeName">NJ</span></span>: <span class="publisher">Gorgias Press</span>, <span class="date">2011</span>), p. 1, 4, 5–6 (with fig. 1), 9–10, 13, 15–16, 18, 26, 29, 31, 33–34, 36, 37–38, 41, 46, 54, 56, 60, 64, 69, 71, 74, 84, 86, 90, 97–98, 99, 102, 107–108, 126, 127, 128, 132–133, 138–139 (with fig. 47), 145, 153, 155, 162, 163, 164, 178, 191–192, 195–196, 197, 199, 201–202, 209, 213, 220, 229, 237, 249, 252, 260–261, 262, 266, 267, 268, 270, 271–272, 273, 284, 287, 288, 303–304, 314, 316, 317, 322, 327–328, 332, 335, 343, 346, 348, 350, 351, 352, 356, 361, 363, 367, 376, 377, 384, 390, 392, 398, 401, 403, 407, 410–411, 419, 431, 432, 433, 438–439, 444, 446, 448, Map I B1, II B1, III.</span></li><li xml:id="bib78-3" id="bib78-3"><span class="footnote-tgt">3</span> <span class="footnote-content"><span class="author"><span class="persName" xml:lang="en" lang="en">Ignatius Afram Barsoum</span></span>, <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">Berule bdire d-ʿal yulpone suryoye hdire</bdi></span>, trans. <span class="editor"><span class="persName" xml:lang="en" lang="en">Philoxenos Yuḥanon Dolabani</span></span> (<span class="pubPlace">Holland</span>: <span class="publisher" xml:lang="en" lang="en">Bar Hebraeus Verlag</span>, <span class="date">1991</span>), p. 556.</span></li><li xml:id="bib78-4" id="bib78-4"><span class="footnote-tgt">4</span> <span class="footnote-content"><span class="author"><span class="persName" xml:lang="en" lang="en">Ignatius Afram Barsoum</span></span>, <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">al-Luʼluʼ al-manthūr fī tārīkh al-ʻulūm wa-al-ādāb al-Suryāniyyah</bdi></span> (<span class="pubPlace">Holland</span>: <span class="publisher" xml:lang="en" lang="en">Bar Hebraeus Verlag</span>, <span class="date">1987</span>), p. 516.</span></li><li xml:id="bib78-5" id="bib78-5"><span class="footnote-tgt">5</span> <span class="footnote-content"><span class="author"><span class="persName" xml:lang="en" lang="en">Ignatius Afram Barsoum</span></span>, <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">The Scattered Pearls: A History of Syriac Literature and Sciences</bdi></span>, trans. <span class="editor"><span class="persName" xml:lang="en" lang="en">Matti Moosa</span></span> (<span class="pubPlace">Piscataway, <span class="placeName">NJ</span></span>: <span class="publisher" xml:lang="en" lang="en">Gorgias Press</span>, <span class="date">2003</span>), p. 553.</span></li><li xml:id="bib78-6" id="bib78-6"><span class="footnote-tgt">6</span> <span class="footnote-content"><span class="editor"><span class="persName" xml:lang="en" lang="en">Sergey Minov</span></span> (ed.), <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">A Comprehensive Bibliography on Syriac Christianity</bdi></span> (<abbr title="no place of publication">n.p.</abbr>: <span class="publisher" xml:lang="en" lang="en">The Center for the Study of Christianity, The Hebrew University of Jerusalem</span>, <span class="date">2013</span>), “<a href="http://www.csc.org.il/db/browse.aspx?db=SB&amp;sL=E&amp;sK=Edessa&amp;sT=keywords">Edessa</a>”.</span></li><li xml:id="bib78-7" id="bib78-7"><span class="footnote-tgt">7</span> <span class="footnote-content"><span class="author"><span class="persName" xml:lang="en" lang="en">David Wilmshurst</span></span>, <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">The ecclesiastical organisation of the Church of the East, 1318-1913</bdi></span> (<span class="pubPlace">Leuven</span>: <span class="publisher" xml:lang="en" lang="en">Peeters</span>, <span class="date">2000</span>), p. 53, 65, 361, 362.</span></li><li xml:id="bib78-8" id="bib78-8"><span class="footnote-tgt">8</span> <span class="footnote-content"><span class="author"><span class="persName" xml:lang="en" lang="en">William Wright</span></span>, <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">Catalogue of Syriac Manuscripts in the British Museum acquired since the year 1838</bdi></span> (<span class="pubPlace">London</span>: <span class="publisher" xml:lang="en" lang="en">Gilbert and Rivington</span>, <span class="date">1870-1872</span>), p. 2:912.</span></li><li xml:id="bib78-9" id="bib78-9"><span class="footnote-tgt">9</span> <span class="footnote-content"><span class="editor"><span class="persName" xml:lang="fr" lang="fr">Jean-Baptiste Chabot</span></span> (ed.),  (<span class="pubPlace">Paris</span>: <span class="publisher" xml:lang="la" lang="la">E Typographeo Reipublicae</span>, <span class="date">1916-1937</span>), p. 2:136.</span></li></ul></div></div></div></div><hr /><footer><div id="citation"><h3>How to Cite This Entry</h3><div id="citation-note"><h4>Note:</h4><span class="person"><span class="persName" xml:lang="en" lang="en">Thomas A. Carlson</span></span> and <span class="person"><span class="persName" xml:lang="en" lang="en">David A. Michelson</span></span>, “<span class="title-analytic"><bdi dir="ltr" xml:lang="en" lang="en">Edessa — </bdi><bdi dir="rtl" xml:lang="syr" lang="syr">ܐܘܪܗܝ</bdi></span>” in <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">The Syriac Gazetteer</bdi></span>, eds. <span class="person"><span class="persName" xml:lang="en" lang="en">Thomas A. Carlson</span></span> and <span class="person"><span class="persName" xml:lang="en" lang="en">David A. Michelson</span></span>, entry published August 14, 2013, Syriaca.org: The Syriac Reference Portal, ed. <span class="principal">David A. Michelson</span>,  http://syriaca.org/place/78/html.</div><div id="citation-bibliography"><h4>Bibliography:</h4><span class="person"><span class="persName" xml:lang="en" lang="en"> Carlson, Thomas A.</span></span> and <span class="person"><span class="persName" xml:lang="en" lang="en">David A. Michelson</span></span>, “<span class="title-analytic"><bdi dir="ltr" xml:lang="en" lang="en">Edessa — </bdi><bdi dir="rtl" xml:lang="syr" lang="syr">ܐܘܪܗܝ</bdi></span>.” In <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">The Syriac Gazetteer</bdi></span>, edited by <span class="person"><span class="persName" xml:lang="en" lang="en">Thomas A. Carlson</span></span> and <span class="person"><span class="persName" xml:lang="en" lang="en">David A. Michelson</span></span>. Entry published August 14, 2013. Syriaca.org: The Syriac Reference Portal, edited by <span class="principal">David A. Michelson</span>. http://syriaca.org/place/78/html.</div></div><div id="about"><h3>About this Entry</h3><p><span class="heading-inline">Entry Title:</span> <span class="title-analytic"><bdi dir="ltr" xml:lang="en" lang="en">Edessa — </bdi><bdi dir="rtl" xml:lang="syr" lang="syr">ܐܘܪܗܝ</bdi></span></p><p><span class="heading-inline">Entry Contributors:</span> <span class="person"><span class="persName" xml:lang="en" lang="en">Thomas A. Carlson</span></span> and <span class="person"><span class="persName" xml:lang="en" lang="en">David A. Michelson</span></span></p><p><span class="heading-inline">Publication Date:</span> August 14, 2013</p><div><h4>Authorial and Editorial Responsibility:</h4><ul><li><span class="principal">David A. Michelson</span>, general editor, Syriaca.org: The Syriac Reference Portal</li><li><span class="person"><span class="persName" xml:lang="en" lang="en">Thomas A. Carlson</span></span> and <span class="person"><span class="persName" xml:lang="en" lang="en">David A. Michelson</span></span>, editors, <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">The Syriac Gazetteer</bdi></span></li><li><span class="person"><span class="persName" xml:lang="en" lang="en"> Carlson, Thomas A.</span></span> and <span class="person"><span class="persName" xml:lang="en" lang="en">David A. Michelson</span></span>, entry contributors, “<span class="title-analytic"><bdi dir="ltr" xml:lang="en" lang="en">Edessa — </bdi><bdi dir="rtl" xml:lang="syr" lang="syr">ܐܘܪܗܝ</bdi></span>”</li></ul></div><div><h4>Additional Credit:</h4><ul><li>Initial Barsoum entry creation by <span class="name">David A. Michelson</span></li><li>Data merging, Pleiades and Wikipedia linking, and XML by <span class="name">Thomas A. Carlson</span></li><li>Syriac description entry by <span class="name">Robert Aydin</span></li><li>Arabic description entry by <span class="name">Dayroyo Roger-Youssef Akhrass</span></li><li>Wilmshurst index information entry by <span class="name">Anthony Davis</span></li></ul></div></div><div id="license"><h3>Copyright and License for Reuse</h3><p>Except otherwise noted, this page is © 2013.</p><a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
-                        <p>Distributed under a Creative Commons Attribution 3.0 Unported License.</p>
-                        <p>This entry incorporates copyrighted material from the following work(s):
-                            <ul class="listBibl"><li><span class="author"><span class="persName" xml:lang="en" lang="en"> Barsoum, Ignatius Afram</span></span>. <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">Berule bdire d-ʿal yulpone suryoye hdire</bdi></span> (<span class="pubPlace">Holland</span>: <span class="publisher" xml:lang="en" lang="en">Bar Hebraeus Verlag</span>, <span class="date">1991</span>).</li><li><span class="author"><span class="persName" xml:lang="en" lang="en"> Barsoum, Ignatius Afram</span></span>. <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">al-Luʼluʼ al-manthūr fī tārīkh al-ʻulūm wa-al-ādāb al-Suryāniyyah</bdi></span> (<span class="pubPlace">Holland</span>: <span class="publisher" xml:lang="en" lang="en">Bar Hebraeus Verlag</span>, <span class="date">1987</span>).</li><li><span class="author"><span class="persName" xml:lang="en" lang="en"> Barsoum, Ignatius Afram</span></span>. <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en">The Scattered Pearls: A History of Syriac Literature and Sciences</bdi></span> (<span class="pubPlace">Piscataway, <span class="placeName">NJ</span></span>: <span class="publisher" xml:lang="en" lang="en">Gorgias Press</span>, <span class="date">2003</span>).</li></ul>
-                            <p>used under a Creative Commons Attribution license <a href="http://creativecommons.org/licenses/by/3.0/"></a>.</p>
-                        </p>
-                    </div></footer></div><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script>window.jQuery || document.write('&lt;script src="js/vendor/jquery-1.9.1.min.js"&gt;&lt;\/script&gt;')</script><script src="../js/vendor/bootstrap.min.js"></script><script src="../js/plugins.js"></script><script src="../js/main.js"></script><script>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid"><a class="btn btn-navbar" data-toggle="collapse"
+                        data-target=".nav-collapse"><span class="icon-bar"></span><span
+                            class="icon-bar"></span><span class="icon-bar"></span></a><p
+                                class="brand">The Syriac Gazetteer<br/>
+                                </p>
+                    <div class="nav-collapse collapse"><ul
+                            class="nav">
+                            <li><a href="../index.html">home</a></li>
+                            <li class="active"><a href="../browse.html">browse</a></li>
+                            <li><a href="../about.html">about</a></li>
+                            <li><a href="../help/index.html">help</a></li>
+                        </ul>
+                            <p class="navbar-text"><a class="pull-right btn btn-info"
+                            >advanced</a>
+                            </p><form class="navbar-search pull-right s-asearch"><input
+                                class="search-query" type="text" placeholder="search"
+                         /></form>
+                        </div><!--/.nav-collapse--></div><!--/ .container-fluid--></div></div>
+        <div class="container-fluid"><div class="row-fluid"><div
+                    class="span7" xml:id="place-content"><h2><bdi dir="ltr" xml:lang="en" lang="en"
+                            >Edessa — </bdi><bdi dir="rtl" xml:lang="syr" lang="syr"
+                        >ܐܘܪܗܝ</bdi></h2><div id="link-icons"><a
+                            href="http://pleiades.stoa.org/places/658457"><img
+                                src="../img/circle-pi-25.png"
+                                alt="Image of the Greek letter pi in blue; small icon of the Pleiades project"
+                                title="click to view Edessa — ܐܘܪܗܝ in Pleiades" /></a><a
+                            href="http://en.wikipedia.org/wiki/Edessa"><img
+                                src="../img/Wikipedia-25.png" alt="The Wikipedia icon"
+                                title="click to view Edessa — ܐܘܪܗܝ in Wikipedia" /></a><a
+                            href="http://en.wikipedia.org/wiki/%C5%9Eanl%C4%B1urfa"><img
+                                src="../img/Wikipedia-25.png" alt="The Wikipedia icon"
+                                title="click to view Edessa — ܐܘܪܗܝ in Wikipedia" /></a><a
+                            href="https://maps.google.com/maps?f=q&amp;hl=en&amp;q=http://srophe.github.io/srp-places-app/places/78-atom.xml&amp;z=4"
+                                ><img src="../img/gmaps-25.png" alt="The Google Maps icon"
+                                title="click to view Edessa — ܐܘܪܗܝ on Google Maps" /></a><a
+                            href="https://github.com/srophe/places/blob/master/xml/78.xml"
+                            rel="alternate" type="application/tei+xml"><img src="../img/tei-25.png"
+                                alt="The Text Encoding Initiative icon"
+                                title="click to view the TEI XML source data for this place"
+                             /></a><a
+                            href="http://srophe.github.io/srp-places-app/places/78-atom.xml"
+                            rel="alternate" type="application/atom+xml"><img
+                                src="../img/atom-25.png" alt="The Atom format icon"
+                                title="click to view this data in Atom XML format"
+                             /></a></div><div><a href="../help/terms.html#place-uri"
+                            title="Click to read more about Place URIs"><div class="helper circle"
+                                    ><p>i</p></div></a><p><span class="label label-info">Place
+                                URI</span>: http://syriaca.org/place/78</p></div><p>A city of <a
+                            class="placeName" href="124.html">Mesopotamia</a>, the capital of the
+                        ancient kingdom of <a class="placeName" href="145.html">Osrhoene</a>, modern
+                        Urfa.</p><div id="map"></div><div id="place-78"><div id="placenames"
+                                ><h3>Names</h3><ul>
+                                <li dir="ltr"><span class="placeName" xml:lang="syr" lang="syr"><bdi
+                                            dir="rtl">ܐܘܪܗܝ</bdi></span><bdi class="footnote-refs"
+                                        dir="ltr" lang="en" xml:lang="en"></bdi></li>
+                                <li dir="ltr"><span class="placeName" xml:lang="en" lang="en"
+                                        >Edessa</span><bdi class="footnote-refs" dir="ltr" lang="en"
+                                        xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-2">2</a>, </span><span
+                                            class="footnote-ref">
+                                            <a href="#bib78-5">5</a>, </span><span
+                                            class="footnote-ref">
+                                            <a href="#bib78-6">6</a>, </span><span
+                                            class="footnote-ref">
+                                            <a href="#bib78-7">7</a></span></bdi></li>
+                                <li dir="ltr"><span class="placeName" xml:lang="syr-Syrj"
+                                        lang="syr-Syrj"><bdi dir="rtl">ܐܘܪܗܳܝ</bdi></span><bdi
+                                        class="footnote-refs" dir="ltr" lang="en" xml:lang="en"
+                                            ><span class="footnote-ref">
+                                            <a href="#bib78-3">3</a>, </span><span
+                                            class="footnote-ref">
+                                            <a href="#bib78-8">8</a></span></bdi></li>
+                                <li dir="ltr"><span class="placeName" xml:lang="syr-Syrj"
+                                        lang="syr-Syrj"><bdi dir="rtl">ܐܘܪܦܰܗ̈</bdi></span><bdi
+                                        class="footnote-refs" dir="ltr" lang="en" xml:lang="en"
+                                            ><span class="footnote-ref">
+                                            <a href="#bib78-3">3</a></span></bdi></li>
+                                <li dir="ltr"><span class="placeName" xml:lang="ar" lang="ar"><bdi
+                                            dir="rtl">الرها</bdi></span><bdi class="footnote-refs"
+                                        dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-4">4</a></span></bdi></li>
+                                <li dir="ltr"><span class="placeName" xml:lang="ar" lang="ar"><bdi
+                                            dir="rtl">اورفه</bdi></span><bdi class="footnote-refs"
+                                        dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-4">4</a></span></bdi></li>
+                                <li dir="ltr"><span class="placeName" xml:lang="en" lang="en"
+                                        >Urfa</span><bdi class="footnote-refs" dir="ltr" lang="en"
+                                        xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-2">2</a>, </span><span
+                                            class="footnote-ref">
+                                            <a href="#bib78-5">5</a>, </span><span
+                                            class="footnote-ref">
+                                            <a href="#bib78-7">7</a></span></bdi></li>
+                            </ul></div><div id="type"><h3>Place Type</h3><ul>
+                                <li>settlement</li>
+                            </ul></div><div id="location"><h3>Location</h3><ul>
+                                <li>Coordinates: 37.15 38.8<bdi class="footnote-refs" dir="ltr"
+                                        lang="en" xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-2">2</a></span></bdi></li>
+                                <li> five day journey eastward from <a class="placeName"
+                                        href="18.html">Aleppo</a>
+                                    <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"
+                                            ><span class="footnote-ref">
+                                            <a href="#bib78-5">5</a></span></bdi></li>
+                            </ul></div><div id="description"><h3>Description</h3><ul>
+                                <li xml:lang="syr-Syrj" lang="syr-Syrj"> “ܡܕܺܝܢܬܐ ܗܳܝ ܛܒܝܒܬܳܐ
+                                    ܠܡܰܕܢܚܳܐ ܕܚܳܠܳܒ ܚܰܡܫܳܐ ܝܰܘܡ̈ܝܢ ܘܡܶܫܬܰܡܗܐ ܝܰܘܡܳܢ ܐܘܪܦܰܗ̈”<bdi
+                                        class="footnote-refs" dir="ltr" lang="en" xml:lang="en"
+                                            ><span class="footnote-ref">
+                                            <a href="#bib78-3">3</a></span></bdi>
+                                </li>
+                                <li xml:lang="ar" lang="ar"> “مدينة مشهورة خمسة ايام عن حلب شرقا
+                                    وتسمى اليوم اورفه.”<bdi class="footnote-refs" dir="ltr"
+                                        lang="en" xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-4">4</a></span></bdi>
+                                </li>
+                                <li xml:lang="en" lang="en"> “183. Edessa”<bdi class="footnote-refs"
+                                        dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-1">1</a></span></bdi>
+                                </li>
+                                <!--WARNING: 78.xml: desc@xml:id="abstract-en-78": untrapped element suppressed-->
+                                <li xml:lang="en" lang="en"> “a famous city, five day journey
+                                    eastward from <a class="placeName" href="18.html">Aleppo</a>,
+                                    now called Urfa.”<bdi class="footnote-refs" dir="ltr" lang="en"
+                                        xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-5">5</a></span></bdi>
+                                </li>
+                            </ul></div><div id="event"><h3>Events</h3><ul>
+                                <li>Renamed Edessa by Seleucus I Nicator. (304 BCE) <bdi
+                                        class="footnote-refs" dir="ltr" lang="en" xml:lang="en"
+                                            ><span class="footnote-ref">
+                                            <a href="#bib78-1">1</a></span></bdi></li>
+                                <li>Flood of the river <a class="placeName" href="191.html"
+                                        >Daiṣan</a> destroyed part of city. (201) <bdi
+                                        class="footnote-refs" dir="ltr" lang="en" xml:lang="en"
+                                            ><span class="footnote-ref">
+                                            <a href="#bib78-1">1</a></span></bdi></li>
+                            </ul></div><div id="event"><h3>Attestations</h3><ul>
+                                <li>Attestation of name ܐܘܪܗܝ in the anonymous Chronicle of 1234.
+                                    (not before 1146, not after 1234) <bdi class="footnote-refs"
+                                        dir="ltr" lang="en" xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-9">9</a></span></bdi></li>
+                                <li>Attestation of confession Syrian Orthodox in the anonymous
+                                    Chronicle of 1234. (1146) <bdi class="footnote-refs" dir="ltr"
+                                        lang="en" xml:lang="en"><span class="footnote-ref">
+                                            <a href="#bib78-9">9</a></span></bdi></li>
+                            </ul></div><div id="description"><h3>Known Religious Communities</h3><p
+                                style="font-size:small;"><em>This list is not necessarily
+                                    exhaustive, and the order does not represent importance or
+                                    proportion of the population. Instead, the list only represents
+                                    groups for which Syriac.org has source(s) and dates.</em></p><ul>
+                                <li> Syrian Orthodox (451-1924) </li>
+                                <li> Muslim (from 641) </li>
+                                <li> Latin (1098-1144) </li>
+                            </ul></div><div id="relations"><h3>Related Places</h3><ul>
+                                <li><a href="145.html">Osrhoene</a> contains Edessa (to 363) <bdi
+                                        class="footnote-refs" dir="ltr" lang="en" xml:lang="en"
+                                            ><span class="footnote-ref">
+                                            <a href="#bib78-1">1</a></span></bdi></li>
+                                <li><a href="166.html">Roman Empire</a> contains Edessa (to 363)
+                                        <bdi class="footnote-refs" dir="ltr" lang="en" xml:lang="en"
+                                            ><span class="footnote-ref">
+                                            <a href="#bib78-1">1</a></span></bdi></li>
+                                <li><a href="13.html">Ephrem</a> resided in Edessa (363-373) <bdi
+                                        class="footnote-refs" dir="ltr" lang="en" xml:lang="en"
+                                            ><span class="footnote-ref">
+                                            <a href="#bib78-1">1</a></span></bdi></li>
+                            </ul></div><div id="errata"><h3>Errata</h3><ul>
+                                <p>Amir Harrak's GEDSH article identifies its river as the <a
+                                        class="placeName" href="43.html">Balikh</a>, but the
+                                    identification is contested.</p>
+                            </ul></div><div id="see-also"><h3>See Also</h3><ul>
+                                <li><a
+                                        href="http://www.csc.org.il/db/browse.aspx?db=SB&amp;sL=E&amp;sK=Edessa&amp;sT=keywords"
+                                        > Comprehensive Bibliography on Syriac Christianity</a></li>
+                                <li><a href="http://pleiades.stoa.org/places/658457"><img
+                                            src="../img/circle-pi-25.png"
+                                            alt="Image of the Greek letter pi in blue; small icon of the Pleiades project"
+                                            title="click to view Edessa in Pleiades" /> View in
+                                        Pleiades</a></li>
+                                <li><a
+                                        href="https://maps.google.com/maps?f=q&amp;hl=en&amp;q=http://srophe.github.io/srp-places-app/places/-atom.xml&amp;z=4"
+                                            ><img src="../img/gmaps-25.png"
+                                            alt="The Google Maps icon"
+                                            title="click to view Edessa on Google Maps" /> View in
+                                        Google Maps</a></li>
+                                <li><a href="https://github.com/srophe/places/blob/master/xml/.xml"
+                                        rel="alternate" type="application/tei+xml"><img
+                                            src="../img/tei-25.png"
+                                            alt="The Text Encoding Initiative icon"
+                                            title="click to view the TEI XML source data for this place"
+                                         /> TEI XML source data</a></li>
+                                <li><a
+                                        href="http://srophe.github.io/srp-places-app/places/-atom.xml"
+                                        rel="alternate" type="application/atom+xml"><img
+                                            src="../img/atom-25.png" alt="The Atom format icon"
+                                            title="click to view this data in Atom XML format" />
+                                        Atom XML format</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/Edessa"><img
+                                            src="../img/Wikipedia-25.png" alt="The Wikipedia icon"
+                                            title="click to view Edessa in Wikipedia" />
+                                        Wikipedia</a></li>
+                                <li><a href="http://en.wikipedia.org/wiki/%C5%9Eanl%C4%B1urfa"><img
+                                            src="../img/Wikipedia-25.png" alt="The Wikipedia icon"
+                                            title="click to view Edessa in Wikipedia" />
+                                        Wikipedia</a></li>
+                            </ul></div><div id="sources"><h3>Sources</h3><p><small>Any information
+                                    without attribution has been created following the Syriaca.org
+                                        <a href="http://syriaca.org/documentation/">editorial
+                                        guidelines</a>.</small></p><ul>
+                                <li xml:id="bib78-1" id="bib78-1"><span class="footnote-tgt"
+                                        >1</span>
+                                    <span class="footnote-content"><span class="author">A.
+                                            Harrak</span>, “<span class="title-analytic"><bdi
+                                                dir="ltr" xml:lang="en" lang="en">183.
+                                            Edessa</bdi></span>” in <span class="editor"><span
+                                                class="persName">Sebastian P. Brock</span></span> et
+                                        al. (ed.), <span class="title-monographic"><bdi dir="ltr"
+                                                xml:lang="en" lang="en">The Gorgias Encyclopedic
+                                                Dictionary of the Syriac Heritage</bdi></span>
+                                            (<span class="pubPlace">Piscataway, <span
+                                                class="placeName">NJ</span></span>: <span
+                                            class="publisher">Gorgias Press</span>, <span
+                                            class="date">2011</span>), pp. 138-139.</span></li>
+                                <li xml:id="bib78-2" id="bib78-2"><span class="footnote-tgt"
+                                        >2</span>
+                                    <span class="footnote-content"><span class="editor"><span
+                                                class="persName">Sebastian P. Brock</span></span> et
+                                        al. (ed.), <span class="title-monographic"><bdi dir="ltr"
+                                                xml:lang="en" lang="en">The Gorgias Encyclopedic
+                                                Dictionary of the Syriac Heritage</bdi></span>
+                                            (<span class="pubPlace">Piscataway, <span
+                                                class="placeName">NJ</span></span>: <span
+                                            class="publisher">Gorgias Press</span>, <span
+                                            class="date">2011</span>), p. 1, 4, 5–6 (with fig. 1),
+                                        9–10, 13, 15–16, 18, 26, 29, 31, 33–34, 36, 37–38, 41, 46,
+                                        54, 56, 60, 64, 69, 71, 74, 84, 86, 90, 97–98, 99, 102,
+                                        107–108, 126, 127, 128, 132–133, 138–139 (with fig. 47),
+                                        145, 153, 155, 162, 163, 164, 178, 191–192, 195–196, 197,
+                                        199, 201–202, 209, 213, 220, 229, 237, 249, 252, 260–261,
+                                        262, 266, 267, 268, 270, 271–272, 273, 284, 287, 288,
+                                        303–304, 314, 316, 317, 322, 327–328, 332, 335, 343, 346,
+                                        348, 350, 351, 352, 356, 361, 363, 367, 376, 377, 384, 390,
+                                        392, 398, 401, 403, 407, 410–411, 419, 431, 432, 433,
+                                        438–439, 444, 446, 448, Map I B1, II B1, III.</span></li>
+                                <li xml:id="bib78-3" id="bib78-3"><span class="footnote-tgt"
+                                        >3</span>
+                                    <span class="footnote-content"><span class="author"><span
+                                                class="persName" xml:lang="en" lang="en">Ignatius
+                                                Afram Barsoum</span></span>, <span
+                                            class="title-monographic"><bdi dir="ltr" xml:lang="en"
+                                                lang="en">Berule bdire d-ʿal yulpone suryoye
+                                                hdire</bdi></span>, trans. <span class="editor"
+                                                ><span class="persName" xml:lang="en" lang="en"
+                                                >Philoxenos Yuḥanon Dolabani</span></span> (<span
+                                            class="pubPlace">Holland</span>: <span class="publisher"
+                                            xml:lang="en" lang="en">Bar Hebraeus Verlag</span>,
+                                            <span class="date">1991</span>), p. 556.</span></li>
+                                <li xml:id="bib78-4" id="bib78-4"><span class="footnote-tgt"
+                                        >4</span>
+                                    <span class="footnote-content"><span class="author"><span
+                                                class="persName" xml:lang="en" lang="en">Ignatius
+                                                Afram Barsoum</span></span>, <span
+                                            class="title-monographic"><bdi dir="ltr" xml:lang="en"
+                                                lang="en">al-Luʼluʼ al-manthūr fī tārīkh al-ʻulūm
+                                                wa-al-ādāb al-Suryāniyyah</bdi></span> (<span
+                                            class="pubPlace">Holland</span>: <span class="publisher"
+                                            xml:lang="en" lang="en">Bar Hebraeus Verlag</span>,
+                                            <span class="date">1987</span>), p. 516.</span></li>
+                                <li xml:id="bib78-5" id="bib78-5"><span class="footnote-tgt"
+                                        >5</span>
+                                    <span class="footnote-content"><span class="author"><span
+                                                class="persName" xml:lang="en" lang="en">Ignatius
+                                                Afram Barsoum</span></span>, <span
+                                            class="title-monographic"><bdi dir="ltr" xml:lang="en"
+                                                lang="en">The Scattered Pearls: A History of Syriac
+                                                Literature and Sciences</bdi></span>, trans. <span
+                                            class="editor"><span class="persName" xml:lang="en"
+                                                lang="en">Matti Moosa</span></span> (<span
+                                            class="pubPlace">Piscataway, <span class="placeName"
+                                                >NJ</span></span>: <span class="publisher"
+                                            xml:lang="en" lang="en">Gorgias Press</span>, <span
+                                            class="date">2003</span>), p. 553.</span></li>
+                                <li xml:id="bib78-6" id="bib78-6"><span class="footnote-tgt"
+                                        >6</span>
+                                    <span class="footnote-content"><span class="editor"><span
+                                                class="persName" xml:lang="en" lang="en">Sergey
+                                                Minov</span></span> (ed.), <span
+                                            class="title-monographic"><bdi dir="ltr" xml:lang="en"
+                                                lang="en">A Comprehensive Bibliography on Syriac
+                                                Christianity</bdi></span> (<abbr
+                                            title="no place of publication">n.p.</abbr>: <span
+                                            class="publisher" xml:lang="en" lang="en">The Center for
+                                            the Study of Christianity, The Hebrew University of
+                                            Jerusalem</span>, <span class="date">2013</span>), “<a
+                                            href="http://www.csc.org.il/db/browse.aspx?db=SB&amp;sL=E&amp;sK=Edessa&amp;sT=keywords"
+                                            >Edessa</a>”.</span></li>
+                                <li xml:id="bib78-7" id="bib78-7"><span class="footnote-tgt"
+                                        >7</span>
+                                    <span class="footnote-content"><span class="author"><span
+                                                class="persName" xml:lang="en" lang="en">David
+                                                Wilmshurst</span></span>, <span
+                                            class="title-monographic"><bdi dir="ltr" xml:lang="en"
+                                                lang="en">The ecclesiastical organisation of the
+                                                Church of the East, 1318-1913</bdi></span> (<span
+                                            class="pubPlace">Leuven</span>: <span class="publisher"
+                                            xml:lang="en" lang="en">Peeters</span>, <span
+                                            class="date">2000</span>), p. 53, 65, 361,
+                                    362.</span></li>
+                                <li xml:id="bib78-8" id="bib78-8"><span class="footnote-tgt"
+                                        >8</span>
+                                    <span class="footnote-content"><span class="author"><span
+                                                class="persName" xml:lang="en" lang="en">William
+                                                Wright</span></span>, <span
+                                            class="title-monographic"><bdi dir="ltr" xml:lang="en"
+                                                lang="en">Catalogue of Syriac Manuscripts in the
+                                                British Museum acquired since the year
+                                            1838</bdi></span> (<span class="pubPlace">London</span>:
+                                            <span class="publisher" xml:lang="en" lang="en">Gilbert
+                                            and Rivington</span>, <span class="date"
+                                            >1870-1872</span>), p. 2:912.</span></li>
+                                <li xml:id="bib78-9" id="bib78-9"><span class="footnote-tgt"
+                                        >9</span>
+                                    <span class="footnote-content"><span class="editor"><span
+                                                class="persName" xml:lang="fr" lang="fr"
+                                                >Jean-Baptiste Chabot</span></span> (ed.), (<span
+                                            class="pubPlace">Paris</span>: <span class="publisher"
+                                            xml:lang="la" lang="la">E Typographeo
+                                        Reipublicae</span>, <span class="date">1916-1937</span>), p.
+                                        2:136.</span></li>
+                            </ul></div></div></div></div><hr /><footer><div id="citation"><h3>How to
+                        Cite This Entry</h3><div id="citation-note"><h4>Note:</h4><span
+                            class="person"><span class="persName" xml:lang="en" lang="en">Thomas A.
+                                Carlson</span></span> and <span class="person"><span
+                                class="persName" xml:lang="en" lang="en">David A.
+                            Michelson</span></span>, “<span class="title-analytic"><bdi dir="ltr"
+                                xml:lang="en" lang="en">Edessa — </bdi><bdi dir="rtl" xml:lang="syr"
+                                lang="syr">ܐܘܪܗܝ</bdi></span>” in <span class="title-monographic"
+                                ><bdi dir="ltr" xml:lang="en" lang="en">The Syriac
+                            Gazetteer</bdi></span>, eds. <span class="person"><span class="persName"
+                                xml:lang="en" lang="en">Thomas A. Carlson</span></span> and <span
+                            class="person"><span class="persName" xml:lang="en" lang="en">David A.
+                                Michelson</span></span>, entry published August 14, 2013,
+                        Syriaca.org: The Syriac Reference Portal, ed. <span class="principal">David
+                            A. Michelson</span>, http://syriaca.org/place/78/html.</div><div
+                        id="citation-bibliography"><h4>Bibliography:</h4><span class="person"><span
+                                class="persName" xml:lang="en" lang="en"> Carlson, Thomas
+                            A.</span></span> and <span class="person"><span class="persName"
+                                xml:lang="en" lang="en">David A. Michelson</span></span>, “<span
+                            class="title-analytic"><bdi dir="ltr" xml:lang="en" lang="en">Edessa —
+                                </bdi><bdi dir="rtl" xml:lang="syr" lang="syr">ܐܘܪܗܝ</bdi></span>.”
+                        In <span class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en"
+                                >The Syriac Gazetteer</bdi></span>, edited by <span class="person"
+                                ><span class="persName" xml:lang="en" lang="en">Thomas A.
+                                Carlson</span></span> and <span class="person"><span
+                                class="persName" xml:lang="en" lang="en">David A.
+                            Michelson</span></span>. Entry published August 14, 2013. Syriaca.org:
+                        The Syriac Reference Portal, edited by <span class="principal">David A.
+                            Michelson</span>. http://syriaca.org/place/78/html.</div></div><div
+                    id="about"><h3>About this Entry</h3><p><span class="heading-inline">Entry
+                            Title:</span>
+                        <span class="title-analytic"><bdi dir="ltr" xml:lang="en" lang="en">Edessa —
+                                </bdi><bdi dir="rtl" xml:lang="syr" lang="syr"
+                        >ܐܘܪܗܝ</bdi></span></p><p><span class="heading-inline">Entry
+                            Contributors:</span>
+                        <span class="person"><span class="persName" xml:lang="en" lang="en">Thomas
+                                A. Carlson</span></span> and <span class="person"><span
+                                class="persName" xml:lang="en" lang="en">David A.
+                            Michelson</span></span></p><p><span class="heading-inline">Publication
+                            Date:</span> August 14, 2013</p><div><h4>Authorial and Editorial
+                            Responsibility:</h4><ul>
+                            <li><span class="principal">David A. Michelson</span>, general editor,
+                                Syriaca.org: The Syriac Reference Portal</li>
+                            <li><span class="person"><span class="persName" xml:lang="en" lang="en"
+                                        >Thomas A. Carlson</span></span> and <span class="person"
+                                        ><span class="persName" xml:lang="en" lang="en">David A.
+                                        Michelson</span></span>, editors, <span
+                                    class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en"
+                                        >The Syriac Gazetteer</bdi></span></li>
+                            <li><span class="person"><span class="persName" xml:lang="en" lang="en">
+                                        Carlson, Thomas A.</span></span> and <span class="person"
+                                        ><span class="persName" xml:lang="en" lang="en">David A.
+                                        Michelson</span></span>, entry contributors, “<span
+                                    class="title-analytic"><bdi dir="ltr" xml:lang="en" lang="en"
+                                        >Edessa — </bdi><bdi dir="rtl" xml:lang="syr" lang="syr"
+                                        >ܐܘܪܗܝ</bdi></span>”</li>
+                        </ul></div><div><h4>Additional Credit:</h4><ul>
+                            <li>Initial Barsoum entry creation by <span class="name">David A.
+                                    Michelson</span></li>
+                            <li>Data merging, Pleiades and Wikipedia linking, and XML by <span
+                                    class="name">Thomas A. Carlson</span></li>
+                            <li>Syriac description entry by <span class="name">Robert
+                                Aydin</span></li>
+                            <li>Arabic description entry by <span class="name">Dayroyo Roger-Youssef
+                                    Akhrass</span></li>
+                            <li>Wilmshurst index information entry by <span class="name">Anthony
+                                    Davis</span></li>
+                        </ul></div></div><div id="license"><h3>Copyright and License for
+                        Reuse</h3><p>Except otherwise noted, this page is © 2013.</p><a
+                        rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img
+                            alt="Creative Commons License" style="border-width:0"
+                            src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+                    <p>Distributed under a Creative Commons Attribution 3.0 Unported License.</p>
+                    <p>This entry incorporates copyrighted material from the following work(s): <ul
+                            class="listBibl">
+                            <li><span class="author"><span class="persName" xml:lang="en" lang="en">
+                                        Barsoum, Ignatius Afram</span></span>. <span
+                                    class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en"
+                                        >Berule bdire d-ʿal yulpone suryoye hdire</bdi></span>
+                                    (<span class="pubPlace">Holland</span>: <span class="publisher"
+                                    xml:lang="en" lang="en">Bar Hebraeus Verlag</span>, <span
+                                    class="date">1991</span>).</li>
+                            <li><span class="author"><span class="persName" xml:lang="en" lang="en">
+                                        Barsoum, Ignatius Afram</span></span>. <span
+                                    class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en"
+                                        >al-Luʼluʼ al-manthūr fī tārīkh al-ʻulūm wa-al-ādāb
+                                        al-Suryāniyyah</bdi></span> (<span class="pubPlace"
+                                    >Holland</span>: <span class="publisher" xml:lang="en" lang="en"
+                                    >Bar Hebraeus Verlag</span>, <span class="date"
+                                >1987</span>).</li>
+                            <li><span class="author"><span class="persName" xml:lang="en" lang="en">
+                                        Barsoum, Ignatius Afram</span></span>. <span
+                                    class="title-monographic"><bdi dir="ltr" xml:lang="en" lang="en"
+                                        >The Scattered Pearls: A History of Syriac Literature and
+                                        Sciences</bdi></span> (<span class="pubPlace">Piscataway,
+                                        <span class="placeName">NJ</span></span>: <span
+                                    class="publisher" xml:lang="en" lang="en">Gorgias Press</span>,
+                                    <span class="date">2003</span>).</li>
+                        </ul>
+                        <p>used under a Creative Commons Attribution license <a
+                                href="http://creativecommons.org/licenses/by/3.0/"></a>.</p>
+                    </p>
+                </div></footer></div><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script>window.jQuery || document.write('&lt;script src="js/vendor/jquery-1.9.1.min.js"&gt;&lt;\/script&gt;')</script><script src="../js/vendor/bootstrap.min.js"></script><script src="../js/plugins.js"></script><script src="../js/main.js"></script><script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script><script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script><script src="../js/map.js"></script></body></html>
+        </script><script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script><script src="../js/map.js"></script></body>
+</html>
