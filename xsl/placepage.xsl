@@ -462,6 +462,7 @@
   <li>
    <xsl:value-of select="."/>
    <xsl:sequence select="local:do-dates(.)"/>
+   <xsl:if test="@source"><xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/></xsl:if>
   </li>
  </xsl:template>
  
