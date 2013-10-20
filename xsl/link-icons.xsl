@@ -112,7 +112,10 @@
         <li><a href="{$base}places/{$placenum}-atom.xml" rel="alternate" type="application/atom+xml"><img src="../img/atom-25.png" alt="The Atom format icon" title="click to view this data in Atom XML format"/> Atom XML format</a></li>
         <!-- Wikipedia links -->
         <xsl:for-each select="t:idno[contains(.,'wikipedia')]">
-          <li><a href="{.}"><img src="../img/Wikipedia-25.png" alt="The Wikipedia icon" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Wikipedia"/> Wikipedia</a></li>
+          <xsl:variable name="get-title">
+            <xsl:value-of select="replace(tokenize(.,'/')[last()],'_',' ')"/>
+          </xsl:variable>
+          <li><a href="{.}"><img src="../img/Wikipedia-25.png" alt="The Wikipedia icon" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Wikipedia"/> "<xsl:value-of select="$get-title"/>" in Wikipedia</a></li>
         </xsl:for-each>
       </ul>
     </div>
