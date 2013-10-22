@@ -68,12 +68,12 @@
       
       <!-- Pleiades links -->
       <xsl:for-each select="t:idno[@type='Pleiades']">
-        <a href="{.}"><img src="../img/circle-pi-25.png" alt="Image of the Greek letter pi in blue; small icon of the Pleiades project" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Pleiades"/></a>
+        <a href="{normalize-space(.)}"><img src="../img/circle-pi-25.png" alt="Image of the Greek letter pi in blue; small icon of the Pleiades project" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Pleiades"/></a>
       </xsl:for-each>
       
       <!-- Wikipedia links -->
       <xsl:for-each select="t:idno[@type='Wikipedia']">
-        <a href="{.}"><img src="../img/Wikipedia-25.png" alt="The Wikipedia icon" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Wikipedia"/></a>
+        <a href="{normalize-space(.)}"><img src="../img/Wikipedia-25.png" alt="The Wikipedia icon" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Wikipedia"/></a>
       </xsl:for-each>
       
       <!-- Google map links -->
@@ -91,16 +91,16 @@
   </xsl:template>
   
   <xsl:template name="link-icons-text">
-    <xsl:variable name="placenum" select="t:idno[@type='placeID'][1]"/>
+    <xsl:variable name="placenum" select="substring-after(/descendant::*/t:place[1]/@xml:id,'place-')"/>
     <div id="see-also">
       <h3>See Also</h3>
       <ul>
         <xsl:for-each select="t:idno[contains(.,'csc.org.il')]">
-          <li><a href="{.}"> Comprehensive Bibliography on Syriac Christianity</a></li>
+          <li><a href="{normalize-space(.)}"> Comprehensive Bibliography on Syriac Christianity</a></li>
         </xsl:for-each>
         <!-- Pleiades links -->
         <xsl:for-each select="t:idno[contains(.,'pleiades')]">
-          <li><a href="{.}"><img src="../img/circle-pi-25.png" alt="Image of the Greek letter pi in blue; small icon of the Pleiades project" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Pleiades"/> View in Pleiades</a></li>
+          <li><a href="{normalize-space(.)}"><img src="../img/circle-pi-25.png" alt="Image of the Greek letter pi in blue; small icon of the Pleiades project" title="click to view {ancestor::t:place/t:placeName[@xml:lang='en'][1]} in Pleiades"/> View in Pleiades</a></li>
         </xsl:for-each>
         <!-- Google map links -->
         <xsl:for-each select="t:location[@type='gps']/t:geo">
