@@ -96,7 +96,7 @@
       <h3>See Also</h3>
       <ul>
         <xsl:for-each select="t:idno[contains(.,'csc.org.il')]">
-          <li><a href="{normalize-space(.)}"> Comprehensive Bibliography on Syriac Christianity</a></li>
+          <li><a href="{normalize-space(.)}"> "<xsl:value-of select="substring-before(substring-after(normalize-space(.),'sK='),'&amp;sT=')"/>" in the Comprehensive Bibliography on Syriac Christianity</a></li>
         </xsl:for-each>
         <!-- Pleiades links -->
         <xsl:for-each select="t:idno[contains(.,'pleiades')]">
