@@ -396,7 +396,11 @@
    <div id="event">
     <h3>Attestation<xsl:if test="count(t:event[@type='attestation']) &gt; 1">s</xsl:if></h3>
     <ul>
-     <xsl:apply-templates select="t:event[@type='attestation']" mode="event"/>
+     <!-- Sorts events on dates, checks first for @notBefore and if not present, uses @when -->
+     <xsl:for-each select="t:event[@type='attestation']">
+      <xsl:sort select="if(exists(@notBefore)) then @notBefore else @when"/>
+      <xsl:apply-templates select="." mode="event"/>    
+     </xsl:for-each>
     </ul>
    </div>   
   </xsl:if> 
@@ -404,9 +408,7 @@
    <div id="description">
     <h3>Known Religious Communities</h3>
     <p style="font-size:small;"><em>This list is not necessarily exhaustive, and the order does not represent importance or proportion of the population.  Instead, the list only represents groups for which Syriac.org has source(s) and dates.</em></p>
-    <ul>
-     <xsl:apply-templates select="t:state[@type='confession']"/>
-    </ul>
+    <xsl:call-template name="confessions"/>
    </div>   
   </xsl:if>
   
@@ -455,15 +457,148 @@
    <xsl:if test="@source"><xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/></xsl:if>
   </li>
  </xsl:template>
+ <!-- Named template to handle nested confessions -->
+ <xsl:template name="confessions">
+  <!-- Variable stores all confessions from confessions.xml -->
+  <xsl:variable name="confessions" select="document('../../syriaca/confessions.xml')//t:body/t:list"/>
+  <xsl:variable name="place-data" select="."/>
+  <!-- Variable to store the value of the confessions of current place-->
+  <xsl:variable name="current-confessions">
+   <xsl:for-each select="t:state[@type='confession']">
+    <xsl:variable name="id" select="substring-after(@ref,'#')"/>
+    <!-- outputs current confessions as a space seperated list -->
+    <xsl:value-of select="concat($confessions//t:item[@xml:id = $id]/@xml:id,' ')"/>
+   </xsl:for-each>   
+  </xsl:variable>
+  <!-- Works through the tree structure in the confessions.xml to output only the relevant confessions -->
+  <xsl:for-each select="$confessions">
+   <ul>
+    <!-- Checks for top level confessions that may have a match or a descendant with a match, supresses any that do not -->
+    <xsl:if test="descendant-or-self::t:item[contains($current-confessions,@xml:id)]">
+     <!-- Goes through each item to check for a match or a child match -->
+     <xsl:for-each select="t:item">
+      <xsl:if test="descendant-or-self::t:item[contains($current-confessions,@xml:id)]">
+       <!-- output current level -->
+       <li>
+        <!-- print label -->
+        <xsl:apply-templates select="t:label" mode="confessions"/>
+        <!-- build dates based on attestation information -->
+        <xsl:call-template name="confession-dates">
+         <xsl:with-param name="place-data" select="$place-data"/>
+         <xsl:with-param name="confession-id" select="@xml:id"/>
+        </xsl:call-template>
+        <!-- check next level -->
+        <xsl:if test="descendant::t:item[contains($current-confessions,@xml:id)]">
+         <ul>
+          <xsl:for-each select="child::*/t:item">
+           <xsl:if test="descendant-or-self::t:item[contains($current-confessions,@xml:id)]">
+            <li>
+             <xsl:apply-templates select="t:label" mode="confessions"/>
+             <!-- build dates based on attestation information -->
+             <xsl:call-template name="confession-dates">
+              <xsl:with-param name="place-data" select="$place-data"/>
+              <xsl:with-param name="confession-id" select="@xml:id"/>
+             </xsl:call-template>
+             <xsl:if test="descendant::t:item[contains($current-confessions,@xml:id)]">
+              <ul>
+               <xsl:for-each select="child::*/t:item">
+                <xsl:if test="descendant-or-self::t:item[contains($current-confessions,@xml:id)]">
+                 <li>
+                  <xsl:apply-templates select="t:label" mode="confessions"/>
+                  <!-- build dates based on attestation information -->
+                  <xsl:call-template name="confession-dates">
+                   <xsl:with-param name="place-data" select="$place-data"/>
+                   <xsl:with-param name="confession-id" select="@xml:id"/>
+                  </xsl:call-template>
+                  <xsl:if test="descendant::t:item[contains($current-confessions,@xml:id)]">
+                   <ul>
+                    <xsl:for-each select="child::*/t:item">
+                     <xsl:if test="descendant-or-self::t:item[contains($current-confessions,@xml:id)]">
+                      <li>
+                       <xsl:apply-templates select="t:label" mode="confessions"/>
+                       <!-- build dates based on attestation information -->
+                       <xsl:call-template name="confession-dates">
+                        <xsl:with-param name="place-data" select="$place-data"/>
+                        <xsl:with-param name="confession-id" select="@xml:id"/>
+                       </xsl:call-template>
+                       
+                      </li>
+                     </xsl:if>
+                    </xsl:for-each>
+                   </ul>
+                  </xsl:if>
+                 </li>
+                </xsl:if>
+               </xsl:for-each>
+              </ul>
+             </xsl:if>
+            </li>
+           </xsl:if>
+          </xsl:for-each>
+         </ul>
+        </xsl:if>
+       </li>
+      </xsl:if>
+     </xsl:for-each>
+    </xsl:if>
+   </ul>
+  </xsl:for-each>
+ </xsl:template>
  
- <!-- Template to print out confession section -->
- <xsl:template match="t:state[@type='confession']">
-  <!--NOTE:  May need to switch to apply-templates, but will also have to add a label template -->
-  <li>
-   <xsl:value-of select="."/>
-   <xsl:sequence select="local:do-dates(.)"/>
-   <xsl:if test="@source"><xsl:sequence select="local:do-refs(@source,ancestor::t:*[@xml:lang][1])"/></xsl:if>
-  </li>
+ <!-- Create labels for confessions -->
+ <xsl:template match="t:label" mode="confessions">
+  <xsl:value-of select="."/>
+ </xsl:template>
+ 
+ <!-- Named template to build confession dates bassed on attestation dates -->
+ <xsl:template name="confession-dates">
+  <!-- param passes place data for processing -->
+  <xsl:param name="place-data"/>
+  <!-- confession id -->
+  <xsl:param name="confession-id"/>
+  <!-- find confessions in place data using confession-id -->
+  <xsl:if test="$place-data//t:state[@type='confession' and substring-after(@ref,'#') = $confession-id]">
+   <xsl:for-each select="$place-data//t:state[@type='confession' and substring-after(@ref,'#') = $confession-id]">
+    <!-- Build ref id to find attestations -->
+    <xsl:variable name="ref-id" select="concat('#',@xml:id)"/>
+    <!-- Find attestations with matching confession-id in link/@target  -->
+    <xsl:choose>
+     <xsl:when test="//t:event[@type='attestation' and child::*[contains(@target,$ref-id)] ]">
+      <!-- If there is a match process dates -->
+      (<xsl:for-each select="//t:event[@type='attestation' and t:link[contains(@target,$ref-id)] ]">
+       <!-- Sort dates -->
+       <xsl:sort select="if(exists(@notBefore)) then @notBefore else @when"/>
+       <xsl:choose>
+        <!-- process @when dates use, local:trim-date function to trim 0 from dates-->
+        <xsl:when test="./@when"> 
+         <xsl:choose>
+          <xsl:when test="position() = 1">attested as early as <xsl:value-of select="local:trim-date(@when)"/></xsl:when>
+          <xsl:when test="position()=last()">, as late as <xsl:value-of select="local:trim-date(@when)"/></xsl:when>
+          <xsl:otherwise/>
+         </xsl:choose>
+        </xsl:when>
+        <!-- process @notBefore dates -->
+        <xsl:when test="./@notBefore">
+         <xsl:choose>
+          <xsl:when test="position() = 1">
+           attested around <xsl:value-of select="local:trim-date(@notBefore)"/>
+          </xsl:when>
+          <xsl:otherwise>
+           attested as early as <xsl:value-of select="local:trim-date(@notBefore)"/>        
+          </xsl:otherwise>
+         </xsl:choose>
+        </xsl:when>
+        <!-- process @notAfter dates -->
+        <xsl:when test="./@notAfter"><xsl:if test="./@notBefore">, </xsl:if>as late as <xsl:value-of select="local:trim-date(@notAfter)"/></xsl:when>
+        <xsl:otherwise/>
+       </xsl:choose>
+      </xsl:for-each>)
+     </xsl:when>
+     <!-- If not attestation information -->
+     <xsl:otherwise> (no attestations yet recorded)</xsl:otherwise>
+    </xsl:choose>
+   </xsl:for-each>
+  </xsl:if>
  </xsl:template>
  
  <!-- Template for related people and places -->

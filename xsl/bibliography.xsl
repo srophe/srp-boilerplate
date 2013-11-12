@@ -338,7 +338,6 @@
           <xsl:apply-templates mode="footnote"/>
         </xsl:otherwise>
       </xsl:choose>
-      
     </span>
   </xsl:template>
 
