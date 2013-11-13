@@ -424,12 +424,14 @@
   
   <!-- Build errata -->
   <xsl:if test="t:note[@type='errata' or @type='deprecation']">
+  <!--
    <div id="errata">
     <h3>Errata</h3>
     <ul>
      <xsl:apply-templates select="t:note[@type='errata']| t:note[@type='deprecation']"/>
     </ul>
    </div>
+   -->
   </xsl:if> 
   <!-- Add see also -->
   <!-- NOTE: does not work, as link icons relys on index.xml data -->
